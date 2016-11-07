@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>Variables</name>
+    <events>
+        <variable constant="0" name="ActiveLeft" sid="391297064606083" static="0" type="number">0</variable>
+        <variable constant="0" name="ActiveRight" sid="599579506805669" static="0" type="number">0</variable>
+        <variable constant="0" name="Input" sid="962947546287654" static="0" type="number">0</variable>
+        <variable constant="0" name="MouseX" sid="683304503554293" static="0" type="number">0</variable>
+        <variable constant="0" name="MouseY" sid="970473297609113" static="0" type="number">0</variable>
+        <variable constant="0" name="playerX" sid="753277793937877" static="0" type="number">0</variable>
+        <variable constant="0" name="playerY" sid="857870396007858" static="0" type="number">0</variable>
+        <variable constant="0" name="ProbabilityFlip" sid="266461466369677" static="0" type="number">0</variable>
+        <variable constant="0" name="ProbabilityReward" sid="731682283620142" static="0" type="number">0</variable>
+        <variable constant="0" name="RandomF" sid="551120366874016" static="0" type="number">0</variable>
+        <variable constant="0" name="RandomR" sid="107192454304983" static="0" type="number">0</variable>
+        <variable constant="0" name="RewardedTrial" sid="211249720768764" static="0" type="number">0</variable>
+        <variable constant="0" name="RNGmax" sid="937908592544550" static="0" type="number">0</variable>
+        <variable constant="0" name="RNGmin" sid="658489382287334" static="0" type="number">0</variable>
+        <variable constant="0" name="Score" sid="101918661873503" static="0" type="number">0</variable>
+        <variable constant="0" name="Timer" sid="485632215821448" static="0" type="number">0</variable>
+        <variable constant="0" name="TravelSpeed" sid="850085497675331" static="0" type="number">0</variable>
+    </events>
+</c2eventsheet>

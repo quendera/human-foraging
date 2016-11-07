@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>ESMenu</name>
+    <events>
+        <include>Variables</include>
+        <event-block any="1" sid="493210712351213">
+            <conditions>
+                <condition id="3" name="On touched object" sid="804521334663892" type="Touch">
+                    <param id="0" name="Object">MouseButton</param>
+                </condition>
+                <condition id="6" name="On object clicked" sid="817881540348803" type="Mouse">
+                    <param id="0" name="Mouse button">0</param>
+                    <param id="1" name="Click type">0</param>
+                    <param id="2" name="Object clicked">MouseButton</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Set value" sid="595677387079928" type="System">
+                    <param id="0" name="Variable">Input</param>
+                    <param id="1" name="Value">0</param>
+                </action>
+                <action id="-2" name="Go to layout" sid="439870883149962" type="System">
+                    <param id="0" name="Layout">LayoutFlip</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block any="1" sid="680515015131244">
+            <conditions>
+                <condition id="3" name="On touched object" sid="529695173960732" type="Touch">
+                    <param id="0" name="Object">TouchButton</param>
+                </condition>
+                <condition id="6" name="On object clicked" sid="810622005115596" type="Mouse">
+                    <param id="0" name="Mouse button">0</param>
+                    <param id="1" name="Click type">0</param>
+                    <param id="2" name="Object clicked">TouchButton</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Set value" sid="674574043988342" type="System">
+                    <param id="0" name="Variable">Input</param>
+                    <param id="1" name="Value">1</param>
+                </action>
+                <action id="-2" name="Go to layout" sid="703646774255683" type="System">
+                    <param id="0" name="Layout">LayoutFlip</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="580787868110311">
+            <conditions>
+                <condition id="-1" name="Every tick" sid="829596300374390" type="System" />
+            </conditions>
+            <actions>
+                <action id="-9" name="Set value" sid="213799964054994" type="System">
+                    <param id="0" name="Variable">ProbabilityFlip</param>
+                    <param id="1" name="Value">SliderFlipProbability.Value</param>
+                </action>
+                <action id="-9" name="Set value" sid="550897241340849" type="System">
+                    <param id="0" name="Variable">ProbabilityReward</param>
+                    <param id="1" name="Value">SliderRewardProbability.Value</param>
+                </action>
+            </actions>
+        </event-block>
+    </events>
+</c2eventsheet>
