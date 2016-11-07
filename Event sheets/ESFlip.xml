@@ -9,6 +9,18 @@
                 <condition id="-2" name="On start of layout" sid="637244466290885" type="System" />
             </conditions>
             <actions>
+                <action id="-9" name="Set value" sid="755623721871508" type="System">
+                    <param id="0" name="Variable">ActiveLeft</param>
+                    <param id="1" name="Value">1</param>
+                </action>
+                <action id="-9" name="Set value" sid="947433616897768" type="System">
+                    <param id="0" name="Variable">CurrentTrial</param>
+                    <param id="1" name="Value">0</param>
+                </action>
+                <action id="-9" name="Set value" sid="498461307419375" type="System">
+                    <param id="0" name="Variable">MouseMove</param>
+                    <param id="1" name="Value">0</param>
+                </action>
                 <action id="-9" name="Set value" sid="752290700757196" type="System">
                     <param id="0" name="Variable">RNGmax</param>
                     <param id="1" name="Value">100</param>
@@ -27,7 +39,7 @@
                 </action>
                 <action id="-9" name="Set value" sid="656551723547670" type="System">
                     <param id="0" name="Variable">TravelSpeed</param>
-                    <param id="1" name="Value">10</param>
+                    <param id="1" name="Value">1000</param>
                 </action>
                 <action id="-9" name="Destroy" sid="834045179538005" type="Player" />
                 <action id="-3" name="Create object" sid="326390971943444" type="System">
@@ -39,10 +51,8 @@
                 <action id="0" name="Set cursor style" sid="658934196702544" type="Mouse">
                     <param id="0" name="Cursor style">3</param>
                 </action>
-                <action id="-9" name="Set value" sid="755623721871508" type="System">
-                    <param id="0" name="Variable">ActiveLeft</param>
-                    <param id="1" name="Value">1</param>
-                </action>
+                <action id="0" name="Clear" sid="817122170758490" type="ArrayData" />
+                <action id="0" name="Clear" sid="218663977284095" type="ArrayMouse" />
             </actions>
             <sub-events>
                 <event-block sid="727314069664746">
@@ -215,6 +225,10 @@
                             <param id="0" name="Group name">&quot;SpawnLeft&quot;</param>
                             <param id="1" name="State">1</param>
                         </action>
+                        <action id="-9" name="Set value" sid="135068513080306" type="System">
+                            <param id="0" name="Variable">PlayerLocation</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
                     </actions>
                     <sub-events>
                         <event-block sid="109430244916734">
@@ -254,6 +268,10 @@
                         <action id="-12" name="Set group active" sid="225398787268155" type="System">
                             <param id="0" name="Group name">&quot;SpawnRight&quot;</param>
                             <param id="1" name="State">1</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="658701986248214" type="System">
+                            <param id="0" name="Variable">PlayerLocation</param>
+                            <param id="1" name="Value">1</param>
                         </action>
                     </actions>
                     <sub-events>
@@ -332,7 +350,7 @@
                                     <param id="0" name="Variable">Score</param>
                                     <param id="1" name="Value">1</param>
                                 </action>
-                                <action id="0" name="Spawn another object" sid="775979876980069" type="LeftPort">
+                                <action id="0" name="Spawn another object" sid="775979876980069" type="LeftTarget">
                                     <param id="0" name="Object">TouchButton</param>
                                     <param id="1" name="Layer">0</param>
                                     <param id="2" name="Image point">0</param>
@@ -366,7 +384,12 @@
                                     <param id="2" name="Value">ProbabilityFlip</param>
                                 </condition>
                             </conditions>
-                            <actions />
+                            <actions>
+                                <action id="0" name="Call function" sid="657664773775503" type="Function">
+                                    <param id="0" name="Name">&quot;log&quot;</param>
+                                    <param id="1" name="Parameter {n}"></param>
+                                </action>
+                            </actions>
                         </event-block>
                         <event-block sid="150545287203497">
                             <conditions>
@@ -384,6 +407,10 @@
                                 <action id="-9" name="Set value" sid="616755509949055" type="System">
                                     <param id="0" name="Variable">ActiveRight</param>
                                     <param id="1" name="Value">1</param>
+                                </action>
+                                <action id="0" name="Call function" sid="618629672725515" type="Function">
+                                    <param id="0" name="Name">&quot;log&quot;</param>
+                                    <param id="1" name="Parameter {n}"></param>
                                 </action>
                             </actions>
                         </event-block>
@@ -433,7 +460,7 @@
                                     <param id="0" name="Variable">Score</param>
                                     <param id="1" name="Value">1</param>
                                 </action>
-                                <action id="0" name="Spawn another object" sid="489345853740070" type="RightPort">
+                                <action id="0" name="Spawn another object" sid="489345853740070" type="RightTarget">
                                     <param id="0" name="Object">TouchButton</param>
                                     <param id="1" name="Layer">0</param>
                                     <param id="2" name="Image point">0</param>
@@ -467,7 +494,12 @@
                                     <param id="2" name="Value">ProbabilityFlip</param>
                                 </condition>
                             </conditions>
-                            <actions />
+                            <actions>
+                                <action id="0" name="Call function" sid="905407017939151" type="Function">
+                                    <param id="0" name="Name">&quot;log&quot;</param>
+                                    <param id="1" name="Parameter {n}"></param>
+                                </action>
+                            </actions>
                         </event-block>
                         <event-block sid="799768602538839">
                             <conditions>
@@ -486,9 +518,57 @@
                                     <param id="0" name="Variable">ActiveRight</param>
                                     <param id="1" name="Value">0</param>
                                 </action>
+                                <action id="0" name="Call function" sid="852629834116282" type="Function">
+                                    <param id="0" name="Name">&quot;log&quot;</param>
+                                    <param id="1" name="Parameter {n}"></param>
+                                </action>
                             </actions>
                         </event-block>
                     </sub-events>
+                </event-block>
+                <event-block sid="716910694198957">
+                    <conditions>
+                        <condition id="0" name="On click" sid="907720972484258" type="Mouse">
+                            <param id="0" name="Mouse button">0</param>
+                            <param id="1" name="Click type">0</param>
+                        </condition>
+                        <condition id="1" name="Is overlapping another object" sid="860792428884863" type="Player">
+                            <param id="0" name="Object">LeftPort</param>
+                        </condition>
+                        <condition id="-14" name="Compare variable" sid="259430618645507" type="System">
+                            <param id="0" name="Variable">ActiveLeft</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Call function" sid="138633865573264" type="Function">
+                            <param id="0" name="Name">&quot;log&quot;</param>
+                            <param id="1" name="Parameter {n}"></param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="776643989133672">
+                    <conditions>
+                        <condition id="0" name="On click" sid="608161056608566" type="Mouse">
+                            <param id="0" name="Mouse button">0</param>
+                            <param id="1" name="Click type">0</param>
+                        </condition>
+                        <condition id="1" name="Is overlapping another object" sid="761172884924525" type="Player">
+                            <param id="0" name="Object">RightPort</param>
+                        </condition>
+                        <condition id="-14" name="Compare variable" sid="170495247282761" type="System">
+                            <param id="0" name="Variable">ActiveRight</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Call function" sid="379493109269763" type="Function">
+                            <param id="0" name="Name">&quot;log&quot;</param>
+                            <param id="1" name="Parameter {n}"></param>
+                        </action>
+                    </actions>
                 </event-block>
                 <event-group description="" sid="587863862594431" title="Spawn">
                     <sub-events>
@@ -496,6 +576,127 @@
                         <event-group description="" sid="590683957136470" title="SpawnRight" />
                     </sub-events>
                 </event-group>
+            </sub-events>
+        </event-group>
+        <event-group description="" sid="110744282094773" title="Log">
+            <sub-events>
+                <event-block sid="852685605030119">
+                    <conditions>
+                        <condition id="-6" name="Every X seconds" sid="912341226277770" type="System">
+                            <param id="0" name="Interval (seconds)">0.1</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="1" name="Set size" sid="643957085349025" type="ArrayMouse">
+                            <param id="0" name="Width">3</param>
+                            <param id="1" name="Height">1+MouseMove</param>
+                            <param id="2" name="Depth">1</param>
+                        </action>
+                        <action id="4" name="Set at XYZ" sid="241918372689861" type="ArrayMouse">
+                            <param id="0" name="X">0</param>
+                            <param id="1" name="Y">MouseMove</param>
+                            <param id="2" name="Z">0</param>
+                            <param id="3" name="Value">Timer</param>
+                        </action>
+                        <action id="4" name="Set at XYZ" sid="171913767062975" type="ArrayMouse">
+                            <param id="0" name="X">1</param>
+                            <param id="1" name="Y">MouseMove</param>
+                            <param id="2" name="Z">0</param>
+                            <param id="3" name="Value">MouseX</param>
+                        </action>
+                        <action id="4" name="Set at XYZ" sid="863307819649596" type="ArrayMouse">
+                            <param id="0" name="X">2</param>
+                            <param id="1" name="Y">MouseMove</param>
+                            <param id="2" name="Z">0</param>
+                            <param id="3" name="Value">MouseY</param>
+                        </action>
+                        <action id="-10" name="Add to" sid="187625657590642" type="System">
+                            <param id="0" name="Variable">MouseMove</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="514040364677643">
+                    <conditions>
+                        <condition id="0" name="On function" sid="588556549670026" type="Function">
+                            <param id="0" name="Name">&quot;log&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="1" name="Set size" sid="842363159180962" type="ArrayData">
+                            <param id="0" name="Width">8</param>
+                            <param id="1" name="Height">1+CurrentTrial</param>
+                            <param id="2" name="Depth">1</param>
+                        </action>
+                        <action id="4" name="Set at XYZ" sid="201953614222957" type="ArrayData">
+                            <param id="0" name="X">0</param>
+                            <param id="1" name="Y">CurrentTrial</param>
+                            <param id="2" name="Z">0</param>
+                            <param id="3" name="Value">Timer</param>
+                        </action>
+                        <action id="4" name="Set at XYZ" sid="344720477733607" type="ArrayData">
+                            <param id="0" name="X">1</param>
+                            <param id="1" name="Y">CurrentTrial</param>
+                            <param id="2" name="Z">0</param>
+                            <param id="3" name="Value">RandomF</param>
+                        </action>
+                        <action id="4" name="Set at XYZ" sid="123039347539525" type="ArrayData">
+                            <param id="0" name="X">2</param>
+                            <param id="1" name="Y">CurrentTrial</param>
+                            <param id="2" name="Z">0</param>
+                            <param id="3" name="Value">RandomR</param>
+                        </action>
+                        <action id="4" name="Set at XYZ" sid="223035250858491" type="ArrayData">
+                            <param id="0" name="X">3</param>
+                            <param id="1" name="Y">CurrentTrial</param>
+                            <param id="2" name="Z">0</param>
+                            <param id="3" name="Value">ActiveLeft</param>
+                        </action>
+                        <action id="4" name="Set at XYZ" sid="903192960466119" type="ArrayData">
+                            <param id="0" name="X">4</param>
+                            <param id="1" name="Y">CurrentTrial</param>
+                            <param id="2" name="Z">0</param>
+                            <param id="3" name="Value">ActiveRight</param>
+                        </action>
+                        <action id="4" name="Set at XYZ" sid="464192378292755" type="ArrayData">
+                            <param id="0" name="X">5</param>
+                            <param id="1" name="Y">CurrentTrial</param>
+                            <param id="2" name="Z">0</param>
+                            <param id="3" name="Value">RewardedTrial</param>
+                        </action>
+                        <action id="4" name="Set at XYZ" sid="864364458596032" type="ArrayData">
+                            <param id="0" name="X">6</param>
+                            <param id="1" name="Y">CurrentTrial</param>
+                            <param id="2" name="Z">0</param>
+                            <param id="3" name="Value">Score</param>
+                        </action>
+                        <action id="4" name="Set at XYZ" sid="848883563596544" type="ArrayData">
+                            <param id="0" name="X">7</param>
+                            <param id="1" name="Y">CurrentTrial</param>
+                            <param id="2" name="Z">0</param>
+                            <param id="3" name="Value">PlayerLocation</param>
+                        </action>
+                        <action id="-10" name="Add to" sid="509873045616446" type="System">
+                            <param id="0" name="Variable">CurrentTrial</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="759507332180946">
+                    <conditions>
+                        <condition id="0" name="On key pressed" sid="521342019662912" type="Keyboard">
+                            <param id="0" name="Key">69 (E)</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="12" name="Download" sid="607072747961332" type="ArrayData">
+                            <param id="0" name="Filename">&quot;data.json&quot;</param>
+                        </action>
+                        <action id="12" name="Download" sid="628462652137847" type="ArrayMouse">
+                            <param id="0" name="Filename">&quot;mouse.json&quot;</param>
+                        </action>
+                    </actions>
+                </event-block>
             </sub-events>
         </event-group>
     </events>

@@ -5,9 +5,12 @@
     <events>
         <variable constant="0" name="ActiveLeft" sid="391297064606083" static="0" type="number">0</variable>
         <variable constant="0" name="ActiveRight" sid="599579506805669" static="0" type="number">0</variable>
+        <variable constant="0" name="CurrentTrial" sid="967567770451176" static="0" type="number">0</variable>
         <variable constant="0" name="Input" sid="962947546287654" static="0" type="number">0</variable>
+        <variable constant="0" name="MouseMove" sid="395511294220124" static="0" type="number">0</variable>
         <variable constant="0" name="MouseX" sid="683304503554293" static="0" type="number">0</variable>
         <variable constant="0" name="MouseY" sid="970473297609113" static="0" type="number">0</variable>
+        <variable constant="0" name="PlayerLocation" sid="515374917925318" static="0" type="number">0</variable>
         <variable constant="0" name="playerX" sid="753277793937877" static="0" type="number">0</variable>
         <variable constant="0" name="playerY" sid="857870396007858" static="0" type="number">0</variable>
         <variable constant="0" name="ProbabilityFlip" sid="266461466369677" static="0" type="number">0</variable>

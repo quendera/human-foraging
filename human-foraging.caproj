@@ -10,7 +10,9 @@
     <unique-id>2m2oqhlgof90t</unique-id>
     <saved-with-version>23900</saved-with-version>
     <used-plugins>
+        <plugin author="Scirra" id="Arr" version="1">Array</plugin>
         <plugin author="Scirra" id="Function" version="1">Function</plugin>
+        <plugin author="Scirra" id="Keyboard" version="1">Keyboard</plugin>
         <plugin author="Scirra" id="Mouse" version="1">Mouse</plugin>
         <plugin author="Scirra" id="Sprite" version="1">Sprite</plugin>
         <plugin author="Scirra" id="Touch" version="1">Touch</plugin>
@@ -135,6 +137,15 @@
         <object-type name="SliderFlipProbability" sid="776758560994276">
             <plugin id="sliderbar" />
         </object-type>
+        <object-type global="1" name="ArrayData" sid="555695960259065">
+            <plugin id="Arr" />
+        </object-type>
+        <object-type name="Keyboard" sid="597248965642728">
+            <plugin id="Keyboard" />
+        </object-type>
+        <object-type global="1" name="ArrayMouse" sid="389773416208228">
+            <plugin id="Arr" />
+        </object-type>
     </object-folder>
     <families />
     <layout-folder>
@@ -154,6 +165,7 @@
         </global-instance>
         <global-instance type="Mouse" uid="2" />
         <global-instance type="Function" uid="5" />
+        <global-instance type="Keyboard" uid="11" />
     </global-instances>
     <sounds-folder />
     <music-folder />
