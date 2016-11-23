@@ -2,13 +2,13 @@
 <c2project>
     <name>human-foraging</name>
     <description></description>
-    <version>1.1</version>
+    <version>1.2</version>
     <author></author>
     <author-email></author-email>
     <author-website>http://</author-website>
     <app-id>com.mycompany.myapp</app-id>
     <unique-id>2m2oqhlgof90t</unique-id>
-    <saved-with-version>23900</saved-with-version>
+    <saved-with-version>24000</saved-with-version>
     <used-plugins>
         <plugin author="Scirra" id="Arr" version="1">Array</plugin>
         <plugin author="Scirra" id="Function" version="1">Function</plugin>
@@ -143,7 +143,7 @@
         <object-type name="Keyboard" sid="597248965642728">
             <plugin id="Keyboard" />
         </object-type>
-        <object-type global="1" name="ArrayMouse" sid="389773416208228">
+        <object-type global="1" name="ArrayMovement" sid="389773416208228">
             <plugin id="Arr" />
         </object-type>
     </object-folder>

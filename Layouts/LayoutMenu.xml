@@ -180,7 +180,7 @@
         </layer>
     </layers>
     <nonworld-instances>
-        <instance type="ArrayMouse" uid="15">
+        <instance type="ArrayMovement" uid="15">
             <properties>
                 <width>10</width>
                 <height>1</height>
