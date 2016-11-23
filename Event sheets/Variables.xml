@@ -7,9 +7,7 @@
         <variable constant="0" name="ActiveRight" sid="599579506805669" static="0" type="number">0</variable>
         <variable constant="0" name="CurrentTrial" sid="967567770451176" static="0" type="number">0</variable>
         <variable constant="0" name="Input" sid="962947546287654" static="0" type="number">0</variable>
-        <variable constant="0" name="TouchMove" sid="395511294220124" static="0" type="number">0</variable>
-        <variable constant="0" name="touchX" sid="683304503554293" static="0" type="number">0</variable>
-        <variable constant="0" name="touchY" sid="970473297609113" static="0" type="number">0</variable>
+        <variable constant="0" name="PlayerAngle" sid="280905789528192" static="0" type="number">0</variable>
         <variable constant="0" name="PlayerLocation" sid="515374917925318" static="0" type="number">0</variable>
         <variable constant="0" name="playerX" sid="753277793937877" static="0" type="number">0</variable>
         <variable constant="0" name="playerY" sid="857870396007858" static="0" type="number">0</variable>
@@ -18,10 +16,14 @@
         <variable constant="0" name="RandomF" sid="551120366874016" static="0" type="number">0</variable>
         <variable constant="0" name="RandomR" sid="107192454304983" static="0" type="number">0</variable>
         <variable constant="0" name="RewardedTrial" sid="211249720768764" static="0" type="number">0</variable>
+        <variable constant="0" name="Rope" sid="808680809217621" static="0" type="number">0</variable>
         <variable constant="0" name="RNGmax" sid="937908592544550" static="0" type="number">0</variable>
         <variable constant="0" name="RNGmin" sid="658489382287334" static="0" type="number">0</variable>
         <variable constant="0" name="Score" sid="101918661873503" static="0" type="number">0</variable>
         <variable constant="0" name="Timer" sid="485632215821448" static="0" type="number">0</variable>
+        <variable constant="0" name="TouchMove" sid="395511294220124" static="0" type="number">0</variable>
+        <variable constant="0" name="touchX" sid="683304503554293" static="0" type="number">0</variable>
+        <variable constant="0" name="touchY" sid="970473297609113" static="0" type="number">0</variable>
         <variable constant="0" name="TravelSpeed" sid="850085497675331" static="0" type="number">0</variable>
     </events>
 </c2eventsheet>

@@ -2,7 +2,7 @@
 <c2project>
     <name>human-foraging</name>
     <description></description>
-    <version>1.2</version>
+    <version>1.3</version>
     <author></author>
     <author-email></author-email>
     <author-website>http://</author-website>
@@ -15,11 +15,13 @@
         <plugin author="Scirra" id="Keyboard" version="1">Keyboard</plugin>
         <plugin author="Scirra" id="Mouse" version="1">Mouse</plugin>
         <plugin author="Scirra" id="Sprite" version="1">Sprite</plugin>
+        <plugin author="Scirra" id="TiledBg" version="1">Tiled Background</plugin>
         <plugin author="Scirra" id="Touch" version="1">Touch</plugin>
         <plugin author="Scirra" id="sliderbar" version="1">Slider bar</plugin>
     </used-plugins>
     <used-behaviors>
         <behavior author="Scirra" id="EightDir" version="1">8 Direction</behavior>
+        <behavior author="Scirra" id="Pin" version="1">Pin</behavior>
         <behavior author="Scirra" id="bound" version="1">Bound to layout</behavior>
     </used-behaviors>
     <used-effects />
@@ -48,7 +50,7 @@
         <prop name="Use high-DPI display">Yes</prop>
     </configuration-settings>
     <object-folder>
-        <object-folder name="Sprites">
+        <object-folder name="Core Sprites">
             <object-type name="Player" sid="223372691214160">
                 <plugin id="Sprite" />
                 <behaviors>
@@ -65,87 +67,160 @@
                     </animation>
                 </animation-folder>
             </object-type>
+            <object-type name="LeftPort" sid="182035696694140">
+                <plugin id="Sprite" />
+                <animation-folder>
+                    <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="221596378412248" speed="5">
+                        <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                    </animation>
+                </animation-folder>
+            </object-type>
+            <object-type name="RightPort" sid="548578594163083">
+                <plugin id="Sprite" />
+                <animation-folder>
+                    <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="395909674176034" speed="5">
+                        <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                    </animation>
+                </animation-folder>
+            </object-type>
+            <object-type name="Rail" sid="627252861131160">
+                <plugin id="Sprite" />
+                <animation-folder>
+                    <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="836851100833872" speed="5">
+                        <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                    </animation>
+                </animation-folder>
+            </object-type>
+            <object-type name="LeftTarget" sid="543264564898702">
+                <plugin id="Sprite" />
+                <animation-folder>
+                    <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="312444892602950" speed="5">
+                        <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                    </animation>
+                </animation-folder>
+            </object-type>
+            <object-type name="RightTarget" sid="699006614681469">
+                <plugin id="Sprite" />
+                <animation-folder>
+                    <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="901876411627659" speed="5">
+                        <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                    </animation>
+                </animation-folder>
+            </object-type>
+            <object-type name="Rope" sid="588809365350468">
+                <plugin id="Sprite" />
+                <animation-folder>
+                    <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="286380705347797" speed="5">
+                        <frame duration="1" hotspotX="0" hotspotY="0.5">
+                            <image-point name="Left" x="0" y="0.5" />
+                            <image-point name="Right" x="-0.624" y="0.196" />
+                        </frame>
+                    </animation>
+                </animation-folder>
+            </object-type>
         </object-folder>
-        <object-type name="Touch" sid="735509686152796">
-            <plugin id="Touch" />
-        </object-type>
-        <object-type name="LeftTarget" sid="543264564898702">
-            <plugin id="Sprite" />
-            <animation-folder>
-                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="312444892602950" speed="5">
-                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
-                </animation>
-            </animation-folder>
-        </object-type>
-        <object-type name="Mouse" sid="494229612125817">
-            <plugin id="Mouse" />
-        </object-type>
-        <object-type name="TouchButton" sid="857516206646671">
-            <plugin id="Sprite" />
-            <animation-folder>
-                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="459796835908478" speed="5">
-                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
-                </animation>
-            </animation-folder>
-        </object-type>
-        <object-type name="MouseButton" sid="969071386019183">
-            <plugin id="Sprite" />
-            <animation-folder>
-                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="137645514357110" speed="5">
-                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
-                </animation>
-            </animation-folder>
-        </object-type>
-        <object-type name="LeftPort" sid="182035696694140">
-            <plugin id="Sprite" />
-            <animation-folder>
-                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="221596378412248" speed="5">
-                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
-                </animation>
-            </animation-folder>
-        </object-type>
-        <object-type name="RightPort" sid="548578594163083">
-            <plugin id="Sprite" />
-            <animation-folder>
-                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="395909674176034" speed="5">
-                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
-                </animation>
-            </animation-folder>
-        </object-type>
-        <object-type name="RightTarget" sid="699006614681469">
-            <plugin id="Sprite" />
-            <animation-folder>
-                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="901876411627659" speed="5">
-                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
-                </animation>
-            </animation-folder>
-        </object-type>
-        <object-type name="Function" sid="431206834764706">
-            <plugin id="Function" />
-        </object-type>
-        <object-type name="Sprite" sid="627252861131160">
-            <plugin id="Sprite" />
-            <animation-folder>
-                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="836851100833872" speed="5">
-                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
-                </animation>
-            </animation-folder>
-        </object-type>
-        <object-type name="SliderRewardProbability" sid="230780787595437">
-            <plugin id="sliderbar" />
-        </object-type>
-        <object-type name="SliderFlipProbability" sid="776758560994276">
-            <plugin id="sliderbar" />
-        </object-type>
-        <object-type global="1" name="ArrayData" sid="555695960259065">
-            <plugin id="Arr" />
-        </object-type>
-        <object-type name="Keyboard" sid="597248965642728">
-            <plugin id="Keyboard" />
-        </object-type>
-        <object-type global="1" name="ArrayMovement" sid="389773416208228">
-            <plugin id="Arr" />
-        </object-type>
+        <object-folder name="System">
+            <object-type global="1" name="ArrayData" sid="555695960259065">
+                <plugin id="Arr" />
+            </object-type>
+            <object-type global="1" name="ArrayMovement" sid="389773416208228">
+                <plugin id="Arr" />
+            </object-type>
+            <object-type name="Keyboard" sid="597248965642728">
+                <plugin id="Keyboard" />
+            </object-type>
+            <object-type name="Function" sid="431206834764706">
+                <plugin id="Function" />
+            </object-type>
+            <object-type name="Mouse" sid="494229612125817">
+                <plugin id="Mouse" />
+            </object-type>
+            <object-type name="Touch" sid="735509686152796">
+                <plugin id="Touch" />
+            </object-type>
+        </object-folder>
+        <object-folder name="Menu">
+            <object-type name="MouseButton" sid="969071386019183">
+                <plugin id="Sprite" />
+                <animation-folder>
+                    <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="137645514357110" speed="5">
+                        <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                    </animation>
+                </animation-folder>
+            </object-type>
+            <object-type name="TouchButton" sid="857516206646671">
+                <plugin id="Sprite" />
+                <animation-folder>
+                    <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="459796835908478" speed="5">
+                        <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                    </animation>
+                </animation-folder>
+            </object-type>
+            <object-type name="SliderRewardProbability" sid="230780787595437">
+                <plugin id="sliderbar" />
+            </object-type>
+            <object-type name="SliderFlipProbability" sid="776758560994276">
+                <plugin id="sliderbar" />
+            </object-type>
+        </object-folder>
+        <object-folder name="Cosmetics">
+            <object-folder name="Desert">
+                <object-type name="SpriteDesert1" sid="895912937333660">
+                    <plugin id="Sprite" />
+                    <animation-folder>
+                        <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="168189248723668" speed="5">
+                            <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Tiago\Google Drive\HUMAN_FORAGING\Task\Assets\3 Backgrounds - FREE\Backgrounds - FREE\Background 01\PARALLAX\layer_05_1920 x 1080.png">
+                                <collision-poly>
+                                    <point x="0.473958" y="0.842593" />
+                                    <point x="0.526042" y="0.842593" />
+                                    <point x="1" y="1" />
+                                    <point x="0" y="1" />
+                                </collision-poly>
+                            </frame>
+                        </animation>
+                    </animation-folder>
+                </object-type>
+                <object-type name="SpriteRails" sid="232044756731248">
+                    <plugin id="TiledBg" />
+                    <texture original-source="C:\Users\Tiago\Desktop\track_05.png" />
+                </object-type>
+                <object-type name="SpriteTrain" sid="130251408938595">
+                    <plugin id="Sprite" />
+                    <behaviors>
+                        <behavior-type name="Pin" sid="455008362112015">
+                            <behavior id="Pin" />
+                        </behavior-type>
+                    </behaviors>
+                    <animation-folder>
+                        <animation framecount="1" loop="0" name="Right" pingpong="0" repeatcount="1" repeatto="0" sid="187911634195927" speed="5">
+                            <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Tiago\Google Drive\HUMAN_FORAGING\Task\Assets\catapult\4.png">
+                                <collision-poly>
+                                    <point x="0" y="0.384615" />
+                                    <point x="0.785714" y="0.192308" />
+                                    <point x="0.97619" y="0.461538" />
+                                    <point x="0.940476" y="0.897436" />
+                                    <point x="0" y="0.871795" />
+                                    <point x="0" y="0.461538" />
+                                </collision-poly>
+                            </frame>
+                        </animation>
+                        <animation framecount="1" loop="0" name="Left" pingpong="0" repeatcount="1" repeatto="0" sid="451176502235865" speed="5">
+                            <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                        </animation>
+                        <animation framecount="1" loop="0" name="Front" pingpong="0" repeatcount="1" repeatto="0" sid="521563853585170" speed="5">
+                            <frame duration="1" hotspotX="0.508197" hotspotY="0.506849" original-source="C:\Users\Tiago\Google Drive\HUMAN_FORAGING\Task\Assets\catapult\6.png">
+                                <collision-poly>
+                                    <point x="0" y="0.232877" />
+                                    <point x="0.803279" y="0.219178" />
+                                    <point x="0.95082" y="0.863014" />
+                                    <point x="0" y="0.863014" />
+                                </collision-poly>
+                            </frame>
+                        </animation>
+                    </animation-folder>
+                </object-type>
+            </object-folder>
+        </object-folder>
     </object-folder>
     <families />
     <layout-folder>

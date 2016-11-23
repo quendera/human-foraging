@@ -17,9 +17,9 @@
                     <param id="0" name="Variable">CurrentTrial</param>
                     <param id="1" name="Value">0</param>
                 </action>
-                <action id="-9" name="Set value" sid="498461307419375" type="System">
-                    <param id="0" name="Variable">TouchMove</param>
-                    <param id="1" name="Value">0</param>
+                <action id="-9" name="Set value" sid="447585503871710" type="System">
+                    <param id="0" name="Variable">Rope</param>
+                    <param id="1" name="Value">150</param>
                 </action>
                 <action id="-9" name="Set value" sid="752290700757196" type="System">
                     <param id="0" name="Variable">RNGmax</param>
@@ -37,16 +37,43 @@
                     <param id="0" name="Variable">Timer</param>
                     <param id="1" name="Value">0</param>
                 </action>
+                <action id="-9" name="Set value" sid="498461307419375" type="System">
+                    <param id="0" name="Variable">TouchMove</param>
+                    <param id="1" name="Value">0</param>
+                </action>
                 <action id="-9" name="Set value" sid="656551723547670" type="System">
                     <param id="0" name="Variable">TravelSpeed</param>
-                    <param id="1" name="Value">1000</param>
+                    <param id="1" name="Value">250</param>
                 </action>
                 <action id="-9" name="Destroy" sid="834045179538005" type="Player" />
                 <action id="-3" name="Create object" sid="326390971943444" type="System">
                     <param id="0" name="Object to create">Player</param>
                     <param id="1" name="Layer">2</param>
-                    <param id="2" name="X">Sprite.X</param>
-                    <param id="3" name="Y">Sprite.Y</param>
+                    <param id="2" name="X">Rail.X</param>
+                    <param id="3" name="Y">Rail.Y</param>
+                </action>
+                <action id="-15" name="Set visible" sid="711136036511835" type="Player">
+                    <param id="0" name="Visibility">0</param>
+                </action>
+                <action behavior="8Direction" id="4" name="Set max speed" sid="197810663089228" type="Player">
+                    <param id="0" name="Max Speed">TravelSpeed</param>
+                </action>
+                <action id="-9" name="Destroy" sid="568262130310915" type="Rope" />
+                <action id="-3" name="Create object" sid="633203974008262" type="System">
+                    <param id="0" name="Object to create">Rope</param>
+                    <param id="1" name="Layer">2</param>
+                    <param id="2" name="X">Player.X</param>
+                    <param id="3" name="Y">Player.Y</param>
+                </action>
+                <action id="-7" name="Set size" sid="220669128469543" type="Rope">
+                    <param id="0" name="Width">Rope</param>
+                    <param id="1" name="Height">5</param>
+                </action>
+                <action id="-3" name="Create object" sid="749950446376383" type="System">
+                    <param id="0" name="Object to create">SpriteTrain</param>
+                    <param id="1" name="Layer">3</param>
+                    <param id="2" name="X">Player.X</param>
+                    <param id="3" name="Y">Player.Y-25</param>
                 </action>
                 <action id="0" name="Set cursor style" sid="658934196702544" type="Mouse">
                     <param id="0" name="Cursor style">3</param>
@@ -96,10 +123,15 @@
                 <event-block sid="830758693411554">
                     <conditions>
                         <condition id="1" name="Is overlapping another object" sid="573168574243887" type="Player">
-                            <param id="0" name="Object">Sprite</param>
+                            <param id="0" name="Object">Rail</param>
                         </condition>
                     </conditions>
-                    <actions />
+                    <actions>
+                        <action id="-3" name="Set position" sid="975732997955275" type="SpriteTrain">
+                            <param id="0" name="X">playerX</param>
+                            <param id="1" name="Y">Rail.Y-25</param>
+                        </action>
+                    </actions>
                     <sub-events>
                         <event-block sid="363694281614901">
                             <conditions>
@@ -111,12 +143,20 @@
                                 <condition id="-14" name="Compare variable" sid="113544188604555" type="System">
                                     <param id="0" name="Variable">touchX</param>
                                     <param id="1" name="Comparison">4</param>
-                                    <param id="2" name="Value">playerX-100</param>
+                                    <param id="2" name="Value">playerX-Rope</param>
                                 </condition>
                             </conditions>
                             <actions>
                                 <action behavior="8Direction" id="7" name="Simulate control" sid="671078706228005" type="Player">
                                     <param id="0" name="Control">0</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="547526151475542" type="System">
+                                    <param id="0" name="Variable">PlayerAngle</param>
+                                    <param id="1" name="Value">Player.8Direction.VectorX</param>
+                                </action>
+                                <action id="4" name="Set animation" sid="592565362386934" type="SpriteTrain">
+                                    <param id="0" name="Animation">&quot;Left&quot;</param>
+                                    <param id="1" name="From">1</param>
                                 </action>
                             </actions>
                         </event-block>
@@ -130,12 +170,20 @@
                                 <condition id="-14" name="Compare variable" sid="738985544459065" type="System">
                                     <param id="0" name="Variable">touchX</param>
                                     <param id="1" name="Comparison">2</param>
-                                    <param id="2" name="Value">playerX-100</param>
+                                    <param id="2" name="Value">playerX+Rope</param>
                                 </condition>
                             </conditions>
                             <actions>
                                 <action behavior="8Direction" id="7" name="Simulate control" sid="451708623484351" type="Player">
                                     <param id="0" name="Control">1</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="968060363197164" type="System">
+                                    <param id="0" name="Variable">PlayerAngle</param>
+                                    <param id="1" name="Value">Player.8Direction.VectorX</param>
+                                </action>
+                                <action id="4" name="Set animation" sid="335670004497102" type="SpriteTrain">
+                                    <param id="0" name="Animation">&quot;Right&quot;</param>
+                                    <param id="1" name="From">1</param>
                                 </action>
                             </actions>
                         </event-block>
@@ -160,25 +208,19 @@
                             <param id="0" name="Variable">PlayerLocation</param>
                             <param id="1" name="Value">0</param>
                         </action>
+                        <action id="4" name="Set animation" sid="434989723118272" type="SpriteTrain">
+                            <param id="0" name="Animation">&quot;Front&quot;</param>
+                            <param id="1" name="From">1</param>
+                        </action>
                     </actions>
                     <sub-events>
-                        <event-block sid="109430244916734">
+                        <event-block sid="193939000632556">
                             <conditions>
-                                <condition id="-14" name="Compare variable" sid="337563395952990" type="System">
+                                <condition id="-14" name="Compare variable" sid="919695366166489" type="System">
                                     <param id="0" name="Variable">touchX</param>
-                                    <param id="1" name="Comparison">5</param>
-                                    <param id="2" name="Value">playerX+150</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">0</param>
                                 </condition>
-                            </conditions>
-                            <actions>
-                                <action behavior="8Direction" id="7" name="Simulate control" sid="551099181111998" type="Player">
-                                    <param id="0" name="Control">1</param>
-                                </action>
-                            </actions>
-                        </event-block>
-                        <event-block sid="558472599804461">
-                            <conditions>
-                                <condition id="-22" name="Else" sid="537027552780071" type="System" />
                             </conditions>
                             <actions>
                                 <action id="-4" name="Set position to another object" sid="890646306551629" type="Player">
@@ -186,6 +228,36 @@
                                     <param id="1" name="Image point (optional)">0</param>
                                 </action>
                             </actions>
+                        </event-block>
+                        <event-block sid="457592087143097">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="776421555574622" type="System">
+                                    <param id="0" name="Variable">touchX</param>
+                                    <param id="1" name="Comparison">1</param>
+                                    <param id="2" name="Value">0</param>
+                                </condition>
+                            </conditions>
+                            <actions />
+                            <sub-events>
+                                <event-block sid="498984349412660">
+                                    <conditions>
+                                        <condition id="-14" name="Compare variable" sid="337563395952990" type="System">
+                                            <param id="0" name="Variable">touchX</param>
+                                            <param id="1" name="Comparison">5</param>
+                                            <param id="2" name="Value">LeftPort.X+(Rope-50)</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action behavior="8Direction" id="7" name="Simulate control" sid="551099181111998" type="Player">
+                                            <param id="0" name="Control">1</param>
+                                        </action>
+                                        <action id="-9" name="Set value" sid="743519908834930" type="System">
+                                            <param id="0" name="Variable">PlayerLocation</param>
+                                            <param id="1" name="Value">2</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
                         </event-block>
                     </sub-events>
                 </event-block>
@@ -204,25 +276,19 @@
                             <param id="0" name="Variable">PlayerLocation</param>
                             <param id="1" name="Value">1</param>
                         </action>
+                        <action id="4" name="Set animation" sid="310056263893133" type="SpriteTrain">
+                            <param id="0" name="Animation">&quot;Front&quot;</param>
+                            <param id="1" name="From">1</param>
+                        </action>
                     </actions>
                     <sub-events>
-                        <event-block sid="724508146258188">
+                        <event-block sid="930134708301585">
                             <conditions>
-                                <condition id="-14" name="Compare variable" sid="185597784565591" type="System">
+                                <condition id="-14" name="Compare variable" sid="875815760272319" type="System">
                                     <param id="0" name="Variable">touchX</param>
-                                    <param id="1" name="Comparison">2</param>
-                                    <param id="2" name="Value">playerX-150</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">0</param>
                                 </condition>
-                            </conditions>
-                            <actions>
-                                <action behavior="8Direction" id="7" name="Simulate control" sid="955139196871019" type="Player">
-                                    <param id="0" name="Control">0</param>
-                                </action>
-                            </actions>
-                        </event-block>
-                        <event-block sid="302190297636978">
-                            <conditions>
-                                <condition id="-22" name="Else" sid="557927619592825" type="System" />
                             </conditions>
                             <actions>
                                 <action id="-4" name="Set position to another object" sid="685589548576351" type="Player">
@@ -231,7 +297,162 @@
                                 </action>
                             </actions>
                         </event-block>
+                        <event-block sid="503398255943317">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="384789337653576" type="System">
+                                    <param id="0" name="Variable">touchX</param>
+                                    <param id="1" name="Comparison">1</param>
+                                    <param id="2" name="Value">0</param>
+                                </condition>
+                            </conditions>
+                            <actions />
+                            <sub-events>
+                                <event-block sid="724508146258188">
+                                    <conditions>
+                                        <condition id="-14" name="Compare variable" sid="185597784565591" type="System">
+                                            <param id="0" name="Variable">touchX</param>
+                                            <param id="1" name="Comparison">2</param>
+                                            <param id="2" name="Value">RightPort.X-(Rope-50)</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action behavior="8Direction" id="7" name="Simulate control" sid="955139196871019" type="Player">
+                                            <param id="0" name="Control">0</param>
+                                        </action>
+                                        <action id="-9" name="Set value" sid="589832821764026" type="System">
+                                            <param id="0" name="Variable">PlayerLocation</param>
+                                            <param id="1" name="Value">2</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
                     </sub-events>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" sid="209266408024032" title="Rope">
+            <sub-events>
+                <event-block sid="231551622880915">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="241743372304710" type="System">
+                            <param id="0" name="Variable">touchX</param>
+                            <param id="1" name="Comparison">4</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-4" name="Set position to another object" sid="935806835033600" type="Rope">
+                            <param id="0" name="Object">Player</param>
+                            <param id="1" name="Image point (optional)">0</param>
+                        </action>
+                    </actions>
+                    <sub-events>
+                        <event-block any="1" sid="618654806536778">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="534101262542171" type="System">
+                                    <param id="0" name="Variable">PlayerLocation</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">0</param>
+                                </condition>
+                                <condition id="-14" name="Compare variable" sid="663631306195436" type="System">
+                                    <param id="0" name="Variable">PlayerLocation</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">1</param>
+                                </condition>
+                            </conditions>
+                            <actions />
+                            <sub-events>
+                                <event-block sid="582478956122739">
+                                    <conditions>
+                                        <condition id="-14" name="Compare variable" sid="666489984616485" type="System">
+                                            <param id="0" name="Variable">touchY</param>
+                                            <param id="1" name="Comparison">2</param>
+                                            <param id="2" name="Value">Rail.Y+50</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-22" name="Set angle toward position" sid="553522159644924" type="Rope">
+                                            <param id="0" name="X">touchX</param>
+                                            <param id="1" name="Y">touchY</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="305782885022403">
+                                    <conditions>
+                                        <condition id="-14" name="Compare variable" sid="451535527684654" type="System">
+                                            <param id="0" name="Variable">touchY</param>
+                                            <param id="1" name="Comparison">5</param>
+                                            <param id="2" name="Value">Rail.Y+50</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-8" name="Set angle" sid="496458402076426" type="Rope">
+                                            <param id="0" name="Angle">90</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                        <event-block sid="951420000133408">
+                            <conditions>
+                                <condition id="-22" name="Else" sid="481520967466613" type="System" />
+                            </conditions>
+                            <actions>
+                                <action id="-22" name="Set angle toward position" sid="133377117202256" type="Rope">
+                                    <param id="0" name="X">touchX</param>
+                                    <param id="1" name="Y">touchY</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block sid="605080145531163">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="646675511031573" type="System">
+                            <param id="0" name="Variable">touchX</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-4" name="Set position to another object" sid="121250136477191" type="Rope">
+                            <param id="0" name="Object">Player</param>
+                            <param id="1" name="Image point (optional)">0</param>
+                        </action>
+                        <action id="-8" name="Set angle" sid="817396921440841" type="Rope">
+                            <param id="0" name="Angle">90</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block any="1" sid="854285971216005">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="623688229290117" type="System">
+                            <param id="0" name="Variable">touchX</param>
+                            <param id="1" name="Comparison">4</param>
+                            <param id="2" name="Value">playerX+Rope</param>
+                        </condition>
+                        <condition id="-14" name="Compare variable" sid="814114258778315" type="System">
+                            <param id="0" name="Variable">touchX</param>
+                            <param id="1" name="Comparison">2</param>
+                            <param id="2" name="Value">playerX-Rope</param>
+                        </condition>
+                        <condition id="-14" name="Compare variable" sid="251738385467076" type="System">
+                            <param id="0" name="Variable">touchY</param>
+                            <param id="1" name="Comparison">4</param>
+                            <param id="2" name="Value">playerY+Rope</param>
+                        </condition>
+                        <condition id="-14" name="Compare variable" sid="767960109307967" type="System">
+                            <param id="0" name="Variable">touchY</param>
+                            <param id="1" name="Comparison">2</param>
+                            <param id="2" name="Value">playerY-Rope</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-8" name="Set angle" sid="258681626556436" type="Rope">
+                            <param id="0" name="Angle">90</param>
+                        </action>
+                    </actions>
                 </event-block>
             </sub-events>
         </event-group>
@@ -246,6 +467,14 @@
                         </condition>
                         <condition id="17" name="On tap object" sid="538654535635794" type="Touch">
                             <param id="0" name="Object">LeftTarget</param>
+                        </condition>
+                        <condition id="6" name="On object clicked" sid="268266283593678" type="Mouse">
+                            <param id="0" name="Mouse button">0</param>
+                            <param id="1" name="Click type">0</param>
+                            <param id="2" name="Object clicked">RightTarget</param>
+                        </condition>
+                        <condition id="17" name="On tap object" sid="452140748953616" type="Touch">
+                            <param id="0" name="Object">RightTarget</param>
                         </condition>
                     </conditions>
                     <actions />

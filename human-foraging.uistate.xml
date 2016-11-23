@@ -25,7 +25,11 @@ you probably do not want to add any .uistate.xml files to the repository.-->
     <families-expanded root="1" />
     <folders-expanded>
         <folder expanded="1" path="object-folder/" />
-        <folder expanded="1" path="object-folder/Sprites/" />
+        <folder expanded="1" path="object-folder/Core Sprites/" />
+        <folder expanded="1" path="object-folder/System/" />
+        <folder expanded="1" path="object-folder/Menu/" />
+        <folder expanded="1" path="object-folder/Cosmetics/" />
+        <folder expanded="1" path="object-folder/Cosmetics/Desert/" />
         <folder expanded="1" path="layout-folder/" />
         <folder expanded="1" path="event-folder/" />
         <folder expanded="1" path="file-folder/" />
@@ -33,12 +37,15 @@ you probably do not want to add any .uistate.xml files to the repository.-->
         <folder expanded="1" path="music-folder/" />
         <folder expanded="0" path="file-folder/Icons/" />
         <folder expanded="1" path="animation-folder/Player/" />
-        <folder expanded="1" path="animation-folder/LeftTarget/" />
-        <folder expanded="1" path="animation-folder/TouchButton/" />
-        <folder expanded="1" path="animation-folder/MouseButton/" />
         <folder expanded="1" path="animation-folder/LeftPort/" />
         <folder expanded="1" path="animation-folder/RightPort/" />
+        <folder expanded="1" path="animation-folder/Rail/" />
+        <folder expanded="1" path="animation-folder/LeftTarget/" />
         <folder expanded="1" path="animation-folder/RightTarget/" />
-        <folder expanded="1" path="animation-folder/Sprite/" />
+        <folder expanded="1" path="animation-folder/Rope/" />
+        <folder expanded="1" path="animation-folder/MouseButton/" />
+        <folder expanded="1" path="animation-folder/TouchButton/" />
+        <folder expanded="1" path="animation-folder/SpriteDesert1/" />
+        <folder expanded="1" path="animation-folder/SpriteTrain/" />
     </folders-expanded>
 </c2uistate>
