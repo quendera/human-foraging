@@ -43,9 +43,17 @@ you probably do not want to add any .uistate.xml files to the repository.-->
         <folder expanded="1" path="animation-folder/LeftTarget/" />
         <folder expanded="1" path="animation-folder/RightTarget/" />
         <folder expanded="1" path="animation-folder/Rope/" />
+        <folder expanded="1" path="animation-folder/SpriteWall/" />
         <folder expanded="1" path="animation-folder/MouseButton/" />
         <folder expanded="1" path="animation-folder/TouchButton/" />
         <folder expanded="1" path="animation-folder/SpriteDesert1/" />
         <folder expanded="1" path="animation-folder/SpriteTrain/" />
+        <folder expanded="1" path="animation-folder/SpriteTarget/" />
+        <folder expanded="1" path="animation-folder/DesertBG6/" />
+        <folder expanded="1" path="animation-folder/DesertBG2/" />
+        <folder expanded="1" path="animation-folder/DesertBG5/" />
+        <folder expanded="1" path="animation-folder/DesertBG3/" />
+        <folder expanded="1" path="animation-folder/DesertBG1/" />
+        <folder expanded="1" path="animation-folder/DesertBG4/" />
     </folders-expanded>
 </c2uistate>

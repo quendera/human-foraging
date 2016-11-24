@@ -5,6 +5,7 @@
     <events>
         <variable constant="0" name="ActiveLeft" sid="391297064606083" static="0" type="number">0</variable>
         <variable constant="0" name="ActiveRight" sid="599579506805669" static="0" type="number">0</variable>
+        <variable constant="0" name="ArraySweep" sid="103653994625074" static="0" type="number">0</variable>
         <variable constant="0" name="CurrentTrial" sid="967567770451176" static="0" type="number">0</variable>
         <variable constant="0" name="Input" sid="962947546287654" static="0" type="number">0</variable>
         <variable constant="0" name="PlayerAngle" sid="280905789528192" static="0" type="number">0</variable>
