@@ -3,11 +3,14 @@
     <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
     <name>Variables</name>
     <events>
-        <variable constant="0" name="ActiveLeft" sid="391297064606083" static="0" type="number">0</variable>
+        <variable constant="0" name="StartingSide" sid="110127185991234" static="0" type="number">0</variable>
+        <variable constant="0" name="ActiveSide" sid="391297064606083" static="0" type="number">0</variable>
         <variable constant="0" name="ActiveRight" sid="599579506805669" static="0" type="number">0</variable>
+        <variable constant="0" name="AnimationNr" sid="947529153342853" static="0" type="number">0</variable>
         <variable constant="0" name="ArraySweep" sid="103653994625074" static="0" type="number">0</variable>
         <variable constant="0" name="CurrentTrial" sid="967567770451176" static="0" type="number">0</variable>
         <variable constant="0" name="Input" sid="962947546287654" static="0" type="number">0</variable>
+        <variable constant="0" name="Iti" sid="826756764669071" static="0" type="number">0</variable>
         <variable constant="0" name="PlayerAngle" sid="280905789528192" static="0" type="number">0</variable>
         <variable constant="0" name="PlayerLocation" sid="515374917925318" static="0" type="number">0</variable>
         <variable constant="0" name="playerX" sid="753277793937877" static="0" type="number">0</variable>

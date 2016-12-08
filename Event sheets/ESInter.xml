@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>ESInter</name>
+    <events>
+        <event-block sid="521020887079989">
+            <conditions>
+                <condition id="-2" name="On start of layout" sid="475041456350914" type="System" />
+            </conditions>
+            <actions>
+                <action id="-3" name="Set position" sid="511510645061525" type="Sprite">
+                    <param id="0" name="X">0</param>
+                    <param id="1" name="Y">0</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="128298501364484">
+            <conditions>
+                <condition id="-6" name="Every X seconds" sid="368366621434166" type="System">
+                    <param id="0" name="Interval (seconds)">0.2</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-3" name="Set position" sid="441518941597891" type="Sprite">
+                    <param id="0" name="X">Sprite.X</param>
+                    <param id="1" name="Y">Sprite.Y+2</param>
+                </action>
+            </actions>
+        </event-block>
+    </events>
+</c2eventsheet>

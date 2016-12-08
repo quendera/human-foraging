@@ -7,7 +7,7 @@
         <event-block any="1" sid="493210712351213">
             <conditions>
                 <condition id="3" name="On touched object" sid="804521334663892" type="Touch">
-                    <param id="0" name="Object">MouseButton</param>
+                    <param id="0" name="Object">StartButton</param>
                 </condition>
             </conditions>
             <actions>
@@ -40,6 +40,25 @@
                 <action id="-9" name="Set value" sid="550897241340849" type="System">
                     <param id="0" name="Variable">ProbabilityReward</param>
                     <param id="1" name="Value">SliderRewardProbability.Value</param>
+                </action>
+                <action id="0" name="Set text" sid="174071058289836" type="TextPF">
+                    <param id="0" name="Text">&quot;Probability of Flip: &quot; &amp;  ProbabilityFlip &amp; &quot;%&quot;</param>
+                </action>
+                <action id="0" name="Set text" sid="488099257353229" type="TextPR">
+                    <param id="0" name="Text">&quot;Probability of Reward: &quot; &amp;  ProbabilityReward  &amp; &quot;%&quot;</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="616971642862922">
+            <conditions>
+                <condition id="-2" name="On start of layout" sid="485574217800841" type="System" />
+            </conditions>
+            <actions>
+                <action id="0" name="Set text" sid="836328358508263" type="TextPF">
+                    <param id="0" name="Text">&quot;Probability of Flip: &quot; &amp;  ProbabilityFlip &amp; &quot;%&quot;</param>
+                </action>
+                <action id="0" name="Set text" sid="773938854720579" type="TextPR">
+                    <param id="0" name="Text">&quot;Probability of Reward: &quot; &amp;  ProbabilityReward  &amp; &quot;%&quot;</param>
                 </action>
             </actions>
         </event-block>

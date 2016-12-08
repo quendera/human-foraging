@@ -9,13 +9,13 @@
                 <condition id="-2" name="On start of layout" sid="637244466290885" type="System" />
             </conditions>
             <actions>
-                <action id="-9" name="Set value" sid="755623721871508" type="System">
-                    <param id="0" name="Variable">ActiveLeft</param>
-                    <param id="1" name="Value">1</param>
-                </action>
                 <action id="-9" name="Set value" sid="947433616897768" type="System">
                     <param id="0" name="Variable">CurrentTrial</param>
                     <param id="1" name="Value">0</param>
+                </action>
+                <action id="-9" name="Set value" sid="230112447767076" type="System">
+                    <param id="0" name="Variable">Iti</param>
+                    <param id="1" name="Value">2</param>
                 </action>
                 <action id="-9" name="Set value" sid="447585503871710" type="System">
                     <param id="0" name="Variable">Rope</param>
@@ -45,6 +45,10 @@
                     <param id="0" name="Variable">TravelSpeed</param>
                     <param id="1" name="Value">3</param>
                 </action>
+                <action id="-9" name="Set value" sid="507935747008734" type="System">
+                    <param id="0" name="Variable">StartingSide</param>
+                    <param id="1" name="Value">random(RNGmin,RNGmax)</param>
+                </action>
                 <action id="-9" name="Destroy" sid="834045179538005" type="Player" />
                 <action id="-9" name="Destroy" sid="554276501737005" type="SpriteTrain" />
                 <action id="-3" name="Create object" sid="326390971943444" type="System">
@@ -67,6 +71,9 @@
                     <param id="0" name="Width">Rope</param>
                     <param id="1" name="Height">5</param>
                 </action>
+                <action id="-15" name="Set visible" sid="873331990652312" type="Rope">
+                    <param id="0" name="Visibility">0</param>
+                </action>
                 <action id="-3" name="Create object" sid="749950446376383" type="System">
                     <param id="0" name="Object to create">SpriteTrain</param>
                     <param id="1" name="Layer">8</param>
@@ -79,7 +86,63 @@
                 </action>
                 <action id="0" name="Clear" sid="817122170758490" type="ArrayData" />
                 <action id="0" name="Clear" sid="218663977284095" type="ArrayMovement" />
+                <action id="-15" name="Set visible" sid="251013965796070" type="LeftPort">
+                    <param id="0" name="Visibility">0</param>
+                </action>
+                <action id="-15" name="Set visible" sid="242088555697954" type="RightPort">
+                    <param id="0" name="Visibility">0</param>
+                </action>
+                <action id="-15" name="Set visible" sid="523092385743572" type="DesertBG1">
+                    <param id="0" name="Visibility">0</param>
+                </action>
+                <action id="-15" name="Set visible" sid="789634885184613" type="DesertBG2">
+                    <param id="0" name="Visibility">0</param>
+                </action>
+                <action id="-15" name="Set visible" sid="911165620096591" type="DesertBG3">
+                    <param id="0" name="Visibility">0</param>
+                </action>
+                <action id="-15" name="Set visible" sid="255113992613385" type="DesertBG4">
+                    <param id="0" name="Visibility">0</param>
+                </action>
+                <action id="-15" name="Set visible" sid="839909383168590" type="DesertBG5">
+                    <param id="0" name="Visibility">0</param>
+                </action>
+                <action id="-15" name="Set visible" sid="739323870300996" type="DesertBG6">
+                    <param id="0" name="Visibility">0</param>
+                </action>
             </actions>
+            <sub-events>
+                <event-block sid="706313075606679">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="612258063923400" type="System">
+                            <param id="0" name="Variable">StartingSide</param>
+                            <param id="1" name="Comparison">5</param>
+                            <param id="2" name="Value">50</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="755623721871508" type="System">
+                            <param id="0" name="Variable">ActiveSide</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="507864253282280">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="613423181410882" type="System">
+                            <param id="0" name="Variable">StartingSide</param>
+                            <param id="1" name="Comparison">2</param>
+                            <param id="2" name="Value">50</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="541041434428931" type="System">
+                            <param id="0" name="Variable">ActiveSide</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
         </event-block>
         <event-block sid="773660567480861">
             <conditions>
@@ -117,6 +180,19 @@
                 </event-block>
             </sub-events>
         </event-block>
+        <event-block sid="408676906854390">
+            <conditions>
+                <condition id="1" name="Is overlapping another object" sid="567263903096655" type="Player">
+                    <param id="0" name="Object">Rail</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-12" name="Set group active" sid="767923833200155" type="System">
+                    <param id="0" name="Group name">&quot;Move&quot;</param>
+                    <param id="1" name="State">1</param>
+                </action>
+            </actions>
+        </event-block>
         <event-group description="" sid="423182791515313" title="Move">
             <sub-events>
                 <event-block sid="830758693411554">
@@ -128,7 +204,11 @@
                     <actions>
                         <action id="-3" name="Set position" sid="975732997955275" type="SpriteTrain">
                             <param id="0" name="X">playerX</param>
-                            <param id="1" name="Y">Rail.Y-25</param>
+                            <param id="1" name="Y">Rail.Y-60</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="156627857541693" type="System">
+                            <param id="0" name="Group name">&quot;PokeFunctions&quot;</param>
+                            <param id="1" name="State">0</param>
                         </action>
                     </actions>
                     <sub-events>
@@ -137,7 +217,7 @@
                                 <condition id="-14" name="Compare variable" sid="589909521039383" type="System">
                                     <param id="0" name="Variable">touchX</param>
                                     <param id="1" name="Comparison">2</param>
-                                    <param id="2" name="Value">playerX+5</param>
+                                    <param id="2" name="Value">playerX-10</param>
                                 </condition>
                                 <condition id="-14" name="Compare variable" sid="113544188604555" type="System">
                                     <param id="0" name="Variable">touchX</param>
@@ -171,7 +251,7 @@
                                 <condition id="-14" name="Compare variable" sid="388003107414037" type="System">
                                     <param id="0" name="Variable">touchX</param>
                                     <param id="1" name="Comparison">5</param>
-                                    <param id="2" name="Value">playerX+5</param>
+                                    <param id="2" name="Value">playerX+10</param>
                                 </condition>
                                 <condition id="-14" name="Compare variable" sid="738985544459065" type="System">
                                     <param id="0" name="Variable">touchX</param>
@@ -215,7 +295,11 @@
                     <actions>
                         <action id="-9" name="Set value" sid="135068513080306" type="System">
                             <param id="0" name="Variable">PlayerLocation</param>
-                            <param id="1" name="Value">0</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="104136347933330" type="System">
+                            <param id="0" name="Group name">&quot;PokeFunctions&quot;</param>
+                            <param id="1" name="State">1</param>
                         </action>
                         <action id="-3" name="Set position" sid="865708259564427" type="SpriteTrain">
                             <param id="0" name="X">playerX</param>
@@ -243,7 +327,7 @@
                                 </condition>
                             </conditions>
                             <actions>
-                                <action id="-4" name="Set position to another object" sid="890646306551629" type="Player">
+                                <action id="-4" name="Set position to another object" sid="854128861833654" type="Player">
                                     <param id="0" name="Object">LeftPort</param>
                                     <param id="1" name="Image point (optional)">0</param>
                                 </action>
@@ -266,6 +350,11 @@
                                             <param id="1" name="Comparison">5</param>
                                             <param id="2" name="Value">LeftPort.X+(Rope-50)</param>
                                         </condition>
+                                        <condition id="-14" name="Compare variable" sid="705499117204677" type="System">
+                                            <param id="0" name="Variable">touchY</param>
+                                            <param id="1" name="Comparison">4</param>
+                                            <param id="2" name="Value">500</param>
+                                        </condition>
                                     </conditions>
                                     <actions>
                                         <action id="-9" name="Set value" sid="743519908834930" type="System">
@@ -274,7 +363,7 @@
                                         </action>
                                         <action id="-23" name="Move at angle" sid="522799848246815" type="Player">
                                             <param id="0" name="Angle">0</param>
-                                            <param id="1" name="Distance">10</param>
+                                            <param id="1" name="Distance">20</param>
                                         </action>
                                     </actions>
                                 </event-block>
@@ -291,7 +380,11 @@
                     <actions>
                         <action id="-9" name="Set value" sid="658701986248214" type="System">
                             <param id="0" name="Variable">PlayerLocation</param>
-                            <param id="1" name="Value">1</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="783122192798641" type="System">
+                            <param id="0" name="Group name">&quot;PokeFunctions&quot;</param>
+                            <param id="1" name="State">1</param>
                         </action>
                         <action id="-3" name="Set position" sid="944178372190639" type="SpriteTrain">
                             <param id="0" name="X">playerX</param>
@@ -342,6 +435,11 @@
                                             <param id="1" name="Comparison">2</param>
                                             <param id="2" name="Value">RightPort.X-(Rope-50)</param>
                                         </condition>
+                                        <condition id="-14" name="Compare variable" sid="673073438192017" type="System">
+                                            <param id="0" name="Variable">touchY</param>
+                                            <param id="1" name="Comparison">4</param>
+                                            <param id="2" name="Value">500</param>
+                                        </condition>
                                     </conditions>
                                     <actions>
                                         <action id="-9" name="Set value" sid="589832821764026" type="System">
@@ -349,139 +447,14 @@
                                             <param id="1" name="Value">2</param>
                                         </action>
                                         <action id="-23" name="Move at angle" sid="249124643072899" type="Player">
-                                            <param id="0" name="Angle">0</param>
-                                            <param id="1" name="Distance">10</param>
+                                            <param id="0" name="Angle">180</param>
+                                            <param id="1" name="Distance">20</param>
                                         </action>
                                     </actions>
                                 </event-block>
                             </sub-events>
                         </event-block>
                     </sub-events>
-                </event-block>
-            </sub-events>
-        </event-group>
-        <event-group description="" sid="209266408024032" title="Rope">
-            <sub-events>
-                <event-block sid="231551622880915">
-                    <conditions>
-                        <condition id="-14" name="Compare variable" sid="241743372304710" type="System">
-                            <param id="0" name="Variable">touchX</param>
-                            <param id="1" name="Comparison">4</param>
-                            <param id="2" name="Value">0</param>
-                        </condition>
-                    </conditions>
-                    <actions>
-                        <action id="-4" name="Set position to another object" sid="935806835033600" type="Rope">
-                            <param id="0" name="Object">Player</param>
-                            <param id="1" name="Image point (optional)">0</param>
-                        </action>
-                    </actions>
-                    <sub-events>
-                        <event-block any="1" sid="618654806536778">
-                            <conditions>
-                                <condition id="-14" name="Compare variable" sid="534101262542171" type="System">
-                                    <param id="0" name="Variable">PlayerLocation</param>
-                                    <param id="1" name="Comparison">0</param>
-                                    <param id="2" name="Value">0</param>
-                                </condition>
-                                <condition id="-14" name="Compare variable" sid="663631306195436" type="System">
-                                    <param id="0" name="Variable">PlayerLocation</param>
-                                    <param id="1" name="Comparison">0</param>
-                                    <param id="2" name="Value">1</param>
-                                </condition>
-                            </conditions>
-                            <actions />
-                            <sub-events>
-                                <event-block sid="582478956122739">
-                                    <conditions>
-                                        <condition id="-14" name="Compare variable" sid="666489984616485" type="System">
-                                            <param id="0" name="Variable">touchY</param>
-                                            <param id="1" name="Comparison">2</param>
-                                            <param id="2" name="Value">Rail.Y+50</param>
-                                        </condition>
-                                    </conditions>
-                                    <actions>
-                                        <action id="-22" name="Set angle toward position" sid="553522159644924" type="Rope">
-                                            <param id="0" name="X">touchX</param>
-                                            <param id="1" name="Y">touchY</param>
-                                        </action>
-                                    </actions>
-                                </event-block>
-                                <event-block sid="305782885022403">
-                                    <conditions>
-                                        <condition id="-14" name="Compare variable" sid="451535527684654" type="System">
-                                            <param id="0" name="Variable">touchY</param>
-                                            <param id="1" name="Comparison">5</param>
-                                            <param id="2" name="Value">Rail.Y+50</param>
-                                        </condition>
-                                    </conditions>
-                                    <actions>
-                                        <action id="-8" name="Set angle" sid="496458402076426" type="Rope">
-                                            <param id="0" name="Angle">90</param>
-                                        </action>
-                                    </actions>
-                                </event-block>
-                            </sub-events>
-                        </event-block>
-                        <event-block sid="951420000133408">
-                            <conditions>
-                                <condition id="-22" name="Else" sid="481520967466613" type="System" />
-                            </conditions>
-                            <actions>
-                                <action id="-22" name="Set angle toward position" sid="133377117202256" type="Rope">
-                                    <param id="0" name="X">touchX</param>
-                                    <param id="1" name="Y">touchY</param>
-                                </action>
-                            </actions>
-                        </event-block>
-                    </sub-events>
-                </event-block>
-                <event-block sid="605080145531163">
-                    <conditions>
-                        <condition id="-14" name="Compare variable" sid="646675511031573" type="System">
-                            <param id="0" name="Variable">touchX</param>
-                            <param id="1" name="Comparison">0</param>
-                            <param id="2" name="Value">0</param>
-                        </condition>
-                    </conditions>
-                    <actions>
-                        <action id="-4" name="Set position to another object" sid="121250136477191" type="Rope">
-                            <param id="0" name="Object">Player</param>
-                            <param id="1" name="Image point (optional)">0</param>
-                        </action>
-                        <action id="-8" name="Set angle" sid="817396921440841" type="Rope">
-                            <param id="0" name="Angle">90</param>
-                        </action>
-                    </actions>
-                </event-block>
-                <event-block any="1" sid="854285971216005">
-                    <conditions>
-                        <condition id="-14" name="Compare variable" sid="623688229290117" type="System">
-                            <param id="0" name="Variable">touchX</param>
-                            <param id="1" name="Comparison">4</param>
-                            <param id="2" name="Value">playerX+Rope</param>
-                        </condition>
-                        <condition id="-14" name="Compare variable" sid="814114258778315" type="System">
-                            <param id="0" name="Variable">touchX</param>
-                            <param id="1" name="Comparison">2</param>
-                            <param id="2" name="Value">playerX-Rope</param>
-                        </condition>
-                        <condition id="-14" name="Compare variable" sid="251738385467076" type="System">
-                            <param id="0" name="Variable">touchY</param>
-                            <param id="1" name="Comparison">4</param>
-                            <param id="2" name="Value">playerY+Rope</param>
-                        </condition>
-                        <condition id="-14" name="Compare variable" sid="767960109307967" type="System">
-                            <param id="0" name="Variable">touchY</param>
-                            <param id="1" name="Comparison">2</param>
-                            <param id="2" name="Value">playerY-Rope</param>
-                        </condition>
-                    </conditions>
-                    <actions>
-                        <action id="-8" name="Set angle" sid="258681626556436" type="Rope">
-                            <param id="0" name="Angle">90</param>
-                        </action>
-                    </actions>
                 </event-block>
             </sub-events>
         </event-group>
@@ -489,19 +462,6 @@
             <sub-events>
                 <event-block any="1" sid="760647938868677">
                     <conditions>
-                        <condition id="6" name="On object clicked" sid="957608918635582" type="Mouse">
-                            <param id="0" name="Mouse button">0</param>
-                            <param id="1" name="Click type">0</param>
-                            <param id="2" name="Object clicked">SpriteTarget</param>
-                        </condition>
-                        <condition id="17" name="On tap object" sid="538654535635794" type="Touch">
-                            <param id="0" name="Object">SpriteTarget</param>
-                        </condition>
-                        <condition id="6" name="On object clicked" sid="268266283593678" type="Mouse">
-                            <param id="0" name="Mouse button">0</param>
-                            <param id="1" name="Click type">0</param>
-                            <param id="2" name="Object clicked">SpriteTarget</param>
-                        </condition>
                         <condition id="17" name="On tap object" sid="452140748953616" type="Touch">
                             <param id="0" name="Object">SpriteTarget</param>
                         </condition>
@@ -520,37 +480,30 @@
                                     <param id="1" name="Parameter {n}"></param>
                                 </action>
                                 <action id="-16" name="Wait" sid="515989542452861" type="System">
-                                    <param id="0" name="Seconds">1.0</param>
+                                    <param id="0" name="Seconds">Iti</param>
+                                </action>
+                                <action id="0" name="Call function" sid="298163084583037" type="Function">
+                                    <param id="0" name="Name">&quot;LeftSpawn&quot;</param>
+                                    <param id="1" name="Parameter {n}"></param>
                                 </action>
                             </actions>
                             <sub-events>
-                                <event-block sid="509194121450819">
-                                    <conditions>
-                                        <condition id="-4" name="Trigger once while true" sid="671488289845590" type="System" />
-                                    </conditions>
-                                    <actions>
-                                        <action id="0" name="Call function" sid="298163084583037" type="Function">
-                                            <param id="0" name="Name">&quot;LeftSpawn&quot;</param>
-                                            <param id="1" name="Parameter {n}"></param>
-                                        </action>
-                                    </actions>
-                                </event-block>
                                 <event-block sid="328876168649870">
                                     <conditions>
                                         <condition id="-14" name="Compare variable" sid="530114942004699" type="System">
-                                            <param id="0" name="Variable">ActiveLeft</param>
+                                            <param id="0" name="Variable">ActiveSide</param>
                                             <param id="1" name="Comparison">0</param>
                                             <param id="2" name="Value">1</param>
                                         </condition>
                                     </conditions>
                                     <actions>
-                                        <action id="-9" name="Set value" sid="527029252084617" type="System">
+                                        <action id="-9" name="Set value" sid="554824078349938" type="System">
                                             <param id="0" name="Variable">RandomR</param>
-                                            <param id="1" name="Value">round(random(RNGmin,RNGmax))</param>
+                                            <param id="1" name="Value">random(RNGmin,RNGmax)</param>
                                         </action>
-                                        <action id="-9" name="Set value" sid="376742077127267" type="System">
+                                        <action id="-9" name="Set value" sid="476497872285262" type="System">
                                             <param id="0" name="Variable">RandomF</param>
-                                            <param id="1" name="Value">round(random(RNGmin,RNGmax))</param>
+                                            <param id="1" name="Value">random(RNGmin,RNGmax)</param>
                                         </action>
                                     </actions>
                                     <sub-events>
@@ -613,12 +566,8 @@
                                             </conditions>
                                             <actions>
                                                 <action id="-9" name="Set value" sid="475387562391161" type="System">
-                                                    <param id="0" name="Variable">ActiveLeft</param>
+                                                    <param id="0" name="Variable">ActiveSide</param>
                                                     <param id="1" name="Value">0</param>
-                                                </action>
-                                                <action id="-9" name="Set value" sid="616755509949055" type="System">
-                                                    <param id="0" name="Variable">ActiveRight</param>
-                                                    <param id="1" name="Value">1</param>
                                                 </action>
                                                 <action id="0" name="Call function" sid="618629672725515" type="Function">
                                                     <param id="0" name="Name">&quot;log&quot;</param>
@@ -627,6 +576,17 @@
                                             </actions>
                                         </event-block>
                                     </sub-events>
+                                </event-block>
+                                <event-block sid="172514267180066">
+                                    <conditions>
+                                        <condition id="-22" name="Else" sid="653698963295654" type="System" />
+                                    </conditions>
+                                    <actions>
+                                        <action id="-9" name="Set value" sid="420509040429789" type="System">
+                                            <param id="0" name="Variable">RewardedTrial</param>
+                                            <param id="1" name="Value">0</param>
+                                        </action>
+                                    </actions>
                                 </event-block>
                             </sub-events>
                         </event-block>
@@ -642,7 +602,7 @@
                                     <param id="1" name="Parameter {n}"></param>
                                 </action>
                                 <action id="-16" name="Wait" sid="516443661386096" type="System">
-                                    <param id="0" name="Seconds">1.0</param>
+                                    <param id="0" name="Seconds">Iti</param>
                                 </action>
                             </actions>
                             <sub-events>
@@ -659,20 +619,20 @@
                                 </event-block>
                                 <event-block sid="821081848731161">
                                     <conditions>
-                                        <condition id="-14" name="Compare variable" sid="165884511809355" type="System">
-                                            <param id="0" name="Variable">ActiveRight</param>
+                                        <condition id="-14" name="Compare variable" sid="775349735028955" type="System">
+                                            <param id="0" name="Variable">ActiveSide</param>
                                             <param id="1" name="Comparison">0</param>
-                                            <param id="2" name="Value">1</param>
+                                            <param id="2" name="Value">0</param>
                                         </condition>
                                     </conditions>
                                     <actions>
-                                        <action id="-9" name="Set value" sid="399828268185836" type="System">
+                                        <action id="-9" name="Set value" sid="626464399810196" type="System">
                                             <param id="0" name="Variable">RandomR</param>
-                                            <param id="1" name="Value">round(random(RNGmin,RNGmax))</param>
+                                            <param id="1" name="Value">random(RNGmin,RNGmax)</param>
                                         </action>
-                                        <action id="-9" name="Set value" sid="518729354980407" type="System">
+                                        <action id="-9" name="Set value" sid="526344040008543" type="System">
                                             <param id="0" name="Variable">RandomF</param>
-                                            <param id="1" name="Value">round(random(RNGmin,RNGmax))</param>
+                                            <param id="1" name="Value">random(RNGmin,RNGmax)</param>
                                         </action>
                                     </actions>
                                     <sub-events>
@@ -735,12 +695,8 @@
                                             </conditions>
                                             <actions>
                                                 <action id="-9" name="Set value" sid="198120917630335" type="System">
-                                                    <param id="0" name="Variable">ActiveLeft</param>
+                                                    <param id="0" name="Variable">ActiveSide</param>
                                                     <param id="1" name="Value">1</param>
-                                                </action>
-                                                <action id="-9" name="Set value" sid="462914537976076" type="System">
-                                                    <param id="0" name="Variable">ActiveRight</param>
-                                                    <param id="1" name="Value">0</param>
                                                 </action>
                                                 <action id="0" name="Call function" sid="852629834116282" type="Function">
                                                     <param id="0" name="Name">&quot;log&quot;</param>
@@ -750,16 +706,23 @@
                                         </event-block>
                                     </sub-events>
                                 </event-block>
+                                <event-block sid="156806340007009">
+                                    <conditions>
+                                        <condition id="-22" name="Else" sid="403516538652032" type="System" />
+                                    </conditions>
+                                    <actions>
+                                        <action id="-9" name="Set value" sid="805697381857460" type="System">
+                                            <param id="0" name="Variable">RewardedTrial</param>
+                                            <param id="1" name="Value">0</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
                             </sub-events>
                         </event-block>
                     </sub-events>
                 </event-block>
                 <event-block any="1" sid="776643989133672">
                     <conditions>
-                        <condition id="0" name="On click" sid="608161056608566" type="Mouse">
-                            <param id="0" name="Mouse button">0</param>
-                            <param id="1" name="Click type">0</param>
-                        </condition>
                         <condition id="14" name="On tap" sid="954434886136869" type="Touch" />
                     </conditions>
                     <actions />
@@ -788,7 +751,7 @@
                                     <param id="0" name="Object">LeftPort</param>
                                 </condition>
                                 <condition id="-14" name="Compare variable" sid="259430618645507" type="System">
-                                    <param id="0" name="Variable">ActiveLeft</param>
+                                    <param id="0" name="Variable">ActiveSide</param>
                                     <param id="1" name="Comparison">0</param>
                                     <param id="2" name="Value">0</param>
                                 </condition>
@@ -797,6 +760,34 @@
                                 <action id="0" name="Call function" sid="138633865573264" type="Function">
                                     <param id="0" name="Name">&quot;log&quot;</param>
                                     <param id="1" name="Parameter {n}"></param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block any="1" sid="976280131134748">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="560181041743423" type="System">
+                            <param id="0" name="Variable">ActiveSide</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                        <condition id="-14" name="Compare variable" sid="593580033837871" type="System">
+                            <param id="0" name="Variable">ActiveRight</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="784013713528160">
+                            <conditions>
+                                <condition id="-4" name="Trigger once while true" sid="423137315132419" type="System" />
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" sid="624237704742787" type="System">
+                                    <param id="0" name="Variable">RewardedTrial</param>
+                                    <param id="1" name="Value">0</param>
                                 </action>
                             </actions>
                         </event-block>
@@ -876,7 +867,7 @@
                             <param id="0" name="X">3</param>
                             <param id="1" name="Y">CurrentTrial</param>
                             <param id="2" name="Z">0</param>
-                            <param id="3" name="Value">ActiveLeft</param>
+                            <param id="3" name="Value">ActiveSide</param>
                         </action>
                         <action id="4" name="Set at XYZ" sid="903192960466119" type="ArrayData">
                             <param id="0" name="X">4</param>
@@ -925,7 +916,7 @@
                 </event-block>
             </sub-events>
         </event-group>
-        <event-group description="" sid="725991429926267" title="Functions">
+        <event-group description="" sid="725991429926267" title="PokeFunctions">
             <sub-events>
                 <event-block sid="381529372088231">
                     <conditions>
@@ -934,15 +925,15 @@
                         </condition>
                     </conditions>
                     <actions>
-                        <action id="4" name="Set animation" sid="727190965868991" type="SpriteTrain">
+                        <action id="4" name="Set animation" sid="944142448178770" type="SpriteTrain">
                             <param id="0" name="Animation">&quot;Front&quot;</param>
                             <param id="1" name="From">1</param>
                         </action>
-                        <action id="-3" name="Create object" sid="463466297247598" type="System">
+                        <action id="-3" name="Create object" sid="763794771272519" type="System">
                             <param id="0" name="Object to create">SpriteTarget</param>
                             <param id="1" name="Layer">8</param>
-                            <param id="2" name="X">random(100,400)</param>
-                            <param id="3" name="Y">random(100,300)</param>
+                            <param id="2" name="X">random(175,310)</param>
+                            <param id="3" name="Y">random(230,450)</param>
                         </action>
                     </actions>
                 </event-block>
@@ -960,8 +951,8 @@
                         <action id="-3" name="Create object" sid="323412474080800" type="System">
                             <param id="0" name="Object to create">SpriteTarget</param>
                             <param id="1" name="Layer">8</param>
-                            <param id="2" name="X">random(900,1200)</param>
-                            <param id="3" name="Y">random(100,400)</param>
+                            <param id="2" name="X">random(965,1100)</param>
+                            <param id="3" name="Y">random(230,450)</param>
                         </action>
                     </actions>
                 </event-block>
@@ -992,6 +983,119 @@
                     </conditions>
                     <actions>
                         <action id="-9" name="Destroy" sid="527697890236729" type="SpriteTarget" />
+                    </actions>
+                    <sub-events>
+                        <event-block sid="721352660575539">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="425594368913326" type="System">
+                                    <param id="0" name="Variable">RewardedTrial</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">1</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-3" name="Create object" sid="567096700671943" type="System">
+                                    <param id="0" name="Object to create">SpriteEnemyHit</param>
+                                    <param id="1" name="Layer">&quot;Layer 8&quot;</param>
+                                    <param id="2" name="X">SpriteTarget.X</param>
+                                    <param id="3" name="Y">SpriteTarget.Y</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="359303988843840" type="System">
+                                    <param id="0" name="Variable">AnimationNr</param>
+                                    <param id="1" name="Value">int(random(1,4))</param>
+                                </action>
+                                <action id="-16" name="Wait" sid="412617284515718" type="System">
+                                    <param id="0" name="Seconds">0</param>
+                                </action>
+                            </actions>
+                            <sub-events>
+                                <event-block sid="635693232353062">
+                                    <conditions>
+                                        <condition id="-14" name="Compare variable" sid="518113654855635" type="System">
+                                            <param id="0" name="Variable">AnimationNr</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Value">1</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="4" name="Set animation" sid="584565181314098" type="SpriteEnemyHit">
+                                            <param id="0" name="Animation">&quot;left&quot;</param>
+                                            <param id="1" name="From">1</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="188469608528679">
+                                    <conditions>
+                                        <condition id="-14" name="Compare variable" sid="297875842600768" type="System">
+                                            <param id="0" name="Variable">AnimationNr</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Value">2</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="4" name="Set animation" sid="996018179840962" type="SpriteEnemyHit">
+                                            <param id="0" name="Animation">&quot;right&quot;</param>
+                                            <param id="1" name="From">1</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="786343377611619">
+                                    <conditions>
+                                        <condition id="-14" name="Compare variable" sid="777860580541315" type="System">
+                                            <param id="0" name="Variable">AnimationNr</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Value">3</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="4" name="Set animation" sid="509238405109870" type="SpriteEnemyHit">
+                                            <param id="0" name="Animation">&quot;front2&quot;</param>
+                                            <param id="1" name="From">1</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="520009505677457">
+                                    <conditions>
+                                        <condition id="-14" name="Compare variable" sid="303308490948702" type="System">
+                                            <param id="0" name="Variable">AnimationNr</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Value">4</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="4" name="Set animation" sid="845501152954659" type="SpriteEnemyHit">
+                                            <param id="0" name="Animation">&quot;front&quot;</param>
+                                            <param id="1" name="From">1</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                        <event-block sid="466594295145016">
+                            <conditions>
+                                <condition id="-22" name="Else" sid="333153919111992" type="System" />
+                            </conditions>
+                            <actions>
+                                <action id="-3" name="Create object" sid="961569557095524" type="System">
+                                    <param id="0" name="Object to create">SpriteEnemyHit</param>
+                                    <param id="1" name="Layer">&quot;Layer 8&quot;</param>
+                                    <param id="2" name="X">SpriteTarget.X</param>
+                                    <param id="3" name="Y">SpriteTarget.Y</param>
+                                </action>
+                                <action id="4" name="Set animation" sid="186738695894821" type="SpriteEnemyHit">
+                                    <param id="0" name="Animation">&quot;none&quot;</param>
+                                    <param id="1" name="From">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block sid="924855309185876">
+                    <conditions>
+                        <condition id="5" name="On any finished" sid="212349364121980" type="SpriteEnemyHit" />
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Destroy" sid="830700203878604" type="SpriteEnemyHit" />
                     </actions>
                 </event-block>
             </sub-events>
