@@ -3,18 +3,21 @@
     <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
     <name>Variables</name>
     <events>
-        <variable constant="0" name="StartingSide" sid="110127185991234" static="0" type="number">0</variable>
         <variable constant="0" name="ActiveSide" sid="391297064606083" static="0" type="number">0</variable>
         <variable constant="0" name="ActiveRight" sid="599579506805669" static="0" type="number">0</variable>
         <variable constant="0" name="AnimationNr" sid="947529153342853" static="0" type="number">0</variable>
         <variable constant="0" name="ArraySweep" sid="103653994625074" static="0" type="number">0</variable>
+        <variable constant="0" name="Countdown" sid="435490213873562" static="0" type="number">0</variable>
         <variable constant="0" name="CurrentTrial" sid="967567770451176" static="0" type="number">0</variable>
+        <variable constant="0" name="Date" sid="909748833883779" static="0" type="number">0</variable>
         <variable constant="0" name="Input" sid="962947546287654" static="0" type="number">0</variable>
         <variable constant="0" name="Iti" sid="826756764669071" static="0" type="number">0</variable>
+        <variable constant="0" name="MouseID" sid="508868504594602" static="0" type="text"></variable>
         <variable constant="0" name="PlayerAngle" sid="280905789528192" static="0" type="number">0</variable>
         <variable constant="0" name="PlayerLocation" sid="515374917925318" static="0" type="number">0</variable>
         <variable constant="0" name="playerX" sid="753277793937877" static="0" type="number">0</variable>
         <variable constant="0" name="playerY" sid="857870396007858" static="0" type="number">0</variable>
+        <variable constant="0" name="Protocol" sid="775547712932606" static="0" type="number">0</variable>
         <variable constant="0" name="ProbabilityFlip" sid="266461466369677" static="0" type="number">0</variable>
         <variable constant="0" name="ProbabilityReward" sid="731682283620142" static="0" type="number">0</variable>
         <variable constant="0" name="RandomF" sid="551120366874016" static="0" type="number">0</variable>
@@ -24,6 +27,7 @@
         <variable constant="0" name="RNGmax" sid="937908592544550" static="0" type="number">0</variable>
         <variable constant="0" name="RNGmin" sid="658489382287334" static="0" type="number">0</variable>
         <variable constant="0" name="Score" sid="101918661873503" static="0" type="number">0</variable>
+        <variable constant="0" name="StartingSide" sid="110127185991234" static="0" type="number">0</variable>
         <variable constant="0" name="Timer" sid="485632215821448" static="0" type="number">0</variable>
         <variable constant="0" name="TouchMove" sid="395511294220124" static="0" type="number">0</variable>
         <variable constant="0" name="touchX" sid="683304503554293" static="0" type="number">0</variable>

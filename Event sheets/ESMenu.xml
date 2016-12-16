@@ -47,6 +47,10 @@
                 <action id="0" name="Set text" sid="488099257353229" type="TextPR">
                     <param id="0" name="Text">&quot;Probability of Reward: &quot; &amp;  ProbabilityReward  &amp; &quot;%&quot;</param>
                 </action>
+                <action id="-9" name="Set value" sid="330103515659462" type="System">
+                    <param id="0" name="Variable">MouseID</param>
+                    <param id="1" name="Value">TextBox.Text</param>
+                </action>
             </actions>
         </event-block>
         <event-block sid="616971642862922">
@@ -60,7 +64,67 @@
                 <action id="0" name="Set text" sid="773938854720579" type="TextPR">
                     <param id="0" name="Text">&quot;Probability of Reward: &quot; &amp;  ProbabilityReward  &amp; &quot;%&quot;</param>
                 </action>
+                <action id="-15" name="Set visible" sid="555949910088239" type="TextPR">
+                    <param id="0" name="Visibility">0</param>
+                </action>
+                <action id="-15" name="Set visible" sid="944860249523000" type="TextPF">
+                    <param id="0" name="Visibility">0</param>
+                </action>
+                <action id="1" name="Set visible" sid="566474540061707" type="SliderFlipProbability">
+                    <param id="0" name="Visibility">0</param>
+                </action>
+                <action id="1" name="Set visible" sid="398861314571519" type="SliderRewardProbability">
+                    <param id="0" name="Visibility">0</param>
+                </action>
             </actions>
+        </event-block>
+        <event-block sid="382662494440820">
+            <conditions>
+                <condition id="18" name="On double-tap object" sid="828830241024568" type="Touch">
+                    <param id="0" name="Object">SpriteButtonSettings</param>
+                </condition>
+            </conditions>
+            <actions />
+            <sub-events>
+                <event-block sid="885276500726608">
+                    <conditions>
+                        <condition id="-9" name="Is visible" sid="920483332403908" type="TextPF" />
+                    </conditions>
+                    <actions>
+                        <action id="-15" name="Set visible" sid="774917459191096" type="TextPR">
+                            <param id="0" name="Visibility">0</param>
+                        </action>
+                        <action id="-15" name="Set visible" sid="998541754901834" type="TextPF">
+                            <param id="0" name="Visibility">0</param>
+                        </action>
+                        <action id="1" name="Set visible" sid="435801880790701" type="SliderFlipProbability">
+                            <param id="0" name="Visibility">0</param>
+                        </action>
+                        <action id="1" name="Set visible" sid="168965506905648" type="SliderRewardProbability">
+                            <param id="0" name="Visibility">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="206564807932744">
+                    <conditions>
+                        <condition id="-22" name="Else" sid="930806861891059" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="-15" name="Set visible" sid="452369324493256" type="TextPR">
+                            <param id="0" name="Visibility">1</param>
+                        </action>
+                        <action id="-15" name="Set visible" sid="339717564201264" type="TextPF">
+                            <param id="0" name="Visibility">1</param>
+                        </action>
+                        <action id="1" name="Set visible" sid="861250760309978" type="SliderFlipProbability">
+                            <param id="0" name="Visibility">1</param>
+                        </action>
+                        <action id="1" name="Set visible" sid="909194184896886" type="SliderRewardProbability">
+                            <param id="0" name="Visibility">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
         </event-block>
     </events>
 </c2eventsheet>

@@ -87,8 +87,8 @@
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
                     <world>
-                        <x>321</x>
-                        <y>507</y>
+                        <x>1069</x>
+                        <y>684</y>
                         <z>0</z>
                         <width>200</width>
                         <height>25</height>
@@ -111,8 +111,8 @@
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
                     <world>
-                        <x>749</x>
-                        <y>510</y>
+                        <x>859</x>
+                        <y>685</y>
                         <z>0</z>
                         <width>200</width>
                         <height>25</height>
@@ -136,8 +136,8 @@
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
                     <world>
-                        <x>322</x>
-                        <y>470</y>
+                        <x>1070</x>
+                        <y>647</y>
                         <z>0</z>
                         <width>200</width>
                         <height>30</height>
@@ -163,14 +163,62 @@
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
                     <world>
-                        <x>750</x>
-                        <y>466</y>
+                        <x>860</x>
+                        <y>641</y>
                         <z>0</z>
                         <width>200</width>
                         <height>30</height>
                         <depth>0</depth>
                         <hotspotX>0</hotspotX>
                         <hotspotY>0</hotspotY>
+                        <angle>0</angle>
+                        <opacity>1</opacity>
+                    </world>
+                </instance>
+                <instance type="TextBox" uid="67">
+                    <properties>
+                        <text></text>
+                        <placeholder>Please enter your name</placeholder>
+                        <tooltip></tooltip>
+                        <initial-visibility>Visible</initial-visibility>
+                        <enabled>Yes</enabled>
+                        <read-only>No</read-only>
+                        <spell-check>No</spell-check>
+                        <type>Text</type>
+                        <auto-font-size>Yes</auto-font-size>
+                        <id-optional></id-optional>
+                    </properties>
+                    <blend-mode>0</blend-mode>
+                    <effect-fallback>0</effect-fallback>
+                    <world>
+                        <x>517</x>
+                        <y>487</y>
+                        <z>0</z>
+                        <width>292</width>
+                        <height>102</height>
+                        <depth>0</depth>
+                        <hotspotX>0</hotspotX>
+                        <hotspotY>0</hotspotY>
+                    </world>
+                </instance>
+                <instance type="SpriteButtonSettings" uid="68">
+                    <properties>
+                        <initial-visibility>Visible</initial-visibility>
+                        <initial-animation>Default</initial-animation>
+                        <initial-frame>0</initial-frame>
+                        <collisions>Enabled</collisions>
+                    </properties>
+                    <blend-mode>0</blend-mode>
+                    <effect-fallback>0</effect-fallback>
+                    <world>
+                        <x>88</x>
+                        <y>644</y>
+                        <z>0</z>
+                        <width>178</width>
+                        <height>154</height>
+                        <depth>0</depth>
+                        <hotspotX>0.5</hotspotX>
+                        <hotspotY>0.5</hotspotY>
                         <angle>0</angle>
                         <opacity>1</opacity>
                     </world>
@@ -241,6 +289,7 @@
                 <depth>1</depth>
             </properties>
         </instance>
+        <instance type="Date" uid="69" />
     </nonworld-instances>
     <effects />
 </c2layout>

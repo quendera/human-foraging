@@ -9,6 +9,10 @@
                 <condition id="-2" name="On start of layout" sid="637244466290885" type="System" />
             </conditions>
             <actions>
+                <action id="-9" name="Set value" sid="295955713997075" type="System">
+                    <param id="0" name="Variable">Countdown</param>
+                    <param id="1" name="Value">300</param>
+                </action>
                 <action id="-9" name="Set value" sid="947433616897768" type="System">
                     <param id="0" name="Variable">CurrentTrial</param>
                     <param id="1" name="Value">0</param>
@@ -49,6 +53,10 @@
                     <param id="0" name="Variable">StartingSide</param>
                     <param id="1" name="Value">random(RNGmin,RNGmax)</param>
                 </action>
+                <action id="-9" name="Set value" sid="608085217777214" type="System">
+                    <param id="0" name="Variable">Date</param>
+                    <param id="1" name="Value">Date.UnixTimestamp</param>
+                </action>
                 <action id="-9" name="Destroy" sid="834045179538005" type="Player" />
                 <action id="-9" name="Destroy" sid="554276501737005" type="SpriteTrain" />
                 <action id="-3" name="Create object" sid="326390971943444" type="System">
@@ -84,6 +92,9 @@
                 <action id="0" name="Set cursor style" sid="658934196702544" type="Mouse">
                     <param id="0" name="Cursor style">3</param>
                 </action>
+                <action id="-15" name="Set visible" sid="505504975602191" type="Sprite2">
+                    <param id="0" name="Visibility">0</param>
+                </action>
                 <action id="0" name="Clear" sid="817122170758490" type="ArrayData" />
                 <action id="0" name="Clear" sid="218663977284095" type="ArrayMovement" />
                 <action id="-15" name="Set visible" sid="251013965796070" type="LeftPort">
@@ -109,6 +120,12 @@
                 </action>
                 <action id="-15" name="Set visible" sid="739323870300996" type="DesertBG6">
                     <param id="0" name="Visibility">0</param>
+                </action>
+                <action id="0" name="Set text" sid="193596999259354" type="TextScore">
+                    <param id="0" name="Text">&quot;Score: &quot; &amp; Score</param>
+                </action>
+                <action id="0" name="Set text" sid="384109241221575" type="TextTimer">
+                    <param id="0" name="Text">Countdown</param>
                 </action>
             </actions>
             <sub-events>
@@ -143,6 +160,22 @@
                     </actions>
                 </event-block>
             </sub-events>
+        </event-block>
+        <event-block sid="862785687682247">
+            <conditions>
+                <condition id="-6" name="Every X seconds" sid="758613604553421" type="System">
+                    <param id="0" name="Interval (seconds)">1.0</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-11" name="Subtract from" sid="499729512242338" type="System">
+                    <param id="0" name="Variable">Countdown</param>
+                    <param id="1" name="Value">1</param>
+                </action>
+                <action id="0" name="Set text" sid="466063722182985" type="TextTimer">
+                    <param id="0" name="Text">Countdown</param>
+                </action>
+            </actions>
         </event-block>
         <event-block sid="773660567480861">
             <conditions>
@@ -473,6 +506,9 @@
                                 <condition id="1" name="Is overlapping another object" sid="387174960107278" type="Player">
                                     <param id="0" name="Object">LeftPort</param>
                                 </condition>
+                                <condition id="-15" name="Is group active" sid="130425147674443" type="System">
+                                    <param id="0" name="Group name">&quot;Shoot&quot;</param>
+                                </condition>
                             </conditions>
                             <actions>
                                 <action id="0" name="Call function" sid="693690789893493" type="Function">
@@ -505,6 +541,9 @@
                                             <param id="0" name="Variable">RandomF</param>
                                             <param id="1" name="Value">random(RNGmin,RNGmax)</param>
                                         </action>
+                                        <action id="-16" name="Wait" sid="974961053248161" type="System">
+                                            <param id="0" name="Seconds">0</param>
+                                        </action>
                                     </actions>
                                     <sub-events>
                                         <event-block sid="322527487441692">
@@ -518,10 +557,6 @@
                                             <actions>
                                                 <action id="-9" name="Set value" sid="418220499289465" type="System">
                                                     <param id="0" name="Variable">RewardedTrial</param>
-                                                    <param id="1" name="Value">1</param>
-                                                </action>
-                                                <action id="-10" name="Add to" sid="462669457277997" type="System">
-                                                    <param id="0" name="Variable">Score</param>
                                                     <param id="1" name="Value">1</param>
                                                 </action>
                                             </actions>
@@ -595,6 +630,9 @@
                                 <condition id="1" name="Is overlapping another object" sid="560669383477384" type="Player">
                                     <param id="0" name="Object">RightPort</param>
                                 </condition>
+                                <condition id="-15" name="Is group active" sid="758121909289359" type="System">
+                                    <param id="0" name="Group name">&quot;Shoot&quot;</param>
+                                </condition>
                             </conditions>
                             <actions>
                                 <action id="0" name="Call function" sid="790604373996079" type="Function">
@@ -634,6 +672,9 @@
                                             <param id="0" name="Variable">RandomF</param>
                                             <param id="1" name="Value">random(RNGmin,RNGmax)</param>
                                         </action>
+                                        <action id="-16" name="Wait" sid="133231884821344" type="System">
+                                            <param id="0" name="Seconds">0</param>
+                                        </action>
                                     </actions>
                                     <sub-events>
                                         <event-block sid="717635893900481">
@@ -647,10 +688,6 @@
                                             <actions>
                                                 <action id="-9" name="Set value" sid="169806374268305" type="System">
                                                     <param id="0" name="Variable">RewardedTrial</param>
-                                                    <param id="1" name="Value">1</param>
-                                                </action>
-                                                <action id="-10" name="Add to" sid="338276130096984" type="System">
-                                                    <param id="0" name="Variable">Score</param>
                                                     <param id="1" name="Value">1</param>
                                                 </action>
                                             </actions>
@@ -733,9 +770,9 @@
                                     <param id="0" name="Object">RightPort</param>
                                 </condition>
                                 <condition id="-14" name="Compare variable" sid="416386781945818" type="System">
-                                    <param id="0" name="Variable">ActiveRight</param>
+                                    <param id="0" name="Variable">ActiveSide</param>
                                     <param id="1" name="Comparison">0</param>
-                                    <param id="2" name="Value">0</param>
+                                    <param id="2" name="Value">1</param>
                                 </condition>
                             </conditions>
                             <actions>
@@ -841,57 +878,87 @@
                     </conditions>
                     <actions>
                         <action id="1" name="Set size" sid="842363159180962" type="ArrayData">
-                            <param id="0" name="Width">8</param>
+                            <param id="0" name="Width">13</param>
                             <param id="1" name="Height">1+CurrentTrial</param>
                             <param id="2" name="Depth">1</param>
                         </action>
-                        <action id="4" name="Set at XYZ" sid="201953614222957" type="ArrayData">
+                        <action id="4" name="Set at XYZ" sid="641036271209040" type="ArrayData">
                             <param id="0" name="X">0</param>
+                            <param id="1" name="Y">CurrentTrial</param>
+                            <param id="2" name="Z">0</param>
+                            <param id="3" name="Value">CurrentTrial</param>
+                        </action>
+                        <action id="4" name="Set at XYZ" sid="201953614222957" type="ArrayData">
+                            <param id="0" name="X">1</param>
                             <param id="1" name="Y">CurrentTrial</param>
                             <param id="2" name="Z">0</param>
                             <param id="3" name="Value">Timer</param>
                         </action>
-                        <action id="4" name="Set at XYZ" sid="344720477733607" type="ArrayData">
-                            <param id="0" name="X">1</param>
-                            <param id="1" name="Y">CurrentTrial</param>
-                            <param id="2" name="Z">0</param>
-                            <param id="3" name="Value">RandomF</param>
-                        </action>
-                        <action id="4" name="Set at XYZ" sid="123039347539525" type="ArrayData">
+                        <action id="4" name="Set at XYZ" sid="464192378292755" type="ArrayData">
                             <param id="0" name="X">2</param>
                             <param id="1" name="Y">CurrentTrial</param>
                             <param id="2" name="Z">0</param>
-                            <param id="3" name="Value">RandomR</param>
+                            <param id="3" name="Value">RewardedTrial</param>
+                        </action>
+                        <action id="4" name="Set at XYZ" sid="848883563596544" type="ArrayData">
+                            <param id="0" name="X">3</param>
+                            <param id="1" name="Y">CurrentTrial</param>
+                            <param id="2" name="Z">0</param>
+                            <param id="3" name="Value">PlayerLocation</param>
                         </action>
                         <action id="4" name="Set at XYZ" sid="223035250858491" type="ArrayData">
-                            <param id="0" name="X">3</param>
+                            <param id="0" name="X">4</param>
                             <param id="1" name="Y">CurrentTrial</param>
                             <param id="2" name="Z">0</param>
                             <param id="3" name="Value">ActiveSide</param>
                         </action>
                         <action id="4" name="Set at XYZ" sid="903192960466119" type="ArrayData">
-                            <param id="0" name="X">4</param>
-                            <param id="1" name="Y">CurrentTrial</param>
-                            <param id="2" name="Z">0</param>
-                            <param id="3" name="Value">ActiveRight</param>
-                        </action>
-                        <action id="4" name="Set at XYZ" sid="464192378292755" type="ArrayData">
                             <param id="0" name="X">5</param>
                             <param id="1" name="Y">CurrentTrial</param>
                             <param id="2" name="Z">0</param>
-                            <param id="3" name="Value">RewardedTrial</param>
+                            <param id="3" name="Value">Protocol</param>
+                        </action>
+                        <action id="4" name="Set at XYZ" sid="995198574196630" type="ArrayData">
+                            <param id="0" name="X">6</param>
+                            <param id="1" name="Y">CurrentTrial</param>
+                            <param id="2" name="Z">0</param>
+                            <param id="3" name="Value">ProbabilityFlip</param>
+                        </action>
+                        <action id="4" name="Set at XYZ" sid="616191016358830" type="ArrayData">
+                            <param id="0" name="X">7</param>
+                            <param id="1" name="Y">CurrentTrial</param>
+                            <param id="2" name="Z">0</param>
+                            <param id="3" name="Value">ProbabilityReward</param>
+                        </action>
+                        <action id="4" name="Set at XYZ" sid="344720477733607" type="ArrayData">
+                            <param id="0" name="X">8</param>
+                            <param id="1" name="Y">CurrentTrial</param>
+                            <param id="2" name="Z">0</param>
+                            <param id="3" name="Value">RandomF</param>
+                        </action>
+                        <action id="4" name="Set at XYZ" sid="123039347539525" type="ArrayData">
+                            <param id="0" name="X">9</param>
+                            <param id="1" name="Y">CurrentTrial</param>
+                            <param id="2" name="Z">0</param>
+                            <param id="3" name="Value">RandomR</param>
                         </action>
                         <action id="4" name="Set at XYZ" sid="864364458596032" type="ArrayData">
-                            <param id="0" name="X">6</param>
+                            <param id="0" name="X">10</param>
                             <param id="1" name="Y">CurrentTrial</param>
                             <param id="2" name="Z">0</param>
                             <param id="3" name="Value">Score</param>
                         </action>
-                        <action id="4" name="Set at XYZ" sid="848883563596544" type="ArrayData">
-                            <param id="0" name="X">7</param>
+                        <action id="4" name="Set at XYZ" sid="126818310602629" type="ArrayData">
+                            <param id="0" name="X">11</param>
                             <param id="1" name="Y">CurrentTrial</param>
                             <param id="2" name="Z">0</param>
-                            <param id="3" name="Value">PlayerLocation</param>
+                            <param id="3" name="Value">MouseID</param>
+                        </action>
+                        <action id="4" name="Set at XYZ" sid="925398046550456" type="ArrayData">
+                            <param id="0" name="X">12</param>
+                            <param id="1" name="Y">CurrentTrial</param>
+                            <param id="2" name="Z">0</param>
+                            <param id="3" name="Value">Date</param>
                         </action>
                         <action id="-10" name="Add to" sid="509873045616446" type="System">
                             <param id="0" name="Variable">CurrentTrial</param>
@@ -899,18 +966,34 @@
                         </action>
                     </actions>
                 </event-block>
-                <event-block sid="759507332180946">
+                <event-block any="1" sid="759507332180946">
                     <conditions>
                         <condition id="0" name="On key pressed" sid="521342019662912" type="Keyboard">
                             <param id="0" name="Key">69 (E)</param>
                         </condition>
+                        <condition id="-14" name="Compare variable" sid="838331630872905" type="System">
+                            <param id="0" name="Variable">Countdown</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">-1</param>
+                        </condition>
                     </conditions>
                     <actions>
                         <action id="12" name="Download" sid="607072747961332" type="ArrayData">
-                            <param id="0" name="Filename">&quot;data.json&quot;</param>
+                            <param id="0" name="Filename">&quot;data&quot; &amp; Date &amp; &quot;.csv&quot;</param>
                         </action>
                         <action id="12" name="Download" sid="628462652137847" type="ArrayMovement">
-                            <param id="0" name="Filename">&quot;mouse.json&quot;</param>
+                            <param id="0" name="Filename">&quot;touch&quot; &amp; Date &amp; &quot;.csv&quot;</param>
+                        </action>
+                        <action disabled="1" id="0" name="Write file" sid="185019056389261" type="NWjs">
+                            <param id="0" name="Path">NWjs.UserFolder &amp; &quot;\Desktop\Human_Flip_Data\data&quot; &amp; Date &amp;&quot;.csv&quot; </param>
+                            <param id="1" name="Contents">ArrayData.AsJSON</param>
+                        </action>
+                        <action disabled="1" id="0" name="Write file" sid="227855331655025" type="NWjs">
+                            <param id="0" name="Path">NWjs.UserFolder &amp; &quot;\Desktop\Human_Flip_Data\movement&quot; &amp; Date &amp;&quot;.csv&quot; </param>
+                            <param id="1" name="Contents">ArrayMovement.AsJSON</param>
+                        </action>
+                        <action id="-2" name="Go to layout" sid="795967516993439" type="System">
+                            <param id="0" name="Layout">LayoutMenu</param>
                         </action>
                     </actions>
                 </event-block>
@@ -935,6 +1018,10 @@
                             <param id="2" name="X">random(175,310)</param>
                             <param id="3" name="Y">random(230,450)</param>
                         </action>
+                        <action id="-12" name="Set group active" sid="855320320360700" type="System">
+                            <param id="0" name="Group name">&quot;Shoot&quot;</param>
+                            <param id="1" name="State">1</param>
+                        </action>
                     </actions>
                 </event-block>
                 <event-block sid="578049580706672">
@@ -954,27 +1041,39 @@
                             <param id="2" name="X">random(965,1100)</param>
                             <param id="3" name="Y">random(230,450)</param>
                         </action>
-                    </actions>
-                </event-block>
-                <event-block sid="769549765798191">
-                    <conditions>
-                        <condition id="0" name="On function" sid="247006922770819" type="Function">
-                            <param id="0" name="Name">&quot;Shoot&quot;</param>
-                        </condition>
-                    </conditions>
-                    <actions>
-                        <action id="4" name="Set animation" sid="318581086717095" type="SpriteTrain">
-                            <param id="0" name="Animation">&quot;Shoot&quot;</param>
-                            <param id="1" name="From">1</param>
-                        </action>
-                        <action id="6" name="Set speed" sid="553191596840461" type="SpriteTrain">
-                            <param id="0" name="Speed">20</param>
-                        </action>
-                        <action id="3" name="Start" sid="288988437315326" type="SpriteTrain">
-                            <param id="0" name="From">1</param>
+                        <action id="-12" name="Set group active" sid="975048140741167" type="System">
+                            <param id="0" name="Group name">&quot;Shoot&quot;</param>
+                            <param id="1" name="State">1</param>
                         </action>
                     </actions>
                 </event-block>
+                <event-group description="" sid="374657372679410" title="Shoot">
+                    <sub-events>
+                        <event-block sid="769549765798191">
+                            <conditions>
+                                <condition id="0" name="On function" sid="247006922770819" type="Function">
+                                    <param id="0" name="Name">&quot;Shoot&quot;</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="4" name="Set animation" sid="318581086717095" type="SpriteTrain">
+                                    <param id="0" name="Animation">&quot;Shoot&quot;</param>
+                                    <param id="1" name="From">1</param>
+                                </action>
+                                <action id="6" name="Set speed" sid="553191596840461" type="SpriteTrain">
+                                    <param id="0" name="Speed">20</param>
+                                </action>
+                                <action id="3" name="Start" sid="288988437315326" type="SpriteTrain">
+                                    <param id="0" name="From">1</param>
+                                </action>
+                                <action id="-12" name="Set group active" sid="733364188850767" type="System">
+                                    <param id="0" name="Group name">&quot;Shoot&quot;</param>
+                                    <param id="1" name="State">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-group>
                 <event-block sid="135940705226549">
                     <conditions>
                         <condition id="4" name="On finished" sid="461257176727561" type="SpriteTrain">
@@ -1006,6 +1105,16 @@
                                 </action>
                                 <action id="-16" name="Wait" sid="412617284515718" type="System">
                                     <param id="0" name="Seconds">0</param>
+                                </action>
+                                <action id="-10" name="Add to" sid="804936033043958" type="System">
+                                    <param id="0" name="Variable">Score</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                                <action id="0" name="Set text" sid="572793725421348" type="TextScore">
+                                    <param id="0" name="Text">&quot;Score: &quot; &amp; Score</param>
+                                </action>
+                                <action id="-15" name="Set visible" sid="352380449433167" type="Sprite2">
+                                    <param id="0" name="Visibility">1</param>
                                 </action>
                             </actions>
                             <sub-events>
@@ -1096,6 +1205,9 @@
                     </conditions>
                     <actions>
                         <action id="-9" name="Destroy" sid="830700203878604" type="SpriteEnemyHit" />
+                        <action id="-15" name="Set visible" sid="494248348591109" type="Sprite2">
+                            <param id="0" name="Visibility">0</param>
+                        </action>
                     </actions>
                 </event-block>
             </sub-events>
