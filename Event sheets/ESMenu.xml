@@ -33,23 +33,11 @@
                 <condition id="-1" name="Every tick" sid="829596300374390" type="System" />
             </conditions>
             <actions>
-                <action id="-9" name="Set value" sid="213799964054994" type="System">
-                    <param id="0" name="Variable">ProbabilityFlip</param>
-                    <param id="1" name="Value">SliderFlipProbability.Value</param>
-                </action>
-                <action id="-9" name="Set value" sid="550897241340849" type="System">
-                    <param id="0" name="Variable">ProbabilityReward</param>
-                    <param id="1" name="Value">SliderRewardProbability.Value</param>
-                </action>
                 <action id="0" name="Set text" sid="174071058289836" type="TextPF">
-                    <param id="0" name="Text">&quot;Probability of Flip: &quot; &amp;  ProbabilityFlip &amp; &quot;%&quot;</param>
+                    <param id="0" name="Text">&quot;Probability of Flip: &quot; &amp;  SliderFlipProbability.Value &amp; &quot;%&quot;</param>
                 </action>
                 <action id="0" name="Set text" sid="488099257353229" type="TextPR">
-                    <param id="0" name="Text">&quot;Probability of Reward: &quot; &amp;  ProbabilityReward  &amp; &quot;%&quot;</param>
-                </action>
-                <action id="-9" name="Set value" sid="330103515659462" type="System">
-                    <param id="0" name="Variable">MouseID</param>
-                    <param id="1" name="Value">TextBox.Text</param>
+                    <param id="0" name="Text">&quot;Probability of Reward: &quot; &amp;  SliderRewardProbability.Value  &amp; &quot;%&quot;</param>
                 </action>
             </actions>
         </event-block>
@@ -76,9 +64,12 @@
                 <action id="1" name="Set visible" sid="398861314571519" type="SliderRewardProbability">
                     <param id="0" name="Visibility">0</param>
                 </action>
+                <action id="2" name="Set visible" sid="476912275253095" type="List">
+                    <param id="0" name="Visibility">1</param>
+                </action>
             </actions>
         </event-block>
-        <event-block sid="382662494440820">
+        <event-block disabled="1" sid="382662494440820">
             <conditions>
                 <condition id="18" name="On double-tap object" sid="828830241024568" type="Touch">
                     <param id="0" name="Object">SpriteButtonSettings</param>
@@ -86,9 +77,13 @@
             </conditions>
             <actions />
             <sub-events>
-                <event-block sid="885276500726608">
+                <event-block disabled="1" sid="885276500726608">
                     <conditions>
-                        <condition id="-9" name="Is visible" sid="920483332403908" type="TextPF" />
+                        <condition id="-14" name="Compare variable" sid="920483332403908" type="System">
+                            <param id="0" name="Variable">Settings</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">1</param>
+                        </condition>
                     </conditions>
                     <actions>
                         <action id="-15" name="Set visible" sid="774917459191096" type="TextPR">
@@ -103,28 +98,122 @@
                         <action id="1" name="Set visible" sid="168965506905648" type="SliderRewardProbability">
                             <param id="0" name="Visibility">0</param>
                         </action>
+                        <action id="2" name="Set visible" sid="117444976675873" type="List">
+                            <param id="0" name="Visibility">0</param>
+                        </action>
                     </actions>
                 </event-block>
-                <event-block sid="206564807932744">
+                <event-block disabled="1" sid="206564807932744">
                     <conditions>
-                        <condition id="-22" name="Else" sid="930806861891059" type="System" />
+                        <condition id="-14" name="Compare variable" sid="443772150199039" type="System">
+                            <param id="0" name="Variable">Settings</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
                     </conditions>
                     <actions>
-                        <action id="-15" name="Set visible" sid="452369324493256" type="TextPR">
+                        <action disabled="1" id="-15" name="Set visible" sid="452369324493256" type="TextPR">
                             <param id="0" name="Visibility">1</param>
                         </action>
-                        <action id="-15" name="Set visible" sid="339717564201264" type="TextPF">
+                        <action disabled="1" id="-15" name="Set visible" sid="339717564201264" type="TextPF">
                             <param id="0" name="Visibility">1</param>
                         </action>
-                        <action id="1" name="Set visible" sid="861250760309978" type="SliderFlipProbability">
+                        <action disabled="1" id="1" name="Set visible" sid="861250760309978" type="SliderFlipProbability">
                             <param id="0" name="Visibility">1</param>
                         </action>
-                        <action id="1" name="Set visible" sid="909194184896886" type="SliderRewardProbability">
+                        <action disabled="1" id="1" name="Set visible" sid="909194184896886" type="SliderRewardProbability">
                             <param id="0" name="Visibility">1</param>
+                        </action>
+                        <action id="2" name="Set visible" sid="586259304347610" type="List">
+                            <param id="0" name="Visibility">1</param>
+                        </action>
+                        <action id="-16" name="Wait" sid="328099483625421" type="System">
+                            <param id="0" name="Seconds">1.0</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="669720374447251" type="System">
+                            <param id="0" name="Variable">Settings</param>
+                            <param id="1" name="Value">1</param>
                         </action>
                     </actions>
                 </event-block>
             </sub-events>
+        </event-block>
+        <event-block sid="170494672349550">
+            <conditions>
+                <condition id="-3" name="On end of layout" sid="337386131354851" type="System" />
+            </conditions>
+            <actions>
+                <action disabled="1" id="-9" name="Set value" sid="457761807478126" type="System">
+                    <param id="0" name="Variable">ProbabilityFlip</param>
+                    <param id="1" name="Value">SliderFlipProbability.Value</param>
+                </action>
+                <action disabled="1" id="-9" name="Set value" sid="940067039247223" type="System">
+                    <param id="0" name="Variable">ProbabilityReward</param>
+                    <param id="1" name="Value">SliderRewardProbability.Value</param>
+                </action>
+                <action id="-9" name="Set value" sid="990834104396343" type="System">
+                    <param id="0" name="Variable">MouseID</param>
+                    <param id="1" name="Value">TextBox.Text</param>
+                </action>
+                <action id="-9" name="Set value" sid="349378838246197" type="System">
+                    <param id="0" name="Variable">Protocol</param>
+                    <param id="1" name="Value">List.SelectedIndex+1</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="669247423436815">
+            <conditions>
+                <condition id="4" name="Compare selected item text" sid="250122773717782" type="List">
+                    <param id="0" name="Text to compare">&quot;1&quot;</param>
+                    <param id="1" name="Case sensitivity">0</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Set value" sid="435146034154770" type="System">
+                    <param id="0" name="Variable">ProbabilityReward</param>
+                    <param id="1" name="Value">90</param>
+                </action>
+                <action id="-9" name="Set value" sid="951669115907752" type="System">
+                    <param id="0" name="Variable">ProbabilityFlip</param>
+                    <param id="1" name="Value">30</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="744708749873035">
+            <conditions>
+                <condition id="4" name="Compare selected item text" sid="682636624349873" type="List">
+                    <param id="0" name="Text to compare">&quot;2&quot;</param>
+                    <param id="1" name="Case sensitivity">0</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Set value" sid="988084183792421" type="System">
+                    <param id="0" name="Variable">ProbabilityFlip</param>
+                    <param id="1" name="Value">90</param>
+                </action>
+                <action id="-9" name="Set value" sid="372515548869448" type="System">
+                    <param id="0" name="Variable">ProbabilityReward</param>
+                    <param id="1" name="Value">90</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="324593322063803">
+            <conditions>
+                <condition id="4" name="Compare selected item text" sid="745179497817494" type="List">
+                    <param id="0" name="Text to compare">&quot;3&quot;</param>
+                    <param id="1" name="Case sensitivity">0</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Set value" sid="318623165909014" type="System">
+                    <param id="0" name="Variable">ProbabilityFlip</param>
+                    <param id="1" name="Value">30</param>
+                </action>
+                <action id="-9" name="Set value" sid="274192407050200" type="System">
+                    <param id="0" name="Variable">ProbabilityReward</param>
+                    <param id="1" name="Value">30</param>
+                </action>
+            </actions>
         </event-block>
     </events>
 </c2eventsheet>

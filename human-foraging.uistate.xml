@@ -10,10 +10,10 @@ you probably do not want to add any .uistate.xml files to the repository.-->
         <display name="HTML5" />
     </configurations>
     <open-tabs>
-        <layout order="0">LayoutFlip</layout>
+        <layout active="1" order="2">LayoutFlip</layout>
         <layout order="1">LayoutInter</layout>
-        <layout order="2">LayoutMenu</layout>
-        <event-sheet active="1" order="3">ESFlip</event-sheet>
+        <layout order="0">LayoutMenu</layout>
+        <event-sheet order="3">ESFlip</event-sheet>
         <event-sheet order="4">ESInter</event-sheet>
         <event-sheet order="5">ESMenu</event-sheet>
         <event-sheet order="6">Variables</event-sheet>
@@ -63,7 +63,7 @@ you probably do not want to add any .uistate.xml files to the repository.-->
         <folder expanded="1" path="animation-folder/GrassLeftDoor/" />
         <folder expanded="1" path="animation-folder/GrassRightDoor/" />
         <folder expanded="1" path="animation-folder/Sprite/" />
-        <folder expanded="1" path="animation-folder/Sprite2/" />
         <folder expanded="1" path="animation-folder/SpriteButtonSettings/" />
+        <folder expanded="1" path="animation-folder/SpriteScore/" />
     </folders-expanded>
 </c2uistate>

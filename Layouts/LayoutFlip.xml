@@ -794,7 +794,7 @@
                         <opacity>1</opacity>
                     </world>
                 </instance>
-                <instance type="Sprite2" uid="66">
+                <instance type="SpriteScore" uid="72">
                     <properties>
                         <initial-visibility>Visible</initial-visibility>
                         <initial-animation>Default</initial-animation>
@@ -804,11 +804,11 @@
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
                     <world>
-                        <x>642</x>
-                        <y>251</y>
+                        <x>641</x>
+                        <y>269</y>
                         <z>0</z>
-                        <width>84</width>
-                        <height>66</height>
+                        <width>284</width>
+                        <height>266</height>
                         <depth>0</depth>
                         <hotspotX>0.5</hotspotX>
                         <hotspotY>0.5</hotspotY>
