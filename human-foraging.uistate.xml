@@ -10,13 +10,11 @@ you probably do not want to add any .uistate.xml files to the repository.-->
         <display name="HTML5" />
     </configurations>
     <open-tabs>
-        <layout active="1" order="2">LayoutFlip</layout>
-        <layout order="1">LayoutInter</layout>
         <layout order="0">LayoutMenu</layout>
-        <event-sheet order="3">ESFlip</event-sheet>
-        <event-sheet order="4">ESInter</event-sheet>
-        <event-sheet order="5">ESMenu</event-sheet>
-        <event-sheet order="6">Variables</event-sheet>
+        <layout active="1" order="1">LayoutFlip</layout>
+        <event-sheet order="2">ESFlip</event-sheet>
+        <event-sheet order="3">ESMenu</event-sheet>
+        <event-sheet order="4">Variables</event-sheet>
     </open-tabs>
     <properties>
         <property expanded="1" name="About" />
@@ -28,10 +26,12 @@ you probably do not want to add any .uistate.xml files to the repository.-->
     <folders-expanded>
         <folder expanded="1" path="object-folder/" />
         <folder expanded="1" path="object-folder/Core Sprites/" />
-        <folder expanded="1" path="object-folder/System/" />
+        <folder expanded="0" path="object-folder/System/" />
         <folder expanded="1" path="object-folder/Menu/" />
         <folder expanded="1" path="object-folder/Cosmetics/" />
-        <folder expanded="1" path="object-folder/Cosmetics/Desert/" />
+        <folder expanded="0" path="object-folder/Cosmetics/Desert/" />
+        <folder expanded="1" path="object-folder/Cosmetics/Grass/" />
+        <folder expanded="1" path="object-folder/Cosmetics/*Basic/" />
         <folder expanded="1" path="layout-folder/" />
         <folder expanded="1" path="event-folder/" />
         <folder expanded="1" path="file-folder/" />
@@ -46,24 +46,27 @@ you probably do not want to add any .uistate.xml files to the repository.-->
         <folder expanded="1" path="animation-folder/RightTarget/" />
         <folder expanded="1" path="animation-folder/Rope/" />
         <folder expanded="1" path="animation-folder/SpriteWall/" />
+        <folder expanded="1" path="animation-folder/CoreBarrier/" />
         <folder expanded="1" path="animation-folder/StartButton/" />
-        <folder expanded="1" path="animation-folder/TouchButton/" />
+        <folder expanded="1" path="animation-folder/SpriteButtonSettings/" />
         <folder expanded="1" path="animation-folder/SpriteDesert1/" />
-        <folder expanded="1" path="animation-folder/SpriteTrain/" />
-        <folder expanded="1" path="animation-folder/SpriteTarget/" />
         <folder expanded="1" path="animation-folder/DesertBG6/" />
         <folder expanded="1" path="animation-folder/DesertBG2/" />
         <folder expanded="1" path="animation-folder/DesertBG5/" />
         <folder expanded="1" path="animation-folder/DesertBG3/" />
         <folder expanded="1" path="animation-folder/DesertBG1/" />
         <folder expanded="1" path="animation-folder/DesertBG4/" />
-        <folder expanded="1" path="animation-folder/SpriteTrackTurn/" />
-        <folder expanded="1" path="animation-folder/SpriteEnemyHit/" />
         <folder expanded="1" path="animation-folder/GrassBG1/" />
-        <folder expanded="1" path="animation-folder/GrassLeftDoor/" />
-        <folder expanded="1" path="animation-folder/GrassRightDoor/" />
-        <folder expanded="1" path="animation-folder/Sprite/" />
-        <folder expanded="1" path="animation-folder/SpriteButtonSettings/" />
+        <folder expanded="1" path="animation-folder/SpriteTrain/" />
+        <folder expanded="1" path="animation-folder/SpriteTarget/" />
+        <folder expanded="1" path="animation-folder/SpriteRails/" />
+        <folder expanded="1" path="animation-folder/SpriteBarrier/" />
+        <folder expanded="1" path="animation-folder/SpriteLeftDoor/" />
+        <folder expanded="1" path="animation-folder/SpriteRightDoor/" />
+        <folder expanded="1" path="animation-folder/SpriteDocks/" />
+        <folder expanded="1" path="animation-folder/SpriteEnemy/" />
+        <folder expanded="1" path="animation-folder/SpriteEnemyHit/" />
         <folder expanded="1" path="animation-folder/SpriteScore/" />
+        <folder expanded="1" path="animation-folder/SpriteBoulder/" />
     </folders-expanded>
 </c2uistate>
