@@ -1320,7 +1320,6 @@
     <music-folder />
     <files-folder>
         <file-folder name="Icons">
-            <file name="enemy3.png" />
             <file name="icon-16.png" />
             <file name="icon-32.png" />
             <file name="icon-114.png" />
