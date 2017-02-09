@@ -1,5 +1,5 @@
 ﻿CACHE MANIFEST
-#1486487787
+#1486636582
 data.js
 c2runtime.js
 jquery-2.1.1.min.js
@@ -38,6 +38,14 @@ images/spritescore-sheet1.png
 images/spritescore-sheet2.png
 images/spriteboulder-sheet0.png
 images/spriteboulder-sheet1.png
+images/spritefix-sheet0.png
+media/nonhit.ogg
+media/wheel.ogg
+media/wheelb.ogg
+media/shot2.ogg
+media/hit3.ogg
+media/hit4.ogg
+media/glassbell.ogg
 icon-16.png
 icon-32.png
 icon-114.png

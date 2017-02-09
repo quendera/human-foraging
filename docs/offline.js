@@ -1,5 +1,5 @@
 ﻿{
-	"version": 1486487787,
+	"version": 1486636582,
 	"fileList": [
 		"data.js",
 		"c2runtime.js",
@@ -39,6 +39,14 @@
 		"images/spritescore-sheet2.png",
 		"images/spriteboulder-sheet0.png",
 		"images/spriteboulder-sheet1.png",
+		"images/spritefix-sheet0.png",
+		"media/nonhit.ogg",
+		"media/wheel.ogg",
+		"media/wheelb.ogg",
+		"media/shot2.ogg",
+		"media/hit3.ogg",
+		"media/hit4.ogg",
+		"media/glassbell.ogg",
 		"icon-16.png",
 		"icon-32.png",
 		"icon-114.png",
