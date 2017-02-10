@@ -11,6 +11,7 @@
     <saved-with-version>24200</saved-with-version>
     <used-plugins>
         <plugin author="Scirra" id="Arr" version="1">Array</plugin>
+        <plugin author="Scirra" id="Audio" version="1">Audio</plugin>
         <plugin author="Scirra" id="Function" version="1">Function</plugin>
         <plugin author="Scirra" id="Keyboard" version="1">Keyboard</plugin>
         <plugin author="Scirra" id="List" version="1">List</plugin>
@@ -38,7 +39,7 @@
     </window-size>
     <pixel-rounding>0</pixel-rounding>
     <preview-effects>1</preview-effects>
-    <first-layout>LayoutMenu</first-layout>
+    <first-layout>Layout1</first-layout>
     <use-loader-layout>0</use-loader-layout>
     <configuration-settings>
         <prop name="Clear background">Yes</prop>
@@ -1286,6 +1287,51 @@
                         </animation>
                     </animation-folder>
                 </object-type>
+                <object-type name="SpriteFix" sid="124060933286334">
+                    <plugin id="Sprite" />
+                    <animation-folder>
+                        <animation framecount="1" loop="0" name="emptysparkle" pingpong="0" repeatcount="1" repeatto="0" sid="925073345485593" speed="5">
+                            <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                        </animation>
+                        <animation framecount="35" loop="0" name="sparkle" pingpong="0" repeatcount="1" repeatto="0" sid="874239494977339" speed="30">
+                            <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Tiago\Google Drive\HUMAN_FORAGING\Task\Assets\barrier\Sparkles\White\0001.png0001.png" />
+                            <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Tiago\Google Drive\HUMAN_FORAGING\Task\Assets\barrier\Sparkles\White\0001.png0002.png" />
+                            <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Tiago\Google Drive\HUMAN_FORAGING\Task\Assets\barrier\Sparkles\White\0001.png0003.png" />
+                            <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Tiago\Google Drive\HUMAN_FORAGING\Task\Assets\barrier\Sparkles\White\0001.png0004.png" />
+                            <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Tiago\Google Drive\HUMAN_FORAGING\Task\Assets\barrier\Sparkles\White\0001.png0005.png" />
+                            <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Tiago\Google Drive\HUMAN_FORAGING\Task\Assets\barrier\Sparkles\White\0001.png0006.png" />
+                            <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Tiago\Google Drive\HUMAN_FORAGING\Task\Assets\barrier\Sparkles\White\0001.png0007.png" />
+                            <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Tiago\Google Drive\HUMAN_FORAGING\Task\Assets\barrier\Sparkles\White\0001.png0008.png" />
+                            <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Tiago\Google Drive\HUMAN_FORAGING\Task\Assets\barrier\Sparkles\White\0001.png0009.png" />
+                            <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Tiago\Google Drive\HUMAN_FORAGING\Task\Assets\barrier\Sparkles\White\0001.png0010.png" />
+                            <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Tiago\Google Drive\HUMAN_FORAGING\Task\Assets\barrier\Sparkles\White\0001.png0011.png" />
+                            <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Tiago\Google Drive\HUMAN_FORAGING\Task\Assets\barrier\Sparkles\White\0001.png0012.png" />
+                            <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Tiago\Google Drive\HUMAN_FORAGING\Task\Assets\barrier\Sparkles\White\0001.png0013.png" />
+                            <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Tiago\Google Drive\HUMAN_FORAGING\Task\Assets\barrier\Sparkles\White\0001.png0014.png" />
+                            <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Tiago\Google Drive\HUMAN_FORAGING\Task\Assets\barrier\Sparkles\White\0001.png0015.png" />
+                            <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Tiago\Google Drive\HUMAN_FORAGING\Task\Assets\barrier\Sparkles\White\0001.png0016.png" />
+                            <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Tiago\Google Drive\HUMAN_FORAGING\Task\Assets\barrier\Sparkles\White\0001.png0017.png" />
+                            <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Tiago\Google Drive\HUMAN_FORAGING\Task\Assets\barrier\Sparkles\White\0001.png0018.png" />
+                            <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Tiago\Google Drive\HUMAN_FORAGING\Task\Assets\barrier\Sparkles\White\0001.png0019.png" />
+                            <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Tiago\Google Drive\HUMAN_FORAGING\Task\Assets\barrier\Sparkles\White\0001.png0020.png" />
+                            <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Tiago\Google Drive\HUMAN_FORAGING\Task\Assets\barrier\Sparkles\White\0001.png0021.png" />
+                            <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Tiago\Google Drive\HUMAN_FORAGING\Task\Assets\barrier\Sparkles\White\0001.png0022.png" />
+                            <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Tiago\Google Drive\HUMAN_FORAGING\Task\Assets\barrier\Sparkles\White\0001.png0023.png" />
+                            <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Tiago\Google Drive\HUMAN_FORAGING\Task\Assets\barrier\Sparkles\White\0001.png0024.png" />
+                            <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Tiago\Google Drive\HUMAN_FORAGING\Task\Assets\barrier\Sparkles\White\0001.png0025.png" />
+                            <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Tiago\Google Drive\HUMAN_FORAGING\Task\Assets\barrier\Sparkles\White\0001.png0026.png" />
+                            <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Tiago\Google Drive\HUMAN_FORAGING\Task\Assets\barrier\Sparkles\White\0001.png0027.png" />
+                            <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Tiago\Google Drive\HUMAN_FORAGING\Task\Assets\barrier\Sparkles\White\0001.png0028.png" />
+                            <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Tiago\Google Drive\HUMAN_FORAGING\Task\Assets\barrier\Sparkles\White\0001.png0029.png" />
+                            <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Tiago\Google Drive\HUMAN_FORAGING\Task\Assets\barrier\Sparkles\White\0001.png0030.png" />
+                            <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Tiago\Google Drive\HUMAN_FORAGING\Task\Assets\barrier\Sparkles\White\0001.png0031.png" />
+                            <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Tiago\Google Drive\HUMAN_FORAGING\Task\Assets\barrier\Sparkles\White\0001.png0032.png" />
+                            <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Tiago\Google Drive\HUMAN_FORAGING\Task\Assets\barrier\Sparkles\White\0001.png0033.png" />
+                            <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Tiago\Google Drive\HUMAN_FORAGING\Task\Assets\barrier\Sparkles\White\0001.png0034.png" />
+                            <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Tiago\Google Drive\HUMAN_FORAGING\Task\Assets\barrier\Sparkles\White\0001.png0035.png" />
+                        </animation>
+                    </animation-folder>
+                </object-type>
             </object-folder>
         </object-folder>
         <object-type name="TextScore" sid="399691233219027">
@@ -1294,15 +1340,21 @@
         <object-type name="TextTimer" sid="790863576401063">
             <plugin id="Text" />
         </object-type>
+        <object-type name="TextVersion" sid="660830571137046">
+            <plugin id="Text" />
+        </object-type>
+        <object-type name="Audio" sid="831211759662384">
+            <plugin id="Audio" />
+        </object-type>
     </object-folder>
     <families />
     <layout-folder>
+        <layout>Layout1.xml</layout>
         <layout>LayoutFlip.xml</layout>
-        <layout>LayoutMenu.xml</layout>
     </layout-folder>
     <event-folder>
         <event-sheet>ESFlip.xml</event-sheet>
-        <event-sheet>ESMenu.xml</event-sheet>
+        <event-sheet>ES1.xml</event-sheet>
         <event-sheet>Variables.xml</event-sheet>
     </event-folder>
     <global-instances>
@@ -1315,8 +1367,30 @@
         <global-instance type="Function" uid="5" />
         <global-instance type="Keyboard" uid="11" />
         <global-instance type="NWjs" uid="70" />
+        <global-instance type="Audio" uid="38">
+            <properties>
+                <timescale-audio>Off</timescale-audio>
+                <saveload>All</saveload>
+                <play-in-background>No</play-in-background>
+                <positioned-audio></positioned-audio>
+                <panning-model>HRTF</panning-model>
+                <distance-model>Inverse</distance-model>
+                <listener-z-height>600</listener-z-height>
+                <reference-distance>600</reference-distance>
+                <maximum-distance>10000</maximum-distance>
+                <roll-off-factor>1</roll-off-factor>
+            </properties>
+        </global-instance>
     </global-instances>
-    <sounds-folder />
+    <sounds-folder>
+        <file name="nonhit.ogg" />
+        <file name="wheel.ogg" />
+        <file name="wheelB.ogg" />
+        <file name="shot2.ogg" />
+        <file name="hit3.ogg" />
+        <file name="hit4.ogg" />
+        <file name="glassbell.ogg" />
+    </sounds-folder>
     <music-folder />
     <files-folder>
         <file-folder name="Icons">

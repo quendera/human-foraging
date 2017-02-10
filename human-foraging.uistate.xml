@@ -10,10 +10,10 @@ you probably do not want to add any .uistate.xml files to the repository.-->
         <display name="HTML5" />
     </configurations>
     <open-tabs>
-        <layout order="0">LayoutMenu</layout>
-        <layout active="1" order="1">LayoutFlip</layout>
-        <event-sheet order="2">ESFlip</event-sheet>
-        <event-sheet order="3">ESMenu</event-sheet>
+        <layout order="0">Layout1</layout>
+        <layout order="1">LayoutFlip</layout>
+        <event-sheet active="1" order="2">ESFlip</event-sheet>
+        <event-sheet order="3">ES1</event-sheet>
         <event-sheet order="4">Variables</event-sheet>
     </open-tabs>
     <properties>
@@ -34,7 +34,7 @@ you probably do not want to add any .uistate.xml files to the repository.-->
         <folder expanded="1" path="object-folder/Cosmetics/*Basic/" />
         <folder expanded="1" path="layout-folder/" />
         <folder expanded="1" path="event-folder/" />
-        <folder expanded="1" path="file-folder/" />
+        <folder expanded="0" path="file-folder/" />
         <folder expanded="1" path="sound-folder/" />
         <folder expanded="1" path="music-folder/" />
         <folder expanded="1" path="file-folder/Icons/" />
@@ -68,5 +68,6 @@ you probably do not want to add any .uistate.xml files to the repository.-->
         <folder expanded="1" path="animation-folder/SpriteEnemyHit/" />
         <folder expanded="1" path="animation-folder/SpriteScore/" />
         <folder expanded="1" path="animation-folder/SpriteBoulder/" />
+        <folder expanded="1" path="animation-folder/SpriteFix/" />
     </folders-expanded>
 </c2uistate>

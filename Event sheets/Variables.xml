@@ -8,10 +8,15 @@
         <variable constant="0" name="AnimationNr" sid="947529153342853" static="0" type="number">0</variable>
         <variable constant="0" name="AnimationSpeed" sid="374937523363521" static="0" type="number">0</variable>
         <variable constant="0" name="ArraySweep" sid="103653994625074" static="0" type="number">0</variable>
+        <variable constant="0" name="Barrier" sid="187465770969542" static="0" type="number">0</variable>
+        <variable constant="0" name="BarrierLaps" sid="627027650524920" static="0" type="number">0</variable>
+        <variable constant="0" name="BarrierSequence" sid="368617925427938" static="0" type="number">0</variable>
         <variable constant="0" name="BarrierSize" sid="563157790247169" static="0" type="number">0</variable>
         <variable constant="0" name="Countdown" sid="435490213873562" static="0" type="number">0</variable>
+        <variable constant="0" name="CountdownBarrier" sid="339529217709341" static="0" type="number">0</variable>
         <variable constant="0" name="CurrentTrial" sid="967567770451176" static="0" type="number">0</variable>
         <variable constant="0" name="Date" sid="909748833883779" static="0" type="number">0</variable>
+        <variable constant="0" name="go" sid="414429851862525" static="0" type="number">0</variable>
         <variable constant="0" name="Input" sid="962947546287654" static="0" type="number">0</variable>
         <variable constant="0" name="Iti" sid="826756764669071" static="0" type="number">0</variable>
         <variable constant="0" name="MouseID" sid="508868504594602" static="0" type="text"></variable>
