@@ -12,6 +12,7 @@
         <variable constant="0" name="BarrierLaps" sid="627027650524920" static="0" type="number">0</variable>
         <variable constant="0" name="BarrierSequence" sid="368617925427938" static="0" type="number">0</variable>
         <variable constant="0" name="BarrierSize" sid="563157790247169" static="0" type="number">0</variable>
+        <variable constant="0" name="BarrierTrigger" sid="803362397514618" static="0" type="number">0</variable>
         <variable constant="0" name="Countdown" sid="435490213873562" static="0" type="number">0</variable>
         <variable constant="0" name="CountdownBarrier" sid="339529217709341" static="0" type="number">0</variable>
         <variable constant="0" name="CurrentTrial" sid="967567770451176" static="0" type="number">0</variable>
@@ -29,7 +30,6 @@
         <variable constant="0" name="ProbabilityBarrier" sid="731346833531243" static="0" type="number">0</variable>
         <variable constant="0" name="ProbabilityFlip" sid="266461466369677" static="0" type="number">0</variable>
         <variable constant="0" name="ProbabilityReward" sid="731682283620142" static="0" type="number">0</variable>
-        <variable constant="0" name="RandomB" sid="803362397514618" static="0" type="number">0</variable>
         <variable constant="0" name="RandomF" sid="551120366874016" static="0" type="number">0</variable>
         <variable constant="0" name="RandomR" sid="107192454304983" static="0" type="number">0</variable>
         <variable constant="0" name="RewardedTrial" sid="211249720768764" static="0" type="number">0</variable>

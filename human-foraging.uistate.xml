@@ -69,5 +69,6 @@ you probably do not want to add any .uistate.xml files to the repository.-->
         <folder expanded="1" path="animation-folder/SpriteScore/" />
         <folder expanded="1" path="animation-folder/SpriteBoulder/" />
         <folder expanded="1" path="animation-folder/SpriteFix/" />
+        <folder expanded="1" path="animation-folder/Sprite/" />
     </folders-expanded>
 </c2uistate>
