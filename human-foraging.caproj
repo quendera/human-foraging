@@ -2,7 +2,7 @@
 <c2project>
     <name>human-foraging</name>
     <description>human_foraging</description>
-    <version>3.0</version>
+    <version>4.0</version>
     <author>Tiago Quendera</author>
     <author-email>tiagoquendera@gmail.com</author-email>
     <author-website>http://tiagoquendera.com</author-website>
@@ -12,6 +12,7 @@
     <used-plugins>
         <plugin author="Scirra" id="Arr" version="1">Array</plugin>
         <plugin author="Scirra" id="Audio" version="1">Audio</plugin>
+        <plugin author="Scirra" id="Dictionary" version="1">Dictionary</plugin>
         <plugin author="Scirra" id="Function" version="1">Function</plugin>
         <plugin author="Scirra" id="Keyboard" version="1">Keyboard</plugin>
         <plugin author="Scirra" id="List" version="1">List</plugin>
@@ -24,6 +25,7 @@
         <plugin author="Scirra" id="TiledBg" version="1">Tiled Background</plugin>
         <plugin author="Scirra" id="Touch" version="1">Touch</plugin>
         <plugin author="Scirra" id="sliderbar" version="1">Slider bar</plugin>
+        <plugin author="Wastrel" id="wastrel_switchcase" version="1">SwitchCase</plugin>
     </used-plugins>
     <used-behaviors>
         <behavior author="Scirra" id="Pin" version="1">Pin</behavior>
@@ -58,6 +60,16 @@
         <object-folder name="Core Sprites">
             <object-type name="Player" sid="223372691214160">
                 <plugin id="Sprite" />
+                <instance-variables>
+                    <instance-variable comment="0=L, 1=R" name="Docked" sid="324689743137992" type="number" />
+                    <instance-variable name="Location" sid="234519004691310" type="number" />
+                    <instance-variable name="Direction" sid="711953995049242" type="number" />
+                    <instance-variable name="Moving" sid="860500217497454" type="number" />
+                    <instance-variable name="Undock" sid="547019652542273" type="number" />
+                    <instance-variable name="CanMove" sid="839307184932427" type="number" />
+                    <instance-variable name="MovingL" sid="499794391031457" type="number" />
+                    <instance-variable name="MovingR" sid="735701048166433" type="number" />
+                </instance-variables>
                 <animation-folder>
                     <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="351695087532671" speed="5">
                         <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
@@ -66,6 +78,9 @@
             </object-type>
             <object-type name="LeftPort" sid="182035696694140">
                 <plugin id="Sprite" />
+                <instance-variables>
+                    <instance-variable name="Active" sid="104524681556387" type="number" />
+                </instance-variables>
                 <animation-folder>
                     <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="221596378412248" speed="5">
                         <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
@@ -74,6 +89,9 @@
             </object-type>
             <object-type name="RightPort" sid="548578594163083">
                 <plugin id="Sprite" />
+                <instance-variables>
+                    <instance-variable name="Active" sid="455532629008720" type="number" />
+                </instance-variables>
                 <animation-folder>
                     <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="395909674176034" speed="5">
                         <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
@@ -130,6 +148,10 @@
             </object-type>
             <object-type name="CoreBarrier" sid="309339316928997">
                 <plugin id="Sprite" />
+                <instance-variables>
+                    <instance-variable name="Trigger" sid="859760691479032" type="number" />
+                    <instance-variable name="ProbBarrier" sid="655139149842090" type="number" />
+                </instance-variables>
                 <animation-folder>
                     <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="982458261212212" speed="5">
                         <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
@@ -164,6 +186,9 @@
             </object-type>
             <object-type name="NWjs" sid="605178964382302">
                 <plugin id="NodeWebkit" />
+            </object-type>
+            <object-type global="1" name="ArrayAnimation" sid="218571390667092">
+                <plugin id="Arr" />
             </object-type>
         </object-folder>
         <object-folder name="Menu">
@@ -462,6 +487,12 @@
                 </object-type>
                 <object-type name="SpriteTarget" sid="250968990321075">
                     <plugin id="Sprite" />
+                    <instance-variables>
+                        <instance-variable name="MinXCoord" sid="519706057469845" type="number" />
+                        <instance-variable name="MaxXCoord" sid="298566601158954" type="number" />
+                        <instance-variable name="MinYCoord" sid="788347420831430" type="number" />
+                        <instance-variable name="MaxYCoord" sid="473952573251118" type="number" />
+                    </instance-variables>
                     <animation-folder>
                         <animation framecount="1" loop="0" name="Target" pingpong="0" repeatcount="1" repeatto="0" sid="286217212645627" speed="5">
                             <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Tiago\Google Drive\HUMAN_FORAGING\Task\Assets\Target_Corporation_logo.svg.png">
@@ -611,6 +642,20 @@
                                 </collision-poly>
                             </frame>
                         </animation>
+                        <animation framecount="1" loop="0" name="rocks" pingpong="0" repeatcount="1" repeatto="0" sid="722016847162720" speed="5">
+                            <frame duration="1" hotspotX="0.5" hotspotY="0.501" original-source="C:\Users\Tiago\Google Drive\HUMAN_FORAGING\Task\Assets\spr_boulder_0.png">
+                                <collision-poly>
+                                    <point x="0.472" y="0.474" />
+                                    <point x="0.5" y="0.465" />
+                                    <point x="0.524" y="0.478" />
+                                    <point x="0.536" y="0.5" />
+                                    <point x="0.53" y="0.529" />
+                                    <point x="0.5" y="0.537" />
+                                    <point x="0.473" y="0.526" />
+                                    <point x="0.462" y="0.5" />
+                                </collision-poly>
+                            </frame>
+                        </animation>
                     </animation-folder>
                 </object-type>
                 <object-type name="SpriteLeftDoor" sid="809621344333932">
@@ -703,7 +748,25 @@
                 </object-type>
                 <object-type name="SpriteEnemyHit" sid="731744740360865">
                     <plugin id="Sprite" />
+                    <instance-variables>
+                        <instance-variable name="Animation" sid="488753693175378" type="string" />
+                        <instance-variable name="AnimationStr" sid="227566726322594" type="number" />
+                    </instance-variables>
                     <animation-folder>
+                        <animation framecount="1" loop="0" name="none" pingpong="0" repeatcount="1" repeatto="0" sid="830541781915641" speed="10">
+                            <frame duration="5" hotspotX="0.5" hotspotY="0.508197" original-source="C:\Users\Tiago\Google Drive\HUMAN_FORAGING\Task\Assets\Door\holenorw.png">
+                                <collision-poly>
+                                    <point x="0.1625" y="0.159836" />
+                                    <point x="0.5" y="0.0696721" />
+                                    <point x="0.808333" y="0.188525" />
+                                    <point x="0.958333" y="0.5" />
+                                    <point x="0.879167" y="0.881148" />
+                                    <point x="0.5" y="0.991803" />
+                                    <point x="0.195833" y="0.807377" />
+                                    <point x="0" y="0.5" />
+                                </collision-poly>
+                            </frame>
+                        </animation>
                         <animation framecount="6" loop="0" name="right" pingpong="0" repeatcount="1" repeatto="0" sid="933214089342305" speed="10">
                             <frame duration="5" hotspotX="0.5" hotspotY="0.504098" original-source="C:\Users\Tiago\Google Drive\HUMAN_FORAGING\Task\Assets\Door\enemyhit1.png">
                                 <collision-poly>
@@ -849,20 +912,6 @@
                                     <point x="0.191667" y="0.188525" />
                                     <point x="0.5" y="0.0696721" />
                                     <point x="0.8375" y="0.159836" />
-                                </collision-poly>
-                            </frame>
-                        </animation>
-                        <animation framecount="1" loop="0" name="none" pingpong="0" repeatcount="1" repeatto="0" sid="830541781915641" speed="10">
-                            <frame duration="5" hotspotX="0.5" hotspotY="0.508197" original-source="C:\Users\Tiago\Google Drive\HUMAN_FORAGING\Task\Assets\Door\holenorw.png">
-                                <collision-poly>
-                                    <point x="0.1625" y="0.159836" />
-                                    <point x="0.5" y="0.0696721" />
-                                    <point x="0.808333" y="0.188525" />
-                                    <point x="0.958333" y="0.5" />
-                                    <point x="0.879167" y="0.881148" />
-                                    <point x="0.5" y="0.991803" />
-                                    <point x="0.195833" y="0.807377" />
-                                    <point x="0" y="0.5" />
                                 </collision-poly>
                             </frame>
                         </animation>
@@ -1019,6 +1068,20 @@
                 <object-type name="SpriteScore" sid="924213371674692">
                     <plugin id="Sprite" />
                     <animation-folder>
+                        <animation framecount="1" loop="0" name="go1" pingpong="0" repeatcount="1" repeatto="0" sid="597123845358910" speed="10">
+                            <frame duration="1" hotspotX="0.5" hotspotY="0.5">
+                                <collision-poly>
+                                    <point x="0.36413" y="0.403615" />
+                                    <point x="0.5" y="0.349398" />
+                                    <point x="0.657609" y="0.379518" />
+                                    <point x="0.695652" y="0.5" />
+                                    <point x="0.673913" y="0.638554" />
+                                    <point x="0.5" y="0.566265" />
+                                    <point x="0.36413" y="0.596385" />
+                                    <point x="0.282609" y="0.5" />
+                                </collision-poly>
+                            </frame>
+                        </animation>
                         <animation framecount="3" loop="0" name="go3" pingpong="0" repeatcount="1" repeatto="0" sid="723734177273969" speed="10">
                             <frame duration="1" hotspotX="0.5" hotspotY="0.5">
                                 <collision-poly>
@@ -1054,20 +1117,6 @@
                                     <point x="0.48913" y="0.427711" />
                                     <point x="0.353261" y="0.457831" />
                                     <point x="0.271739" y="0.361446" />
-                                </collision-poly>
-                            </frame>
-                        </animation>
-                        <animation framecount="1" loop="0" name="go1" pingpong="0" repeatcount="1" repeatto="0" sid="597123845358910" speed="10">
-                            <frame duration="1" hotspotX="0.5" hotspotY="0.5">
-                                <collision-poly>
-                                    <point x="0.36413" y="0.403615" />
-                                    <point x="0.5" y="0.349398" />
-                                    <point x="0.657609" y="0.379518" />
-                                    <point x="0.695652" y="0.5" />
-                                    <point x="0.673913" y="0.638554" />
-                                    <point x="0.5" y="0.566265" />
-                                    <point x="0.36413" y="0.596385" />
-                                    <point x="0.282609" y="0.5" />
                                 </collision-poly>
                             </frame>
                         </animation>
@@ -1282,8 +1331,46 @@
                                 </collision-poly>
                             </frame>
                         </animation>
-                        <animation framecount="1" loop="0" name="Ani2" pingpong="0" repeatcount="1" repeatto="0" sid="825063918979845" speed="5">
+                        <animation framecount="1" loop="0" name="empty" pingpong="0" repeatcount="1" repeatto="0" sid="825063918979845" speed="5">
                             <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                        </animation>
+                        <animation framecount="36" loop="0" name="sparkle" pingpong="0" repeatcount="1" repeatto="0" sid="868207933990782" speed="30">
+                            <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                            <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Tiago\Google Drive\HUMAN_FORAGING\Task\Assets\barrier\Sparkles\White\0001.png0001.png" />
+                            <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Tiago\Google Drive\HUMAN_FORAGING\Task\Assets\barrier\Sparkles\White\0001.png0002.png" />
+                            <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Tiago\Google Drive\HUMAN_FORAGING\Task\Assets\barrier\Sparkles\White\0001.png0003.png" />
+                            <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Tiago\Google Drive\HUMAN_FORAGING\Task\Assets\barrier\Sparkles\White\0001.png0004.png" />
+                            <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Tiago\Google Drive\HUMAN_FORAGING\Task\Assets\barrier\Sparkles\White\0001.png0005.png" />
+                            <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Tiago\Google Drive\HUMAN_FORAGING\Task\Assets\barrier\Sparkles\White\0001.png0006.png" />
+                            <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Tiago\Google Drive\HUMAN_FORAGING\Task\Assets\barrier\Sparkles\White\0001.png0007.png" />
+                            <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Tiago\Google Drive\HUMAN_FORAGING\Task\Assets\barrier\Sparkles\White\0001.png0008.png" />
+                            <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Tiago\Google Drive\HUMAN_FORAGING\Task\Assets\barrier\Sparkles\White\0001.png0009.png" />
+                            <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Tiago\Google Drive\HUMAN_FORAGING\Task\Assets\barrier\Sparkles\White\0001.png0010.png" />
+                            <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Tiago\Google Drive\HUMAN_FORAGING\Task\Assets\barrier\Sparkles\White\0001.png0011.png" />
+                            <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Tiago\Google Drive\HUMAN_FORAGING\Task\Assets\barrier\Sparkles\White\0001.png0012.png" />
+                            <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Tiago\Google Drive\HUMAN_FORAGING\Task\Assets\barrier\Sparkles\White\0001.png0013.png" />
+                            <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Tiago\Google Drive\HUMAN_FORAGING\Task\Assets\barrier\Sparkles\White\0001.png0014.png" />
+                            <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Tiago\Google Drive\HUMAN_FORAGING\Task\Assets\barrier\Sparkles\White\0001.png0015.png" />
+                            <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Tiago\Google Drive\HUMAN_FORAGING\Task\Assets\barrier\Sparkles\White\0001.png0016.png" />
+                            <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Tiago\Google Drive\HUMAN_FORAGING\Task\Assets\barrier\Sparkles\White\0001.png0017.png" />
+                            <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Tiago\Google Drive\HUMAN_FORAGING\Task\Assets\barrier\Sparkles\White\0001.png0018.png" />
+                            <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Tiago\Google Drive\HUMAN_FORAGING\Task\Assets\barrier\Sparkles\White\0001.png0019.png" />
+                            <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Tiago\Google Drive\HUMAN_FORAGING\Task\Assets\barrier\Sparkles\White\0001.png0020.png" />
+                            <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Tiago\Google Drive\HUMAN_FORAGING\Task\Assets\barrier\Sparkles\White\0001.png0021.png" />
+                            <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Tiago\Google Drive\HUMAN_FORAGING\Task\Assets\barrier\Sparkles\White\0001.png0022.png" />
+                            <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Tiago\Google Drive\HUMAN_FORAGING\Task\Assets\barrier\Sparkles\White\0001.png0023.png" />
+                            <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Tiago\Google Drive\HUMAN_FORAGING\Task\Assets\barrier\Sparkles\White\0001.png0024.png" />
+                            <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Tiago\Google Drive\HUMAN_FORAGING\Task\Assets\barrier\Sparkles\White\0001.png0025.png" />
+                            <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Tiago\Google Drive\HUMAN_FORAGING\Task\Assets\barrier\Sparkles\White\0001.png0026.png" />
+                            <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Tiago\Google Drive\HUMAN_FORAGING\Task\Assets\barrier\Sparkles\White\0001.png0027.png" />
+                            <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Tiago\Google Drive\HUMAN_FORAGING\Task\Assets\barrier\Sparkles\White\0001.png0028.png" />
+                            <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Tiago\Google Drive\HUMAN_FORAGING\Task\Assets\barrier\Sparkles\White\0001.png0029.png" />
+                            <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Tiago\Google Drive\HUMAN_FORAGING\Task\Assets\barrier\Sparkles\White\0001.png0030.png" />
+                            <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Tiago\Google Drive\HUMAN_FORAGING\Task\Assets\barrier\Sparkles\White\0001.png0031.png" />
+                            <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Tiago\Google Drive\HUMAN_FORAGING\Task\Assets\barrier\Sparkles\White\0001.png0032.png" />
+                            <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Tiago\Google Drive\HUMAN_FORAGING\Task\Assets\barrier\Sparkles\White\0001.png0033.png" />
+                            <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Tiago\Google Drive\HUMAN_FORAGING\Task\Assets\barrier\Sparkles\White\0001.png0034.png" />
+                            <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Tiago\Google Drive\HUMAN_FORAGING\Task\Assets\barrier\Sparkles\White\0001.png0035.png" />
                         </animation>
                     </animation-folder>
                 </object-type>
@@ -1354,6 +1441,15 @@
                 </animation>
             </animation-folder>
         </object-type>
+        <object-type global="1" name="DictBarrier" sid="482584308201094">
+            <plugin id="Dictionary" />
+        </object-type>
+        <object-type global="1" name="ArrayCoordinates" sid="819543278493461">
+            <plugin id="Arr" />
+        </object-type>
+        <object-type global="1" name="SwitchCase" sid="593073360457440">
+            <plugin id="wastrel_switchcase" />
+        </object-type>
     </object-folder>
     <families />
     <layout-folder>
@@ -1364,6 +1460,7 @@
         <event-sheet>ESFlip.xml</event-sheet>
         <event-sheet>ES1.xml</event-sheet>
         <event-sheet>Variables.xml</event-sheet>
+        <event-sheet>TestSheet.xml</event-sheet>
     </event-folder>
     <global-instances>
         <global-instance type="Touch" uid="3">
@@ -1397,7 +1494,7 @@
         <file name="shot2.ogg" />
         <file name="hit3.ogg" />
         <file name="hit4.ogg" />
-        <file name="glassbell.ogg" />
+        <file name="soundbuild.ogg" />
     </sounds-folder>
     <music-folder />
     <files-folder>

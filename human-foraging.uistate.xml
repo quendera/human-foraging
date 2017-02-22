@@ -12,9 +12,10 @@ you probably do not want to add any .uistate.xml files to the repository.-->
     <open-tabs>
         <layout order="0">Layout1</layout>
         <layout order="1">LayoutFlip</layout>
-        <event-sheet active="1" order="2">ESFlip</event-sheet>
-        <event-sheet order="3">ES1</event-sheet>
-        <event-sheet order="4">Variables</event-sheet>
+        <event-sheet order="2">ES1</event-sheet>
+        <event-sheet order="3">Variables</event-sheet>
+        <event-sheet order="4">ESFlip</event-sheet>
+        <event-sheet active="1" order="5">TestSheet</event-sheet>
     </open-tabs>
     <properties>
         <property expanded="1" name="About" />
@@ -26,11 +27,11 @@ you probably do not want to add any .uistate.xml files to the repository.-->
     <folders-expanded>
         <folder expanded="1" path="object-folder/" />
         <folder expanded="1" path="object-folder/Core Sprites/" />
-        <folder expanded="0" path="object-folder/System/" />
+        <folder expanded="1" path="object-folder/System/" />
         <folder expanded="1" path="object-folder/Menu/" />
         <folder expanded="1" path="object-folder/Cosmetics/" />
         <folder expanded="0" path="object-folder/Cosmetics/Desert/" />
-        <folder expanded="1" path="object-folder/Cosmetics/Grass/" />
+        <folder expanded="0" path="object-folder/Cosmetics/Grass/" />
         <folder expanded="1" path="object-folder/Cosmetics/*Basic/" />
         <folder expanded="1" path="layout-folder/" />
         <folder expanded="1" path="event-folder/" />

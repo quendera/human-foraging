@@ -2,7 +2,7 @@
 <c2layout>
     <name>LayoutFlip</name>
     <sid>8873350371196689</sid>
-    <event-sheet>ESFlip</event-sheet>
+    <event-sheet>TestSheet</event-sheet>
     <size>
         <width>1280</width>
         <height>720</height>
@@ -58,6 +58,10 @@
                         <initial-frame>0</initial-frame>
                         <collisions>Enabled</collisions>
                     </properties>
+                    <instance-variables>
+                        <Trigger>0</Trigger>
+                        <ProbBarrier>0</ProbBarrier>
+                    </instance-variables>
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
                     <world>
@@ -162,6 +166,10 @@
                         <initial-frame>0</initial-frame>
                         <collisions>Enabled</collisions>
                     </properties>
+                    <instance-variables>
+                        <Animation></Animation>
+                        <AnimationStr>0</AnimationStr>
+                    </instance-variables>
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
                     <world>
@@ -172,7 +180,7 @@
                         <height>100</height>
                         <depth>0</depth>
                         <hotspotX>0.5</hotspotX>
-                        <hotspotY>0.504098356</hotspotY>
+                        <hotspotY>0.508196712</hotspotY>
                         <angle>0</angle>
                         <opacity>1</opacity>
                     </world>
@@ -491,14 +499,17 @@
                         <initial-frame>0</initial-frame>
                         <collisions>Enabled</collisions>
                     </properties>
+                    <instance-variables>
+                        <Active>0</Active>
+                    </instance-variables>
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
                     <world>
                         <x>1030</x>
                         <y>650</y>
                         <z>0</z>
-                        <width>50</width>
-                        <height>50</height>
+                        <width>1</width>
+                        <height>1</height>
                         <depth>0</depth>
                         <hotspotX>0.5</hotspotX>
                         <hotspotY>0.5</hotspotY>
@@ -513,14 +524,17 @@
                         <initial-frame>0</initial-frame>
                         <collisions>Enabled</collisions>
                     </properties>
+                    <instance-variables>
+                        <Active>0</Active>
+                    </instance-variables>
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
                     <world>
                         <x>250</x>
                         <y>650</y>
                         <z>0</z>
-                        <width>50</width>
-                        <height>50</height>
+                        <width>1</width>
+                        <height>1</height>
                         <depth>0</depth>
                         <hotspotX>0.5</hotspotX>
                         <hotspotY>0.5</hotspotY>
@@ -576,14 +590,24 @@
                         <initial-frame>0</initial-frame>
                         <collisions>Enabled</collisions>
                     </properties>
+                    <instance-variables>
+                        <Docked>0</Docked>
+                        <Location>0</Location>
+                        <Direction>0</Direction>
+                        <Moving>0</Moving>
+                        <Undock>0</Undock>
+                        <CanMove>0</CanMove>
+                        <MovingL>0</MovingL>
+                        <MovingR>0</MovingR>
+                    </instance-variables>
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
                     <world>
                         <x>-198</x>
                         <y>184</y>
                         <z>0</z>
-                        <width>50</width>
-                        <height>50</height>
+                        <width>1</width>
+                        <height>1</height>
                         <depth>0</depth>
                         <hotspotX>0.5</hotspotX>
                         <hotspotY>0.5</hotspotY>
@@ -640,11 +664,17 @@
                 </instance>
                 <instance type="SpriteTarget" uid="18">
                     <properties>
-                        <initial-visibility>Visible</initial-visibility>
+                        <initial-visibility>Invisible</initial-visibility>
                         <initial-animation>Default</initial-animation>
                         <initial-frame>0</initial-frame>
                         <collisions>Enabled</collisions>
                     </properties>
+                    <instance-variables>
+                        <MinXCoord>0</MinXCoord>
+                        <MaxXCoord>0</MaxXCoord>
+                        <MinYCoord>0</MinYCoord>
+                        <MaxYCoord>0</MaxYCoord>
+                    </instance-variables>
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
                     <world>
@@ -847,7 +877,7 @@
                 <instance type="SpriteBoulder" uid="58">
                     <properties>
                         <initial-visibility>Visible</initial-visibility>
-                        <initial-animation>Ani2</initial-animation>
+                        <initial-animation>empty</initial-animation>
                         <initial-frame>0</initial-frame>
                         <collisions>Enabled</collisions>
                     </properties>
@@ -973,6 +1003,22 @@
                 <depth>1</depth>
             </properties>
         </instance>
+        <instance type="DictBarrier" uid="41" />
+        <instance type="ArrayAnimation" uid="42">
+            <properties>
+                <width>10</width>
+                <height>1</height>
+                <depth>1</depth>
+            </properties>
+        </instance>
+        <instance type="ArrayCoordinates" uid="43">
+            <properties>
+                <width>10</width>
+                <height>1</height>
+                <depth>1</depth>
+            </properties>
+        </instance>
+        <instance type="SwitchCase" uid="44" />
     </nonworld-instances>
     <effects />
 </c2layout>

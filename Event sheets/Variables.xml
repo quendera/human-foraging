@@ -3,8 +3,8 @@
     <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
     <name>Variables</name>
     <events>
+        <variable constant="0" name="ActiveNow" sid="938550064417063" static="0" type="number">0</variable>
         <variable constant="0" name="ActiveSide" sid="391297064606083" static="0" type="number">0</variable>
-        <variable constant="0" name="ActiveRight" sid="599579506805669" static="0" type="number">0</variable>
         <variable constant="0" name="AnimationNr" sid="947529153342853" static="0" type="number">0</variable>
         <variable constant="0" name="AnimationSpeed" sid="374937523363521" static="0" type="number">0</variable>
         <variable constant="0" name="ArraySweep" sid="103653994625074" static="0" type="number">0</variable>
@@ -12,11 +12,13 @@
         <variable constant="0" name="BarrierLaps" sid="627027650524920" static="0" type="number">0</variable>
         <variable constant="0" name="BarrierSequence" sid="368617925427938" static="0" type="number">0</variable>
         <variable constant="0" name="BarrierSize" sid="563157790247169" static="0" type="number">0</variable>
+        <variable constant="0" name="BarrierT1" sid="499590722411770" static="0" type="number">0</variable>
+        <variable constant="0" name="BarrierT2" sid="339529217709341" static="0" type="number">0</variable>
         <variable constant="0" name="BarrierTrigger" sid="803362397514618" static="0" type="number">0</variable>
         <variable constant="0" name="Countdown" sid="435490213873562" static="0" type="number">0</variable>
-        <variable constant="0" name="CountdownBarrier" sid="339529217709341" static="0" type="number">0</variable>
         <variable constant="0" name="CurrentTrial" sid="967567770451176" static="0" type="number">0</variable>
         <variable constant="0" name="Date" sid="909748833883779" static="0" type="number">0</variable>
+        <variable constant="0" name="Flip" sid="959694862225341" static="0" type="number">0</variable>
         <variable constant="0" name="go" sid="414429851862525" static="0" type="number">0</variable>
         <variable constant="0" name="Input" sid="962947546287654" static="0" type="number">0</variable>
         <variable constant="0" name="Iti" sid="826756764669071" static="0" type="number">0</variable>
@@ -42,9 +44,10 @@
         <variable constant="0" name="Shoot" sid="268196656742707" static="0" type="number">0</variable>
         <variable constant="0" name="StartingSide" sid="110127185991234" static="0" type="number">0</variable>
         <variable constant="0" name="Timer" sid="485632215821448" static="0" type="number">0</variable>
-        <variable constant="0" name="TouchMove" sid="395511294220124" static="0" type="number">0</variable>
+        <variable constant="0" name="TouchCounter" sid="395511294220124" static="0" type="number">0</variable>
         <variable constant="0" name="touchX" sid="683304503554293" static="0" type="number">0</variable>
         <variable constant="0" name="touchY" sid="970473297609113" static="0" type="number">0</variable>
         <variable constant="0" name="TravelSpeed" sid="850085497675331" static="0" type="number">0</variable>
+        <variable constant="0" name="UndockSpeed" sid="869044584736314" static="0" type="number">0</variable>
     </events>
 </c2eventsheet>
