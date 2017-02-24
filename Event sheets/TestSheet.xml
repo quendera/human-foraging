@@ -502,6 +502,10 @@
                         </condition>
                     </conditions>
                     <actions>
+                        <action id="-9" name="Set value" sid="741660733204301" type="System">
+                            <param id="0" name="Variable">Shoot</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
                         <action id="0" name="Play" sid="728843057934152" type="Audio">
                             <param id="0" name="Audio file">shot2</param>
                             <param id="2" name="Loop">0</param>
@@ -517,10 +521,6 @@
                         </action>
                         <action id="3" name="Start" sid="411763437214979" type="SpriteTrain">
                             <param id="0" name="From">1</param>
-                        </action>
-                        <action id="-9" name="Set value" sid="741660733204301" type="System">
-                            <param id="0" name="Variable">Shoot</param>
-                            <param id="1" name="Value">0</param>
                         </action>
                         <action id="-16" name="Wait" sid="148227395507888" type="System">
                             <param id="0" name="Seconds">Iti</param>
@@ -599,10 +599,6 @@
                         <action id="-15" name="Set visible" sid="462556013786634" type="SpriteScore">
                             <param id="0" name="Visibility">1</param>
                         </action>
-                        <action id="-9" name="Set value" sid="195364399480435" type="System">
-                            <param id="0" name="Variable">Shoot</param>
-                            <param id="1" name="Value">1</param>
-                        </action>
                     </actions>
                 </event-block>
                 <event-block sid="940628645132199">
@@ -635,6 +631,10 @@
                         <action id="-9" name="Destroy" sid="709377476184532" type="SpriteEnemyHit" />
                         <action id="-15" name="Set visible" sid="934903224180876" type="SpriteScore">
                             <param id="0" name="Visibility">0</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="195364399480435" type="System">
+                            <param id="0" name="Variable">Shoot</param>
+                            <param id="1" name="Value">1</param>
                         </action>
                         <action id="-10" name="Set value" sid="239543232623351" type="Player">
                             <param id="0" name="Instance variable">CanMove</param>
@@ -671,6 +671,10 @@
                         <action id="-15" name="Set visible" sid="587357925867104" type="SpriteScore">
                             <param id="0" name="Visibility">0</param>
                         </action>
+                        <action id="-9" name="Set value" sid="470343945008128" type="System">
+                            <param id="0" name="Variable">TravelSpeed</param>
+                            <param id="1" name="Value">Barrier=0 ?  3*Multiplier:3*Multiplier/BarrierSize</param>
+                        </action>
                     </actions>
                 </event-block>
             </sub-events>
@@ -685,12 +689,7 @@
                             <param id="2" name="Second value">0</param>
                         </condition>
                     </conditions>
-                    <actions>
-                        <action id="-9" name="Set value" sid="222590656541939" type="System">
-                            <param id="0" name="Variable">TravelSpeed</param>
-                            <param id="1" name="Value">3*Multiplier</param>
-                        </action>
-                    </actions>
+                    <actions />
                     <sub-events>
                         <event-block sid="625947783873439">
                             <conditions>
@@ -737,7 +736,7 @@
                             </conditions>
                             <actions>
                                 <action id="2" name="Call expression" sid="116094186042430" type="Function">
-                                    <param id="0" name="Expression">Barrier=1 ? Function.Call(&quot;Barrier&quot;, (Barrier-1), &quot;Ani1&quot;, &quot;sounddestroy&quot;, 640,365) : Function.Call(&quot;Barrier&quot;, (Barrier+1) , &quot;sparkle&quot;, &quot;soundbuild&quot;,640,640)</param>
+                                    <param id="0" name="Expression">Barrier=0 ? Function.Call(&quot;Barrier&quot;,&quot;Ani1&quot;, &quot;sounddestroy&quot;) : Function.Call(&quot;Barrier&quot;,&quot;sparkle&quot;, &quot;soundbuild&quot;)</param>
                                 </action>
                             </actions>
                         </event-block>
@@ -791,20 +790,20 @@
                             <param id="0" name="Instance variable">CanMove</param>
                             <param id="1" name="Value">0</param>
                         </action>
+                        <action id="-9" name="Set value" sid="489349279900749" type="System">
+                            <param id="0" name="Variable">Shoot</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
                         <action id="-9" name="Set value" sid="184513825398104" type="System">
                             <param id="0" name="Variable">Barrier</param>
-                            <param id="1" name="Value">Function.Param(0)</param>
+                            <param id="1" name="Value">Barrier=0</param>
                         </action>
-                        <action id="-9" name="Set value" sid="430911086408316" type="System">
-                            <param id="0" name="Variable">TravelSpeed</param>
-                            <param id="1" name="Value">Barrier=0 ?  (3*Multiplier):(3*Multiplier/BarrierSize)</param>
-                        </action>
-                        <action id="-3" name="Set position" sid="278249376565834" type="SpriteBoulder">
-                            <param id="0" name="X">Function.Param(3)</param>
-                            <param id="1" name="Y">Function.Param(4)</param>
+                        <action disabled="1" id="-3" name="Set position" sid="278249376565834" type="SpriteBoulder">
+                            <param id="0" name="X">640</param>
+                            <param id="1" name="Y">640</param>
                         </action>
                         <action id="4" name="Set animation" sid="474305437877726" type="SpriteBoulder">
-                            <param id="0" name="Animation">Function.Param(1)</param>
+                            <param id="0" name="Animation">Function.Param(0)</param>
                             <param id="1" name="From">1</param>
                         </action>
                         <action id="4" name="Set animation" sid="718746398419308" type="SpriteEnemy">
@@ -813,7 +812,7 @@
                         </action>
                         <action id="7" name="Play (by name)" sid="193872135854961" type="Audio">
                             <param id="0" name="Folder">0</param>
-                            <param id="1" name="Audio file name">Function.Param(2)</param>
+                            <param id="1" name="Audio file name">Function.Param(1)</param>
                             <param id="3" name="Loop">0</param>
                             <param id="4" name="Volume">0</param>
                             <param id="2" name="Tag (optional)">&quot;&quot;</param>
@@ -826,59 +825,18 @@
                             <param id="0" name="Variable">BarrierT2</param>
                             <param id="1" name="Value">Timer&gt;BarrierT2 ? 1000:BarrierT2</param>
                         </action>
-                        <action id="2" name="Call expression" sid="439230681029590" type="Function">
-                            <param id="0" name="Expression">Function.Call(&quot;Spawn&quot;, Player.Location, SpriteTarget.MinXCoord, SpriteTarget.MaxXCoord)</param>
-                        </action>
                     </actions>
                 </event-block>
                 <event-block sid="773217392667024">
                     <conditions>
-                        <condition id="4" name="On finished" sid="457155100357487" type="SpriteBoulder">
-                            <param id="0" name="Animation">&quot;sparkle&quot;</param>
-                        </condition>
+                        <condition id="5" name="On any finished" sid="457155100357487" type="SpriteBoulder" />
                     </conditions>
                     <actions>
-                        <action id="-15" name="Set visible" sid="266176268940995" type="SpriteBarrier">
-                            <param id="0" name="Visibility">0</param>
-                        </action>
-                        <action disabled="1" id="-15" name="Set visible" sid="716919857955892" type="SpriteRails">
-                            <param id="0" name="Visibility">1</param>
-                        </action>
-                        <action id="4" name="Set animation" sid="668601779883369" type="SpriteFix">
-                            <param id="0" name="Animation">&quot;emptysparkle&quot;</param>
+                        <action id="4" name="Set animation" sid="940375740458653" type="SpriteBarrier">
+                            <param id="0" name="Animation">Barrier=0 ? &quot;empty&quot;:&quot;rocks&quot;</param>
                             <param id="1" name="From">1</param>
                         </action>
                         <action id="4" name="Set animation" sid="522773620698112" type="SpriteEnemy">
-                            <param id="0" name="Animation">&quot;empty&quot;</param>
-                            <param id="1" name="From">1</param>
-                        </action>
-                    </actions>
-                </event-block>
-                <event-block sid="422377481638790">
-                    <conditions>
-                        <condition id="4" name="On finished" sid="223308236006421" type="SpriteBoulder">
-                            <param id="0" name="Animation">&quot;Ani1&quot;</param>
-                        </condition>
-                    </conditions>
-                    <actions>
-                        <action id="-15" name="Set visible" sid="931243219965420" type="SpriteBarrier">
-                            <param id="0" name="Visibility">1</param>
-                        </action>
-                        <action id="4" name="Set animation" sid="372017077758871" type="SpriteBarrier">
-                            <param id="0" name="Animation">&quot;rocks&quot;</param>
-                            <param id="1" name="From">1</param>
-                        </action>
-                        <action disabled="1" id="-15" name="Set visible" sid="540568798606839" type="SpriteRails">
-                            <param id="0" name="Visibility">0</param>
-                        </action>
-                        <action id="4" name="Set animation" sid="523639289020871" type="SpriteBoulder">
-                            <param id="0" name="Animation">&quot;Ani2&quot;</param>
-                            <param id="1" name="From">1</param>
-                        </action>
-                        <action id="-16" name="Wait" sid="366427646744486" type="System">
-                            <param id="0" name="Seconds">0.5</param>
-                        </action>
-                        <action id="4" name="Set animation" sid="666301902022755" type="SpriteEnemy">
                             <param id="0" name="Animation">&quot;empty&quot;</param>
                             <param id="1" name="From">1</param>
                         </action>
@@ -893,6 +851,10 @@
                     <actions>
                         <action id="-10" name="Set value" sid="955662612709145" type="Player">
                             <param id="0" name="Instance variable">CanMove</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="240553966002772" type="System">
+                            <param id="0" name="Variable">Shoot</param>
                             <param id="1" name="Value">1</param>
                         </action>
                         <action id="4" name="Set animation" sid="554063118020739" type="SpriteBoulder">

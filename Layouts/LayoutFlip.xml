@@ -313,8 +313,8 @@
                 </instance>
                 <instance type="SpriteBarrier" uid="49">
                     <properties>
-                        <initial-visibility>Invisible</initial-visibility>
-                        <initial-animation>Default</initial-animation>
+                        <initial-visibility>Visible</initial-visibility>
+                        <initial-animation>empty</initial-animation>
                         <initial-frame>0</initial-frame>
                         <collisions>Enabled</collisions>
                     </properties>
@@ -324,11 +324,11 @@
                         <x>640</x>
                         <y>655</y>
                         <z>0</z>
-                        <width>700</width>
-                        <height>136</height>
+                        <width>250</width>
+                        <height>250</height>
                         <depth>0</depth>
                         <hotspotX>0.5</hotspotX>
-                        <hotspotY>0.507352948</hotspotY>
+                        <hotspotY>0.5</hotspotY>
                         <angle>0</angle>
                         <opacity>1</opacity>
                     </world>
