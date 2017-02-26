@@ -18930,6 +18930,188 @@ cr.plugins_.Audio = function(runtime)
 }());
 ;
 ;
+cr.plugins_.Dictionary = function(runtime)
+{
+	this.runtime = runtime;
+};
+(function ()
+{
+	var pluginProto = cr.plugins_.Dictionary.prototype;
+	pluginProto.Type = function(plugin)
+	{
+		this.plugin = plugin;
+		this.runtime = plugin.runtime;
+	};
+	var typeProto = pluginProto.Type.prototype;
+	typeProto.onCreate = function()
+	{
+	};
+	pluginProto.Instance = function(type)
+	{
+		this.type = type;
+		this.runtime = type.runtime;
+	};
+	var instanceProto = pluginProto.Instance.prototype;
+	instanceProto.onCreate = function()
+	{
+		this.dictionary = {};
+		this.cur_key = "";		// current key in for-each loop
+		this.key_count = 0;
+	};
+	instanceProto.saveToJSON = function ()
+	{
+		return this.dictionary;
+	};
+	instanceProto.loadFromJSON = function (o)
+	{
+		this.dictionary = o;
+		this.key_count = 0;
+		for (var p in this.dictionary)
+		{
+			if (this.dictionary.hasOwnProperty(p))
+				this.key_count++;
+		}
+	};
+	function Cnds() {};
+	Cnds.prototype.CompareValue = function (key_, cmp_, value_)
+	{
+		return cr.do_cmp(this.dictionary[key_], cmp_, value_);
+	};
+	Cnds.prototype.ForEachKey = function ()
+	{
+		var current_event = this.runtime.getCurrentEventStack().current_event;
+		for (var p in this.dictionary)
+		{
+			if (this.dictionary.hasOwnProperty(p))
+			{
+				this.cur_key = p;
+				this.runtime.pushCopySol(current_event.solModifiers);
+				current_event.retrigger();
+				this.runtime.popSol(current_event.solModifiers);
+			}
+		}
+		this.cur_key = "";
+		return false;
+	};
+	Cnds.prototype.CompareCurrentValue = function (cmp_, value_)
+	{
+		return cr.do_cmp(this.dictionary[this.cur_key], cmp_, value_);
+	};
+	Cnds.prototype.HasKey = function (key_)
+	{
+		return this.dictionary.hasOwnProperty(key_);
+	};
+	Cnds.prototype.IsEmpty = function ()
+	{
+		return this.key_count === 0;
+	};
+	pluginProto.cnds = new Cnds();
+	function Acts() {};
+	Acts.prototype.AddKey = function (key_, value_)
+	{
+		if (!this.dictionary.hasOwnProperty(key_))
+			this.key_count++;
+		this.dictionary[key_] = value_;
+	};
+	Acts.prototype.SetKey = function (key_, value_)
+	{
+		if (this.dictionary.hasOwnProperty(key_))
+			this.dictionary[key_] = value_;
+	};
+	Acts.prototype.DeleteKey = function (key_)
+	{
+		if (this.dictionary.hasOwnProperty(key_))
+		{
+			delete this.dictionary[key_];
+			this.key_count--;
+		}
+	};
+	Acts.prototype.Clear = function ()
+	{
+		cr.wipe(this.dictionary);		// avoid garbaging
+		this.key_count = 0;
+	};
+	Acts.prototype.JSONLoad = function (json_)
+	{
+		var o;
+		try {
+			o = JSON.parse(json_);
+		}
+		catch(e) { return; }
+		if (!o["c2dictionary"])		// presumably not a c2dictionary object
+			return;
+		this.dictionary = o["data"];
+		this.key_count = 0;
+		for (var p in this.dictionary)
+		{
+			if (this.dictionary.hasOwnProperty(p))
+				this.key_count++;
+		}
+	};
+	Acts.prototype.JSONDownload = function (filename)
+	{
+		var a = document.createElement("a");
+		if (typeof a.download === "undefined")
+		{
+			var str = 'data:text/html,' + encodeURIComponent("<p><a download='data.json' href=\"data:application/json,"
+				+ encodeURIComponent(JSON.stringify({
+						"c2dictionary": true,
+						"data": this.dictionary
+					}))
+				+ "\">Download link</a></p>");
+			window.open(str);
+		}
+		else
+		{
+			var body = document.getElementsByTagName("body")[0];
+			a.textContent = filename;
+			a.href = "data:application/json," + encodeURIComponent(JSON.stringify({
+						"c2dictionary": true,
+						"data": this.dictionary
+					}));
+			a.download = filename;
+			body.appendChild(a);
+			var clickEvent = document.createEvent("MouseEvent");
+			clickEvent.initMouseEvent("click", true, true, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+			a.dispatchEvent(clickEvent);
+			body.removeChild(a);
+		}
+	};
+	pluginProto.acts = new Acts();
+	function Exps() {};
+	Exps.prototype.Get = function (ret, key_)
+	{
+		if (this.dictionary.hasOwnProperty(key_))
+			ret.set_any(this.dictionary[key_]);
+		else
+			ret.set_int(0);
+	};
+	Exps.prototype.KeyCount = function (ret)
+	{
+		ret.set_int(this.key_count);
+	};
+	Exps.prototype.CurrentKey = function (ret)
+	{
+		ret.set_string(this.cur_key);
+	};
+	Exps.prototype.CurrentValue = function (ret)
+	{
+		if (this.dictionary.hasOwnProperty(this.cur_key))
+			ret.set_any(this.dictionary[this.cur_key]);
+		else
+			ret.set_int(0);
+	};
+	Exps.prototype.AsJSON = function (ret)
+	{
+		ret.set_string(JSON.stringify({
+			"c2dictionary": true,
+			"data": this.dictionary
+		}));
+	};
+	pluginProto.exps = new Exps();
+}());
+;
+;
 cr.plugins_.Function = function(runtime)
 {
 	this.runtime = runtime;
@@ -22912,204 +23094,6 @@ cr.plugins_.TextBox = function(runtime)
 }());
 ;
 ;
-cr.plugins_.TiledBg = function(runtime)
-{
-	this.runtime = runtime;
-};
-(function ()
-{
-	var pluginProto = cr.plugins_.TiledBg.prototype;
-	pluginProto.Type = function(plugin)
-	{
-		this.plugin = plugin;
-		this.runtime = plugin.runtime;
-	};
-	var typeProto = pluginProto.Type.prototype;
-	typeProto.onCreate = function()
-	{
-		if (this.is_family)
-			return;
-		this.texture_img = new Image();
-		this.texture_img.cr_filesize = this.texture_filesize;
-		this.runtime.waitForImageLoad(this.texture_img, this.texture_file);
-		this.pattern = null;
-		this.webGL_texture = null;
-	};
-	typeProto.onLostWebGLContext = function ()
-	{
-		if (this.is_family)
-			return;
-		this.webGL_texture = null;
-	};
-	typeProto.onRestoreWebGLContext = function ()
-	{
-		if (this.is_family || !this.instances.length)
-			return;
-		if (!this.webGL_texture)
-		{
-			this.webGL_texture = this.runtime.glwrap.loadTexture(this.texture_img, true, this.runtime.linearSampling, this.texture_pixelformat);
-		}
-		var i, len;
-		for (i = 0, len = this.instances.length; i < len; i++)
-			this.instances[i].webGL_texture = this.webGL_texture;
-	};
-	typeProto.loadTextures = function ()
-	{
-		if (this.is_family || this.webGL_texture || !this.runtime.glwrap)
-			return;
-		this.webGL_texture = this.runtime.glwrap.loadTexture(this.texture_img, true, this.runtime.linearSampling, this.texture_pixelformat);
-	};
-	typeProto.unloadTextures = function ()
-	{
-		if (this.is_family || this.instances.length || !this.webGL_texture)
-			return;
-		this.runtime.glwrap.deleteTexture(this.webGL_texture);
-		this.webGL_texture = null;
-	};
-	typeProto.preloadCanvas2D = function (ctx)
-	{
-		ctx.drawImage(this.texture_img, 0, 0);
-	};
-	pluginProto.Instance = function(type)
-	{
-		this.type = type;
-		this.runtime = type.runtime;
-	};
-	var instanceProto = pluginProto.Instance.prototype;
-	instanceProto.onCreate = function()
-	{
-		this.visible = (this.properties[0] === 0);							// 0=visible, 1=invisible
-		this.rcTex = new cr.rect(0, 0, 0, 0);
-		this.has_own_texture = false;										// true if a texture loaded in from URL
-		this.texture_img = this.type.texture_img;
-		if (this.runtime.glwrap)
-		{
-			this.type.loadTextures();
-			this.webGL_texture = this.type.webGL_texture;
-		}
-		else
-		{
-			if (!this.type.pattern)
-				this.type.pattern = this.runtime.ctx.createPattern(this.type.texture_img, "repeat");
-			this.pattern = this.type.pattern;
-		}
-	};
-	instanceProto.afterLoad = function ()
-	{
-		this.has_own_texture = false;
-		this.texture_img = this.type.texture_img;
-	};
-	instanceProto.onDestroy = function ()
-	{
-		if (this.runtime.glwrap && this.has_own_texture && this.webGL_texture)
-		{
-			this.runtime.glwrap.deleteTexture(this.webGL_texture);
-			this.webGL_texture = null;
-		}
-	};
-	instanceProto.draw = function(ctx)
-	{
-		ctx.globalAlpha = this.opacity;
-		ctx.save();
-		ctx.fillStyle = this.pattern;
-		var myx = this.x;
-		var myy = this.y;
-		if (this.runtime.pixel_rounding)
-		{
-			myx = Math.round(myx);
-			myy = Math.round(myy);
-		}
-		var drawX = -(this.hotspotX * this.width);
-		var drawY = -(this.hotspotY * this.height);
-		var offX = drawX % this.texture_img.width;
-		var offY = drawY % this.texture_img.height;
-		if (offX < 0)
-			offX += this.texture_img.width;
-		if (offY < 0)
-			offY += this.texture_img.height;
-		ctx.translate(myx, myy);
-		ctx.rotate(this.angle);
-		ctx.translate(offX, offY);
-		ctx.fillRect(drawX - offX,
-					 drawY - offY,
-					 this.width,
-					 this.height);
-		ctx.restore();
-	};
-	instanceProto.drawGL_earlyZPass = function(glw)
-	{
-		this.drawGL(glw);
-	};
-	instanceProto.drawGL = function(glw)
-	{
-		glw.setTexture(this.webGL_texture);
-		glw.setOpacity(this.opacity);
-		var rcTex = this.rcTex;
-		rcTex.right = this.width / this.texture_img.width;
-		rcTex.bottom = this.height / this.texture_img.height;
-		var q = this.bquad;
-		if (this.runtime.pixel_rounding)
-		{
-			var ox = Math.round(this.x) - this.x;
-			var oy = Math.round(this.y) - this.y;
-			glw.quadTex(q.tlx + ox, q.tly + oy, q.trx + ox, q.try_ + oy, q.brx + ox, q.bry + oy, q.blx + ox, q.bly + oy, rcTex);
-		}
-		else
-			glw.quadTex(q.tlx, q.tly, q.trx, q.try_, q.brx, q.bry, q.blx, q.bly, rcTex);
-	};
-	function Cnds() {};
-	Cnds.prototype.OnURLLoaded = function ()
-	{
-		return true;
-	};
-	pluginProto.cnds = new Cnds();
-	function Acts() {};
-	Acts.prototype.SetEffect = function (effect)
-	{
-		this.blend_mode = effect;
-		this.compositeOp = cr.effectToCompositeOp(effect);
-		cr.setGLBlend(this, effect, this.runtime.gl);
-		this.runtime.redraw = true;
-	};
-	Acts.prototype.LoadURL = function (url_, crossOrigin_)
-	{
-		var img = new Image();
-		var self = this;
-		img.onload = function ()
-		{
-			self.texture_img = img;
-			if (self.runtime.glwrap)
-			{
-				if (self.has_own_texture && self.webGL_texture)
-					self.runtime.glwrap.deleteTexture(self.webGL_texture);
-				self.webGL_texture = self.runtime.glwrap.loadTexture(img, true, self.runtime.linearSampling);
-			}
-			else
-			{
-				self.pattern = self.runtime.ctx.createPattern(img, "repeat");
-			}
-			self.has_own_texture = true;
-			self.runtime.redraw = true;
-			self.runtime.trigger(cr.plugins_.TiledBg.prototype.cnds.OnURLLoaded, self);
-		};
-		if (url_.substr(0, 5) !== "data:" && crossOrigin_ === 0)
-			img.crossOrigin = "anonymous";
-		this.runtime.setImageSrc(img, url_);
-	};
-	pluginProto.acts = new Acts();
-	function Exps() {};
-	Exps.prototype.ImageWidth = function (ret)
-	{
-		ret.set_float(this.texture_img.width);
-	};
-	Exps.prototype.ImageHeight = function (ret)
-	{
-		ret.set_float(this.texture_img.height);
-	};
-	pluginProto.exps = new Exps();
-}());
-;
-;
 cr.plugins_.Touch = function(runtime)
 {
 	this.runtime = runtime;
@@ -24546,6 +24530,181 @@ cr.plugins_.sliderbar = function(runtime)
 }());
 ;
 ;
+cr.plugins_.wastrel_switchcase = function(runtime)
+{
+	this.runtime = runtime;
+};
+(function ()
+{
+	var pluginProto = cr.plugins_.wastrel_switchcase.prototype;
+	pluginProto.Type = function(plugin)
+	{
+		this.plugin = plugin;
+		this.runtime = plugin.runtime;
+	};
+	var typeProto = pluginProto.Type.prototype;
+	typeProto.onCreate = function()
+	{
+	};
+	pluginProto.Instance = function(type)
+	{
+		this.type = type;
+		this.runtime = type.runtime;
+	};
+	var instanceProto = pluginProto.Instance.prototype;
+	instanceProto.onCreate = function()
+	{
+		this.switchVariable = null;
+		this.caseBreak = false; //true if break is called; false if not
+	};
+	instanceProto.draw = function(ctx)
+	{
+	};
+	pluginProto.cnds = {};
+	var cnds = pluginProto.cnds;
+	cnds.Switch = function (switchVariable)
+	{
+		this.switchVariable = switchVariable;
+		this.caseBreak = false;
+		return true;
+	};
+	cnds.Case = function (caseValue)
+	{
+		if (!this.caseBreak) {
+			if (this.switchVariable == caseValue) {
+				return true;
+			}
+			else {
+				return false;
+			}
+		}
+		else {
+			return false;
+		}
+	};
+	cnds.CaseRange = function (startValue, endValue)
+	{
+		if (!this.caseBreak) {
+			if (this.switchVariable >= startValue && this.switchVariable <= endValue) {
+				return true;
+			}
+			else {
+				return false;
+			}
+		}
+		else {
+			return false;
+		}
+	};
+	cnds.CaseContains = function (searchString)
+	{
+		if (!this.caseBreak) {
+			if (this.switchVariable.indexOf(searchString) != -1) {
+				return true;
+			}
+			else {
+				return false;
+			}
+		}
+		else {
+			return false;
+		}
+	};
+	cnds.CaseList = function (valueList)
+	{
+		if (!this.caseBreak) {
+			var listIndex = 0;
+			var listArray = new Array();
+			listArray = valueList.split(",");
+			for (listIndex in listArray) {
+				if (this.switchVariable == listArray[listIndex]) {
+					return true;
+				}
+			}
+			return false;
+		}
+		else {
+			return false;
+		}
+	};
+	cnds.CaseCompare = function (compareOperator, caseValue)
+	{
+		if (!this.caseBreak) {
+			switch(compareOperator) {
+				case 0: // =
+					if (this.switchVariable == caseValue) {
+						return true;
+					}
+					else {
+						return false;
+					}
+					break;
+				case 1: // !=
+					if (this.switchVariable != caseValue) {
+						return true;
+					}
+					else {
+						return false;
+					}
+					break;
+				case 2: // <
+					if (this.switchVariable < caseValue) {
+						return true;
+					}
+					else {
+						return false;
+					}
+					break;
+				case 3: // <=
+					if (this.switchVariable <= caseValue) {
+						return true;
+					}
+					else {
+						return false;
+					}
+					break;
+				case 4: // >
+					if (this.switchVariable > caseValue) {
+						return true;
+					}
+					else {
+						return false;
+					}
+					break;
+				case 5: // >=
+					if (this.switchVariable >= caseValue) {
+						return true;
+					}
+					else {
+						return false;
+					}
+					break;
+			}
+		}
+		else {
+			return false;
+		}
+	};
+	cnds.Default = function ()
+	{
+		if (!this.caseBreak) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	};
+	pluginProto.acts = {};
+	var acts = pluginProto.acts;
+	acts.CaseBreak = function (myparam)
+	{
+		this.caseBreak = true;
+	};
+	pluginProto.exps = {};
+	var exps = pluginProto.exps;
+}());
+;
+;
 cr.behaviors.Pin = function(runtime)
 {
 	this.runtime = runtime;
@@ -24756,81 +24915,88 @@ cr.behaviors.solid = function(runtime)
 	behaviorProto.acts = new Acts();
 }());
 cr.getObjectRefTable = function () { return [
-	cr.plugins_.Function,
-	cr.plugins_.NodeWebkit,
-	cr.plugins_.Keyboard,
-	cr.plugins_.Mouse,
-	cr.plugins_.List,
-	cr.plugins_.TextBox,
-	cr.plugins_.Touch,
-	cr.plugins_.TiledBg,
-	cr.plugins_.sliderbar,
-	cr.plugins_.Sprite,
-	cr.plugins_.Rex_Date,
-	cr.plugins_.Text,
 	cr.plugins_.Arr,
 	cr.plugins_.Audio,
-	cr.behaviors.solid,
+	cr.plugins_.Dictionary,
+	cr.plugins_.Function,
+	cr.plugins_.Keyboard,
+	cr.plugins_.NodeWebkit,
+	cr.plugins_.List,
+	cr.plugins_.Mouse,
+	cr.plugins_.Sprite,
+	cr.plugins_.TextBox,
+	cr.plugins_.Touch,
+	cr.plugins_.sliderbar,
+	cr.plugins_.Rex_Date,
+	cr.plugins_.Text,
+	cr.plugins_.wastrel_switchcase,
 	cr.behaviors.Pin,
-	cr.system_object.prototype.cnds.OnLayoutStart,
-	cr.system_object.prototype.acts.SetVar,
-	cr.system_object.prototype.exps.random,
-	cr.plugins_.Rex_Date.prototype.exps.UnixTimestamp,
-	cr.plugins_.Sprite.prototype.acts.Destroy,
-	cr.system_object.prototype.acts.CreateObject,
-	cr.plugins_.Sprite.prototype.exps.X,
-	cr.plugins_.Sprite.prototype.exps.Y,
-	cr.plugins_.Sprite.prototype.acts.SetVisible,
-	cr.plugins_.Sprite.prototype.acts.SetSize,
-	cr.plugins_.Sprite.prototype.acts.MoveToTop,
-	cr.plugins_.Mouse.prototype.acts.SetCursor,
-	cr.plugins_.Arr.prototype.acts.Clear,
-	cr.plugins_.Text.prototype.acts.SetText,
-	cr.system_object.prototype.cnds.CompareVar,
-	cr.system_object.prototype.cnds.Every,
-	cr.system_object.prototype.acts.SubVar,
-	cr.system_object.prototype.cnds.IsGroupActive,
-	cr.system_object.prototype.acts.Wait,
-	cr.system_object.prototype.cnds.Compare,
-	cr.plugins_.Sprite.prototype.exps.Count,
-	cr.system_object.prototype.cnds.EveryTick,
-	cr.system_object.prototype.acts.AddVar,
-	cr.system_object.prototype.exps.dt,
-	cr.plugins_.Touch.prototype.exps.X,
-	cr.plugins_.Touch.prototype.exps.Y,
-	cr.system_object.prototype.acts.SetGroupActive,
-	cr.plugins_.Sprite.prototype.cnds.OnCreated,
-	cr.plugins_.Sprite.prototype.cnds.OnDestroyed,
-	cr.plugins_.Sprite.prototype.acts.SetPos,
-	cr.plugins_.Sprite.prototype.acts.MoveAtAngle,
-	cr.system_object.prototype.cnds.TriggerOnce,
-	cr.plugins_.Sprite.prototype.acts.SetAnim,
-	cr.plugins_.Function.prototype.acts.CallFunction,
-	cr.plugins_.Sprite.prototype.acts.SetPosToObject,
-	cr.plugins_.Touch.prototype.cnds.OnTapGestureObject,
-	cr.plugins_.Sprite.prototype.cnds.IsOverlapping,
-	cr.system_object.prototype.cnds.Else,
-	cr.plugins_.Touch.prototype.cnds.OnTapGesture,
-	cr.plugins_.Arr.prototype.acts.SetSize,
-	cr.plugins_.Arr.prototype.acts.SetXYZ,
-	cr.plugins_.Function.prototype.cnds.OnFunction,
-	cr.plugins_.Keyboard.prototype.cnds.OnKey,
-	cr.plugins_.Arr.prototype.acts.JSONDownload,
-	cr.system_object.prototype.acts.GoToLayout,
-	cr.plugins_.Audio.prototype.acts.Play,
-	cr.plugins_.Sprite.prototype.cnds.OnAnimFinished,
-	cr.plugins_.Sprite.prototype.acts.SetAnimSpeed,
-	cr.plugins_.Sprite.prototype.acts.StartAnim,
-	cr.system_object.prototype.exps["int"],
-	cr.plugins_.Sprite.prototype.cnds.OnAnyAnimFinished,
+	cr.behaviors.solid,
 	cr.plugins_.Touch.prototype.cnds.OnTouchObject,
+	cr.system_object.prototype.acts.GoToLayout,
+	cr.system_object.prototype.cnds.EveryTick,
+	cr.plugins_.Text.prototype.acts.SetText,
 	cr.plugins_.sliderbar.prototype.exps.Value,
+	cr.system_object.prototype.cnds.OnLayoutStart,
 	cr.plugins_.Text.prototype.acts.SetVisible,
 	cr.plugins_.sliderbar.prototype.acts.SetVisible,
 	cr.plugins_.List.prototype.acts.SetVisible,
+	cr.system_object.prototype.acts.SetVar,
+	cr.plugins_.Sprite.prototype.acts.SetAnim,
 	cr.plugins_.Touch.prototype.cnds.OnDoubleTapGestureObject,
+	cr.system_object.prototype.cnds.CompareVar,
+	cr.system_object.prototype.acts.Wait,
+	cr.plugins_.List.prototype.cnds.CompareSelectedText,
 	cr.system_object.prototype.cnds.OnLayoutEnd,
 	cr.plugins_.TextBox.prototype.exps.Text,
-	cr.plugins_.List.prototype.exps.SelectedIndex,
-	cr.plugins_.List.prototype.cnds.CompareSelectedText
+	cr.system_object.prototype.cnds.IsGroupActive,
+	cr.plugins_.Mouse.prototype.acts.SetCursor,
+	cr.plugins_.Sprite.prototype.acts.Destroy,
+	cr.system_object.prototype.exps["int"],
+	cr.system_object.prototype.exps.random,
+	cr.plugins_.Rex_Date.prototype.exps.UnixTimestamp,
+	cr.system_object.prototype.acts.CreateObject,
+	cr.plugins_.Sprite.prototype.exps.X,
+	cr.plugins_.Sprite.prototype.exps.Y,
+	cr.plugins_.Sprite.prototype.acts.SetInstanceVar,
+	cr.plugins_.Sprite.prototype.acts.SetVisible,
+	cr.plugins_.Sprite.prototype.acts.SetSize,
+	cr.plugins_.Sprite.prototype.acts.MoveToTop,
+	cr.plugins_.Arr.prototype.acts.Clear,
+	cr.plugins_.Arr.prototype.acts.SetSize,
+	cr.plugins_.Arr.prototype.acts.SetXYZ,
+	cr.plugins_.Sprite.prototype.acts.SetPos,
+	cr.plugins_.wastrel_switchcase.prototype.cnds.Switch,
+	cr.plugins_.wastrel_switchcase.prototype.cnds.Case,
+	cr.plugins_.Function.prototype.acts.CallExpression,
+	cr.plugins_.Function.prototype.exps.Call,
+	cr.plugins_.Function.prototype.cnds.OnFunction,
+	cr.plugins_.Function.prototype.exps.Param,
+	cr.system_object.prototype.cnds.Every,
+	cr.system_object.prototype.acts.AddVar,
+	cr.system_object.prototype.exps.dt,
+	cr.plugins_.Sprite.prototype.acts.SubInstanceVar,
+	cr.plugins_.Sprite.prototype.acts.SetWidth,
+	cr.plugins_.Touch.prototype.exps.X,
+	cr.plugins_.Touch.prototype.exps.Y,
+	cr.system_object.prototype.cnds.Compare,
+	cr.plugins_.Sprite.prototype.exps.Count,
+	cr.plugins_.Arr.prototype.exps.At,
+	cr.plugins_.Sprite.prototype.cnds.OnCreated,
+	cr.plugins_.Sprite.prototype.cnds.IsOverlapping,
+	cr.system_object.prototype.cnds.Else,
+	cr.plugins_.Touch.prototype.cnds.OnTapGestureObject,
+	cr.plugins_.Function.prototype.acts.CallFunction,
+	cr.plugins_.Audio.prototype.acts.Play,
+	cr.plugins_.Sprite.prototype.acts.SetAnimSpeed,
+	cr.plugins_.Sprite.prototype.acts.StartAnim,
+	cr.plugins_.Sprite.prototype.cnds.OnAnimFinished,
+	cr.system_object.prototype.exps.choose,
+	cr.plugins_.Sprite.prototype.cnds.OnAnyAnimFinished,
+	cr.plugins_.Sprite.prototype.cnds.CompareInstanceVar,
+	cr.plugins_.Sprite.prototype.acts.MoveAtAngle,
+	cr.system_object.prototype.cnds.TriggerOnce,
+	cr.plugins_.Audio.prototype.acts.PlayByName,
+	cr.plugins_.Keyboard.prototype.cnds.OnKey,
+	cr.plugins_.Arr.prototype.acts.JSONDownload
 ];};

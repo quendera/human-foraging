@@ -74,6 +74,10 @@
                     <param id="0" name="Variable">BarrierSize</param>
                     <param id="1" name="Value">1</param>
                 </action>
+                <action id="4" name="Set animation" sid="372676507361895" type="SpriteBG1">
+                    <param id="0" name="Animation">&quot;Grass&quot;</param>
+                    <param id="1" name="From">1</param>
+                </action>
             </actions>
         </event-block>
         <event-block sid="382662494440820">
