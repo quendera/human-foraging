@@ -3,6 +3,7 @@
     <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
     <name>Variables</name>
     <events>
+        <variable constant="0" name="DrawProtocol" sid="183316736350038" static="0" type="text"></variable>
         <variable constant="0" name="ActiveNow" sid="938550064417063" static="0" type="number">0</variable>
         <variable constant="0" name="ActiveSide" sid="391297064606083" static="0" type="number">0</variable>
         <variable constant="0" name="AnimationNr" sid="947529153342853" static="0" type="number">0</variable>
@@ -22,6 +23,7 @@
         <variable constant="0" name="go" sid="414429851862525" static="0" type="number">0</variable>
         <variable constant="0" name="Input" sid="962947546287654" static="0" type="number">0</variable>
         <variable constant="0" name="Iti" sid="826756764669071" static="0" type="number">0</variable>
+        <variable constant="0" name="MaxTouchY" sid="364610855407104" static="0" type="number">0</variable>
         <variable constant="0" name="MouseID" sid="508868504594602" static="0" type="text"></variable>
         <variable constant="0" name="Multiplier" sid="421168044078259" static="0" type="number">0</variable>
         <variable constant="0" name="PlayerAngle" sid="280905789528192" static="0" type="number">0</variable>
@@ -44,10 +46,13 @@
         <variable constant="0" name="Shoot" sid="268196656742707" static="0" type="number">0</variable>
         <variable constant="0" name="StartingSide" sid="110127185991234" static="0" type="number">0</variable>
         <variable constant="0" name="Timer" sid="485632215821448" static="0" type="number">0</variable>
+        <variable constant="0" name="TimerMax" sid="346207485991325" static="0" type="number">0</variable>
         <variable constant="0" name="TouchCounter" sid="395511294220124" static="0" type="number">0</variable>
         <variable constant="0" name="touchX" sid="683304503554293" static="0" type="number">0</variable>
         <variable constant="0" name="touchY" sid="970473297609113" static="0" type="number">0</variable>
         <variable constant="0" name="TravelSpeed" sid="850085497675331" static="0" type="number">0</variable>
+        <variable constant="0" name="TravelSpeedUndock" sid="616945610274432" static="0" type="number">0</variable>
+        <variable constant="0" name="UndockRegion" sid="528625448599455" static="0" type="number">0</variable>
         <variable constant="0" name="UndockSpeed" sid="869044584736314" static="0" type="number">0</variable>
     </events>
 </c2eventsheet>
