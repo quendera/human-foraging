@@ -615,31 +615,6 @@
                         <opacity>1</opacity>
                     </world>
                 </instance>
-                <instance type="SpriteTrain" uid="19">
-                    <properties>
-                        <initial-visibility>Visible</initial-visibility>
-                        <initial-animation>Default</initial-animation>
-                        <initial-frame>0</initial-frame>
-                        <collisions>Enabled</collisions>
-                    </properties>
-                    <behavior-instances>
-                        <behavior-instance type="Pin" />
-                    </behavior-instances>
-                    <blend-mode>0</blend-mode>
-                    <effect-fallback>0</effect-fallback>
-                    <world>
-                        <x>625</x>
-                        <y>598</y>
-                        <z>0</z>
-                        <width>250</width>
-                        <height>250</height>
-                        <depth>0</depth>
-                        <hotspotX>0.5</hotspotX>
-                        <hotspotY>0.5</hotspotY>
-                        <angle>0</angle>
-                        <opacity>1</opacity>
-                    </world>
-                </instance>
                 <instance type="SpriteTarget" uid="18">
                     <properties>
                         <initial-visibility>Invisible</initial-visibility>
@@ -854,50 +829,6 @@
                         <opacity>1</opacity>
                     </world>
                 </instance>
-                <instance type="SpriteDocks" uid="17">
-                    <properties>
-                        <initial-visibility>Visible</initial-visibility>
-                        <initial-animation>Default</initial-animation>
-                        <initial-frame>0</initial-frame>
-                        <collisions>Enabled</collisions>
-                    </properties>
-                    <blend-mode>0</blend-mode>
-                    <effect-fallback>0</effect-fallback>
-                    <world>
-                        <x>1030</x>
-                        <y>650</y>
-                        <z>0</z>
-                        <width>135</width>
-                        <height>146</height>
-                        <depth>0</depth>
-                        <hotspotX>0.503703713</hotspotX>
-                        <hotspotY>0.5</hotspotY>
-                        <angle>0</angle>
-                        <opacity>1</opacity>
-                    </world>
-                </instance>
-                <instance type="SpriteDocks" uid="29">
-                    <properties>
-                        <initial-visibility>Visible</initial-visibility>
-                        <initial-animation>Default</initial-animation>
-                        <initial-frame>0</initial-frame>
-                        <collisions>Enabled</collisions>
-                    </properties>
-                    <blend-mode>0</blend-mode>
-                    <effect-fallback>0</effect-fallback>
-                    <world>
-                        <x>250</x>
-                        <y>650</y>
-                        <z>0</z>
-                        <width>135</width>
-                        <height>146</height>
-                        <depth>0</depth>
-                        <hotspotX>0.503703713</hotspotX>
-                        <hotspotY>0.5</hotspotY>
-                        <angle>0</angle>
-                        <opacity>1</opacity>
-                    </world>
-                </instance>
                 <instance type="SpriteTimer2" uid="37">
                     <properties>
                         <initial-visibility>Visible</initial-visibility>
@@ -964,6 +895,103 @@
                         <depth>0</depth>
                         <hotspotX>0.501449287</hotspotX>
                         <hotspotY>0.508196712</hotspotY>
+                        <angle>0</angle>
+                        <opacity>1</opacity>
+                    </world>
+                </instance>
+                <instance type="SpriteDockTrainR" uid="45">
+                    <properties>
+                        <initial-visibility>Visible</initial-visibility>
+                        <initial-animation>Default</initial-animation>
+                        <initial-frame>0</initial-frame>
+                        <collisions>Enabled</collisions>
+                    </properties>
+                    <behavior-instances>
+                        <behavior-instance type="Pin" />
+                    </behavior-instances>
+                    <blend-mode>0</blend-mode>
+                    <effect-fallback>0</effect-fallback>
+                    <world>
+                        <x>1366</x>
+                        <y>-176</y>
+                        <z>0</z>
+                        <width>170</width>
+                        <height>200</height>
+                        <depth>0</depth>
+                        <hotspotX>0.508196712</hotspotX>
+                        <hotspotY>0.506849289</hotspotY>
+                        <angle>0</angle>
+                        <opacity>1</opacity>
+                    </world>
+                </instance>
+                <instance type="SpriteMan" uid="19">
+                    <properties>
+                        <initial-visibility>Visible</initial-visibility>
+                        <initial-animation>stop</initial-animation>
+                        <initial-frame>0</initial-frame>
+                        <collisions>Enabled</collisions>
+                    </properties>
+                    <behavior-instances>
+                        <behavior-instance type="Pin" />
+                    </behavior-instances>
+                    <blend-mode>0</blend-mode>
+                    <effect-fallback>0</effect-fallback>
+                    <world>
+                        <x>-535</x>
+                        <y>-42</y>
+                        <z>0</z>
+                        <width>100</width>
+                        <height>140</height>
+                        <depth>0</depth>
+                        <hotspotX>0.512499988</hotspotX>
+                        <hotspotY>0.533898294</hotspotY>
+                        <angle>0</angle>
+                        <opacity>1</opacity>
+                    </world>
+                </instance>
+                <instance type="SpriteManDock" uid="46">
+                    <properties>
+                        <initial-visibility>Visible</initial-visibility>
+                        <initial-animation>R</initial-animation>
+                        <initial-frame>0</initial-frame>
+                        <collisions>Enabled</collisions>
+                    </properties>
+                    <blend-mode>0</blend-mode>
+                    <effect-fallback>0</effect-fallback>
+                    <world>
+                        <x>1759</x>
+                        <y>536</y>
+                        <z>0</z>
+                        <width>111.25</width>
+                        <height>140</height>
+                        <depth>0</depth>
+                        <hotspotX>0.494382024</hotspotX>
+                        <hotspotY>0.5</hotspotY>
+                        <angle>0</angle>
+                        <opacity>1</opacity>
+                    </world>
+                </instance>
+                <instance type="SpriteDockTrainL" uid="47">
+                    <properties>
+                        <initial-visibility>Visible</initial-visibility>
+                        <initial-animation>Default</initial-animation>
+                        <initial-frame>0</initial-frame>
+                        <collisions>Enabled</collisions>
+                    </properties>
+                    <behavior-instances>
+                        <behavior-instance type="Pin" />
+                    </behavior-instances>
+                    <blend-mode>0</blend-mode>
+                    <effect-fallback>0</effect-fallback>
+                    <world>
+                        <x>1508</x>
+                        <y>129</y>
+                        <z>0</z>
+                        <width>170</width>
+                        <height>200</height>
+                        <depth>0</depth>
+                        <hotspotX>0.508196712</hotspotX>
+                        <hotspotY>0.506849289</hotspotY>
                         <angle>0</angle>
                         <opacity>1</opacity>
                     </world>

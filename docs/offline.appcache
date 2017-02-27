@@ -1,20 +1,22 @@
 ﻿CACHE MANIFEST
-#1488126420
+#1488219459
 data.js
 c2runtime.js
 jquery-2.1.1.min.js
 offlineClient.js
-images/spritetrain-sheet0.png
-images/spritetrain-sheet1.png
+images/spriteman-sheet0.png
 images/spritetarget-sheet0.png
 images/spriterails-sheet0.png
+images/spritedocktrainr-sheet0.png
+images/spritedocktrainr-sheet1.png
+images/spritemandock-sheet0.png
+images/spritemandock-sheet1.png
 images/spritescore-sheet0.png
 images/spritescore-sheet1.png
 images/spritescore-sheet2.png
 images/spritetimer1-sheet0.png
 images/spriteenemy-sheet0.png
 images/spriteenemy-sheet1.png
-images/spriteenemy-sheet2.png
 images/spriteenemyhit-sheet0.png
 images/spriteenemyhit-sheet1.png
 images/spritetimer2-sheet0.png
@@ -29,6 +31,7 @@ images/spritebg1-sheet0.png
 images/spritebg1-sheet1.png
 images/spritebg1-sheet2.png
 images/spritebg1-sheet3.png
+images/spritebg1-sheet4.png
 images/spritebg2-sheet0.png
 images/spritebg2-sheet1.png
 images/spritebg2-sheet2.png
@@ -37,7 +40,6 @@ images/spritebg3-sheet1.png
 images/spritebg4-sheet0.png
 images/spritebg5-sheet0.png
 images/spritebarrier-sheet0.png
-images/spritebarrier-sheet1.png
 images/spriteboulder-sheet0.png
 images/spriteboulder-sheet1.png
 images/player-sheet0.png
