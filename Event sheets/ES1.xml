@@ -260,12 +260,12 @@
                 </condition>
             </conditions>
             <actions>
-                <action id="-9" name="Set value" sid="988084183792421" type="System">
-                    <param id="0" name="Variable">ProbabilityFlip</param>
-                    <param id="1" name="Value">90</param>
-                </action>
                 <action id="-9" name="Set value" sid="372515548869448" type="System">
                     <param id="0" name="Variable">ProbabilityReward</param>
+                    <param id="1" name="Value">90</param>
+                </action>
+                <action id="-9" name="Set value" sid="988084183792421" type="System">
+                    <param id="0" name="Variable">ProbabilityFlip</param>
                     <param id="1" name="Value">30</param>
                 </action>
                 <action id="-9" name="Set value" sid="308913453603615" type="System">
