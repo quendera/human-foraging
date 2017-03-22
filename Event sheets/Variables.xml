@@ -3,7 +3,6 @@
     <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
     <name>Variables</name>
     <events>
-        <variable constant="0" name="DrawProtocol" sid="183316736350038" static="0" type="text"></variable>
         <variable constant="0" name="ActiveNow" sid="938550064417063" static="0" type="number">0</variable>
         <variable constant="0" name="ActiveSide" sid="391297064606083" static="0" type="number">0</variable>
         <variable constant="0" name="AnimationNr" sid="947529153342853" static="0" type="number">0</variable>
@@ -17,8 +16,10 @@
         <variable constant="0" name="BarrierT2" sid="339529217709341" static="0" type="number">0</variable>
         <variable constant="0" name="BarrierTrigger" sid="803362397514618" static="0" type="number">0</variable>
         <variable constant="0" name="Countdown" sid="435490213873562" static="0" type="number">0</variable>
+        <variable constant="0" name="Clean" sid="361413571111313" static="0" type="number">0</variable>
         <variable constant="0" name="CurrentTrial" sid="967567770451176" static="0" type="number">0</variable>
         <variable constant="0" name="Date" sid="909748833883779" static="0" type="number">0</variable>
+        <variable constant="0" name="DrawProtocol" sid="183316736350038" static="0" type="text"></variable>
         <variable constant="0" name="Flip" sid="959694862225341" static="0" type="number">0</variable>
         <variable constant="0" name="go" sid="414429851862525" static="0" type="number">0</variable>
         <variable constant="0" name="Input" sid="962947546287654" static="0" type="number">0</variable>
