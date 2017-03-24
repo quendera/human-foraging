@@ -26,6 +26,10 @@
                         <action id="-9" name="Destroy" sid="866408733577463" type="SpriteTimer2" />
                         <action id="-9" name="Destroy" sid="826371856003969" type="SpriteManDock" />
                         <action id="-9" name="Destroy" sid="924625133884150" type="SpriteEnemy" />
+                        <action id="-9" name="Set value" sid="373163318841695" type="System">
+                            <param id="0" name="Variable">MaxScore</param>
+                            <param id="1" name="Value">140</param>
+                        </action>
                         <action id="-9" name="Set value" sid="156684017244175" type="System">
                             <param id="0" name="Variable">Multiplier</param>
                             <param id="1" name="Value">2</param>
@@ -44,11 +48,11 @@
                         </action>
                         <action id="-9" name="Set value" sid="837076883078026" type="System">
                             <param id="0" name="Variable">BarrierT1</param>
-                            <param id="1" name="Value">BarrierSequence=1? 75: 15</param>
+                            <param id="1" name="Value">BarrierSequence=1? 70 :15</param>
                         </action>
                         <action id="-9" name="Set value" sid="669092225167694" type="System">
                             <param id="0" name="Variable">BarrierT2</param>
-                            <param id="1" name="Value">BarrierSequence=1? 135 : 75</param>
+                            <param id="1" name="Value">BarrierSequence=1? 125 : 75</param>
                         </action>
                         <action id="-9" name="Set value" sid="847740894567448" type="System">
                             <param id="0" name="Variable">CurrentTrial</param>
@@ -57,6 +61,14 @@
                         <action id="-9" name="Set value" sid="508423810629536" type="System">
                             <param id="0" name="Variable">Date</param>
                             <param id="1" name="Value">Date.UnixTimestamp</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="690114336622589" type="System">
+                            <param id="0" name="Variable">EnemyChange</param>
+                            <param id="1" name="Value">70</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="165454464851223" type="System">
+                            <param id="0" name="Variable">EnemyNr</param>
+                            <param id="1" name="Value">1</param>
                         </action>
                         <action id="-9" name="Set value" sid="447028268597402" type="System">
                             <param id="0" name="Variable">Iti</param>
@@ -357,62 +369,64 @@
                             <param id="0" name="Visibility">0</param>
                         </action>
                     </actions>
-                </event-block>
-                <event-block sid="933958951454550">
-                    <conditions>
-                        <condition id="0" name="Switch" sid="333204648693778" type="SwitchCase">
-                            <param id="0" name="Variable">ProtocolLevel</param>
-                        </condition>
-                    </conditions>
-                    <actions />
                     <sub-events>
-                        <event-block sid="239825139145505">
+                        <event-block sid="933958951454550">
                             <conditions>
-                                <condition id="1" name="Case" sid="886944973194148" type="SwitchCase">
-                                    <param id="0" name="Value">1</param>
+                                <condition id="0" name="Switch" sid="333204648693778" type="SwitchCase">
+                                    <param id="0" name="Variable">ProtocolLevel</param>
                                 </condition>
                             </conditions>
-                            <actions>
-                                <action id="2" name="Call expression" sid="831835734478024" type="Function">
-                                    <param id="0" name="Expression">Function.Call(&quot;Draw&quot;, &quot;Desert&quot;, &quot;yellow&quot;)</param>
-                                </action>
-                            </actions>
-                        </event-block>
-                        <event-block sid="914291935648773">
-                            <conditions>
-                                <condition id="1" name="Case" sid="296812533109960" type="SwitchCase">
-                                    <param id="0" name="Value">2</param>
-                                </condition>
-                            </conditions>
-                            <actions>
-                                <action id="2" name="Call expression" sid="683429927398482" type="Function">
-                                    <param id="0" name="Expression">Function.Call(&quot;Draw&quot;, &quot;Grass&quot;, &quot;blue&quot;)</param>
-                                </action>
-                            </actions>
-                        </event-block>
-                        <event-block sid="804421685240629">
-                            <conditions>
-                                <condition id="1" name="Case" sid="807684341177246" type="SwitchCase">
-                                    <param id="0" name="Value">3</param>
-                                </condition>
-                            </conditions>
-                            <actions>
-                                <action id="2" name="Call expression" sid="272692046472822" type="Function">
-                                    <param id="0" name="Expression">Function.Call(&quot;Draw&quot;, &quot;Mountain&quot;, &quot;blue&quot;)</param>
-                                </action>
-                            </actions>
-                        </event-block>
-                        <event-block sid="422055157871147">
-                            <conditions>
-                                <condition id="1" name="Case" sid="516425538782097" type="SwitchCase">
-                                    <param id="0" name="Value">4</param>
-                                </condition>
-                            </conditions>
-                            <actions>
-                                <action id="2" name="Call expression" sid="457011489193012" type="Function">
-                                    <param id="0" name="Expression">Function.Call(&quot;Draw&quot;, &quot;Swamp&quot;, &quot;yellow&quot;)</param>
-                                </action>
-                            </actions>
+                            <actions />
+                            <sub-events>
+                                <event-block sid="239825139145505">
+                                    <conditions>
+                                        <condition id="1" name="Case" sid="886944973194148" type="SwitchCase">
+                                            <param id="0" name="Value">1</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="2" name="Call expression" sid="831835734478024" type="Function">
+                                            <param id="0" name="Expression">Function.Call(&quot;Draw&quot;, &quot;Desert&quot;, &quot;yellow&quot;)</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="914291935648773">
+                                    <conditions>
+                                        <condition id="1" name="Case" sid="296812533109960" type="SwitchCase">
+                                            <param id="0" name="Value">2</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="2" name="Call expression" sid="683429927398482" type="Function">
+                                            <param id="0" name="Expression">Function.Call(&quot;Draw&quot;, &quot;Grass&quot;, &quot;blue&quot;)</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="804421685240629">
+                                    <conditions>
+                                        <condition id="1" name="Case" sid="807684341177246" type="SwitchCase">
+                                            <param id="0" name="Value">3</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="2" name="Call expression" sid="272692046472822" type="Function">
+                                            <param id="0" name="Expression">Function.Call(&quot;Draw&quot;, &quot;Mountain&quot;, &quot;blue&quot;)</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="422055157871147">
+                                    <conditions>
+                                        <condition id="1" name="Case" sid="516425538782097" type="SwitchCase">
+                                            <param id="0" name="Value">4</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="2" name="Call expression" sid="457011489193012" type="Function">
+                                            <param id="0" name="Expression">Function.Call(&quot;Draw&quot;, &quot;Swamp&quot;, &quot;yellow&quot;)</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
                         </event-block>
                     </sub-events>
                 </event-block>
@@ -854,7 +868,7 @@
                         </action>
                         <action id="-12" name="Subtract from" sid="239438903760058" type="SpriteTimer">
                             <param id="0" name="Instance variable">Size</param>
-                            <param id="1" name="Value">RewardSize*2.5</param>
+                            <param id="1" name="Value">RewardSize*5</param>
                         </action>
                         <action disabled="1" id="-15" name="Set visible" sid="462556013786634" type="SpriteScore">
                             <param id="0" name="Visibility">1</param>
@@ -1008,7 +1022,7 @@
                             </conditions>
                             <actions>
                                 <action id="2" name="Call expression" sid="436383884117217" type="Function">
-                                    <param id="0" name="Expression">Player.Location=1 ? Function.Call(&quot;ErrorCue&quot;, &quot;left&quot;) : Function.Call(&quot;ErrorCue&quot;,&quot;right&quot;)</param>
+                                    <param id="0" name="Expression">Player.Location=1 ? Function.Call(&quot;ErrorCue&quot;, &quot;left&quot;, EnemyNr) : Function.Call(&quot;ErrorCue&quot;,&quot;right&quot;, EnemyNr)</param>
                                 </action>
                             </actions>
                         </event-block>
@@ -1027,6 +1041,14 @@
                                 </action>
                                 <action id="4" name="Set animation" sid="964376043636654" type="SpriteManDock">
                                     <param id="0" name="Animation">Player.Location=1 ? &quot;Rstop&quot;:&quot;Lstop&quot; </param>
+                                    <param id="1" name="From">1</param>
+                                </action>
+                                <action id="4" name="Set animation" sid="342580451222256" type="SpriteDockTrainL">
+                                    <param id="0" name="Animation">Player.Location=0 ? &quot;Rstop&quot;:&quot;Lstop&quot; </param>
+                                    <param id="1" name="From">1</param>
+                                </action>
+                                <action id="4" name="Set animation" sid="121950455148121" type="SpriteDockTrainR">
+                                    <param id="0" name="Animation">Player.Location=0 ? &quot;Rstop&quot;:&quot;Lstop&quot; </param>
                                     <param id="1" name="From">1</param>
                                 </action>
                                 <action id="2" name="Call expression" sid="754283349755754" type="Function">
@@ -1055,6 +1077,31 @@
                                     <param id="0" name="Expression">Function.Call(&quot;Move&quot;, Player.MovingL, ArrayTravelspeed.At(0,2,0))</param>
                                 </action>
                             </actions>
+                            <sub-events>
+                                <event-block sid="711596434352030">
+                                    <conditions>
+                                        <condition id="-14" name="Compare variable" sid="300320744773057" type="System">
+                                            <param id="0" name="Variable">Score</param>
+                                            <param id="1" name="Comparison">5</param>
+                                            <param id="2" name="Value">EnemyChange</param>
+                                        </condition>
+                                        <condition id="-14" name="Compare variable" sid="394481074165098" type="System">
+                                            <param id="0" name="Variable">EnemyNr</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Value">1</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="2" name="Call expression" sid="988667307994656" type="Function">
+                                            <param id="0" name="Expression">Function.Call(&quot;EnemyDead&quot;)</param>
+                                        </action>
+                                        <action id="-10" name="Add to" sid="215279332572072" type="System">
+                                            <param id="0" name="Variable">EnemyNr</param>
+                                            <param id="1" name="Value">1</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
                         </event-block>
                     </sub-events>
                 </event-block>
@@ -1076,7 +1123,7 @@
                             <param id="1" name="Tag (optional)">&quot;&quot;</param>
                         </action>
                         <action id="4" name="Set animation" sid="583796049872931" type="SpriteEnemy">
-                            <param id="0" name="Animation">&quot;Default&quot;</param>
+                            <param id="0" name="Animation">EnemyNr = 1 ? &quot;Default&quot; : &quot;DefaultG&quot;</param>
                             <param id="1" name="From">1</param>
                         </action>
                         <action id="-16" name="Wait" sid="674969948672251" type="System">
@@ -1085,6 +1132,47 @@
                         <action id="4" name="Set animation" sid="574298944629799" type="SpriteEnemy">
                             <param id="0" name="Animation">&quot;empty&quot;</param>
                             <param id="1" name="From">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" sid="608198371068065" title="Enemy Reset">
+            <sub-events>
+                <event-block sid="120594321549752">
+                    <conditions>
+                        <condition id="0" name="On function" sid="348180196315274" type="Function">
+                            <param id="0" name="Name">&quot;EnemyDead&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="4" name="Set at XYZ" sid="504985391040125" type="ArrayAnimation">
+                            <param id="0" name="X">0</param>
+                            <param id="1" name="Y">1</param>
+                            <param id="2" name="Z">0</param>
+                            <param id="3" name="Value">(ProtocolLevel= 2) | (ProtocolLevel= 3) = 1? &quot;rightG&quot; : &quot;yrightG&quot;</param>
+                        </action>
+                        <action id="4" name="Set at XYZ" sid="140287130261167" type="ArrayAnimation">
+                            <param id="0" name="X">0</param>
+                            <param id="1" name="Y">2</param>
+                            <param id="2" name="Z">0</param>
+                            <param id="3" name="Value">(ProtocolLevel= 2) | (ProtocolLevel= 3) = 1? &quot;leftG&quot; : &quot;yleftG&quot;</param>
+                        </action>
+                        <action id="4" name="Set at XYZ" sid="671273527953214" type="ArrayAnimation">
+                            <param id="0" name="X">0</param>
+                            <param id="1" name="Y">3</param>
+                            <param id="2" name="Z">0</param>
+                            <param id="3" name="Value">(ProtocolLevel= 2) | (ProtocolLevel= 3) = 1? &quot;frontG&quot; : &quot;yfrontG&quot;</param>
+                        </action>
+                        <action id="4" name="Set at XYZ" sid="570519965904096" type="ArrayAnimation">
+                            <param id="0" name="X">0</param>
+                            <param id="1" name="Y">4</param>
+                            <param id="2" name="Z">0</param>
+                            <param id="3" name="Value">(ProtocolLevel= 2) | (ProtocolLevel= 3) = 1? &quot;front2G&quot; : &quot;yfront2G&quot;</param>
+                        </action>
+                        <action id="-10" name="Set value" sid="348009130332481" type="SpriteTimer">
+                            <param id="0" name="Instance variable">Size</param>
+                            <param id="1" name="Value">SpriteTimer.MaxSize</param>
                         </action>
                     </actions>
                 </event-block>
@@ -1122,10 +1210,10 @@
                         </action>
                         <action id="-3" name="Set position" sid="626893795673795" type="SpriteEnemy">
                             <param id="0" name="X">640</param>
-                            <param id="1" name="Y">90</param>
+                            <param id="1" name="Y">50</param>
                         </action>
                         <action id="4" name="Set animation" sid="718746398419308" type="SpriteEnemy">
-                            <param id="0" name="Animation">&quot;Default&quot;</param>
+                            <param id="0" name="Animation">EnemyNr=1 ? &quot;Default&quot;:&quot;DefaultG&quot;</param>
                             <param id="1" name="From">1</param>
                         </action>
                         <action id="7" name="Play (by name)" sid="193872135854961" type="Audio">

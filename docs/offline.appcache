@@ -1,5 +1,5 @@
 ﻿CACHE MANIFEST
-#1490145128
+#1490324341
 data.js
 c2runtime.js
 jquery-2.1.1.min.js
@@ -19,6 +19,7 @@ images/spritedocktrainr-sheet8.png
 images/spritedocktrainr-sheet9.png
 images/spritedocktrainr-sheet10.png
 images/spritedocktrainr-sheet11.png
+images/spritedocktrainr-sheet12.png
 images/spritemandock-sheet0.png
 images/spritemandock-sheet1.png
 images/spritedocktrainl-sheet0.png
@@ -32,12 +33,12 @@ images/spritedocktrainl-sheet7.png
 images/spritedocktrainl-sheet8.png
 images/spritedocktrainl-sheet9.png
 images/spritedocktrainl-sheet10.png
+images/spritedocktrainl-sheet11.png
 images/spritescore-sheet0.png
 images/spritescore-sheet1.png
 images/spritescore-sheet2.png
 images/spritetimer1-sheet0.png
 images/spriteenemy-sheet0.png
-images/spriteenemy-sheet1.png
 images/spriteenemyhit-sheet0.png
 images/spriteenemyhit-sheet1.png
 images/spriteenemyhit-sheet2.png
@@ -64,6 +65,7 @@ images/spritebg5-sheet0.png
 images/spritebarrier-sheet0.png
 images/spriteboulder-sheet0.png
 images/spriteboulder-sheet1.png
+images/spriteboulder-sheet2.png
 images/player-sheet0.png
 images/leftport-sheet0.png
 images/rail-sheet0.png
@@ -80,6 +82,7 @@ media/hit3.ogg
 media/hit4.ogg
 media/soundbuild.ogg
 media/laugh.ogg
+media/sounddestroy.ogg
 icon-16.png
 icon-32.png
 icon-114.png

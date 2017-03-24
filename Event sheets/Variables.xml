@@ -20,10 +20,13 @@
         <variable constant="0" name="CurrentTrial" sid="967567770451176" static="0" type="number">0</variable>
         <variable constant="0" name="Date" sid="909748833883779" static="0" type="number">0</variable>
         <variable constant="0" name="DrawProtocol" sid="183316736350038" static="0" type="text"></variable>
+        <variable constant="0" name="EnemyChange" sid="806816674041888" static="0" type="number">0</variable>
+        <variable constant="0" name="EnemyNr" sid="724070457289991" static="0" type="number">0</variable>
         <variable constant="0" name="Flip" sid="959694862225341" static="0" type="number">0</variable>
         <variable constant="0" name="go" sid="414429851862525" static="0" type="number">0</variable>
         <variable constant="0" name="Input" sid="962947546287654" static="0" type="number">0</variable>
         <variable constant="0" name="Iti" sid="826756764669071" static="0" type="number">0</variable>
+        <variable constant="0" name="MaxScore" sid="114401774388289" static="0" type="number">0</variable>
         <variable constant="0" name="MaxTouchY" sid="364610855407104" static="0" type="number">0</variable>
         <variable constant="0" name="MouseID" sid="508868504594602" static="0" type="text"></variable>
         <variable constant="0" name="Multiplier" sid="421168044078259" static="0" type="number">0</variable>
