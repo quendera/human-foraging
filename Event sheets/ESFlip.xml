@@ -32,7 +32,7 @@
                         </action>
                         <action id="-9" name="Set value" sid="156684017244175" type="System">
                             <param id="0" name="Variable">Multiplier</param>
-                            <param id="1" name="Value">2</param>
+                            <param id="1" name="Value">4</param>
                         </action>
                         <action id="-9" name="Set value" sid="515091349743923" type="System">
                             <param id="0" name="Variable">ActiveSide</param>
@@ -40,7 +40,7 @@
                         </action>
                         <action id="-9" name="Set value" sid="201656579016149" type="System">
                             <param id="0" name="Variable">AnimationSpeed</param>
-                            <param id="1" name="Value">10*Multiplier</param>
+                            <param id="1" name="Value">100/Multiplier</param>
                         </action>
                         <action id="-9" name="Set value" sid="360119689813590" type="System">
                             <param id="0" name="Variable">BarrierSize</param>
@@ -48,7 +48,7 @@
                         </action>
                         <action id="-9" name="Set value" sid="837076883078026" type="System">
                             <param id="0" name="Variable">BarrierT1</param>
-                            <param id="1" name="Value">BarrierSequence=1? 70 :15</param>
+                            <param id="1" name="Value">BarrierSequence=1? 2 :15</param>
                         </action>
                         <action id="-9" name="Set value" sid="669092225167694" type="System">
                             <param id="0" name="Variable">BarrierT2</param>
@@ -96,7 +96,7 @@
                         </action>
                         <action id="-9" name="Set value" sid="619916641396115" type="System">
                             <param id="0" name="Variable">Rope</param>
-                            <param id="1" name="Value">100</param>
+                            <param id="1" name="Value">1000</param>
                         </action>
                         <action id="-9" name="Set value" sid="888889226190667" type="System">
                             <param id="0" name="Variable">Score</param>
@@ -307,13 +307,13 @@
                             <param id="0" name="X">0</param>
                             <param id="1" name="Y">0</param>
                             <param id="2" name="Z">0</param>
-                            <param id="3" name="Value">3*Multiplier</param>
+                            <param id="3" name="Value">TravelSpeed</param>
                         </action>
                         <action id="4" name="Set at XYZ" sid="522722074408446" type="ArrayTravelspeed">
                             <param id="0" name="X">0</param>
                             <param id="1" name="Y">1</param>
                             <param id="2" name="Z">0</param>
-                            <param id="3" name="Value">3*Multiplier/BarrierSize</param>
+                            <param id="3" name="Value">TravelSpeed/BarrierSize</param>
                         </action>
                         <action id="4" name="Set at XYZ" sid="395265058438450" type="ArrayTravelspeed">
                             <param id="0" name="X">0</param>
@@ -700,6 +700,12 @@
                             <param id="0" name="Name">&quot;log&quot;</param>
                             <param id="1" name="Parameter {n}"></param>
                         </action>
+                        <action id="-16" name="Wait" sid="703192259274311" type="System">
+                            <param id="0" name="Seconds">Iti</param>
+                        </action>
+                        <action id="2" name="Call expression" sid="942790947553754" type="Function">
+                            <param id="0" name="Expression">Function.Call(&quot;Spawn&quot;)</param>
+                        </action>
                     </actions>
                     <sub-events>
                         <event-block sid="711312947726710">
@@ -744,14 +750,8 @@
                             <param id="0" name="Animation">Player.Location=1 ? &quot;R&quot; : &quot;L&quot;</param>
                             <param id="1" name="From">1</param>
                         </action>
-                        <action id="2" name="Call expression" sid="634315630883417" type="Function">
+                        <action id="2" name="Call expression" sid="333323140534625" type="Function">
                             <param id="0" name="Expression">Function.Call(ShootAnimation)</param>
-                        </action>
-                        <action id="-16" name="Wait" sid="148227395507888" type="System">
-                            <param id="0" name="Seconds">Iti</param>
-                        </action>
-                        <action id="2" name="Call expression" sid="198817732407799" type="Function">
-                            <param id="0" name="Expression">Function.Call(&quot;Spawn&quot;)</param>
                         </action>
                     </actions>
                 </event-block>
@@ -767,7 +767,7 @@
                             <param id="1" name="From">1</param>
                         </action>
                         <action id="6" name="Set speed" sid="879579661833158" type="SpriteDockTrainR">
-                            <param id="0" name="Speed">20</param>
+                            <param id="0" name="Speed">Iti-AnimationSpeed</param>
                         </action>
                         <action id="3" name="Start" sid="349841613768848" type="SpriteDockTrainR">
                             <param id="0" name="From">1</param>
@@ -786,7 +786,7 @@
                             <param id="1" name="From">1</param>
                         </action>
                         <action id="6" name="Set speed" sid="945953320003952" type="SpriteDockTrainL">
-                            <param id="0" name="Speed">20</param>
+                            <param id="0" name="Speed">Iti-AnimationSpeed</param>
                         </action>
                         <action id="3" name="Start" sid="763608656667446" type="SpriteDockTrainL">
                             <param id="0" name="From">1</param>
@@ -863,6 +863,9 @@
                             <param id="0" name="Animation">choose(ArrayAnimation.At(0,1,0) , ArrayAnimation.At(0,2,0) , ArrayAnimation.At(0,3,0) , ArrayAnimation.At(0,4,0))</param>
                             <param id="1" name="From">1</param>
                         </action>
+                        <action id="6" name="Set speed" sid="292990799422668" type="SpriteEnemyHit">
+                            <param id="0" name="Speed">AnimationSpeed</param>
+                        </action>
                         <action id="3" name="Start" sid="638426390422497" type="SpriteEnemyHit">
                             <param id="0" name="From">0</param>
                         </action>
@@ -885,6 +888,9 @@
                         <action id="4" name="Set animation" sid="250293292908446" type="SpriteEnemyHit">
                             <param id="0" name="Animation">ArrayAnimation.At(0,0,0)</param>
                             <param id="1" name="From">1</param>
+                        </action>
+                        <action id="6" name="Set speed" sid="182649881808029" type="SpriteEnemyHit">
+                            <param id="0" name="Speed">AnimationSpeed</param>
                         </action>
                         <action id="3" name="Start" sid="319334416974389" type="SpriteEnemyHit">
                             <param id="0" name="From">0</param>

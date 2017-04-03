@@ -28,7 +28,6 @@
     </used-plugins>
     <used-behaviors>
         <behavior author="Scirra" id="Pin" version="1">Pin</behavior>
-        <behavior author="Scirra" id="solid" version="1">Solid</behavior>
     </used-behaviors>
     <used-effects />
     <configurations>
@@ -1923,22 +1922,6 @@
                     </animation>
                 </animation-folder>
             </object-type>
-            <object-type name="LeftTarget" sid="543264564898702">
-                <plugin id="Sprite" />
-                <animation-folder>
-                    <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="312444892602950" speed="5">
-                        <frame duration="1" hotspotX="0" hotspotY="0" />
-                    </animation>
-                </animation-folder>
-            </object-type>
-            <object-type name="RightTarget" sid="699006614681469">
-                <plugin id="Sprite" />
-                <animation-folder>
-                    <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="901876411627659" speed="5">
-                        <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
-                    </animation>
-                </animation-folder>
-            </object-type>
             <object-type name="Rope" sid="588809365350468">
                 <plugin id="Sprite" />
                 <animation-folder>
@@ -1947,19 +1930,6 @@
                             <image-point name="Left" x="0" y="0.5" />
                             <image-point name="Right" x="-0.624" y="0.196" />
                         </frame>
-                    </animation>
-                </animation-folder>
-            </object-type>
-            <object-type name="SpriteWall" sid="309802079299824">
-                <plugin id="Sprite" />
-                <behaviors>
-                    <behavior-type name="Solid" sid="447117900379714">
-                        <behavior id="solid" />
-                    </behavior-type>
-                </behaviors>
-                <animation-folder>
-                    <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="424360637144301" speed="5">
-                        <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
                     </animation>
                 </animation-folder>
             </object-type>
@@ -2013,16 +1983,16 @@
                 <plugin id="Sprite" />
                 <animation-folder>
                     <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="137645514357110" speed="5">
-                        <frame duration="1" hotspotX="0.557078" hotspotY="0.517241" original-source="C:\Users\Tiago\Google Drive\HUMAN_FORAGING\Task\Assets\Door\cooltext220392722411898.png">
+                        <frame duration="1" hotspotX="0.560976" hotspotY="0.520548" original-source="C:\Users\Tiago\Google Drive\HUMAN_FORAGING\Task\Assets\Door\cooltext220392722411898.png">
                             <collision-poly>
-                                <point x="0.0776256" y="0.195402" />
-                                <point x="0.497717" y="0.16092" />
-                                <point x="0.908676" y="0.229885" />
-                                <point x="0.881279" y="0.494253" />
-                                <point x="0.90411" y="0.758621" />
-                                <point x="0.497717" y="0.816092" />
-                                <point x="0.086758" y="0.781609" />
-                                <point x="0.0502283" y="0.494253" />
+                                <point x="0.0487805" y="0.136986" />
+                                <point x="0.497561" y="0.0958909" />
+                                <point x="0.936586" y="0.178082" />
+                                <point x="0.907318" y="0.493151" />
+                                <point x="0.931708" y="0.808219" />
+                                <point x="0.497561" y="0.876712" />
+                                <point x="0.0585366" y="0.835616" />
+                                <point x="0.0195122" y="0.493151" />
                             </collision-poly>
                         </frame>
                     </animation>
@@ -2092,16 +2062,16 @@
             <plugin id="Sprite" />
             <animation-folder>
                 <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="880856798117435" speed="5">
-                    <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\Tiago\Desktop\castle.png">
+                    <frame duration="1" hotspotX="-0.0171875" hotspotY="-0.140278" original-source="C:\Users\Tiago\Desktop\castle.png">
                         <collision-poly>
-                            <point x="0.153906" y="0.341667" />
-                            <point x="0.5" y="0.115278" />
-                            <point x="0.846094" y="0.341667" />
-                            <point x="0.977344" y="0.5" />
-                            <point x="0.9" y="0.754167" />
-                            <point x="0.5" y="0.788889" />
-                            <point x="0.1" y="0.754167" />
-                            <point x="0.0226563" y="0.5" />
+                            <point x="0.142165" y="0.352" />
+                            <point x="0.5" y="0.0260003" />
+                            <point x="0.857836" y="0.352" />
+                            <point x="0.993538" y="0.58" />
+                            <point x="0.91357" y="0.946001" />
+                            <point x="0.5" y="0.996" />
+                            <point x="0.0864297" y="0.946001" />
+                            <point x="0.00646209" y="0.58" />
                         </collision-poly>
                     </frame>
                 </animation>
