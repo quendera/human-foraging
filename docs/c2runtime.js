@@ -24867,71 +24867,23 @@ cr.behaviors.Pin = function(runtime)
 	};
 	behaviorProto.exps = new Exps();
 }());
-;
-;
-cr.behaviors.solid = function(runtime)
-{
-	this.runtime = runtime;
-};
-(function ()
-{
-	var behaviorProto = cr.behaviors.solid.prototype;
-	behaviorProto.Type = function(behavior, objtype)
-	{
-		this.behavior = behavior;
-		this.objtype = objtype;
-		this.runtime = behavior.runtime;
-	};
-	var behtypeProto = behaviorProto.Type.prototype;
-	behtypeProto.onCreate = function()
-	{
-	};
-	behaviorProto.Instance = function(type, inst)
-	{
-		this.type = type;
-		this.behavior = type.behavior;
-		this.inst = inst;				// associated object instance to modify
-		this.runtime = type.runtime;
-	};
-	var behinstProto = behaviorProto.Instance.prototype;
-	behinstProto.onCreate = function()
-	{
-		this.inst.extra["solidEnabled"] = (this.properties[0] !== 0);
-	};
-	behinstProto.tick = function ()
-	{
-	};
-	function Cnds() {};
-	Cnds.prototype.IsEnabled = function ()
-	{
-		return this.inst.extra["solidEnabled"];
-	};
-	behaviorProto.cnds = new Cnds();
-	function Acts() {};
-	Acts.prototype.SetEnabled = function (e)
-	{
-		this.inst.extra["solidEnabled"] = !!e;
-	};
-	behaviorProto.acts = new Acts();
-}());
 cr.getObjectRefTable = function () { return [
-	cr.plugins_.Arr,
 	cr.plugins_.Audio,
+	cr.plugins_.Arr,
 	cr.plugins_.Dictionary,
 	cr.plugins_.Function,
+	cr.plugins_.List,
 	cr.plugins_.Keyboard,
 	cr.plugins_.Mouse,
-	cr.plugins_.List,
+	cr.plugins_.Touch,
+	cr.plugins_.NodeWebkit,
+	cr.plugins_.Text,
+	cr.plugins_.wastrel_switchcase,
+	cr.plugins_.Rex_Date,
 	cr.plugins_.TextBox,
 	cr.plugins_.sliderbar,
-	cr.plugins_.Rex_Date,
-	cr.plugins_.Text,
-	cr.plugins_.NodeWebkit,
-	cr.plugins_.Touch,
-	cr.plugins_.wastrel_switchcase,
 	cr.plugins_.Sprite,
 	cr.behaviors.Pin,
-	cr.behaviors.solid,
 	cr.plugins_.Touch.prototype.cnds.OnTouchObject,
 	cr.system_object.prototype.acts.GoToLayout,
 	cr.system_object.prototype.cnds.EveryTick,

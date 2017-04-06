@@ -1,5 +1,5 @@
 ﻿{
-	"version": 1490324341,
+	"version": 1491494235,
 	"fileList": [
 		"data.js",
 		"c2runtime.js",
@@ -70,7 +70,6 @@
 		"images/player-sheet0.png",
 		"images/leftport-sheet0.png",
 		"images/rail-sheet0.png",
-		"images/lefttarget-sheet0.png",
 		"images/rope-sheet0.png",
 		"images/corebarrier-sheet0.png",
 		"images/startbutton-sheet0.png",

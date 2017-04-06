@@ -1,5 +1,5 @@
 ﻿CACHE MANIFEST
-#1490324341
+#1491494235
 data.js
 c2runtime.js
 jquery-2.1.1.min.js
@@ -69,7 +69,6 @@ images/spriteboulder-sheet2.png
 images/player-sheet0.png
 images/leftport-sheet0.png
 images/rail-sheet0.png
-images/lefttarget-sheet0.png
 images/rope-sheet0.png
 images/corebarrier-sheet0.png
 images/startbutton-sheet0.png

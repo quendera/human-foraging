@@ -32,7 +32,7 @@
                         </action>
                         <action id="-9" name="Set value" sid="156684017244175" type="System">
                             <param id="0" name="Variable">Multiplier</param>
-                            <param id="1" name="Value">4</param>
+                            <param id="1" name="Value">1.7</param>
                         </action>
                         <action id="-9" name="Set value" sid="515091349743923" type="System">
                             <param id="0" name="Variable">ActiveSide</param>
@@ -40,7 +40,7 @@
                         </action>
                         <action id="-9" name="Set value" sid="201656579016149" type="System">
                             <param id="0" name="Variable">AnimationSpeed</param>
-                            <param id="1" name="Value">100/Multiplier</param>
+                            <param id="1" name="Value">15*Multiplier</param>
                         </action>
                         <action id="-9" name="Set value" sid="360119689813590" type="System">
                             <param id="0" name="Variable">BarrierSize</param>
@@ -48,11 +48,11 @@
                         </action>
                         <action id="-9" name="Set value" sid="837076883078026" type="System">
                             <param id="0" name="Variable">BarrierT1</param>
-                            <param id="1" name="Value">BarrierSequence=1? 2 :15</param>
+                            <param id="1" name="Value">BarrierSequence=1? 15 :75</param>
                         </action>
                         <action id="-9" name="Set value" sid="669092225167694" type="System">
                             <param id="0" name="Variable">BarrierT2</param>
-                            <param id="1" name="Value">BarrierSequence=1? 125 : 75</param>
+                            <param id="1" name="Value">BarrierSequence=1? 75 : 125</param>
                         </action>
                         <action id="-9" name="Set value" sid="847740894567448" type="System">
                             <param id="0" name="Variable">CurrentTrial</param>
@@ -96,7 +96,7 @@
                         </action>
                         <action id="-9" name="Set value" sid="619916641396115" type="System">
                             <param id="0" name="Variable">Rope</param>
-                            <param id="1" name="Value">1000</param>
+                            <param id="1" name="Value">2000</param>
                         </action>
                         <action id="-9" name="Set value" sid="888889226190667" type="System">
                             <param id="0" name="Variable">Score</param>
@@ -120,7 +120,7 @@
                         </action>
                         <action id="-9" name="Set value" sid="908972214319825" type="System">
                             <param id="0" name="Variable">TravelSpeed</param>
-                            <param id="1" name="Value">3*Multiplier</param>
+                            <param id="1" name="Value">4*Multiplier</param>
                         </action>
                         <action id="-9" name="Set value" sid="592678311757835" type="System">
                             <param id="0" name="Variable">TravelSpeedUndock</param>
@@ -767,7 +767,7 @@
                             <param id="1" name="From">1</param>
                         </action>
                         <action id="6" name="Set speed" sid="879579661833158" type="SpriteDockTrainR">
-                            <param id="0" name="Speed">Iti-AnimationSpeed</param>
+                            <param id="0" name="Speed">AnimationSpeed</param>
                         </action>
                         <action id="3" name="Start" sid="349841613768848" type="SpriteDockTrainR">
                             <param id="0" name="From">1</param>
@@ -786,7 +786,7 @@
                             <param id="1" name="From">1</param>
                         </action>
                         <action id="6" name="Set speed" sid="945953320003952" type="SpriteDockTrainL">
-                            <param id="0" name="Speed">Iti-AnimationSpeed</param>
+                            <param id="0" name="Speed">AnimationSpeed</param>
                         </action>
                         <action id="3" name="Start" sid="763608656667446" type="SpriteDockTrainL">
                             <param id="0" name="From">1</param>
@@ -813,9 +813,6 @@
                         <action id="4" name="Set animation" sid="945822691440212" type="SpriteEnemyHit">
                             <param id="0" name="Animation">&quot;empty&quot;</param>
                             <param id="1" name="From">1</param>
-                        </action>
-                        <action id="6" name="Set speed" sid="699414775493082" type="SpriteEnemyHit">
-                            <param id="0" name="Speed">AnimationSpeed</param>
                         </action>
                         <action id="-16" name="Wait" sid="188245929541153" type="System">
                             <param id="0" name="Seconds">0</param>

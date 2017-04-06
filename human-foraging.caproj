@@ -2062,7 +2062,7 @@
             <plugin id="Sprite" />
             <animation-folder>
                 <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="880856798117435" speed="5">
-                    <frame duration="1" hotspotX="-0.0171875" hotspotY="-0.140278" original-source="C:\Users\Tiago\Desktop\castle.png">
+                    <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\Tiago\Desktop\castle.png">
                         <collision-poly>
                             <point x="0.142165" y="0.352" />
                             <point x="0.5" y="0.0260003" />
