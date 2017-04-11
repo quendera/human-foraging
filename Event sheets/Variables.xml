@@ -6,7 +6,9 @@
         <variable constant="0" name="ActiveNow" sid="938550064417063" static="0" type="number">0</variable>
         <variable constant="0" name="ActiveSide" sid="391297064606083" static="0" type="number">0</variable>
         <variable constant="0" name="AnimationNr" sid="947529153342853" static="0" type="number">0</variable>
-        <variable constant="0" name="AnimationSpeed" sid="374937523363521" static="0" type="number">0</variable>
+        <variable constant="0" name="AnimationPokeSpeed" sid="947753143097488" static="0" type="number">0</variable>
+        <variable constant="0" name="AnimationTargetSpeed" sid="978516969742514" static="0" type="number">0</variable>
+        <variable constant="0" name="AnimationWholeSpeed" sid="374937523363521" static="0" type="number">0</variable>
         <variable constant="0" name="ArraySweep" sid="103653994625074" static="0" type="number">0</variable>
         <variable constant="0" name="Barrier" sid="187465770969542" static="0" type="number">0</variable>
         <variable constant="0" name="BarrierLaps" sid="627027650524920" static="0" type="number">0</variable>

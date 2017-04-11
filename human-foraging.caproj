@@ -530,7 +530,7 @@
                         <plugin id="Sprite" />
                         <animation-folder>
                             <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="397245422850105" speed="5">
-                                <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Tiago\Google Drive\HUMAN_FORAGING\Task\Assets\Timer\lifebar_frame.png">
+                                <frame duration="1" hotspotX="0" hotspotY="0.5" original-source="C:\Users\Tiago\Google Drive\HUMAN_FORAGING\Task\Assets\Timer\lifebar_frame.png">
                                     <collision-poly>
                                         <point x="0.011628" y="0.0677964" />
                                         <point x="0.497093" y="0.0169493" />
@@ -1471,7 +1471,7 @@
                         <plugin id="Sprite" />
                         <animation-folder>
                             <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="942442437646138" speed="5">
-                                <frame duration="1" hotspotX="0.5" hotspotY="0.529412" original-source="C:\Users\Tiago\Google Drive\HUMAN_FORAGING\Task\Assets\Timer\lifebar_subbar.png">
+                                <frame duration="1" hotspotX="0" hotspotY="0.470588" original-source="C:\Users\Tiago\Google Drive\HUMAN_FORAGING\Task\Assets\Timer\lifebar_subbar.png">
                                     <collision-poly>
                                         <point x="0.00641026" y="0.0952381" />
                                         <point x="0.5" y="0.0952381" />

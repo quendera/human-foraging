@@ -32,15 +32,11 @@
                         </action>
                         <action id="-9" name="Set value" sid="156684017244175" type="System">
                             <param id="0" name="Variable">Multiplier</param>
-                            <param id="1" name="Value">1.7</param>
+                            <param id="1" name="Value">3</param>
                         </action>
                         <action id="-9" name="Set value" sid="515091349743923" type="System">
                             <param id="0" name="Variable">ActiveSide</param>
                             <param id="1" name="Value">int(random(0,1))</param>
-                        </action>
-                        <action id="-9" name="Set value" sid="201656579016149" type="System">
-                            <param id="0" name="Variable">AnimationSpeed</param>
-                            <param id="1" name="Value">15*Multiplier</param>
                         </action>
                         <action id="-9" name="Set value" sid="360119689813590" type="System">
                             <param id="0" name="Variable">BarrierSize</param>
@@ -64,7 +60,7 @@
                         </action>
                         <action id="-9" name="Set value" sid="690114336622589" type="System">
                             <param id="0" name="Variable">EnemyChange</param>
-                            <param id="1" name="Value">70</param>
+                            <param id="1" name="Value">MaxScore</param>
                         </action>
                         <action id="-9" name="Set value" sid="165454464851223" type="System">
                             <param id="0" name="Variable">EnemyNr</param>
@@ -73,6 +69,18 @@
                         <action id="-9" name="Set value" sid="447028268597402" type="System">
                             <param id="0" name="Variable">Iti</param>
                             <param id="1" name="Value">2/Multiplier</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="201656579016149" type="System">
+                            <param id="0" name="Variable">AnimationWholeSpeed</param>
+                            <param id="1" name="Value">60/Iti</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="300032970728337" type="System">
+                            <param id="0" name="Variable">AnimationPokeSpeed</param>
+                            <param id="1" name="Value">(1/3)*AnimationWholeSpeed</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="213609357328166" type="System">
+                            <param id="0" name="Variable">AnimationTargetSpeed</param>
+                            <param id="1" name="Value">(2/3)*AnimationWholeSpeed</param>
                         </action>
                         <action id="-9" name="Set value" sid="339309602784999" type="System">
                             <param id="0" name="Variable">MaxTouchY</param>
@@ -173,20 +181,20 @@
                         <action id="-3" name="Create object" sid="955261690476013" type="System">
                             <param id="0" name="Object to create">SpriteTimer2</param>
                             <param id="1" name="Layer">8</param>
-                            <param id="2" name="X">640</param>
-                            <param id="3" name="Y">375</param>
+                            <param id="2" name="X">140</param>
+                            <param id="3" name="Y">40</param>
                         </action>
                         <action id="-3" name="Create object" sid="712576346984754" type="System">
                             <param id="0" name="Object to create">SpriteTimer</param>
                             <param id="1" name="Layer">8</param>
-                            <param id="2" name="X">640</param>
-                            <param id="3" name="Y">550</param>
+                            <param id="2" name="X">140</param>
+                            <param id="3" name="Y">40</param>
                         </action>
                         <action id="-3" name="Create object" sid="867770705970344" type="System">
                             <param id="0" name="Object to create">SpriteTimer1</param>
                             <param id="1" name="Layer">8</param>
-                            <param id="2" name="X">640</param>
-                            <param id="3" name="Y">375</param>
+                            <param id="2" name="X">140</param>
+                            <param id="3" name="Y">40</param>
                         </action>
                         <action id="-10" name="Set value" sid="948662331258652" type="CoreBarrier">
                             <param id="0" name="Instance variable">ProbBarrier</param>
@@ -214,7 +222,7 @@
                         </action>
                         <action id="-10" name="Set value" sid="168896331024617" type="SpriteTimer">
                             <param id="0" name="Instance variable">MaxSize</param>
-                            <param id="1" name="Value">350</param>
+                            <param id="1" name="Value">1000</param>
                         </action>
                         <action id="-10" name="Set value" sid="699081499456979" type="SpriteTimer">
                             <param id="0" name="Instance variable">Size</param>
@@ -228,9 +236,6 @@
                         </action>
                         <action id="-15" name="Set visible" sid="314671983682194" type="SpriteRails">
                             <param id="0" name="Visibility">0</param>
-                        </action>
-                        <action disabled="1" id="0" name="Set text" sid="182668200775017" type="TextScore">
-                            <param id="0" name="Text">&quot;Score: &quot; &amp; Score</param>
                         </action>
                         <action id="0" name="Set text" sid="744371219902195" type="TextTimer">
                             <param id="0" name="Text">Countdown</param>
@@ -767,7 +772,7 @@
                             <param id="1" name="From">1</param>
                         </action>
                         <action id="6" name="Set speed" sid="879579661833158" type="SpriteDockTrainR">
-                            <param id="0" name="Speed">AnimationSpeed</param>
+                            <param id="0" name="Speed">AnimationPokeSpeed</param>
                         </action>
                         <action id="3" name="Start" sid="349841613768848" type="SpriteDockTrainR">
                             <param id="0" name="From">1</param>
@@ -786,7 +791,7 @@
                             <param id="1" name="From">1</param>
                         </action>
                         <action id="6" name="Set speed" sid="945953320003952" type="SpriteDockTrainL">
-                            <param id="0" name="Speed">AnimationSpeed</param>
+                            <param id="0" name="Speed">AnimationPokeSpeed</param>
                         </action>
                         <action id="3" name="Start" sid="763608656667446" type="SpriteDockTrainL">
                             <param id="0" name="From">1</param>
@@ -847,9 +852,6 @@
                             <param id="0" name="Variable">Score</param>
                             <param id="1" name="Value">RewardSize</param>
                         </action>
-                        <action disabled="1" id="0" name="Set text" sid="975464057033942" type="TextScore">
-                            <param id="0" name="Text">&quot;Score: &quot; &amp; Score</param>
-                        </action>
                         <action id="0" name="Play" sid="831964366158802" type="Audio">
                             <param id="0" name="Audio file">hit4</param>
                             <param id="2" name="Loop">0</param>
@@ -861,14 +863,14 @@
                             <param id="1" name="From">1</param>
                         </action>
                         <action id="6" name="Set speed" sid="292990799422668" type="SpriteEnemyHit">
-                            <param id="0" name="Speed">AnimationSpeed</param>
+                            <param id="0" name="Speed">AnimationTargetSpeed</param>
                         </action>
                         <action id="3" name="Start" sid="638426390422497" type="SpriteEnemyHit">
                             <param id="0" name="From">0</param>
                         </action>
                         <action id="-12" name="Subtract from" sid="239438903760058" type="SpriteTimer">
                             <param id="0" name="Instance variable">Size</param>
-                            <param id="1" name="Value">RewardSize*5</param>
+                            <param id="1" name="Value">RewardSize*7</param>
                         </action>
                         <action disabled="1" id="-15" name="Set visible" sid="462556013786634" type="SpriteScore">
                             <param id="0" name="Visibility">1</param>
@@ -887,7 +889,7 @@
                             <param id="1" name="From">1</param>
                         </action>
                         <action id="6" name="Set speed" sid="182649881808029" type="SpriteEnemyHit">
-                            <param id="0" name="Speed">AnimationSpeed</param>
+                            <param id="0" name="Speed">AnimationTargetSpeed</param>
                         </action>
                         <action id="3" name="Start" sid="319334416974389" type="SpriteEnemyHit">
                             <param id="0" name="From">0</param>
@@ -1017,47 +1019,59 @@
                         <event-block sid="606453804490285">
                             <conditions>
                                 <condition id="-4" name="Trigger once while true" sid="284474860274693" type="System" />
-                                <condition id="-8" name="Compare two values" sid="341743833259772" type="System">
-                                    <param id="0" name="First value">Player.Location=ActiveSide</param>
-                                    <param id="1" name="Comparison">0</param>
-                                    <param id="2" name="Second value">0</param>
-                                </condition>
                             </conditions>
-                            <actions>
-                                <action id="2" name="Call expression" sid="436383884117217" type="Function">
-                                    <param id="0" name="Expression">Player.Location=1 ? Function.Call(&quot;ErrorCue&quot;, &quot;left&quot;, EnemyNr) : Function.Call(&quot;ErrorCue&quot;,&quot;right&quot;, EnemyNr)</param>
-                                </action>
-                            </actions>
-                        </event-block>
-                        <event-block sid="574966779312472">
-                            <conditions>
-                                <condition id="-4" name="Trigger once while true" sid="724250226137387" type="System" />
-                            </conditions>
-                            <actions>
-                                <action id="4" name="Set animation" sid="499403858605365" type="SpriteMan">
-                                    <param id="0" name="Animation">&quot;none&quot;</param>
-                                    <param id="1" name="From">1</param>
-                                </action>
-                                <action id="-3" name="Set position" sid="479816229749810" type="SpriteManDock">
-                                    <param id="0" name="X">Player.Location=1 ? ArrayCoordinates.At(0,0,0) : ArrayCoordinates.At(1,0,0)</param>
-                                    <param id="1" name="Y">Player.Location=1 ? ArrayCoordinates.At(0,1,0) : ArrayCoordinates.At(1,1,0)</param>
-                                </action>
-                                <action id="4" name="Set animation" sid="964376043636654" type="SpriteManDock">
-                                    <param id="0" name="Animation">Player.Location=1 ? &quot;Rstop&quot;:&quot;Lstop&quot; </param>
-                                    <param id="1" name="From">1</param>
-                                </action>
-                                <action id="4" name="Set animation" sid="342580451222256" type="SpriteDockTrainL">
-                                    <param id="0" name="Animation">Player.Location=0 ? &quot;Rstop&quot;:&quot;Lstop&quot; </param>
-                                    <param id="1" name="From">1</param>
-                                </action>
-                                <action id="4" name="Set animation" sid="121950455148121" type="SpriteDockTrainR">
-                                    <param id="0" name="Animation">Player.Location=0 ? &quot;Rstop&quot;:&quot;Lstop&quot; </param>
-                                    <param id="1" name="From">1</param>
-                                </action>
-                                <action id="2" name="Call expression" sid="754283349755754" type="Function">
-                                    <param id="0" name="Expression">Function.Call(&quot;Spawn&quot;, Player.Location, SpriteTarget.MinXCoord, SpriteTarget.MaxXCoord)</param>
-                                </action>
-                            </actions>
+                            <actions />
+                            <sub-events>
+                                <event-block sid="507945059381454">
+                                    <conditions>
+                                        <condition id="-8" name="Compare two values" sid="702449106556255" type="System">
+                                            <param id="0" name="First value">Player.Location&lt;&gt;ActiveSide</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Second value">1</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions />
+                                    <sub-events>
+                                        <event-block sid="807647374257393">
+                                            <conditions>
+                                                <condition id="-8" name="Compare two values" sid="804286087344180" type="System">
+                                                    <param id="0" name="First value">(ArrayData.At(3,CurrentTrial-1,0) &lt;&gt;Player.Location)</param>
+                                                    <param id="1" name="Comparison">0</param>
+                                                    <param id="2" name="Second value">1</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="2" name="Call expression" sid="436383884117217" type="Function">
+                                                    <param id="0" name="Expression">Player.Location=1 ? Function.Call(&quot;ErrorCue&quot;, &quot;left&quot;, EnemyNr) : Function.Call(&quot;ErrorCue&quot;,&quot;right&quot;, EnemyNr)</param>
+                                                </action>
+                                                <action id="2" name="Call expression" sid="627642900824532" type="Function">
+                                                    <param id="0" name="Expression">Function.Call(&quot;PlayerDock&quot;, &quot;NoSpawn&quot;)</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                        <event-block sid="684639663536235">
+                                            <conditions>
+                                                <condition id="-22" name="Else" sid="121201418994359" type="System" />
+                                            </conditions>
+                                            <actions>
+                                                <action id="2" name="Call expression" sid="393583120044558" type="Function">
+                                                    <param id="0" name="Expression">Function.Call(&quot;PlayerDock&quot;, &quot;Spawn&quot;)</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
+                                </event-block>
+                                <event-block sid="397885407755398">
+                                    <conditions>
+                                        <condition id="-22" name="Else" sid="778101205629773" type="System" />
+                                    </conditions>
+                                    <actions>
+                                        <action id="2" name="Call expression" sid="195912739268792" type="Function">
+                                            <param id="0" name="Expression">Function.Call(&quot;PlayerDock&quot;, &quot;Spawn&quot;)</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
                         </event-block>
                         <event-block sid="758582813813953">
                             <conditions>
@@ -1135,6 +1149,38 @@
                         <action id="4" name="Set animation" sid="574298944629799" type="SpriteEnemy">
                             <param id="0" name="Animation">&quot;empty&quot;</param>
                             <param id="1" name="From">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="514489721904821">
+                    <conditions>
+                        <condition id="0" name="On function" sid="728805647829090" type="Function">
+                            <param id="0" name="Name">&quot;PlayerDock&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="4" name="Set animation" sid="499403858605365" type="SpriteMan">
+                            <param id="0" name="Animation">&quot;none&quot;</param>
+                            <param id="1" name="From">1</param>
+                        </action>
+                        <action id="-3" name="Set position" sid="479816229749810" type="SpriteManDock">
+                            <param id="0" name="X">Player.Location=1 ? ArrayCoordinates.At(0,0,0) : ArrayCoordinates.At(1,0,0)</param>
+                            <param id="1" name="Y">Player.Location=1 ? ArrayCoordinates.At(0,1,0) : ArrayCoordinates.At(1,1,0)</param>
+                        </action>
+                        <action id="4" name="Set animation" sid="964376043636654" type="SpriteManDock">
+                            <param id="0" name="Animation">Player.Location=1 ? &quot;Rstop&quot;:&quot;Lstop&quot; </param>
+                            <param id="1" name="From">1</param>
+                        </action>
+                        <action id="4" name="Set animation" sid="342580451222256" type="SpriteDockTrainL">
+                            <param id="0" name="Animation">Player.Location=0 ? &quot;Rstop&quot;:&quot;Lstop&quot; </param>
+                            <param id="1" name="From">1</param>
+                        </action>
+                        <action id="4" name="Set animation" sid="121950455148121" type="SpriteDockTrainR">
+                            <param id="0" name="Animation">Player.Location=0 ? &quot;Rstop&quot;:&quot;Lstop&quot; </param>
+                            <param id="1" name="From">1</param>
+                        </action>
+                        <action id="2" name="Call expression" sid="754283349755754" type="Function">
+                            <param id="0" name="Expression">Function.Call(Function.Param(0) , Player.Location, SpriteTarget.MinXCoord, SpriteTarget.MaxXCoord)</param>
                         </action>
                     </actions>
                 </event-block>
