@@ -2077,6 +2077,9 @@
                 </animation>
             </animation-folder>
         </object-type>
+        <object-type name="SliderMultiplier" sid="418000866243078">
+            <plugin id="sliderbar" />
+        </object-type>
     </object-folder>
     <families />
     <layout-folder>

@@ -576,6 +576,53 @@
                         </action>
                     </actions>
                 </event-block>
+                <comment>temp</comment>
+                <event-block sid="994008392500730">
+                    <conditions>
+                        <condition id="-1" name="Every tick" sid="610646010048147" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="120301991127088" type="System">
+                            <param id="0" name="Variable">Multiplier</param>
+                            <param id="1" name="Value">SliderMultiplier.Value</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="471602482696903" type="System">
+                            <param id="0" name="Variable">Iti</param>
+                            <param id="1" name="Value">2/Multiplier</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="628907276833594" type="System">
+                            <param id="0" name="Variable">AnimationWholeSpeed</param>
+                            <param id="1" name="Value">60/Iti</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="104551796453755" type="System">
+                            <param id="0" name="Variable">AnimationPokeSpeed</param>
+                            <param id="1" name="Value">(1/3)*AnimationWholeSpeed</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="452832508030428" type="System">
+                            <param id="0" name="Variable">AnimationTargetSpeed</param>
+                            <param id="1" name="Value">(2/3)*AnimationWholeSpeed</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="879368300056491" type="System">
+                            <param id="0" name="Variable">TravelSpeed</param>
+                            <param id="1" name="Value">4*Multiplier</param>
+                        </action>
+                        <action id="6" name="Set speed" sid="830058570598931" type="SpriteEnemyHit">
+                            <param id="0" name="Speed">Iti/SpriteEnemyHit.AnimationFrameCount</param>
+                        </action>
+                        <action id="4" name="Set at XYZ" sid="309342849986781" type="ArrayTravelspeed">
+                            <param id="0" name="X">0</param>
+                            <param id="1" name="Y">0</param>
+                            <param id="2" name="Z">0</param>
+                            <param id="3" name="Value">TravelSpeed</param>
+                        </action>
+                        <action id="4" name="Set at XYZ" sid="367409902794631" type="ArrayTravelspeed">
+                            <param id="0" name="X">0</param>
+                            <param id="1" name="Y">1</param>
+                            <param id="2" name="Z">0</param>
+                            <param id="3" name="Value">TravelSpeed/BarrierSize</param>
+                        </action>
+                    </actions>
+                </event-block>
             </sub-events>
         </event-group>
         <event-group description="" sid="509084829172797" title="Spawn">
@@ -618,7 +665,13 @@
                     <conditions>
                         <condition id="-18" name="On created" sid="725935157978646" type="SpriteTarget" />
                     </conditions>
-                    <actions />
+                    <actions>
+                        <action id="-9" name="Destroy" sid="160915970028348" type="SpriteEnemyHit" />
+                        <action id="-10" name="Set value" sid="543785286417417" type="Player">
+                            <param id="0" name="Instance variable">CanMove</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                    </actions>
                     <sub-events>
                         <event-block sid="433519250650492">
                             <conditions>
@@ -902,7 +955,7 @@
                         </action>
                     </actions>
                 </event-block>
-                <event-block sid="441594434371599">
+                <event-block disabled="1" sid="441594434371599">
                     <conditions>
                         <condition id="5" name="On any finished" sid="241047941676003" type="SpriteEnemyHit" />
                     </conditions>

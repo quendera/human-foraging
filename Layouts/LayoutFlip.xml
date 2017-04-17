@@ -916,6 +916,30 @@
                         <opacity>1</opacity>
                     </world>
                 </instance>
+                <instance type="SliderMultiplier" uid="1">
+                    <properties>
+                        <value>3</value>
+                        <minimum>0.01</minimum>
+                        <maximum>10</maximum>
+                        <step>0.01</step>
+                        <tooltip></tooltip>
+                        <initial-visibility>Visible</initial-visibility>
+                        <enabled>Yes</enabled>
+                        <id-optional></id-optional>
+                    </properties>
+                    <blend-mode>0</blend-mode>
+                    <effect-fallback>0</effect-fallback>
+                    <world>
+                        <x>538</x>
+                        <y>376</y>
+                        <z>0</z>
+                        <width>200</width>
+                        <height>25</height>
+                        <depth>0</depth>
+                        <hotspotX>0</hotspotX>
+                        <hotspotY>0</hotspotY>
+                    </world>
+                </instance>
             </instances>
             <effects />
         </layer>
