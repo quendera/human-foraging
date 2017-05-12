@@ -3618,6 +3618,16 @@ quat4.str=function(a){return"["+a[0]+", "+a[1]+", "+a[2]+", "+a[3]+"]"};
 		var self = this;
 		if (this.isWKWebView)
 		{
+			var loadDataJsFn = function ()
+			{
+				self.fetchLocalFileViaCordovaAsText("data.js", function (str)
+				{
+					self.loadProject(JSON.parse(str));
+				}, function (err)
+				{
+					alert("Error fetching data.js");
+				});
+			};
 			if (this.httpServer)
 			{
 				this.httpServer["startServer"]({
@@ -3626,27 +3636,17 @@ quat4.str=function(a){return"["+a[0]+", "+a[1]+", "+a[2]+", "+a[3]+"]"};
 				}, function (url)
 				{
 					self.httpServerUrl = url;
-					self.fetchLocalFileViaCordovaAsText("data.js", function (str)
-					{
-						self.loadProject(JSON.parse(str));
-					}, function (err)
-					{
-						alert("Error fetching data.js");
-					});
+					loadDataJsFn();
 				}, function (err)
 				{
-					alert("error starting local server: " + err);
+					console.log("Error starting local server: " + err + ". Video playback will not work.");
+					loadDataJsFn();
 				});
 			}
 			else
 			{
-				this.fetchLocalFileViaCordovaAsText("data.js", function (str)
-				{
-					self.loadProject(JSON.parse(str));
-				}, function (err)
-				{
-					alert("Error fetching data.js");
-				});
+				console.log("Local server unavailable. Video playback will not work.");
+				loadDataJsFn();
 			}
 			return;
 		}
@@ -3735,6 +3735,24 @@ quat4.str=function(a){return"["+a[0]+", "+a[1]+", "+a[2]+", "+a[3]+"]"};
 		var attribs;
 		if (this.fullscreen_mode > 0)
 			this["setSize"](window.innerWidth, window.innerHeight, true);
+		this.canvas.addEventListener("webglcontextlost", function (ev) {
+			ev.preventDefault();
+			self.onContextLost();
+			cr.logexport("[Construct 2] WebGL context lost");
+			window["cr_setSuspended"](true);		// stop rendering
+		}, false);
+		this.canvas.addEventListener("webglcontextrestored", function (ev) {
+			self.glwrap.initState();
+			self.glwrap.setSize(self.glwrap.width, self.glwrap.height, true);
+			self.layer_tex = null;
+			self.layout_tex = null;
+			self.fx_tex[0] = null;
+			self.fx_tex[1] = null;
+			self.onContextRestored();
+			self.redraw = true;
+			cr.logexport("[Construct 2] WebGL context restored");
+			window["cr_setSuspended"](false);		// resume rendering
+		}, false);
 		try {
 			if (this.enableWebGL && (this.isCocoonJs || this.isEjecta || !this.isDomFree))
 			{
@@ -3742,6 +3760,7 @@ quat4.str=function(a){return"["+a[0]+", "+a[1]+", "+a[2]+", "+a[3]+"]"};
 					"alpha": true,
 					"depth": false,
 					"antialias": false,
+					"powerPreference": "high-performance",
 					"failIfMajorPerformanceCaveat": true
 				};
 				this.gl = (this.canvas.getContext("webgl2", attribs) ||
@@ -3781,24 +3800,6 @@ quat4.str=function(a){return"["+a[0]+", "+a[1]+", "+a[2]+", "+a[3]+"]"};
 			this.glwrap.setSize(this.canvas.width, this.canvas.height);
 			this.glwrap.enable_mipmaps = (this.downscalingQuality !== 0);
 			this.ctx = null;
-			this.canvas.addEventListener("webglcontextlost", function (ev) {
-				ev.preventDefault();
-				self.onContextLost();
-				cr.logexport("[Construct 2] WebGL context lost");
-				window["cr_setSuspended"](true);		// stop rendering
-			}, false);
-			this.canvas.addEventListener("webglcontextrestored", function (ev) {
-				self.glwrap.initState();
-				self.glwrap.setSize(self.glwrap.width, self.glwrap.height, true);
-				self.layer_tex = null;
-				self.layout_tex = null;
-				self.fx_tex[0] = null;
-				self.fx_tex[1] = null;
-				self.onContextRestored();
-				self.redraw = true;
-				cr.logexport("[Construct 2] WebGL context restored");
-				window["cr_setSuspended"](false);		// resume rendering
-			}, false);
 			for (i = 0, len = this.types_by_index.length; i < len; i++)
 			{
 				t = this.types_by_index[i];
@@ -20693,6 +20694,10 @@ cr.plugins_.NodeWebkit = function(runtime)
 	{
 		ret.set_string(nw_appfolder);
 	};
+	Exps.prototype.AppFolderURL = function (ret)
+	{
+		ret.set_string("file://" + nw_appfolder);
+	};
 	Exps.prototype.UserFolder = function (ret)
 	{
 		ret.set_string(nw_userfolder);
@@ -20770,6 +20775,587 @@ cr.plugins_.NodeWebkit = function(runtime)
 	Exps.prototype.ClipboardText = function (ret)
 	{
 		ret.set_string((isNWjs && gui) ? (gui["Clipboard"]["get"]()["get"]() || "") : 0);
+	};
+	pluginProto.exps = new Exps();
+}());
+;
+;
+cr.plugins_.Particles = function(runtime)
+{
+	this.runtime = runtime;
+};
+(function ()
+{
+	var pluginProto = cr.plugins_.Particles.prototype;
+	pluginProto.Type = function(plugin)
+	{
+		this.plugin = plugin;
+		this.runtime = plugin.runtime;
+	};
+	var typeProto = pluginProto.Type.prototype;
+	typeProto.onCreate = function()
+	{
+		if (this.is_family)
+			return;
+		this.texture_img = new Image();
+		this.texture_img.cr_filesize = this.texture_filesize;
+		this.webGL_texture = null;
+		this.runtime.waitForImageLoad(this.texture_img, this.texture_file);
+	};
+	typeProto.onLostWebGLContext = function ()
+	{
+		if (this.is_family)
+			return;
+		this.webGL_texture = null;
+	};
+	typeProto.onRestoreWebGLContext = function ()
+	{
+		if (this.is_family || !this.instances.length)
+			return;
+		if (!this.webGL_texture)
+		{
+			this.webGL_texture = this.runtime.glwrap.loadTexture(this.texture_img, true, this.runtime.linearSampling, this.texture_pixelformat);
+		}
+	};
+	typeProto.loadTextures = function ()
+	{
+		if (this.is_family || this.webGL_texture || !this.runtime.glwrap)
+			return;
+		this.webGL_texture = this.runtime.glwrap.loadTexture(this.texture_img, true, this.runtime.linearSampling, this.texture_pixelformat);
+	};
+	typeProto.unloadTextures = function ()
+	{
+		if (this.is_family || this.instances.length || !this.webGL_texture)
+			return;
+		this.runtime.glwrap.deleteTexture(this.webGL_texture);
+		this.webGL_texture = null;
+	};
+	typeProto.preloadCanvas2D = function (ctx)
+	{
+		ctx.drawImage(this.texture_img, 0, 0);
+	};
+	function Particle(owner)
+	{
+		this.owner = owner;
+		this.active = false;
+		this.x = 0;
+		this.y = 0;
+		this.speed = 0;
+		this.angle = 0;
+		this.opacity = 1;
+		this.grow = 0;
+		this.size = 0;
+		this.gs = 0;			// gravity speed
+		this.age = 0;
+		cr.seal(this);
+	};
+	Particle.prototype.init = function ()
+	{
+		var owner = this.owner;
+		this.x = owner.x - (owner.xrandom / 2) + (Math.random() * owner.xrandom);
+		this.y = owner.y - (owner.yrandom / 2) + (Math.random() * owner.yrandom);
+		this.speed = owner.initspeed - (owner.speedrandom / 2) + (Math.random() * owner.speedrandom);
+		this.angle = owner.angle - (owner.spraycone / 2) + (Math.random() * owner.spraycone);
+		this.opacity = owner.initopacity;
+		this.size = owner.initsize - (owner.sizerandom / 2) + (Math.random() * owner.sizerandom);
+		this.grow = owner.growrate - (owner.growrandom / 2) + (Math.random() * owner.growrandom);
+		this.gs = 0;
+		this.age = 0;
+	};
+	Particle.prototype.tick = function (dt)
+	{
+		var owner = this.owner;
+		this.x += Math.cos(this.angle) * this.speed * dt;
+		this.y += Math.sin(this.angle) * this.speed * dt;
+		this.y += this.gs * dt;
+		this.speed += owner.acc * dt;
+		this.size += this.grow * dt;
+		this.gs += owner.g * dt;
+		this.age += dt;
+		if (this.size < 1)
+		{
+			this.active = false;
+			return;
+		}
+		if (owner.lifeanglerandom !== 0)
+			this.angle += (Math.random() * owner.lifeanglerandom * dt) - (owner.lifeanglerandom * dt / 2);
+		if (owner.lifespeedrandom !== 0)
+			this.speed += (Math.random() * owner.lifespeedrandom * dt) - (owner.lifespeedrandom * dt / 2);
+		if (owner.lifeopacityrandom !== 0)
+		{
+			this.opacity += (Math.random() * owner.lifeopacityrandom * dt) - (owner.lifeopacityrandom * dt / 2);
+			if (this.opacity < 0)
+				this.opacity = 0;
+			else if (this.opacity > 1)
+				this.opacity = 1;
+		}
+		if (owner.destroymode <= 1 && this.age >= owner.timeout)
+		{
+			this.active = false;
+		}
+		if (owner.destroymode === 2 && this.speed <= 0)
+		{
+			this.active = false;
+		}
+	};
+	Particle.prototype.draw = function (ctx)
+	{
+		var curopacity = this.owner.opacity * this.opacity;
+		if (curopacity === 0)
+			return;
+		if (this.owner.destroymode === 0)
+			curopacity *= 1 - (this.age / this.owner.timeout);
+		ctx.globalAlpha = curopacity;
+		var drawx = this.x - this.size / 2;
+		var drawy = this.y - this.size / 2;
+		if (this.owner.runtime.pixel_rounding)
+		{
+			drawx = (drawx + 0.5) | 0;
+			drawy = (drawy + 0.5) | 0;
+		}
+		ctx.drawImage(this.owner.type.texture_img, drawx, drawy, this.size, this.size);
+	};
+	Particle.prototype.drawGL = function (glw)
+	{
+		var curopacity = this.owner.opacity * this.opacity;
+		if (this.owner.destroymode === 0)
+			curopacity *= 1 - (this.age / this.owner.timeout);
+		var drawsize = this.size;
+		var scaleddrawsize = drawsize * this.owner.particlescale;
+		var drawx = this.x - drawsize / 2;
+		var drawy = this.y - drawsize / 2;
+		if (this.owner.runtime.pixel_rounding)
+		{
+			drawx = (drawx + 0.5) | 0;
+			drawy = (drawy + 0.5) | 0;
+		}
+		if (scaleddrawsize < 1 || curopacity === 0)
+			return;
+		if (scaleddrawsize < glw.minPointSize || scaleddrawsize > glw.maxPointSize)
+		{
+			glw.setOpacity(curopacity);
+			glw.quad(drawx, drawy, drawx + drawsize, drawy, drawx + drawsize, drawy + drawsize, drawx, drawy + drawsize);
+		}
+		else
+			glw.point(this.x, this.y, scaleddrawsize, curopacity);
+	};
+	Particle.prototype.left = function ()
+	{
+		return this.x - this.size / 2;
+	};
+	Particle.prototype.right = function ()
+	{
+		return this.x + this.size / 2;
+	};
+	Particle.prototype.top = function ()
+	{
+		return this.y - this.size / 2;
+	};
+	Particle.prototype.bottom = function ()
+	{
+		return this.y + this.size / 2;
+	};
+	pluginProto.Instance = function(type)
+	{
+		this.type = type;
+		this.runtime = type.runtime;
+	};
+	var instanceProto = pluginProto.Instance.prototype;
+	var deadparticles = [];
+	instanceProto.onCreate = function()
+	{
+		var props = this.properties;
+		this.rate = props[0];
+		this.spraycone = cr.to_radians(props[1]);
+		this.spraytype = props[2];			// 0 = continuous, 1 = one-shot
+		this.spraying = true;				// for continuous mode only
+		this.initspeed = props[3];
+		this.initsize = props[4];
+		this.initopacity = props[5] / 100.0;
+		this.growrate = props[6];
+		this.xrandom = props[7];
+		this.yrandom = props[8];
+		this.speedrandom = props[9];
+		this.sizerandom = props[10];
+		this.growrandom = props[11];
+		this.acc = props[12];
+		this.g = props[13];
+		this.lifeanglerandom = props[14];
+		this.lifespeedrandom = props[15];
+		this.lifeopacityrandom = props[16];
+		this.destroymode = props[17];		// 0 = fade, 1 = timeout, 2 = stopped
+		this.timeout = props[18];
+		this.particleCreateCounter = 0;
+		this.particlescale = 1;
+		this.particleBoxLeft = this.x;
+		this.particleBoxTop = this.y;
+		this.particleBoxRight = this.x;
+		this.particleBoxBottom = this.y;
+		this.add_bbox_changed_callback(function (self) {
+			self.bbox.set(self.particleBoxLeft, self.particleBoxTop, self.particleBoxRight, self.particleBoxBottom);
+			self.bquad.set_from_rect(self.bbox);
+			self.bbox_changed = false;
+			self.update_collision_cell();
+			self.update_render_cell();
+		});
+		if (!this.recycled)
+			this.particles = [];
+		this.runtime.tickMe(this);
+		this.type.loadTextures();
+		if (this.spraytype === 1)
+		{
+			for (var i = 0; i < this.rate; i++)
+				this.allocateParticle().opacity = 0;
+		}
+		this.first_tick = true;		// for re-init'ing one-shot particles on first tick so they assume any new angle/position
+	};
+	instanceProto.saveToJSON = function ()
+	{
+		var o = {
+			"r": this.rate,
+			"sc": this.spraycone,
+			"st": this.spraytype,
+			"s": this.spraying,
+			"isp": this.initspeed,
+			"isz": this.initsize,
+			"io": this.initopacity,
+			"gr": this.growrate,
+			"xr": this.xrandom,
+			"yr": this.yrandom,
+			"spr": this.speedrandom,
+			"szr": this.sizerandom,
+			"grnd": this.growrandom,
+			"acc": this.acc,
+			"g": this.g,
+			"lar": this.lifeanglerandom,
+			"lsr": this.lifespeedrandom,
+			"lor": this.lifeopacityrandom,
+			"dm": this.destroymode,
+			"to": this.timeout,
+			"pcc": this.particleCreateCounter,
+			"ft": this.first_tick,
+			"p": []
+		};
+		var i, len, p;
+		var arr = o["p"];
+		for (i = 0, len = this.particles.length; i < len; i++)
+		{
+			p = this.particles[i];
+			arr.push([p.x, p.y, p.speed, p.angle, p.opacity, p.grow, p.size, p.gs, p.age]);
+		}
+		return o;
+	};
+	instanceProto.loadFromJSON = function (o)
+	{
+		this.rate = o["r"];
+		this.spraycone = o["sc"];
+		this.spraytype = o["st"];
+		this.spraying = o["s"];
+		this.initspeed = o["isp"];
+		this.initsize = o["isz"];
+		this.initopacity = o["io"];
+		this.growrate = o["gr"];
+		this.xrandom = o["xr"];
+		this.yrandom = o["yr"];
+		this.speedrandom = o["spr"];
+		this.sizerandom = o["szr"];
+		this.growrandom = o["grnd"];
+		this.acc = o["acc"];
+		this.g = o["g"];
+		this.lifeanglerandom = o["lar"];
+		this.lifespeedrandom = o["lsr"];
+		this.lifeopacityrandom = o["lor"];
+		this.destroymode = o["dm"];
+		this.timeout = o["to"];
+		this.particleCreateCounter = o["pcc"];
+		this.first_tick = o["ft"];
+		deadparticles.push.apply(deadparticles, this.particles);
+		cr.clearArray(this.particles);
+		var i, len, p, d;
+		var arr = o["p"];
+		for (i = 0, len = arr.length; i < len; i++)
+		{
+			p = this.allocateParticle();
+			d = arr[i];
+			p.x = d[0];
+			p.y = d[1];
+			p.speed = d[2];
+			p.angle = d[3];
+			p.opacity = d[4];
+			p.grow = d[5];
+			p.size = d[6];
+			p.gs = d[7];
+			p.age = d[8];
+		}
+	};
+	instanceProto.onDestroy = function ()
+	{
+		deadparticles.push.apply(deadparticles, this.particles);
+		cr.clearArray(this.particles);
+	};
+	instanceProto.allocateParticle = function ()
+	{
+		var p;
+		if (deadparticles.length)
+		{
+			p = deadparticles.pop();
+			p.owner = this;
+		}
+		else
+			p = new Particle(this);
+		this.particles.push(p);
+		p.active = true;
+		return p;
+	};
+	instanceProto.tick = function()
+	{
+		var dt = this.runtime.getDt(this);
+		var i, len, p, n, j;
+		if (this.spraytype === 0 && this.spraying)
+		{
+			this.particleCreateCounter += dt * this.rate;
+			n = cr.floor(this.particleCreateCounter);
+			this.particleCreateCounter -= n;
+			for (i = 0; i < n; i++)
+			{
+				p = this.allocateParticle();
+				p.init();
+			}
+		}
+		this.particleBoxLeft = this.x;
+		this.particleBoxTop = this.y;
+		this.particleBoxRight = this.x;
+		this.particleBoxBottom = this.y;
+		for (i = 0, j = 0, len = this.particles.length; i < len; i++)
+		{
+			p = this.particles[i];
+			this.particles[j] = p;
+			this.runtime.redraw = true;
+			if (this.spraytype === 1 && this.first_tick)
+				p.init();
+			p.tick(dt);
+			if (!p.active)
+			{
+				deadparticles.push(p);
+				continue;
+			}
+			if (p.left() < this.particleBoxLeft)
+				this.particleBoxLeft = p.left();
+			if (p.right() > this.particleBoxRight)
+				this.particleBoxRight = p.right();
+			if (p.top() < this.particleBoxTop)
+				this.particleBoxTop = p.top();
+			if (p.bottom() > this.particleBoxBottom)
+				this.particleBoxBottom = p.bottom();
+			j++;
+		}
+		cr.truncateArray(this.particles, j);
+		this.set_bbox_changed();
+		this.first_tick = false;
+		if (this.spraytype === 1 && this.particles.length === 0)
+			this.runtime.DestroyInstance(this);
+	};
+	instanceProto.draw = function (ctx)
+	{
+		var i, len, p, layer = this.layer;
+		for (i = 0, len = this.particles.length; i < len; i++)
+		{
+			p = this.particles[i];
+			if (p.right() >= layer.viewLeft && p.bottom() >= layer.viewTop && p.left() <= layer.viewRight && p.top() <= layer.viewBottom)
+			{
+				p.draw(ctx);
+			}
+		}
+	};
+	instanceProto.drawGL = function (glw)
+	{
+		this.particlescale = this.layer.getScale();
+		glw.setTexture(this.type.webGL_texture);
+		var i, len, p, layer = this.layer;
+		for (i = 0, len = this.particles.length; i < len; i++)
+		{
+			p = this.particles[i];
+			if (p.right() >= layer.viewLeft && p.bottom() >= layer.viewTop && p.left() <= layer.viewRight && p.top() <= layer.viewBottom)
+			{
+				p.drawGL(glw);
+			}
+		}
+	};
+	function Cnds() {};
+	Cnds.prototype.IsSpraying = function ()
+	{
+		return this.spraying;
+	};
+	pluginProto.cnds = new Cnds();
+	function Acts() {};
+	Acts.prototype.SetSpraying = function (set_)
+	{
+		this.spraying = (set_ !== 0);
+	};
+	Acts.prototype.SetEffect = function (effect)
+	{
+		this.blend_mode = effect;
+		this.compositeOp = cr.effectToCompositeOp(effect);
+		cr.setGLBlend(this, effect, this.runtime.gl);
+		this.runtime.redraw = true;
+	};
+	Acts.prototype.SetRate = function (x)
+	{
+		this.rate = x;
+		var diff, i;
+		if (this.spraytype === 1 && this.first_tick)
+		{
+			if (x < this.particles.length)
+			{
+				diff = this.particles.length - x;
+				for (i = 0; i < diff; i++)
+					deadparticles.push(this.particles.pop());
+			}
+			else if (x > this.particles.length)
+			{
+				diff = x - this.particles.length;
+				for (i = 0; i < diff; i++)
+					this.allocateParticle().opacity = 0;
+			}
+		}
+	};
+	Acts.prototype.SetSprayCone = function (x)
+	{
+		this.spraycone = cr.to_radians(x);
+	};
+	Acts.prototype.SetInitSpeed = function (x)
+	{
+		this.initspeed = x;
+	};
+	Acts.prototype.SetInitSize = function (x)
+	{
+		this.initsize = x;
+	};
+	Acts.prototype.SetInitOpacity = function (x)
+	{
+		this.initopacity = x / 100;
+	};
+	Acts.prototype.SetGrowRate = function (x)
+	{
+		this.growrate = x;
+	};
+	Acts.prototype.SetXRandomiser = function (x)
+	{
+		this.xrandom = x;
+	};
+	Acts.prototype.SetYRandomiser = function (x)
+	{
+		this.yrandom = x;
+	};
+	Acts.prototype.SetSpeedRandomiser = function (x)
+	{
+		this.speedrandom = x;
+	};
+	Acts.prototype.SetSizeRandomiser = function (x)
+	{
+		this.sizerandom = x;
+	};
+	Acts.prototype.SetGrowRateRandomiser = function (x)
+	{
+		this.growrandom = x;
+	};
+	Acts.prototype.SetParticleAcc = function (x)
+	{
+		this.acc = x;
+	};
+	Acts.prototype.SetGravity = function (x)
+	{
+		this.g = x;
+	};
+	Acts.prototype.SetAngleRandomiser = function (x)
+	{
+		this.lifeanglerandom = x;
+	};
+	Acts.prototype.SetLifeSpeedRandomiser = function (x)
+	{
+		this.lifespeedrandom = x;
+	};
+	Acts.prototype.SetOpacityRandomiser = function (x)
+	{
+		this.lifeopacityrandom = x;
+	};
+	Acts.prototype.SetTimeout = function (x)
+	{
+		this.timeout = x;
+	};
+	pluginProto.acts = new Acts();
+	function Exps() {};
+	Exps.prototype.ParticleCount = function (ret)
+	{
+		ret.set_int(this.particles.length);
+	};
+	Exps.prototype.Rate = function (ret)
+	{
+		ret.set_float(this.rate);
+	};
+	Exps.prototype.SprayCone = function (ret)
+	{
+		ret.set_float(cr.to_degrees(this.spraycone));
+	};
+	Exps.prototype.InitSpeed = function (ret)
+	{
+		ret.set_float(this.initspeed);
+	};
+	Exps.prototype.InitSize = function (ret)
+	{
+		ret.set_float(this.initsize);
+	};
+	Exps.prototype.InitOpacity = function (ret)
+	{
+		ret.set_float(this.initopacity * 100);
+	};
+	Exps.prototype.InitGrowRate = function (ret)
+	{
+		ret.set_float(this.growrate);
+	};
+	Exps.prototype.XRandom = function (ret)
+	{
+		ret.set_float(this.xrandom);
+	};
+	Exps.prototype.YRandom = function (ret)
+	{
+		ret.set_float(this.yrandom);
+	};
+	Exps.prototype.InitSpeedRandom = function (ret)
+	{
+		ret.set_float(this.speedrandom);
+	};
+	Exps.prototype.InitSizeRandom = function (ret)
+	{
+		ret.set_float(this.sizerandom);
+	};
+	Exps.prototype.InitGrowRandom = function (ret)
+	{
+		ret.set_float(this.growrandom);
+	};
+	Exps.prototype.ParticleAcceleration = function (ret)
+	{
+		ret.set_float(this.acc);
+	};
+	Exps.prototype.Gravity = function (ret)
+	{
+		ret.set_float(this.g);
+	};
+	Exps.prototype.ParticleAngleRandom = function (ret)
+	{
+		ret.set_float(this.lifeanglerandom);
+	};
+	Exps.prototype.ParticleSpeedRandom = function (ret)
+	{
+		ret.set_float(this.lifespeedrandom);
+	};
+	Exps.prototype.ParticleOpacityRandom = function (ret)
+	{
+		ret.set_float(this.lifeopacityrandom);
+	};
+	Exps.prototype.Timeout = function (ret)
+	{
+		ret.set_float(this.timeout);
 	};
 	pluginProto.exps = new Exps();
 }());
@@ -24705,6 +25291,166 @@ cr.plugins_.wastrel_switchcase = function(runtime)
 }());
 ;
 ;
+cr.behaviors.Anchor = function(runtime)
+{
+	this.runtime = runtime;
+};
+(function ()
+{
+	var behaviorProto = cr.behaviors.Anchor.prototype;
+	behaviorProto.Type = function(behavior, objtype)
+	{
+		this.behavior = behavior;
+		this.objtype = objtype;
+		this.runtime = behavior.runtime;
+	};
+	var behtypeProto = behaviorProto.Type.prototype;
+	behtypeProto.onCreate = function()
+	{
+	};
+	behaviorProto.Instance = function(type, inst)
+	{
+		this.type = type;
+		this.behavior = type.behavior;
+		this.inst = inst;				// associated object instance to modify
+		this.runtime = type.runtime;
+	};
+	var behinstProto = behaviorProto.Instance.prototype;
+	behinstProto.onCreate = function()
+	{
+		this.anch_left = this.properties[0];		// 0 = left, 1 = right, 2 = none
+		this.anch_top = this.properties[1];			// 0 = top, 1 = bottom, 2 = none
+		this.anch_right = this.properties[2];		// 0 = none, 1 = right
+		this.anch_bottom = this.properties[3];		// 0 = none, 1 = bottom
+		this.inst.update_bbox();
+		this.xleft = this.inst.bbox.left;
+		this.ytop = this.inst.bbox.top;
+		this.xright = this.runtime.original_width - this.inst.bbox.left;
+		this.ybottom = this.runtime.original_height - this.inst.bbox.top;
+		this.rdiff = this.runtime.original_width - this.inst.bbox.right;
+		this.bdiff = this.runtime.original_height - this.inst.bbox.bottom;
+		this.enabled = (this.properties[4] !== 0);
+	};
+	behinstProto.saveToJSON = function ()
+	{
+		return {
+			"xleft": this.xleft,
+			"ytop": this.ytop,
+			"xright": this.xright,
+			"ybottom": this.ybottom,
+			"rdiff": this.rdiff,
+			"bdiff": this.bdiff,
+			"enabled": this.enabled
+		};
+	};
+	behinstProto.loadFromJSON = function (o)
+	{
+		this.xleft = o["xleft"];
+		this.ytop = o["ytop"];
+		this.xright = o["xright"];
+		this.ybottom = o["ybottom"];
+		this.rdiff = o["rdiff"];
+		this.bdiff = o["bdiff"];
+		this.enabled = o["enabled"];
+	};
+	behinstProto.tick = function ()
+	{
+		if (!this.enabled)
+			return;
+		var n;
+		var layer = this.inst.layer;
+		var inst = this.inst;
+		var bbox = this.inst.bbox;
+		if (this.anch_left === 0)
+		{
+			inst.update_bbox();
+			n = (layer.viewLeft + this.xleft) - bbox.left;
+			if (n !== 0)
+			{
+				inst.x += n;
+				inst.set_bbox_changed();
+			}
+		}
+		else if (this.anch_left === 1)
+		{
+			inst.update_bbox();
+			n = (layer.viewRight - this.xright) - bbox.left;
+			if (n !== 0)
+			{
+				inst.x += n;
+				inst.set_bbox_changed();
+			}
+		}
+		if (this.anch_top === 0)
+		{
+			inst.update_bbox();
+			n = (layer.viewTop + this.ytop) - bbox.top;
+			if (n !== 0)
+			{
+				inst.y += n;
+				inst.set_bbox_changed();
+			}
+		}
+		else if (this.anch_top === 1)
+		{
+			inst.update_bbox();
+			n = (layer.viewBottom - this.ybottom) - bbox.top;
+			if (n !== 0)
+			{
+				inst.y += n;
+				inst.set_bbox_changed();
+			}
+		}
+		if (this.anch_right === 1)
+		{
+			inst.update_bbox();
+			n = (layer.viewRight - this.rdiff) - bbox.right;
+			if (n !== 0)
+			{
+				inst.width += n;
+				if (inst.width < 0)
+					inst.width = 0;
+				inst.set_bbox_changed();
+			}
+		}
+		if (this.anch_bottom === 1)
+		{
+			inst.update_bbox();
+			n = (layer.viewBottom - this.bdiff) - bbox.bottom;
+			if (n !== 0)
+			{
+				inst.height += n;
+				if (inst.height < 0)
+					inst.height = 0;
+				inst.set_bbox_changed();
+			}
+		}
+	};
+	function Cnds() {};
+	behaviorProto.cnds = new Cnds();
+	function Acts() {};
+	Acts.prototype.SetEnabled = function (e)
+	{
+		if (this.enabled && e === 0)
+			this.enabled = false;
+		else if (!this.enabled && e !== 0)
+		{
+			this.inst.update_bbox();
+			this.xleft = this.inst.bbox.left;
+			this.ytop = this.inst.bbox.top;
+			this.xright = this.runtime.original_width - this.inst.bbox.left;
+			this.ybottom = this.runtime.original_height - this.inst.bbox.top;
+			this.rdiff = this.runtime.original_width - this.inst.bbox.right;
+			this.bdiff = this.runtime.original_height - this.inst.bbox.bottom;
+			this.enabled = true;
+		}
+	};
+	behaviorProto.acts = new Acts();
+	function Exps() {};
+	behaviorProto.exps = new Exps();
+}());
+;
+;
 cr.behaviors.Pin = function(runtime)
 {
 	this.runtime = runtime;
@@ -24867,23 +25613,332 @@ cr.behaviors.Pin = function(runtime)
 	};
 	behaviorProto.exps = new Exps();
 }());
+;
+;
+cr.behaviors.Sin = function(runtime)
+{
+	this.runtime = runtime;
+};
+(function ()
+{
+	var behaviorProto = cr.behaviors.Sin.prototype;
+	behaviorProto.Type = function(behavior, objtype)
+	{
+		this.behavior = behavior;
+		this.objtype = objtype;
+		this.runtime = behavior.runtime;
+	};
+	var behtypeProto = behaviorProto.Type.prototype;
+	behtypeProto.onCreate = function()
+	{
+	};
+	behaviorProto.Instance = function(type, inst)
+	{
+		this.type = type;
+		this.behavior = type.behavior;
+		this.inst = inst;				// associated object instance to modify
+		this.runtime = type.runtime;
+		this.i = 0;		// period offset (radians)
+	};
+	var behinstProto = behaviorProto.Instance.prototype;
+	var _2pi = 2 * Math.PI;
+	var _pi_2 = Math.PI / 2;
+	var _3pi_2 = (3 * Math.PI) / 2;
+	behinstProto.onCreate = function()
+	{
+		this.active = (this.properties[0] === 1);
+		this.movement = this.properties[1]; // 0=Horizontal|1=Vertical|2=Size|3=Width|4=Height|5=Angle|6=Opacity|7=Value only
+		this.wave = this.properties[2];		// 0=Sine|1=Triangle|2=Sawtooth|3=Reverse sawtooth|4=Square
+		this.period = this.properties[3];
+		this.period += Math.random() * this.properties[4];								// period random
+		if (this.period === 0)
+			this.i = 0;
+		else
+		{
+			this.i = (this.properties[5] / this.period) * _2pi;								// period offset
+			this.i += ((Math.random() * this.properties[6]) / this.period) * _2pi;			// period offset random
+		}
+		this.mag = this.properties[7];													// magnitude
+		this.mag += Math.random() * this.properties[8];									// magnitude random
+		this.initialValue = 0;
+		this.initialValue2 = 0;
+		this.ratio = 0;
+		this.init();
+	};
+	behinstProto.saveToJSON = function ()
+	{
+		return {
+			"i": this.i,
+			"a": this.active,
+			"mv": this.movement,
+			"w": this.wave,
+			"p": this.period,
+			"mag": this.mag,
+			"iv": this.initialValue,
+			"iv2": this.initialValue2,
+			"r": this.ratio,
+			"lkv": this.lastKnownValue,
+			"lkv2": this.lastKnownValue2
+		};
+	};
+	behinstProto.loadFromJSON = function (o)
+	{
+		this.i = o["i"];
+		this.active = o["a"];
+		this.movement = o["mv"];
+		this.wave = o["w"];
+		this.period = o["p"];
+		this.mag = o["mag"];
+		this.initialValue = o["iv"];
+		this.initialValue2 = o["iv2"] || 0;
+		this.ratio = o["r"];
+		this.lastKnownValue = o["lkv"];
+		this.lastKnownValue2 = o["lkv2"] || 0;
+	};
+	behinstProto.init = function ()
+	{
+		switch (this.movement) {
+		case 0:		// horizontal
+			this.initialValue = this.inst.x;
+			break;
+		case 1:		// vertical
+			this.initialValue = this.inst.y;
+			break;
+		case 2:		// size
+			this.initialValue = this.inst.width;
+			this.ratio = this.inst.height / this.inst.width;
+			break;
+		case 3:		// width
+			this.initialValue = this.inst.width;
+			break;
+		case 4:		// height
+			this.initialValue = this.inst.height;
+			break;
+		case 5:		// angle
+			this.initialValue = this.inst.angle;
+			this.mag = cr.to_radians(this.mag);		// convert magnitude from degrees to radians
+			break;
+		case 6:		// opacity
+			this.initialValue = this.inst.opacity;
+			break;
+		case 7:
+			this.initialValue = 0;
+			break;
+		case 8:		// forwards/backwards
+			this.initialValue = this.inst.x;
+			this.initialValue2 = this.inst.y;
+			break;
+		default:
+;
+		}
+		this.lastKnownValue = this.initialValue;
+		this.lastKnownValue2 = this.initialValue2;
+	};
+	behinstProto.waveFunc = function (x)
+	{
+		x = x % _2pi;
+		switch (this.wave) {
+		case 0:		// sine
+			return Math.sin(x);
+		case 1:		// triangle
+			if (x <= _pi_2)
+				return x / _pi_2;
+			else if (x <= _3pi_2)
+				return 1 - (2 * (x - _pi_2) / Math.PI);
+			else
+				return (x - _3pi_2) / _pi_2 - 1;
+		case 2:		// sawtooth
+			return 2 * x / _2pi - 1;
+		case 3:		// reverse sawtooth
+			return -2 * x / _2pi + 1;
+		case 4:		// square
+			return x < Math.PI ? -1 : 1;
+		};
+		return 0;
+	};
+	behinstProto.tick = function ()
+	{
+		var dt = this.runtime.getDt(this.inst);
+		if (!this.active || dt === 0)
+			return;
+		if (this.period === 0)
+			this.i = 0;
+		else
+		{
+			this.i += (dt / this.period) * _2pi;
+			this.i = this.i % _2pi;
+		}
+		this.updateFromPhase();
+	};
+	behinstProto.updateFromPhase = function ()
+	{
+		switch (this.movement) {
+		case 0:		// horizontal
+			if (this.inst.x !== this.lastKnownValue)
+				this.initialValue += this.inst.x - this.lastKnownValue;
+			this.inst.x = this.initialValue + this.waveFunc(this.i) * this.mag;
+			this.lastKnownValue = this.inst.x;
+			break;
+		case 1:		// vertical
+			if (this.inst.y !== this.lastKnownValue)
+				this.initialValue += this.inst.y - this.lastKnownValue;
+			this.inst.y = this.initialValue + this.waveFunc(this.i) * this.mag;
+			this.lastKnownValue = this.inst.y;
+			break;
+		case 2:		// size
+			this.inst.width = this.initialValue + this.waveFunc(this.i) * this.mag;
+			this.inst.height = this.inst.width * this.ratio;
+			break;
+		case 3:		// width
+			this.inst.width = this.initialValue + this.waveFunc(this.i) * this.mag;
+			break;
+		case 4:		// height
+			this.inst.height = this.initialValue + this.waveFunc(this.i) * this.mag;
+			break;
+		case 5:		// angle
+			if (this.inst.angle !== this.lastKnownValue)
+				this.initialValue = cr.clamp_angle(this.initialValue + (this.inst.angle - this.lastKnownValue));
+			this.inst.angle = cr.clamp_angle(this.initialValue + this.waveFunc(this.i) * this.mag);
+			this.lastKnownValue = this.inst.angle;
+			break;
+		case 6:		// opacity
+			this.inst.opacity = this.initialValue + (this.waveFunc(this.i) * this.mag) / 100;
+			if (this.inst.opacity < 0)
+				this.inst.opacity = 0;
+			else if (this.inst.opacity > 1)
+				this.inst.opacity = 1;
+			break;
+		case 8:		// forwards/backwards
+			if (this.inst.x !== this.lastKnownValue)
+				this.initialValue += this.inst.x - this.lastKnownValue;
+			if (this.inst.y !== this.lastKnownValue2)
+				this.initialValue2 += this.inst.y - this.lastKnownValue2;
+			this.inst.x = this.initialValue + Math.cos(this.inst.angle) * this.waveFunc(this.i) * this.mag;
+			this.inst.y = this.initialValue2 + Math.sin(this.inst.angle) * this.waveFunc(this.i) * this.mag;
+			this.lastKnownValue = this.inst.x;
+			this.lastKnownValue2 = this.inst.y;
+			break;
+		}
+		this.inst.set_bbox_changed();
+	};
+	behinstProto.onSpriteFrameChanged = function (prev_frame, next_frame)
+	{
+		switch (this.movement) {
+		case 2:	// size
+			this.initialValue *= (next_frame.width / prev_frame.width);
+			this.ratio = next_frame.height / next_frame.width;
+			break;
+		case 3:	// width
+			this.initialValue *= (next_frame.width / prev_frame.width);
+			break;
+		case 4:	// height
+			this.initialValue *= (next_frame.height / prev_frame.height);
+			break;
+		}
+	};
+	function Cnds() {};
+	Cnds.prototype.IsActive = function ()
+	{
+		return this.active;
+	};
+	Cnds.prototype.CompareMovement = function (m)
+	{
+		return this.movement === m;
+	};
+	Cnds.prototype.ComparePeriod = function (cmp, v)
+	{
+		return cr.do_cmp(this.period, cmp, v);
+	};
+	Cnds.prototype.CompareMagnitude = function (cmp, v)
+	{
+		if (this.movement === 5)
+			return cr.do_cmp(this.mag, cmp, cr.to_radians(v));
+		else
+			return cr.do_cmp(this.mag, cmp, v);
+	};
+	Cnds.prototype.CompareWave = function (w)
+	{
+		return this.wave === w;
+	};
+	behaviorProto.cnds = new Cnds();
+	function Acts() {};
+	Acts.prototype.SetActive = function (a)
+	{
+		this.active = (a === 1);
+	};
+	Acts.prototype.SetPeriod = function (x)
+	{
+		this.period = x;
+	};
+	Acts.prototype.SetMagnitude = function (x)
+	{
+		this.mag = x;
+		if (this.movement === 5)	// angle
+			this.mag = cr.to_radians(this.mag);
+	};
+	Acts.prototype.SetMovement = function (m)
+	{
+		if (this.movement === 5)
+			this.mag = cr.to_degrees(this.mag);
+		this.movement = m;
+		this.init();
+	};
+	Acts.prototype.SetWave = function (w)
+	{
+		this.wave = w;
+	};
+	Acts.prototype.SetPhase = function (x)
+	{
+		this.i = (x * _2pi) % _2pi;
+		this.updateFromPhase();
+	};
+	Acts.prototype.UpdateInitialState = function ()
+	{
+		this.init();
+	};
+	behaviorProto.acts = new Acts();
+	function Exps() {};
+	Exps.prototype.CyclePosition = function (ret)
+	{
+		ret.set_float(this.i / _2pi);
+	};
+	Exps.prototype.Period = function (ret)
+	{
+		ret.set_float(this.period);
+	};
+	Exps.prototype.Magnitude = function (ret)
+	{
+		if (this.movement === 5)	// angle
+			ret.set_float(cr.to_degrees(this.mag));
+		else
+			ret.set_float(this.mag);
+	};
+	Exps.prototype.Value = function (ret)
+	{
+		ret.set_float(this.waveFunc(this.i) * this.mag);
+	};
+	behaviorProto.exps = new Exps();
+}());
 cr.getObjectRefTable = function () { return [
 	cr.plugins_.Arr,
 	cr.plugins_.Audio,
-	cr.plugins_.Function,
 	cr.plugins_.Dictionary,
-	cr.plugins_.Mouse,
+	cr.plugins_.Function,
 	cr.plugins_.List,
 	cr.plugins_.Keyboard,
-	cr.plugins_.Touch,
-	cr.plugins_.Rex_Date,
+	cr.plugins_.NodeWebkit,
+	cr.plugins_.Mouse,
 	cr.plugins_.sliderbar,
+	cr.plugins_.Sprite,
+	cr.plugins_.Particles,
+	cr.plugins_.Text,
 	cr.plugins_.wastrel_switchcase,
 	cr.plugins_.TextBox,
-	cr.plugins_.Text,
-	cr.plugins_.NodeWebkit,
-	cr.plugins_.Sprite,
+	cr.plugins_.Rex_Date,
+	cr.plugins_.Touch,
 	cr.behaviors.Pin,
+	cr.behaviors.Sin,
+	cr.behaviors.Anchor,
 	cr.plugins_.Touch.prototype.cnds.OnTouchObject,
 	cr.system_object.prototype.acts.GoToLayout,
 	cr.system_object.prototype.cnds.EveryTick,
@@ -24910,6 +25965,9 @@ cr.getObjectRefTable = function () { return [
 	cr.system_object.prototype.acts.CreateObject,
 	cr.plugins_.Sprite.prototype.exps.X,
 	cr.plugins_.Sprite.prototype.exps.Y,
+	cr.plugins_.Sprite.prototype.acts.SetPos,
+	cr.system_object.prototype.exps.layoutwidth,
+	cr.system_object.prototype.exps.layoutheight,
 	cr.plugins_.Sprite.prototype.acts.SetInstanceVar,
 	cr.plugins_.Sprite.prototype.acts.SetVisible,
 	cr.plugins_.Sprite.prototype.acts.SetSize,
@@ -24918,38 +25976,37 @@ cr.getObjectRefTable = function () { return [
 	cr.plugins_.Arr.prototype.acts.Clear,
 	cr.plugins_.Arr.prototype.acts.SetSize,
 	cr.plugins_.Arr.prototype.acts.SetXYZ,
-	cr.plugins_.Sprite.prototype.acts.SetPos,
 	cr.plugins_.Arr.prototype.exps.At,
 	cr.plugins_.Sprite.prototype.acts.MoveToTop,
-	cr.plugins_.Sprite.prototype.acts.SetAngle,
+	cr.behaviors.Sin.prototype.acts.SetPhase,
+	cr.behaviors.Pin.prototype.acts.Pin,
+	cr.behaviors.Sin.prototype.acts.SetMovement,
+	cr.behaviors.Sin.prototype.acts.SetMagnitude,
+	cr.behaviors.Sin.prototype.acts.SetPeriod,
 	cr.plugins_.wastrel_switchcase.prototype.cnds.Switch,
 	cr.plugins_.wastrel_switchcase.prototype.cnds.Case,
 	cr.plugins_.Function.prototype.acts.CallExpression,
 	cr.plugins_.Function.prototype.exps.Call,
 	cr.plugins_.Function.prototype.cnds.OnFunction,
 	cr.plugins_.Function.prototype.exps.Param,
-	cr.system_object.prototype.cnds.Every,
 	cr.system_object.prototype.acts.AddVar,
 	cr.system_object.prototype.exps.dt,
 	cr.plugins_.Sprite.prototype.acts.SetWidth,
 	cr.plugins_.Touch.prototype.exps.X,
 	cr.plugins_.Touch.prototype.exps.Y,
-	cr.system_object.prototype.cnds.Compare,
-	cr.plugins_.Sprite.prototype.exps.Count,
-	cr.plugins_.Sprite.prototype.cnds.OnCreated,
-	cr.plugins_.Sprite.prototype.cnds.IsOverlapping,
-	cr.system_object.prototype.cnds.Else,
 	cr.plugins_.Touch.prototype.cnds.OnTapGestureObject,
 	cr.plugins_.Function.prototype.acts.CallFunction,
 	cr.plugins_.Audio.prototype.acts.Play,
 	cr.plugins_.Sprite.prototype.acts.StartAnim,
-	cr.plugins_.Sprite.prototype.cnds.OnAnimFinished,
-	cr.system_object.prototype.exps.choose,
 	cr.plugins_.Sprite.prototype.acts.SubInstanceVar,
 	cr.plugins_.Sprite.prototype.cnds.CompareInstanceVar,
+	cr.system_object.prototype.acts.Scroll,
 	cr.plugins_.Sprite.prototype.acts.MoveAtAngle,
+	cr.system_object.prototype.cnds.Compare,
 	cr.system_object.prototype.cnds.TriggerOnce,
+	cr.system_object.prototype.cnds.Else,
 	cr.plugins_.Audio.prototype.acts.PlayByName,
+	cr.system_object.prototype.cnds.Every,
 	cr.plugins_.Keyboard.prototype.cnds.OnKey,
 	cr.plugins_.Arr.prototype.acts.JSONDownload
 ];};

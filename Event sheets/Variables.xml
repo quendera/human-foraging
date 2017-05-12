@@ -62,5 +62,7 @@
         <variable constant="0" name="TravelSpeedUndock" sid="616945610274432" static="0" type="number">0</variable>
         <variable constant="0" name="UndockRegion" sid="528625448599455" static="0" type="number">0</variable>
         <variable constant="0" name="UndockSpeed" sid="869044584736314" static="0" type="number">0</variable>
+        <variable constant="0" name="Zoom" sid="782417242940891" static="0" type="number">0</variable>
+        <variable constant="0" name="ZoomIn" sid="100720795709955" static="0" type="number">0</variable>
     </events>
 </c2eventsheet>

@@ -8,7 +8,7 @@
     <author-website>http://tiagoquendera.com</author-website>
     <app-id>com.tiagoquendera.hf</app-id>
     <unique-id>2m2oqhlgof90t</unique-id>
-    <saved-with-version>24300</saved-with-version>
+    <saved-with-version>24400</saved-with-version>
     <used-plugins>
         <plugin author="Scirra" id="Arr" version="1">Array</plugin>
         <plugin author="Scirra" id="Audio" version="1">Audio</plugin>
@@ -18,6 +18,7 @@
         <plugin author="Scirra" id="List" version="1">List</plugin>
         <plugin author="Scirra" id="Mouse" version="1">Mouse</plugin>
         <plugin author="Scirra" id="NodeWebkit" version="1">NW.js</plugin>
+        <plugin author="Scirra" id="Particles" version="1">Particles</plugin>
         <plugin author="Rex.Rainbow" id="Rex_Date" version="1">Date</plugin>
         <plugin author="Scirra" id="Sprite" version="1">Sprite</plugin>
         <plugin author="Scirra" id="Text" version="1">Text</plugin>
@@ -27,7 +28,9 @@
         <plugin author="Wastrel" id="wastrel_switchcase" version="1">SwitchCase</plugin>
     </used-plugins>
     <used-behaviors>
+        <behavior author="Scirra" id="Anchor" version="1">Anchor</behavior>
         <behavior author="Scirra" id="Pin" version="1">Pin</behavior>
+        <behavior author="Scirra" id="Sin" version="1">Sine</behavior>
     </used-behaviors>
     <used-effects />
     <configurations>
@@ -67,68 +70,180 @@
                         </behaviors>
                         <animation-folder>
                             <animation framecount="6" loop="0" name="Right" pingpong="0" repeatcount="1" repeatto="0" sid="187911634195927" speed="10">
-                                <frame duration="1" hotspotX="0.5" hotspotY="0.508475" original-source="C:\Users\Tiago\Google Drive\HUMAN_FORAGING\Task\Assets\runners\runner_0000_Layer-6.png" />
-                                <frame duration="1" hotspotX="0.542857" hotspotY="0.508621" original-source="C:\Users\Tiago\Google Drive\HUMAN_FORAGING\Task\Assets\runners\runner_0001_Layer-5.png" />
-                                <frame duration="1" hotspotX="0.511111" hotspotY="0.504505" original-source="C:\Users\Tiago\Google Drive\HUMAN_FORAGING\Task\Assets\runners\runner_0002_Layer-4.png" />
-                                <frame duration="1" hotspotX="0.507042" hotspotY="0.508475" original-source="C:\Users\Tiago\Google Drive\HUMAN_FORAGING\Task\Assets\runners\runner_0003_Layer-3.png" />
-                                <frame duration="1" hotspotX="0.506494" hotspotY="0.508621" original-source="C:\Users\Tiago\Google Drive\HUMAN_FORAGING\Task\Assets\runners\runner_0004_Layer-2.png" />
-                                <frame duration="1" hotspotX="0.505618" hotspotY="0.504587" original-source="C:\Users\Tiago\Google Drive\HUMAN_FORAGING\Task\Assets\runners\runner_0005_Layer-1.png" />
-                            </animation>
-                            <animation framecount="6" loop="0" name="Left" pingpong="0" repeatcount="1" repeatto="0" sid="652597493849594" speed="5">
-                                <frame duration="1" hotspotX="0.5" hotspotY="0.508475">
+                                <frame duration="1" hotspotX="0.503067" hotspotY="0.509804" original-source="C:\Users\Tiago\Desktop\Asset 2.png">
                                     <collision-poly>
-                                        <point x="1" y="1" />
-                                        <point x="0" y="1" />
-                                        <point x="0" y="0" />
-                                        <point x="1" y="0" />
+                                        <point x="0.134969" y="0.107843" />
+                                        <point x="0.496933" y="0.0196078" />
+                                        <point x="0.846626" y="0.122549" />
+                                        <point x="0.96319" y="0.5" />
+                                        <point x="0.834356" y="0.867647" />
+                                        <point x="0.496933" y="0.897059" />
+                                        <point x="0.460123" y="0.632353" />
+                                        <point x="0.331288" y="0.5" />
                                     </collision-poly>
                                 </frame>
-                                <frame duration="1" hotspotX="0.457143" hotspotY="0.508621">
+                                <frame duration="1" hotspotX="0.539877" hotspotY="0.507317" original-source="C:\Users\Tiago\Desktop\Asset 3.png">
                                     <collision-poly>
-                                        <point x="1" y="1" />
-                                        <point x="0" y="1" />
-                                        <point x="0" y="0" />
-                                        <point x="1" y="0" />
+                                        <point x="0.134969" y="0.107317" />
+                                        <point x="0.496933" y="0.0195122" />
+                                        <point x="0.846626" y="0.121951" />
+                                        <point x="0.96319" y="0.497561" />
+                                        <point x="0.889571" y="0.912195" />
+                                        <point x="0.496933" y="0.892683" />
+                                        <point x="0.466258" y="0.629268" />
+                                        <point x="0.331288" y="0.497561" />
                                     </collision-poly>
                                 </frame>
-                                <frame duration="1" hotspotX="0.488889" hotspotY="0.504505">
+                                <frame duration="1" hotspotX="0.509202" hotspotY="0.504902" original-source="C:\Users\Tiago\Desktop\Asset 6.png">
                                     <collision-poly>
-                                        <point x="1" y="1" />
-                                        <point x="0" y="1" />
-                                        <point x="0" y="0" />
-                                        <point x="1" y="0" />
+                                        <point x="0.134969" y="0.107843" />
+                                        <point x="0.496933" y="0.0147059" />
+                                        <point x="0.846626" y="0.122549" />
+                                        <point x="0.96319" y="0.5" />
+                                        <point x="0.834356" y="0.867647" />
+                                        <point x="0.496933" y="0.897059" />
+                                        <point x="0.460123" y="0.632353" />
+                                        <point x="0.331288" y="0.5" />
                                     </collision-poly>
                                 </frame>
-                                <frame duration="1" hotspotX="0.492958" hotspotY="0.508475">
+                                <frame duration="1" hotspotX="0.509202" hotspotY="0.509804" original-source="C:\Users\Tiago\Desktop\Asset 5.png">
                                     <collision-poly>
-                                        <point x="1" y="1" />
-                                        <point x="0" y="1" />
-                                        <point x="0" y="0" />
-                                        <point x="1" y="0" />
+                                        <point x="0.134969" y="0.107843" />
+                                        <point x="0.496933" y="0.0147059" />
+                                        <point x="0.846626" y="0.122549" />
+                                        <point x="0.96319" y="0.5" />
+                                        <point x="0.834356" y="0.867647" />
+                                        <point x="0.496933" y="0.897059" />
+                                        <point x="0.460123" y="0.632353" />
+                                        <point x="0.331288" y="0.5" />
                                     </collision-poly>
                                 </frame>
-                                <frame duration="1" hotspotX="0.493506" hotspotY="0.508621">
+                                <frame duration="1" hotspotX="0.509202" hotspotY="0.509901" original-source="C:\Users\Tiago\Desktop\Asset 6.png">
                                     <collision-poly>
-                                        <point x="1" y="1" />
-                                        <point x="0" y="1" />
-                                        <point x="0" y="0" />
-                                        <point x="1" y="0" />
+                                        <point x="0.134969" y="0.108911" />
+                                        <point x="0.496933" y="0.019802" />
+                                        <point x="0.840491" y="0.128713" />
+                                        <point x="0.969325" y="0.5" />
+                                        <point x="0.889571" y="0.910891" />
+                                        <point x="0.496933" y="0.905941" />
+                                        <point x="0.453988" y="0.633663" />
+                                        <point x="0.331288" y="0.5" />
                                     </collision-poly>
                                 </frame>
-                                <frame duration="1" hotspotX="0.494382" hotspotY="0.504587">
+                                <frame duration="1" hotspotX="0.503067" hotspotY="0.502538" original-source="C:\Users\Tiago\Desktop\Asset 7.png">
                                     <collision-poly>
-                                        <point x="1" y="1" />
-                                        <point x="0" y="1" />
-                                        <point x="0" y="0" />
-                                        <point x="1" y="0" />
+                                        <point x="0.134969" y="0.111675" />
+                                        <point x="0.496933" y="0.0203046" />
+                                        <point x="0.846626" y="0.126904" />
+                                        <point x="0.981595" y="0.497462" />
+                                        <point x="0.871166" y="0.893401" />
+                                        <point x="0.496933" y="0.928934" />
+                                        <point x="0.429448" y="0.64467" />
+                                        <point x="0.331288" y="0.497462" />
                                     </collision-poly>
                                 </frame>
                             </animation>
                             <animation framecount="1" loop="0" name="stop" pingpong="0" repeatcount="1" repeatto="0" sid="909671880670366" speed="5">
-                                <frame duration="1" hotspotX="0.5125" hotspotY="0.533898" />
+                                <frame duration="1" hotspotX="0.515337" hotspotY="0.553299" original-source="C:\Users\Tiago\Desktop\Asset 2.png">
+                                    <collision-poly>
+                                        <point x="0.134969" y="0.111675" />
+                                        <point x="0.496933" y="0.0203046" />
+                                        <point x="0.846626" y="0.126904" />
+                                        <point x="0.96319" y="0.517766" />
+                                        <point x="0.834356" y="0.898477" />
+                                        <point x="0.496933" y="0.928934" />
+                                        <point x="0.460123" y="0.654822" />
+                                        <point x="0.331288" y="0.517766" />
+                                    </collision-poly>
+                                </frame>
                             </animation>
                             <animation framecount="1" loop="0" name="none" pingpong="0" repeatcount="1" repeatto="0" sid="545661514854091" speed="5">
-                                <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                                <frame duration="1" hotspotX="0.503067" hotspotY="0.502538" original-source="C:\Users\Tiago\Desktop\Asset 7.png">
+                                    <collision-poly>
+                                        <point x="0.134969" y="0.111675" />
+                                        <point x="0.496933" y="0.0203046" />
+                                        <point x="0.846626" y="0.126904" />
+                                        <point x="0.981595" y="0.497462" />
+                                        <point x="0.871166" y="0.893401" />
+                                        <point x="0.496933" y="0.928934" />
+                                        <point x="0.429448" y="0.64467" />
+                                        <point x="0.331288" y="0.497462" />
+                                    </collision-poly>
+                                </frame>
+                            </animation>
+                            <animation framecount="6" loop="0" name="Left" pingpong="0" repeatcount="1" repeatto="0" sid="193707724543039" speed="10">
+                                <frame duration="1" hotspotX="0.496933" hotspotY="0.509804">
+                                    <collision-poly>
+                                        <point x="0.668712" y="0.5" />
+                                        <point x="0.539877" y="0.632353" />
+                                        <point x="0.503067" y="0.897059" />
+                                        <point x="0.165644" y="0.867647" />
+                                        <point x="0.0368098" y="0.5" />
+                                        <point x="0.153374" y="0.122549" />
+                                        <point x="0.503067" y="0.0196078" />
+                                        <point x="0.865031" y="0.107843" />
+                                    </collision-poly>
+                                </frame>
+                                <frame duration="1" hotspotX="0.460123" hotspotY="0.507317">
+                                    <collision-poly>
+                                        <point x="0.668712" y="0.497561" />
+                                        <point x="0.533742" y="0.629268" />
+                                        <point x="0.503067" y="0.892683" />
+                                        <point x="0.110429" y="0.912195" />
+                                        <point x="0.0368098" y="0.497561" />
+                                        <point x="0.153374" y="0.121951" />
+                                        <point x="0.503067" y="0.0195122" />
+                                        <point x="0.865031" y="0.107317" />
+                                    </collision-poly>
+                                </frame>
+                                <frame duration="1" hotspotX="0.490798" hotspotY="0.504902">
+                                    <collision-poly>
+                                        <point x="0.668712" y="0.5" />
+                                        <point x="0.539877" y="0.632353" />
+                                        <point x="0.503067" y="0.897059" />
+                                        <point x="0.165644" y="0.867647" />
+                                        <point x="0.0368098" y="0.5" />
+                                        <point x="0.153374" y="0.122549" />
+                                        <point x="0.503067" y="0.0147059" />
+                                        <point x="0.865031" y="0.107843" />
+                                    </collision-poly>
+                                </frame>
+                                <frame duration="1" hotspotX="0.490798" hotspotY="0.509804">
+                                    <collision-poly>
+                                        <point x="0.668712" y="0.5" />
+                                        <point x="0.539877" y="0.632353" />
+                                        <point x="0.503067" y="0.897059" />
+                                        <point x="0.165644" y="0.867647" />
+                                        <point x="0.0368098" y="0.5" />
+                                        <point x="0.153374" y="0.122549" />
+                                        <point x="0.503067" y="0.0147059" />
+                                        <point x="0.865031" y="0.107843" />
+                                    </collision-poly>
+                                </frame>
+                                <frame duration="1" hotspotX="0.490798" hotspotY="0.509901">
+                                    <collision-poly>
+                                        <point x="0.668712" y="0.5" />
+                                        <point x="0.546012" y="0.633663" />
+                                        <point x="0.503067" y="0.905941" />
+                                        <point x="0.110429" y="0.910891" />
+                                        <point x="0.0306749" y="0.5" />
+                                        <point x="0.159509" y="0.128713" />
+                                        <point x="0.503067" y="0.019802" />
+                                        <point x="0.865031" y="0.108911" />
+                                    </collision-poly>
+                                </frame>
+                                <frame duration="1" hotspotX="0.503067" hotspotY="0.502538" original-source="C:\Users\Tiago\Desktop\Asset 7.png">
+                                    <collision-poly>
+                                        <point x="0.668712" y="0.497462" />
+                                        <point x="0.570552" y="0.64467" />
+                                        <point x="0.503067" y="0.928934" />
+                                        <point x="0.128834" y="0.893401" />
+                                        <point x="0.0184049" y="0.497462" />
+                                        <point x="0.153374" y="0.126904" />
+                                        <point x="0.503067" y="0.0203046" />
+                                        <point x="0.865031" y="0.111675" />
+                                    </collision-poly>
+                                </frame>
                             </animation>
                         </animation-folder>
                     </object-type>
@@ -142,7 +257,7 @@
                         </instance-variables>
                         <animation-folder>
                             <animation framecount="1" loop="0" name="Target" pingpong="0" repeatcount="1" repeatto="0" sid="286217212645627" speed="5">
-                                <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Tiago\Google Drive\HUMAN_FORAGING\Task\Assets\Target_Corporation_logo.svg.png">
+                                <frame duration="1" hotspotX="0.5" hotspotY="0.501718" original-source="C:\Users\Tiago\Desktop\target.png">
                                     <collision-poly>
                                         <point x="0.152174" y="0.152174" />
                                         <point x="0.5" y="0.00869565" />
@@ -256,6 +371,20 @@
                                     </collision-poly>
                                 </frame>
                             </animation>
+                            <animation framecount="1" loop="0" name="tar" pingpong="0" repeatcount="1" repeatto="0" sid="870410816070001" speed="5">
+                                <frame duration="1" hotspotX="0.5" hotspotY="0.501718">
+                                    <collision-poly>
+                                        <point x="0.152174" y="0.152174" />
+                                        <point x="0.5" y="0.00869565" />
+                                        <point x="0.847826" y="0.152174" />
+                                        <point x="0.991304" y="0.5" />
+                                        <point x="0.926087" y="0.926087" />
+                                        <point x="0.5" y="0.991304" />
+                                        <point x="0.152174" y="0.847826" />
+                                        <point x="0.00869565" y="0.5" />
+                                    </collision-poly>
+                                </frame>
+                            </animation>
                         </animation-folder>
                     </object-type>
                     <object-type name="SpriteRails" sid="147897772294140">
@@ -274,6 +403,16 @@
                                     </collision-poly>
                                 </frame>
                             </animation>
+                            <animation framecount="1" loop="0" name="Animation2" pingpong="0" repeatcount="1" repeatto="0" sid="503523229702240" speed="5">
+                                <frame duration="1" hotspotX="1.98438" hotspotY="1.84766">
+                                    <collision-poly>
+                                        <point x="1" y="1" />
+                                        <point x="1" y="1" />
+                                        <point x="1" y="1" />
+                                        <point x="1" y="1" />
+                                    </collision-poly>
+                                </frame>
+                            </animation>
                         </animation-folder>
                     </object-type>
                     <object-type name="SpriteDockTrainR" sid="426975571624009">
@@ -282,34 +421,23 @@
                             <behavior-type name="Pin" sid="473326635127158">
                                 <behavior id="Pin" />
                             </behavior-type>
+                            <behavior-type name="Sine" sid="468716181504963">
+                                <behavior id="Sin" />
+                            </behavior-type>
                         </behaviors>
                         <animation-folder>
-                            <animation framecount="1" loop="0" name="Front" pingpong="0" repeatcount="1" repeatto="0" sid="861466636591477" speed="5">
-                                <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Tiago\Desktop\L12.png">
+                            <animation framecount="1" loop="1" name="Front" pingpong="0" repeatcount="1" repeatto="0" sid="861466636591477" speed="15">
+                                <frame duration="1" hotspotX="0.505495" hotspotY="0.49635" original-source="C:\Users\Tiago\Desktop\wand.png">
                                     <collision-poly>
-                                        <point x="0" y="0.075593" />
-                                        <point x="0.912696" y="0.0547463" />
-                                        <point x="1" y="1" />
-                                        <point x="0" y="1" />
+                                        <point x="0" y="0.0719434" />
+                                        <point x="0.931796" y="0.0510967" />
+                                        <point x="1" y="0.99635" />
+                                        <point x="0" y="0.99635" />
                                     </collision-poly>
                                 </frame>
                             </animation>
-                            <animation framecount="12" loop="0" name="Shoot" pingpong="0" repeatcount="1" repeatto="0" sid="452487723468853" speed="5">
-                                <frame duration="1" hotspotX="0.499669" hotspotY="0.5" original-source="C:\Users\Tiago\Desktop\L1.png" />
-                                <frame duration="1" hotspotX="0.499669" hotspotY="0.5" original-source="C:\Users\Tiago\Desktop\L2.png" />
-                                <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Tiago\Desktop\L3.png" />
-                                <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Tiago\Desktop\L4.png" />
-                                <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Tiago\Desktop\L5.png" />
-                                <frame duration="1" hotspotX="0.5" hotspotY="0.571945" original-source="C:\Users\Tiago\Desktop\L6.png" />
-                                <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Tiago\Desktop\L7.png" />
-                                <frame duration="1" hotspotX="0.499669" hotspotY="0.5" original-source="C:\Users\Tiago\Desktop\L8.png" />
-                                <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Tiago\Desktop\L9.png" />
-                                <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Tiago\Desktop\L10.png" />
-                                <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Tiago\Desktop\L11.png" />
-                                <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Tiago\Desktop\L12.png" />
-                            </animation>
-                            <animation framecount="1" loop="0" name="Rstop" pingpong="0" repeatcount="1" repeatto="0" sid="311648898344902" speed="5">
-                                <frame duration="1" hotspotX="0.500331" hotspotY="0.5" />
+                            <animation framecount="1" loop="0" name="gone" pingpong="0" repeatcount="1" repeatto="0" sid="844684075116738" speed="5">
+                                <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
                             </animation>
                         </animation-folder>
                     </object-type>
@@ -319,94 +447,157 @@
                             <animation framecount="1" loop="0" name="none" pingpong="0" repeatcount="1" repeatto="0" sid="455092994362330" speed="5">
                                 <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
                             </animation>
-                            <animation framecount="8" loop="0" name="R" pingpong="0" repeatcount="1" repeatto="0" sid="381955280906703" speed="10">
-                                <frame duration="1" hotspotX="0.449438" hotspotY="0.508475" original-source="C:\Users\Tiago\Google Drive\HUMAN_FORAGING\Task\Assets\runners\runnershoot_0000_Layer-10.png">
+                            <animation framecount="7" loop="0" name="R" pingpong="0" repeatcount="1" repeatto="0" sid="437855020288192" speed="10">
+                                <frame duration="1" hotspotX="0.428571" hotspotY="0.559375">
                                     <collision-poly>
-                                        <point x="1" y="1" />
-                                        <point x="0" y="1" />
-                                        <point x="0" y="0" />
-                                        <point x="1" y="0" />
+                                        <point x="0.957143" y="0.8125" />
+                                        <point x="0.0428571" y="0.8125" />
+                                        <point x="0.0428571" y="0.1875" />
+                                        <point x="0.957143" y="0.1875" />
                                     </collision-poly>
                                 </frame>
-                                <frame duration="1" hotspotX="0.5" hotspotY="0.508475">
+                                <frame duration="1" hotspotX="0.535714" hotspotY="0.56875" original-source="C:\Users\Tiago\Desktop\Asset 3.png">
                                     <collision-poly>
-                                        <point x="1" y="1" />
-                                        <point x="0" y="1" />
-                                        <point x="0" y="0" />
-                                        <point x="1" y="0" />
+                                        <point x="0.889286" y="0.84375" />
+                                        <point x="0.114286" y="0.84375" />
+                                        <point x="0.114286" y="0.159375" />
+                                        <point x="0.889286" y="0.159375" />
                                     </collision-poly>
                                 </frame>
-                                <frame duration="1" hotspotX="0.5" hotspotY="0.508475">
+                                <frame duration="1" hotspotX="0.289286" hotspotY="0.725" original-source="C:\Users\Tiago\Desktop\Asset 4.png">
                                     <collision-poly>
-                                        <point x="1" y="1" />
-                                        <point x="0" y="1" />
-                                        <point x="0" y="0" />
-                                        <point x="1" y="0" />
+                                        <point x="0.996429" y="0.996875" />
+                                        <point x="0.00357143" y="0.996875" />
+                                        <point x="0.00357143" y="0.003125" />
+                                        <point x="0.996429" y="0.003125" />
                                     </collision-poly>
                                 </frame>
-                                <frame duration="1" hotspotX="0.5" hotspotY="0.508475">
+                                <frame duration="1" hotspotX="0.289286" hotspotY="0.725">
                                     <collision-poly>
-                                        <point x="1" y="1" />
-                                        <point x="0" y="1" />
-                                        <point x="0" y="0" />
-                                        <point x="1" y="0" />
+                                        <point x="0.996429" y="0.996875" />
+                                        <point x="0.00357143" y="0.996875" />
+                                        <point x="0.00357143" y="0.003125" />
+                                        <point x="0.996429" y="0.003125" />
                                     </collision-poly>
                                 </frame>
-                                <frame duration="1" hotspotX="0.5" hotspotY="0.508475">
+                                <frame duration="1" hotspotX="0.289286" hotspotY="0.725">
                                     <collision-poly>
-                                        <point x="1" y="1" />
-                                        <point x="0" y="1" />
-                                        <point x="0" y="0" />
-                                        <point x="1" y="0" />
+                                        <point x="0.996429" y="0.996875" />
+                                        <point x="0.00357143" y="0.996875" />
+                                        <point x="0.00357143" y="0.003125" />
+                                        <point x="0.996429" y="0.003125" />
                                     </collision-poly>
                                 </frame>
-                                <frame duration="1" hotspotX="0.5" hotspotY="0.508475" original-source="C:\Users\Tiago\Google Drive\HUMAN_FORAGING\Task\Assets\runners\runnershoot_0002_Layer-7.png">
+                                <frame duration="1" hotspotX="0.535714" hotspotY="0.56875">
                                     <collision-poly>
-                                        <point x="1" y="1" />
-                                        <point x="0" y="1" />
-                                        <point x="0" y="0" />
-                                        <point x="1" y="0" />
+                                        <point x="0.889286" y="0.84375" />
+                                        <point x="0.114286" y="0.84375" />
+                                        <point x="0.114286" y="0.159375" />
+                                        <point x="0.889286" y="0.159375" />
                                     </collision-poly>
                                 </frame>
-                                <frame duration="1" hotspotX="0.5" hotspotY="0.508475" original-source="C:\Users\Tiago\Google Drive\HUMAN_FORAGING\Task\Assets\runners\runnershoot_0001_Layer-8.png">
+                                <frame duration="1" hotspotX="0.428571" hotspotY="0.559375">
                                     <collision-poly>
-                                        <point x="1" y="1" />
-                                        <point x="0" y="1" />
-                                        <point x="0" y="0" />
-                                        <point x="1" y="0" />
-                                    </collision-poly>
-                                </frame>
-                                <frame duration="1" hotspotX="0.449438" hotspotY="0.508475">
-                                    <collision-poly>
-                                        <point x="1" y="1" />
-                                        <point x="0" y="1" />
-                                        <point x="0" y="0" />
-                                        <point x="1" y="0" />
+                                        <point x="0.957143" y="0.8125" />
+                                        <point x="0.0428571" y="0.8125" />
+                                        <point x="0.0428571" y="0.1875" />
+                                        <point x="0.957143" y="0.1875" />
                                     </collision-poly>
                                 </frame>
                             </animation>
-                            <animation framecount="8" loop="0" name="L" pingpong="0" repeatcount="1" repeatto="0" sid="721427725246858" speed="10">
-                                <frame duration="1" hotspotX="0.449438" hotspotY="0.508475" />
-                                <frame duration="1" hotspotX="0.5" hotspotY="0.508475" />
-                                <frame duration="1" hotspotX="0.5" hotspotY="0.508475" />
-                                <frame duration="1" hotspotX="0.5" hotspotY="0.508475" />
-                                <frame duration="1" hotspotX="0.5" hotspotY="0.508475" />
-                                <frame duration="1" hotspotX="0.5" hotspotY="0.508475" />
-                                <frame duration="1" hotspotX="0.5" hotspotY="0.508475" />
-                                <frame duration="1" hotspotX="0.449438" hotspotY="0.508475" />
-                            </animation>
-                            <animation framecount="1" loop="0" name="Rstop" pingpong="0" repeatcount="1" repeatto="0" sid="178454960612445" speed="5">
-                                <frame duration="1" hotspotX="0.449438" hotspotY="0.508475">
+                            <animation framecount="7" loop="0" name="L" pingpong="0" repeatcount="1" repeatto="0" sid="545559122591325" speed="10">
+                                <frame duration="1" hotspotX="0.571429" hotspotY="0.559375">
                                     <collision-poly>
-                                        <point x="1" y="1" />
-                                        <point x="0" y="1" />
-                                        <point x="0" y="0" />
-                                        <point x="1" y="0" />
+                                        <point x="0.0428572" y="0.1875" />
+                                        <point x="0.957143" y="0.1875" />
+                                        <point x="0.957143" y="0.8125" />
+                                        <point x="0.0428572" y="0.8125" />
+                                    </collision-poly>
+                                </frame>
+                                <frame duration="1" hotspotX="0.464286" hotspotY="0.56875">
+                                    <collision-poly>
+                                        <point x="0.110714" y="0.159375" />
+                                        <point x="0.885714" y="0.159375" />
+                                        <point x="0.885714" y="0.84375" />
+                                        <point x="0.110714" y="0.84375" />
+                                    </collision-poly>
+                                </frame>
+                                <frame duration="1" hotspotX="0.710714" hotspotY="0.725">
+                                    <collision-poly>
+                                        <point x="0.00357145" y="0.003125" />
+                                        <point x="0.996429" y="0.003125" />
+                                        <point x="0.996429" y="0.996875" />
+                                        <point x="0.00357145" y="0.996875" />
+                                    </collision-poly>
+                                </frame>
+                                <frame duration="1" hotspotX="0.710714" hotspotY="0.725">
+                                    <collision-poly>
+                                        <point x="0.00357145" y="0.003125" />
+                                        <point x="0.996429" y="0.003125" />
+                                        <point x="0.996429" y="0.996875" />
+                                        <point x="0.00357145" y="0.996875" />
+                                    </collision-poly>
+                                </frame>
+                                <frame duration="1" hotspotX="0.710714" hotspotY="0.725">
+                                    <collision-poly>
+                                        <point x="0.00357145" y="0.003125" />
+                                        <point x="0.996429" y="0.003125" />
+                                        <point x="0.996429" y="0.996875" />
+                                        <point x="0.00357145" y="0.996875" />
+                                    </collision-poly>
+                                </frame>
+                                <frame duration="1" hotspotX="0.464286" hotspotY="0.56875">
+                                    <collision-poly>
+                                        <point x="0.110714" y="0.159375" />
+                                        <point x="0.885714" y="0.159375" />
+                                        <point x="0.885714" y="0.84375" />
+                                        <point x="0.110714" y="0.84375" />
+                                    </collision-poly>
+                                </frame>
+                                <frame duration="1" hotspotX="0.571429" hotspotY="0.559375">
+                                    <collision-poly>
+                                        <point x="0.0428572" y="0.1875" />
+                                        <point x="0.957143" y="0.1875" />
+                                        <point x="0.957143" y="0.8125" />
+                                        <point x="0.0428572" y="0.8125" />
                                     </collision-poly>
                                 </frame>
                             </animation>
-                            <animation framecount="1" loop="0" name="Lstop" pingpong="0" repeatcount="1" repeatto="0" sid="557213748695011" speed="5">
-                                <frame duration="1" hotspotX="0.449438" hotspotY="0.508475" />
+                            <animation framecount="2" loop="0" name="Rstop" pingpong="0" repeatcount="1" repeatto="0" sid="979906427040566" speed="10">
+                                <frame duration="1" hotspotX="0.582143" hotspotY="0.559375">
+                                    <collision-poly>
+                                        <point x="0.814286" y="0.8125" />
+                                        <point x="0.185714" y="0.8125" />
+                                        <point x="0.185714" y="0.1875" />
+                                        <point x="0.814286" y="0.1875" />
+                                    </collision-poly>
+                                </frame>
+                                <frame duration="1" hotspotX="0.428571" hotspotY="0.559375">
+                                    <collision-poly>
+                                        <point x="0.957143" y="0.8125" />
+                                        <point x="0.0428571" y="0.8125" />
+                                        <point x="0.0428571" y="0.1875" />
+                                        <point x="0.957143" y="0.1875" />
+                                    </collision-poly>
+                                </frame>
+                            </animation>
+                            <animation framecount="2" loop="0" name="Lstop" pingpong="0" repeatcount="1" repeatto="0" sid="910598870501549" speed="10">
+                                <frame duration="1" hotspotX="0.417857" hotspotY="0.559375">
+                                    <collision-poly>
+                                        <point x="0.185714" y="0.1875" />
+                                        <point x="0.814286" y="0.1875" />
+                                        <point x="0.814286" y="0.8125" />
+                                        <point x="0.185714" y="0.8125" />
+                                    </collision-poly>
+                                </frame>
+                                <frame duration="1" hotspotX="0.571429" hotspotY="0.559375">
+                                    <collision-poly>
+                                        <point x="0.0428572" y="0.1875" />
+                                        <point x="0.957143" y="0.1875" />
+                                        <point x="0.957143" y="0.8125" />
+                                        <point x="0.0428572" y="0.8125" />
+                                    </collision-poly>
+                                </frame>
                             </animation>
                         </animation-folder>
                     </object-type>
@@ -416,54 +607,81 @@
                             <behavior-type name="Pin" sid="171036513991261">
                                 <behavior id="Pin" />
                             </behavior-type>
+                            <behavior-type name="Sine" sid="299428696509299">
+                                <behavior id="Sin" />
+                            </behavior-type>
                         </behaviors>
                         <animation-folder>
-                            <animation framecount="1" loop="0" name="Front" pingpong="0" repeatcount="1" repeatto="0" sid="801460273965452" speed="5">
-                                <frame duration="1" hotspotX="0.490211" hotspotY="0.501176" original-source="C:\Users\Tiago\Desktop\test12.png">
+                            <animation framecount="1" loop="1" name="Front" pingpong="0" repeatcount="1" repeatto="0" sid="801460273965452" speed="15">
+                                <frame duration="1" hotspotX="0.505495" hotspotY="0.492701">
                                     <collision-poly>
-                                        <point x="0" y="0.0864468" />
-                                        <point x="0.928366" y="0.0657211" />
-                                        <point x="1" y="1" />
-                                        <point x="0" y="1" />
+                                        <point x="1" y="0.99635" />
+                                        <point x="0" y="0.99635" />
+                                        <point x="0" y="0.302169" />
+                                        <point x="1" y="0.398612" />
                                     </collision-poly>
                                 </frame>
                             </animation>
-                            <animation framecount="11" loop="0" name="Shoot" pingpong="0" repeatcount="1" repeatto="0" sid="407319205795550" speed="5">
-                                <frame duration="1" hotspotX="0.5" hotspotY="0.500392" original-source="C:\Users\Tiago\Desktop\test2.png">
-                                    <collision-poly>
-                                        <point x="1" y="0" />
-                                        <point x="1" y="0" />
-                                        <point x="1" y="1" />
-                                        <point x="0.0567222" y="1" />
-                                    </collision-poly>
-                                </frame>
-                                <frame duration="1" hotspotX="0.5" hotspotY="0.500392" original-source="C:\Users\Tiago\Desktop\test3.png">
-                                    <collision-poly>
-                                        <point x="1" y="0" />
-                                        <point x="1" y="0" />
-                                        <point x="1" y="1" />
-                                        <point x="0" y="1" />
-                                    </collision-poly>
-                                </frame>
-                                <frame duration="1" hotspotX="0.5" hotspotY="0.500392" original-source="C:\Users\Tiago\Desktop\test4.png" />
-                                <frame duration="1" hotspotX="0.5" hotspotY="0.500392" original-source="C:\Users\Tiago\Desktop\test5.png" />
-                                <frame duration="1" hotspotX="0.500377" hotspotY="0.578735" original-source="C:\Users\Tiago\Desktop\test6.png" />
-                                <frame duration="1" hotspotX="0.5" hotspotY="0.500392" original-source="C:\Users\Tiago\Desktop\test7.png">
-                                    <collision-poly>
-                                        <point x="0" y="0.0726292" />
-                                        <point x="1" y="0.0441042" />
-                                        <point x="1" y="1" />
-                                        <point x="0" y="1" />
-                                    </collision-poly>
-                                </frame>
-                                <frame duration="1" hotspotX="0.5" hotspotY="0.500392" original-source="C:\Users\Tiago\Desktop\test8.png" />
-                                <frame duration="1" hotspotX="0.5" hotspotY="0.500392" original-source="C:\Users\Tiago\Desktop\test9.png" />
-                                <frame duration="1" hotspotX="0.5" hotspotY="0.500392" original-source="C:\Users\Tiago\Desktop\test10.png" />
-                                <frame duration="1" hotspotX="0.5" hotspotY="0.500392" original-source="C:\Users\Tiago\Desktop\test11.png" />
-                                <frame duration="1" hotspotX="0.5" hotspotY="0.500392" original-source="C:\Users\Tiago\Desktop\test12.png" />
+                            <animation framecount="1" loop="0" name="gone" pingpong="0" repeatcount="1" repeatto="0" sid="390600986316355" speed="5">
+                                <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
                             </animation>
-                            <animation framecount="1" loop="0" name="Lstop" pingpong="0" repeatcount="1" repeatto="0" sid="710427481877839" speed="5">
-                                <frame duration="1" hotspotX="0.5" hotspotY="0.500392" />
+                        </animation-folder>
+                    </object-type>
+                    <object-type name="SpriteCastle" sid="877011624356589">
+                        <plugin id="Sprite" />
+                        <animation-folder>
+                            <animation framecount="1" loop="0" name="lvl1" pingpong="0" repeatcount="1" repeatto="0" sid="556699882907274" speed="5">
+                                <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Tiago\Documents\CCU\Human-Foraging\Assets\Shira\exported\lvls\lvl1\gold_castle.png">
+                                    <collision-poly>
+                                        <point x="0.291495" y="0.48892" />
+                                        <point x="0.5" y="0.192521" />
+                                        <point x="0.708505" y="0.48892" />
+                                        <point x="0.98142" y="0.5" />
+                                        <point x="0.999174" y="0.998615" />
+                                        <point x="0.000825764" y="0.998615" />
+                                        <point x="0.0185797" y="0.5" />
+                                    </collision-poly>
+                                </frame>
+                            </animation>
+                            <animation framecount="1" loop="0" name="lvl2" pingpong="0" repeatcount="1" repeatto="0" sid="714132022653514" speed="5">
+                                <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Tiago\Documents\CCU\Human-Foraging\Assets\Shira\exported\lvls\lvl2\grey_castle.png">
+                                    <collision-poly>
+                                        <point x="0.291667" y="0.488935" />
+                                        <point x="0.5" y="0.192947" />
+                                        <point x="0.708333" y="0.488935" />
+                                        <point x="0.981023" y="0.5" />
+                                        <point x="0.998762" y="0.997924" />
+                                        <point x="0.00123796" y="0.997924" />
+                                        <point x="0.0189772" y="0.5" />
+                                    </collision-poly>
+                                </frame>
+                            </animation>
+                            <animation framecount="1" loop="0" name="lvl3" pingpong="0" repeatcount="1" repeatto="0" sid="498214864994256" speed="5">
+                                <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Tiago\Documents\CCU\Human-Foraging\Assets\Shira\exported\lvls\lvl3\ice_castle.png">
+                                    <collision-poly>
+                                        <point x="0.291667" y="0.488935" />
+                                        <point x="0.5" y="0.192947" />
+                                        <point x="0.708333" y="0.488935" />
+                                        <point x="0.981023" y="0.5" />
+                                        <point x="0.998762" y="0.997924" />
+                                        <point x="0.00123796" y="0.997924" />
+                                        <point x="0.0189772" y="0.5" />
+                                    </collision-poly>
+                                </frame>
+                            </animation>
+                            <animation framecount="1" loop="0" name="lvl4" pingpong="0" repeatcount="1" repeatto="0" sid="880856798117435" speed="5">
+                                <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Tiago\Documents\CCU\Human-Foraging\Assets\Shira\exported\lvls\lvl4\pink_castle.png">
+                                    <collision-poly>
+                                        <point x="0.156685" y="0.434288" />
+                                        <point x="0.548285" y="0.0337338" />
+                                        <point x="0.939887" y="0.434288" />
+                                        <point x="0.999175" y="0.714431" />
+                                        <point x="0.999175" y="0.998616" />
+                                        <point x="0.548285" y="0.998616" />
+                                        <point x="0.0956898" y="0.998616" />
+                                        <point x="0.00817638" y="0.714431" />
+                                    </collision-poly>
+                                </frame>
                             </animation>
                         </animation-folder>
                     </object-type>
@@ -528,9 +746,14 @@
                     </object-type>
                     <object-type name="SpriteTimer1" sid="189074896296253">
                         <plugin id="Sprite" />
+                        <behaviors>
+                            <behavior-type name="Pin" sid="275477922025195">
+                                <behavior id="Pin" />
+                            </behavior-type>
+                        </behaviors>
                         <animation-folder>
                             <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="397245422850105" speed="5">
-                                <frame duration="1" hotspotX="0" hotspotY="0.5" original-source="C:\Users\Tiago\Google Drive\HUMAN_FORAGING\Task\Assets\Timer\lifebar_frame.png">
+                                <frame duration="1" hotspotX="0" hotspotY="0.5" original-source="C:\Users\Tiago\Documents\CCU\Human-Foraging\Assets\Shira\exported\bar3.png">
                                     <collision-poly>
                                         <point x="0.011628" y="0.0677964" />
                                         <point x="0.497093" y="0.0169493" />
@@ -547,29 +770,34 @@
                     <object-type name="SpriteEnemy" sid="298061295774581">
                         <plugin id="Sprite" />
                         <animation-folder>
-                            <animation framecount="2" loop="1" name="Default" pingpong="0" repeatcount="4" repeatto="0" sid="598994750363244" speed="4">
-                                <frame duration="1" hotspotX="0.5" hotspotY="0.502128">
+                            <animation framecount="7" loop="1" name="Default" pingpong="0" repeatcount="2" repeatto="0" sid="598994750363244" speed="4">
+                                <frame duration="1" hotspotX="0.492063" hotspotY="0.731517" original-source="C:\Users\Tiago\Documents\CCU\Human-Foraging\Assets\Shira\exported\Monster.png">
                                     <collision-poly>
-                                        <point x="0.0660377" y="0.0595745" />
-                                        <point x="0.5" y="0.0978723" />
-                                        <point x="0.933962" y="0.0595745" />
-                                        <point x="0.900943" y="0.497872" />
-                                        <point x="0.834906" y="0.851064" />
-                                        <point x="0.5" y="0.876596" />
-                                        <point x="0.15566" y="0.859574" />
-                                        <point x="0.0849057" y="0.497872" />
+                                        <point x="0" y="0" />
+                                        <point x="0.55754" y="0" />
+                                        <point x="1" y="0" />
+                                        <point x="1" y="0.572795" />
+                                        <point x="1" y="1" />
+                                        <point x="0.55754" y="1" />
+                                        <point x="0" y="1" />
+                                        <point x="0" y="0.572795" />
                                     </collision-poly>
                                 </frame>
-                                <frame duration="1" hotspotX="0.5" hotspotY="0.502128" original-source="C:\Users\Tiago\Google Drive\HUMAN_FORAGING\Task\Assets\Door\enemy2.png">
+                                <frame duration="1" hotspotX="0.5" hotspotY="0.738007" original-source="C:\Users\Tiago\Documents\CCU\Human-Foraging\Assets\Shira\exported\Monster-copy.png" />
+                                <frame duration="1" hotspotX="0.507937" hotspotY="0.805755" original-source="C:\Users\Tiago\Documents\CCU\Human-Foraging\Assets\Shira\exported\Monster-copy-2.png" />
+                                <frame duration="1" hotspotX="0.511905" hotspotY="0.804795" original-source="C:\Users\Tiago\Documents\CCU\Human-Foraging\Assets\Shira\exported\Monster-copy-3.png" />
+                                <frame duration="1" hotspotX="0.503968" hotspotY="0.823741" />
+                                <frame duration="1" hotspotX="0.5" hotspotY="0.756458" />
+                                <frame duration="1" hotspotX="0.503968" hotspotY="0.715953">
                                     <collision-poly>
-                                        <point x="0.0660377" y="0.0595745" />
-                                        <point x="0.5" y="0.0978723" />
-                                        <point x="0.933962" y="0.0595745" />
-                                        <point x="0.900943" y="0.497872" />
-                                        <point x="0.834906" y="0.851064" />
-                                        <point x="0.5" y="0.876596" />
-                                        <point x="0.15566" y="0.859574" />
-                                        <point x="0.0849057" y="0.497872" />
+                                        <point x="0" y="0" />
+                                        <point x="0.55754" y="0" />
+                                        <point x="1" y="0" />
+                                        <point x="1" y="0.572795" />
+                                        <point x="1" y="1" />
+                                        <point x="0.55754" y="1" />
+                                        <point x="0" y="1" />
+                                        <point x="0" y="0.572795" />
                                     </collision-poly>
                                 </frame>
                             </animation>
@@ -593,16 +821,16 @@
                                 <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
                             </animation>
                             <animation framecount="1" loop="0" name="none" pingpong="0" repeatcount="1" repeatto="0" sid="830541781915641" speed="10">
-                                <frame duration="5" hotspotX="0.5" hotspotY="0.508197" original-source="C:\Users\Tiago\Google Drive\HUMAN_FORAGING\Task\Assets\Enemy\miss.png">
+                                <frame duration="5" hotspotX="0.487013" hotspotY="0.498534" original-source="C:\Users\Tiago\Documents\CCU\Human-Foraging\Assets\Shira\exported\monster10.png">
                                     <collision-poly>
-                                        <point x="0.1625" y="0.159836" />
-                                        <point x="0.5" y="0.0696721" />
-                                        <point x="0.808333" y="0.188525" />
-                                        <point x="0.958333" y="0.5" />
-                                        <point x="0.879167" y="0.881148" />
-                                        <point x="0.5" y="0.991803" />
-                                        <point x="0.195833" y="0.807377" />
-                                        <point x="0" y="0.5" />
+                                        <point x="0" y="0" />
+                                        <point x="0.324675" y="0" />
+                                        <point x="1" y="0" />
+                                        <point x="1" y="0.1261" />
+                                        <point x="1" y="1" />
+                                        <point x="0.324675" y="1" />
+                                        <point x="0" y="1" />
+                                        <point x="0" y="0.1261" />
                                     </collision-poly>
                                 </frame>
                             </animation>
@@ -754,8 +982,8 @@
                                     </collision-poly>
                                 </frame>
                             </animation>
-                            <animation framecount="6" loop="0" name="front" pingpong="0" repeatcount="1" repeatto="0" sid="272827223541206" speed="10">
-                                <frame duration="5" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Tiago\Google Drive\HUMAN_FORAGING\Task\Assets\Door\enemyhitvert1.png">
+                            <animation framecount="6" loop="0" name="Lfront" pingpong="0" repeatcount="1" repeatto="0" sid="272827223541206" speed="10">
+                                <frame duration="5" hotspotX="0.5" hotspotY="0.520492" original-source="C:\Users\Tiago\Google Drive\HUMAN_FORAGING\Task\Assets\Door\enemyhitvert1.png">
                                     <collision-poly>
                                         <point x="0.1625" y="0.159836" />
                                         <point x="0.5" y="0.0696721" />
@@ -828,79 +1056,17 @@
                                     </collision-poly>
                                 </frame>
                             </animation>
-                            <animation framecount="6" loop="0" name="front2" pingpong="0" repeatcount="1" repeatto="0" sid="973344134177883" speed="10">
-                                <frame duration="5" hotspotX="0.5" hotspotY="0.5">
-                                    <collision-poly>
-                                        <point x="1" y="0.5" />
-                                        <point x="0.804167" y="0.807377" />
-                                        <point x="0.5" y="0.991803" />
-                                        <point x="0.120833" y="0.881148" />
-                                        <point x="0.0416667" y="0.5" />
-                                        <point x="0.191667" y="0.188525" />
-                                        <point x="0.5" y="0.0696721" />
-                                        <point x="0.8375" y="0.159836" />
-                                    </collision-poly>
-                                </frame>
-                                <frame duration="1" hotspotX="0.5" hotspotY="0.5">
-                                    <collision-poly>
-                                        <point x="1" y="0.5" />
-                                        <point x="0.804167" y="0.807377" />
-                                        <point x="0.5" y="0.991803" />
-                                        <point x="0.120833" y="0.881148" />
-                                        <point x="0.0416667" y="0.5" />
-                                        <point x="0.191667" y="0.188525" />
-                                        <point x="0.5" y="0.0696721" />
-                                        <point x="0.8375" y="0.159836" />
-                                    </collision-poly>
-                                </frame>
-                                <frame duration="1" hotspotX="0.5" hotspotY="0.5">
-                                    <collision-poly>
-                                        <point x="1" y="0.5" />
-                                        <point x="0.804167" y="0.807377" />
-                                        <point x="0.5" y="0.991803" />
-                                        <point x="0.120833" y="0.881148" />
-                                        <point x="0.0416667" y="0.5" />
-                                        <point x="0.191667" y="0.188525" />
-                                        <point x="0.5" y="0.0696721" />
-                                        <point x="0.8375" y="0.159836" />
-                                    </collision-poly>
-                                </frame>
-                                <frame duration="1" hotspotX="0.5" hotspotY="0.5">
-                                    <collision-poly>
-                                        <point x="1" y="0.5" />
-                                        <point x="0.804167" y="0.807377" />
-                                        <point x="0.5" y="0.991803" />
-                                        <point x="0.120833" y="0.881148" />
-                                        <point x="0.0416667" y="0.5" />
-                                        <point x="0.191667" y="0.188525" />
-                                        <point x="0.5" y="0.0696721" />
-                                        <point x="0.8375" y="0.159836" />
-                                    </collision-poly>
-                                </frame>
-                                <frame duration="1" hotspotX="0.5" hotspotY="0.5">
-                                    <collision-poly>
-                                        <point x="1" y="0.5" />
-                                        <point x="0.804167" y="0.807377" />
-                                        <point x="0.5" y="0.991803" />
-                                        <point x="0.120833" y="0.881148" />
-                                        <point x="0.0416667" y="0.5" />
-                                        <point x="0.191667" y="0.188525" />
-                                        <point x="0.5" y="0.0696721" />
-                                        <point x="0.8375" y="0.159836" />
-                                    </collision-poly>
-                                </frame>
-                                <frame duration="4" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Tiago\Google Drive\HUMAN_FORAGING\Task\Assets\Door\holenorw.png">
-                                    <collision-poly>
-                                        <point x="1" y="0.5" />
-                                        <point x="0.804167" y="0.807377" />
-                                        <point x="0.5" y="0.991803" />
-                                        <point x="0.120833" y="0.881148" />
-                                        <point x="0.0416667" y="0.5" />
-                                        <point x="0.191667" y="0.188525" />
-                                        <point x="0.5" y="0.0696721" />
-                                        <point x="0.8375" y="0.159836" />
-                                    </collision-poly>
-                                </frame>
+                            <animation framecount="10" loop="0" name="front2" pingpong="0" repeatcount="1" repeatto="0" sid="973344134177883" speed="10">
+                                <frame duration="5" hotspotX="0.324675" hotspotY="0.1261" original-source="C:\Users\Tiago\Documents\CCU\Human-Foraging\Assets\Shira\exported\monster1.png" />
+                                <frame duration="1" hotspotX="0.324675" hotspotY="0.1261" original-source="C:\Users\Tiago\Documents\CCU\Human-Foraging\Assets\Shira\exported\monster2.png" />
+                                <frame duration="1" hotspotX="0.324675" hotspotY="0.1261" original-source="C:\Users\Tiago\Documents\CCU\Human-Foraging\Assets\Shira\exported\monster3.png" />
+                                <frame duration="1" hotspotX="0.324675" hotspotY="0.1261" original-source="C:\Users\Tiago\Documents\CCU\Human-Foraging\Assets\Shira\exported\monster4.png" />
+                                <frame duration="1" hotspotX="0.324675" hotspotY="0.1261" original-source="C:\Users\Tiago\Documents\CCU\Human-Foraging\Assets\Shira\exported\monster5.png" />
+                                <frame duration="1" hotspotX="0.324675" hotspotY="0.1261" original-source="C:\Users\Tiago\Documents\CCU\Human-Foraging\Assets\Shira\exported\monster6.png" />
+                                <frame duration="1" hotspotX="0.324675" hotspotY="0.1261" original-source="C:\Users\Tiago\Documents\CCU\Human-Foraging\Assets\Shira\exported\monster7.png" />
+                                <frame duration="1" hotspotX="0.324675" hotspotY="0.1261" original-source="C:\Users\Tiago\Documents\CCU\Human-Foraging\Assets\Shira\exported\monster8.png" />
+                                <frame duration="1" hotspotX="0.324675" hotspotY="0.1261" original-source="C:\Users\Tiago\Documents\CCU\Human-Foraging\Assets\Shira\exported\monster9.png" />
+                                <frame duration="3" hotspotX="0.324675" hotspotY="0.1261" original-source="C:\Users\Tiago\Documents\CCU\Human-Foraging\Assets\Shira\exported\monster10.png" />
                             </animation>
                             <animation framecount="1" loop="0" name="ynone" pingpong="0" repeatcount="1" repeatto="0" sid="437747656727787" speed="10">
                                 <frame duration="5" hotspotX="0.5" hotspotY="0.508197" original-source="C:\Users\Tiago\Google Drive\Flipping\Human_flip\Tiago Backup\Task\Assets\Enemy\wenemy_0020_Layer-7-copy.png">
@@ -1465,13 +1631,30 @@
                                     </collision-poly>
                                 </frame>
                             </animation>
+                            <animation framecount="10" loop="0" name="front" pingpong="0" repeatcount="1" repeatto="0" sid="424013132310274" speed="10">
+                                <frame duration="5" hotspotX="0.487013" hotspotY="0.498534" original-source="C:\Users\Tiago\Documents\CCU\Human-Foraging\Assets\Shira\exported\monster1.png" />
+                                <frame duration="1" hotspotX="0.487013" hotspotY="0.498534" original-source="C:\Users\Tiago\Documents\CCU\Human-Foraging\Assets\Shira\exported\monster2.png" />
+                                <frame duration="1" hotspotX="0.487013" hotspotY="0.498534" original-source="C:\Users\Tiago\Documents\CCU\Human-Foraging\Assets\Shira\exported\monster3.png" />
+                                <frame duration="1" hotspotX="0.487013" hotspotY="0.498534" original-source="C:\Users\Tiago\Documents\CCU\Human-Foraging\Assets\Shira\exported\monster4.png" />
+                                <frame duration="1" hotspotX="0.487013" hotspotY="0.498534" original-source="C:\Users\Tiago\Documents\CCU\Human-Foraging\Assets\Shira\exported\monster5.png" />
+                                <frame duration="1" hotspotX="0.487013" hotspotY="0.498534" original-source="C:\Users\Tiago\Documents\CCU\Human-Foraging\Assets\Shira\exported\monster6.png" />
+                                <frame duration="1" hotspotX="0.487013" hotspotY="0.498534" original-source="C:\Users\Tiago\Documents\CCU\Human-Foraging\Assets\Shira\exported\monster7.png" />
+                                <frame duration="1" hotspotX="0.487013" hotspotY="0.498534" original-source="C:\Users\Tiago\Documents\CCU\Human-Foraging\Assets\Shira\exported\monster8.png" />
+                                <frame duration="1" hotspotX="0.487013" hotspotY="0.498534" original-source="C:\Users\Tiago\Documents\CCU\Human-Foraging\Assets\Shira\exported\monster9.png" />
+                                <frame duration="3" hotspotX="0.487013" hotspotY="0.498534" original-source="C:\Users\Tiago\Documents\CCU\Human-Foraging\Assets\Shira\exported\monster10.png" />
+                            </animation>
                         </animation-folder>
                     </object-type>
                     <object-type name="SpriteTimer2" sid="855840618500939">
                         <plugin id="Sprite" />
+                        <behaviors>
+                            <behavior-type name="Pin" sid="619050556456502">
+                                <behavior id="Pin" />
+                            </behavior-type>
+                        </behaviors>
                         <animation-folder>
                             <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="942442437646138" speed="5">
-                                <frame duration="1" hotspotX="0" hotspotY="0.470588" original-source="C:\Users\Tiago\Google Drive\HUMAN_FORAGING\Task\Assets\Timer\lifebar_subbar.png">
+                                <frame duration="1" hotspotX="0" hotspotY="0.5" original-source="C:\Users\Tiago\Documents\CCU\Human-Foraging\Assets\Shira\exported\bar2.png">
                                     <collision-poly>
                                         <point x="0.00641026" y="0.0952381" />
                                         <point x="0.5" y="0.0952381" />
@@ -1489,9 +1672,14 @@
                             <instance-variable name="Size" sid="381024824430097" type="number" />
                             <instance-variable name="MaxSize" sid="559557536304522" type="number" />
                         </instance-variables>
+                        <behaviors>
+                            <behavior-type name="Anchor" sid="296784262455111">
+                                <behavior id="Anchor" />
+                            </behavior-type>
+                        </behaviors>
                         <animation-folder>
                             <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="631722032669985" speed="5">
-                                <frame duration="1" hotspotX="0" hotspotY="0.5" original-source="C:\Users\Tiago\Google Drive\HUMAN_FORAGING\Task\Assets\Timer\Timer.png">
+                                <frame duration="1" hotspotX="0" hotspotY="0.529412" original-source="C:\Users\Tiago\Documents\CCU\Human-Foraging\Assets\Shira\exported\bar1.png">
                                     <collision-poly>
                                         <point x="0.00666667" y="0.12" />
                                         <point x="0.5" y="0.1" />
@@ -1631,103 +1819,153 @@
                     <object-type name="SpriteBG1" sid="921267010698161">
                         <plugin id="Sprite" />
                         <animation-folder>
-                            <animation framecount="1" loop="0" name="Desert" pingpong="0" repeatcount="1" repeatto="0" sid="281169047632787" speed="5">
-                                <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Tiago\Google Drive\HUMAN_FORAGING\Task\Assets\Parallax\desert\desert-layer-6.png" />
-                            </animation>
-                            <animation framecount="1" loop="0" name="Grass" pingpong="0" repeatcount="1" repeatto="0" sid="562141705167279" speed="5">
-                                <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Tiago\Google Drive\HUMAN_FORAGING\Task\Assets\Parallax\Grass\Background\BG_4.jpg" />
-                            </animation>
-                            <animation framecount="1" loop="0" name="Mountain" pingpong="0" repeatcount="1" repeatto="0" sid="983073090533021" speed="5">
-                                <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Tiago\Google Drive\HUMAN_FORAGING\Task\Assets\Parallax\Background 01\PARALLAX\layer_01_1920 x 1080.png" />
-                            </animation>
-                            <animation framecount="1" loop="0" name="Swamp" pingpong="0" repeatcount="1" repeatto="0" sid="221380828388206" speed="5">
-                                <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Tiago\Google Drive\HUMAN_FORAGING\Task\Assets\runners\other\swamp.png">
+                            <animation framecount="1" loop="0" name="lvl1" pingpong="0" repeatcount="1" repeatto="0" sid="281169047632787" speed="5">
+                                <frame duration="1" hotspotX="0.500173" hotspotY="0.500237" original-source="C:\Users\Tiago\Documents\CCU\Human-Foraging\Assets\Shira\exported\BG1.png">
                                     <collision-poly>
-                                        <point x="0.260146" y="0.462963" />
-                                        <point x="0.5" y="0.383333" />
-                                        <point x="0.799168" y="0.357407" />
-                                        <point x="0.99948" y="0.5" />
-                                        <point x="0.853798" y="0.739815" />
-                                        <point x="0.5" y="0.757407" />
-                                        <point x="0.14256" y="0.746296" />
-                                        <point x="0.000520291" y="0.5" />
+                                        <point x="0.000345662" y="0.000474608" />
+                                        <point x="0.999309" y="0.000949217" />
+                                        <point x="0.999654" y="0.999525" />
+                                        <point x="0.000345662" y="0.999525" />
                                     </collision-poly>
                                 </frame>
                             </animation>
-                            <animation framecount="1" loop="0" name="RealDesert" pingpong="0" repeatcount="1" repeatto="0" sid="655883993940355" speed="5">
-                                <frame duration="1" hotspotX="0.499479" hotspotY="0.415385" original-source="C:\Users\Tiago\Google Drive\HUMAN_FORAGING\Task\Assets\runners\other\desert_BG.png" />
+                            <animation framecount="1" loop="0" name="lvl2" pingpong="0" repeatcount="1" repeatto="0" sid="562141705167279" speed="5">
+                                <frame duration="1" hotspotX="0.500173" hotspotY="0.500237" original-source="C:\Users\Tiago\Documents\CCU\Human-Foraging\Assets\Shira\exported\BG2.png">
+                                    <collision-poly>
+                                        <point x="0.000345662" y="0.000474608" />
+                                        <point x="0.999654" y="0.000474608" />
+                                        <point x="0.999377" y="0.999123" />
+                                        <point x="0.000623865" y="0.999123" />
+                                    </collision-poly>
+                                </frame>
+                            </animation>
+                            <animation framecount="1" loop="0" name="lvl3" pingpong="0" repeatcount="1" repeatto="0" sid="983073090533021" speed="5">
+                                <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Tiago\Documents\CCU\Human-Foraging\Assets\Shira\exported\BG3.png">
+                                    <collision-poly>
+                                        <point x="0.000691085" y="0.000474383" />
+                                        <point x="0.999309" y="0.000474383" />
+                                        <point x="0.999309" y="0.999051" />
+                                        <point x="0.000691085" y="0.999051" />
+                                    </collision-poly>
+                                </frame>
+                            </animation>
+                            <animation framecount="1" loop="0" name="lvl4" pingpong="0" repeatcount="1" repeatto="0" sid="358536099994896" speed="5">
+                                <frame duration="1" hotspotX="0.500176" hotspotY="0.500242" original-source="C:\Users\Tiago\Documents\CCU\Human-Foraging\Assets\Shira\exported\bg4.png">
+                                    <collision-poly>
+                                        <point x="0.00104259" y="0.00095725" />
+                                        <point x="0.998957" y="0.00095725" />
+                                        <point x="0.998957" y="0.998569" />
+                                        <point x="0.00104259" y="0.998569" />
+                                    </collision-poly>
+                                </frame>
                             </animation>
                         </animation-folder>
                     </object-type>
                     <object-type name="SpriteBG2" sid="203273602661217">
                         <plugin id="Sprite" />
+                        <behaviors>
+                            <behavior-type name="Sine" sid="972317171873336">
+                                <behavior id="Sin" />
+                            </behavior-type>
+                            <behavior-type name="Sine2" sid="372262607670530">
+                                <behavior id="Sin" />
+                            </behavior-type>
+                        </behaviors>
                         <animation-folder>
-                            <animation framecount="1" loop="0" name="Desert" pingpong="0" repeatcount="1" repeatto="0" sid="956142390556261" speed="5">
-                                <frame duration="1" hotspotX="1.00208" hotspotY="0.637963" original-source="C:\Users\Tiago\Google Drive\HUMAN_FORAGING\Task\Assets\Parallax\desert\desert-layer-5.png">
+                            <animation framecount="1" loop="0" name="lvl1" pingpong="0" repeatcount="1" repeatto="0" sid="956142390556261" speed="5">
+                                <frame duration="1" hotspotX="0.504237" hotspotY="0.489362" original-source="C:\Users\Tiago\Documents\CCU\Human-Foraging\Assets\Shira\exported\lvls\lvl1\sun.png">
                                     <collision-poly>
-                                        <point x="0" y="0.362963" />
-                                        <point x="1" y="0.362963" />
-                                        <point x="1" y="0.637963" />
-                                        <point x="0" y="0.637963" />
+                                        <point x="0.00423729" y="0.364129" />
+                                        <point x="0.995763" y="0.364129" />
+                                        <point x="0.995763" y="0.636789" />
+                                        <point x="0.00423729" y="0.636789" />
                                     </collision-poly>
                                 </frame>
                             </animation>
-                            <animation framecount="1" loop="0" name="Grass" pingpong="0" repeatcount="1" repeatto="0" sid="113588319393806" speed="5">
-                                <frame duration="1" hotspotX="1.00208" hotspotY="1" />
-                            </animation>
-                            <animation framecount="1" loop="0" name="Mountain" pingpong="0" repeatcount="1" repeatto="0" sid="758810434160273" speed="5">
-                                <frame duration="1" hotspotX="1.00208" hotspotY="1" original-source="C:\Users\Tiago\Google Drive\HUMAN_FORAGING\Task\Assets\Parallax\Background 01\PARALLAX\layer_02_1920 x 1080.png">
+                            <animation framecount="1" loop="0" name="lvl2" pingpong="0" repeatcount="1" repeatto="0" sid="824528253420828" speed="5">
+                                <frame duration="1" hotspotX="0.502146" hotspotY="0.48927" original-source="C:\Users\Tiago\Documents\CCU\Human-Foraging\Assets\Shira\exported\lvls\lvl2\Asset 2.png">
                                     <collision-poly>
-                                        <point x="0.260146" y="0.462963" />
-                                        <point x="0.5" y="0.383333" />
-                                        <point x="0.799168" y="0.357407" />
-                                        <point x="0.99948" y="0.5" />
-                                        <point x="0.853798" y="0.739815" />
-                                        <point x="0.5" y="0.757407" />
-                                        <point x="0.14256" y="0.746296" />
-                                        <point x="0.000520291" y="0.5" />
+                                        <point x="0.00423729" y="0.364129" />
+                                        <point x="0.995763" y="0.364129" />
+                                        <point x="0.995763" y="0.636789" />
+                                        <point x="0.00423729" y="0.636789" />
                                     </collision-poly>
                                 </frame>
                             </animation>
-                            <animation framecount="1" loop="0" name="empty" pingpong="0" repeatcount="1" repeatto="0" sid="223185859819525" speed="5">
-                                <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                            <animation framecount="1" loop="0" name="lvl3" pingpong="0" repeatcount="1" repeatto="0" sid="244729786465747" speed="5">
+                                <frame duration="1" hotspotX="0.504237" hotspotY="0.489362">
+                                    <collision-poly>
+                                        <point x="0.00423729" y="0.364129" />
+                                        <point x="0.995763" y="0.364129" />
+                                        <point x="0.995763" y="0.636789" />
+                                        <point x="0.00423729" y="0.636789" />
+                                    </collision-poly>
+                                </frame>
+                            </animation>
+                            <animation framecount="1" loop="0" name="lvl4" pingpong="0" repeatcount="1" repeatto="0" sid="809890895640362" speed="5">
+                                <frame duration="1" hotspotX="0.504274" hotspotY="0.48927" original-source="C:\Users\Tiago\Documents\CCU\Human-Foraging\Assets\Shira\exported\lvls\lvl4\moon.png">
+                                    <collision-poly>
+                                        <point x="0.00423729" y="0.364129" />
+                                        <point x="0.995763" y="0.364129" />
+                                        <point x="0.995763" y="0.636789" />
+                                        <point x="0.00423729" y="0.636789" />
+                                    </collision-poly>
+                                </frame>
                             </animation>
                         </animation-folder>
                     </object-type>
                     <object-type name="SpriteBG3" sid="780022135981359">
                         <plugin id="Sprite" />
                         <animation-folder>
-                            <animation framecount="1" loop="0" name="Desert" pingpong="0" repeatcount="1" repeatto="0" sid="777905751367305" speed="5">
-                                <frame duration="1" hotspotX="0.5" hotspotY="0.500926" original-source="C:\Users\Tiago\Google Drive\HUMAN_FORAGING\Task\Assets\Parallax\desert\desert-layer-4.png">
+                            <animation framecount="1" loop="0" name="lvl1" pingpong="0" repeatcount="1" repeatto="0" sid="913292036764738" speed="5">
+                                <frame duration="1" hotspotX="0.500159" hotspotY="0.5" original-source="C:\Users\Tiago\Documents\CCU\Human-Foraging\Assets\Shira\exported\lvls\lvl1\gold_floor.png">
                                     <collision-poly>
-                                        <point x="0.09375" y="0.437963" />
-                                        <point x="0.5" y="0.475926" />
-                                        <point x="0.905209" y="0.439815" />
-                                        <point x="1" y="0.5" />
-                                        <point x="1" y="0.730556" />
-                                        <point x="0.0015625" y="0.726852" />
-                                        <point x="0" y="0.5" />
+                                        <point x="0.0216492" y="0.0660194" />
+                                        <point x="0.968481" y="0.0961165" />
+                                        <point x="0.980579" y="0.5" />
+                                        <point x="0.862464" y="0.580582" />
+                                        <point x="0.499841" y="0.974757" />
+                                        <point x="0.145177" y="0.557282" />
+                                        <point x="0.0267431" y="0.5" />
                                     </collision-poly>
                                 </frame>
                             </animation>
-                            <animation framecount="1" loop="0" name="Grass" pingpong="0" repeatcount="1" repeatto="0" sid="141419158930205" speed="5">
-                                <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
-                            </animation>
-                            <animation framecount="1" loop="0" name="Mountain" pingpong="0" repeatcount="1" repeatto="0" sid="700327898506798" speed="5">
-                                <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Tiago\Google Drive\HUMAN_FORAGING\Task\Assets\Parallax\Background 01\PARALLAX\layer_03_1920 x 1080.png">
+                            <animation framecount="1" loop="0" name="lvl2" pingpong="0" repeatcount="1" repeatto="0" sid="930212559012679" speed="5">
+                                <frame duration="1" hotspotX="0.500159" hotspotY="0.50049" original-source="C:\Users\Tiago\Documents\CCU\Human-Foraging\Assets\Shira\exported\lvls\lvl2\grey_floor.png">
                                     <collision-poly>
-                                        <point x="0.323958" y="0.575926" />
-                                        <point x="0.5" y="0.777778" />
-                                        <point x="0.646354" y="0.628704" />
-                                        <point x="0.615104" y="0.5" />
-                                        <point x="0.914063" y="0.847222" />
-                                        <point x="0.0875" y="0.844444" />
-                                        <point x="0.0390625" y="0.5" />
+                                        <point x="0.0194206" y="0.0597453" />
+                                        <point x="0.968481" y="0.0969638" />
+                                        <point x="0.980579" y="0.49951" />
+                                        <point x="0.862464" y="0.576885" />
+                                        <point x="0.499841" y="0.975514" />
+                                        <point x="0.144858" y="0.554358" />
+                                        <point x="0.0267431" y="0.49951" />
                                     </collision-poly>
                                 </frame>
                             </animation>
-                            <animation framecount="1" loop="0" name="empty" pingpong="0" repeatcount="1" repeatto="0" sid="171868057815272" speed="5">
-                                <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                            <animation framecount="1" loop="0" name="lvl3" pingpong="0" repeatcount="1" repeatto="0" sid="415787190450658" speed="5">
+                                <frame duration="1" hotspotX="0.500159" hotspotY="0.5" original-source="C:\Users\Tiago\Documents\CCU\Human-Foraging\Assets\Shira\exported\lvls\lvl3\ice_floor.png">
+                                    <collision-poly>
+                                        <point x="0.0210124" y="0.0645793" />
+                                        <point x="0.968481" y="0.0968689" />
+                                        <point x="0.980579" y="0.5" />
+                                        <point x="0.862146" y="0.576321" />
+                                        <point x="0.499841" y="0.97456" />
+                                        <point x="0.145177" y="0.553816" />
+                                        <point x="0.0267431" y="0.5" />
+                                    </collision-poly>
+                                </frame>
+                            </animation>
+                            <animation framecount="1" loop="0" name="lvl4" pingpong="0" repeatcount="1" repeatto="0" sid="710679631294681" speed="5">
+                                <frame duration="1" hotspotX="0.500162" hotspotY="-0.226285" original-source="C:\Users\Tiago\Documents\CCU\Human-Foraging\Assets\Shira\exported\lvls\lvl4\pink_floor.png">
+                                    <collision-poly>
+                                        <point x="0.503079" y="0.0820159" />
+                                        <point x="0.496921" y="0.0820159" />
+                                        <point x="0.862561" y="0.581028" />
+                                        <point x="0.499838" y="0.975296" />
+                                        <point x="0.145219" y="0.557312" />
+                                    </collision-poly>
+                                </frame>
                             </animation>
                         </animation-folder>
                     </object-type>
@@ -1742,57 +1980,16 @@
                             </animation>
                         </animation-folder>
                     </object-type>
-                    <object-type name="SpriteBG5" sid="243440381394016">
-                        <plugin id="Sprite" />
-                        <animation-folder>
-                            <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="204665844417459" speed="5">
-                                <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\Tiago\Google Drive\HUMAN_FORAGING\Task\Assets\Parallax\desert\desert-layer-2.png">
-                                    <collision-poly>
-                                        <point x="0.025" y="0.935018" />
-                                        <point x="0.767855" y="0.501805" />
-                                        <point x="0.185718" y="0.501805" />
-                                    </collision-poly>
-                                </frame>
-                            </animation>
-                            <animation framecount="1" loop="0" name="empty" pingpong="0" repeatcount="1" repeatto="0" sid="846623427660239" speed="5">
-                                <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
-                            </animation>
-                        </animation-folder>
-                    </object-type>
                 </object-folder>
                 <object-folder name="Barrier">
                     <object-type name="SpriteBarrier" sid="856227044556436">
                         <plugin id="Sprite" />
                         <animation-folder>
-                            <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="692535813370210" speed="5">
-                                <frame duration="1" hotspotX="0.5" hotspotY="0.507353" original-source="C:\Users\Tiago\Google Drive\HUMAN_FORAGING\Task\Assets\train\barrier.png">
-                                    <collision-poly>
-                                        <point x="0.0271429" y="0.140741" />
-                                        <point x="0.971429" y="0.148148" />
-                                        <point x="0.972857" y="0.859259" />
-                                        <point x="0.0285714" y="0.851852" />
-                                    </collision-poly>
-                                </frame>
-                            </animation>
-                            <animation framecount="1" loop="0" name="rocks2" pingpong="0" repeatcount="1" repeatto="0" sid="722016847162720" speed="5">
-                                <frame duration="1" hotspotX="0.494" hotspotY="0.49" original-source="C:\Users\Tiago\Google Drive\HUMAN_FORAGING\Task\Assets\barrier\BOULDER.png">
-                                    <collision-poly>
-                                        <point x="0.473947" y="0" />
-                                        <point x="0.502178" y="0" />
-                                        <point x="0.526375" y="0" />
-                                        <point x="0.538474" y="0.0264395" />
-                                        <point x="0.532424" y="0.168441" />
-                                        <point x="0.502178" y="0.207613" />
-                                        <point x="0.474955" y="0.153751" />
-                                        <point x="0.463865" y="0.0264395" />
-                                    </collision-poly>
-                                </frame>
-                            </animation>
                             <animation framecount="1" loop="0" name="empty" pingpong="0" repeatcount="1" repeatto="0" sid="571046788832022" speed="5">
                                 <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
                             </animation>
-                            <animation framecount="1" loop="0" name="rocks" pingpong="0" repeatcount="1" repeatto="0" sid="956378498171929" speed="5">
-                                <frame duration="1" hotspotX="0.494167" hotspotY="0.49" original-source="C:\Users\Tiago\Google Drive\CCU PERSONAL\enemy\boulders2.png">
+                            <animation framecount="1" loop="0" name="rocks" pingpong="0" repeatcount="1" repeatto="0" sid="424167159665021" speed="5">
+                                <frame duration="1" hotspotX="0.493063" hotspotY="0.495575" original-source="C:\Users\Tiago\Documents\CCU\Human-Foraging\Assets\Shira\exported\lvls\smallrocks.png">
                                     <collision-poly>
                                         <point x="0.473947" y="0" />
                                         <point x="0.502178" y="0" />
@@ -1810,24 +2007,18 @@
                     <object-type name="SpriteBoulder" sid="481926796276988">
                         <plugin id="Sprite" />
                         <animation-folder>
-                            <animation framecount="17" loop="0" name="Ani1" pingpong="0" repeatcount="1" repeatto="0" sid="533127897022630" speed="30">
-                                <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Tiago\Google Drive\CCU PERSONAL\enemy\boulder2\boulder_0000s_0016_Layer-17.png" />
-                                <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Tiago\Google Drive\CCU PERSONAL\enemy\boulder2\boulder_0000s_0015_Layer-16.png" />
-                                <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Tiago\Google Drive\CCU PERSONAL\enemy\boulder2\boulder_0000s_0014_Layer-15.png" />
-                                <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Tiago\Google Drive\CCU PERSONAL\enemy\boulder2\boulder_0000s_0013_Layer-14.png" />
-                                <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Tiago\Google Drive\CCU PERSONAL\enemy\boulder2\boulder_0000s_0012_Layer-13.png" />
-                                <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Tiago\Google Drive\CCU PERSONAL\enemy\boulder2\boulder_0000s_0011_Layer-12.png" />
-                                <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Tiago\Google Drive\CCU PERSONAL\enemy\boulder2\boulder_0000s_0010_Layer-11.png" />
-                                <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Tiago\Google Drive\CCU PERSONAL\enemy\boulder2\boulder_0000s_0009_Layer-10.png" />
-                                <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Tiago\Google Drive\CCU PERSONAL\enemy\boulder2\boulder_0000s_0008_Layer-9.png" />
-                                <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Tiago\Google Drive\CCU PERSONAL\enemy\boulder2\boulder_0000s_0007_Layer-8.png" />
-                                <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Tiago\Google Drive\CCU PERSONAL\enemy\boulder2\boulder_0000s_0006_Layer-7.png" />
-                                <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Tiago\Google Drive\CCU PERSONAL\enemy\boulder2\boulder_0000s_0005_Layer-6.png" />
-                                <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Tiago\Google Drive\CCU PERSONAL\enemy\boulder2\boulder_0000s_0004_Layer-5.png" />
-                                <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Tiago\Google Drive\CCU PERSONAL\enemy\boulder2\boulder_0000s_0003_Layer-4.png" />
-                                <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Tiago\Google Drive\CCU PERSONAL\enemy\boulder2\boulder_0000s_0002_Layer-3.png" />
-                                <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Tiago\Google Drive\CCU PERSONAL\enemy\boulder2\boulder_0000s_0001_Layer-2.png" />
-                                <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Tiago\Google Drive\CCU PERSONAL\enemy\boulder2\boulder_0000s_0000_Layer-1.png" />
+                            <animation framecount="11" loop="0" name="Ani1" pingpong="0" repeatcount="1" repeatto="0" sid="533127897022630" speed="30">
+                                <frame duration="1" hotspotX="0.500353" hotspotY="0.5" original-source="C:\Users\Tiago\Documents\CCU\Human-Foraging\Assets\Shira\exported\Barrier\rock1.png" />
+                                <frame duration="1" hotspotX="0.501764" hotspotY="0.5" original-source="C:\Users\Tiago\Documents\CCU\Human-Foraging\Assets\Shira\exported\Barrier\rock1-copy.png" />
+                                <frame duration="1" hotspotX="0.500353" hotspotY="0.5" original-source="C:\Users\Tiago\Documents\CCU\Human-Foraging\Assets\Shira\exported\Barrier\rock1-copy-2.png" />
+                                <frame duration="1" hotspotX="0.500353" hotspotY="0.5" original-source="C:\Users\Tiago\Documents\CCU\Human-Foraging\Assets\Shira\exported\Barrier\rock1-copy-3.png" />
+                                <frame duration="1" hotspotX="0.500353" hotspotY="0.5" original-source="C:\Users\Tiago\Documents\CCU\Human-Foraging\Assets\Shira\exported\Barrier\rock1-copy-4.png" />
+                                <frame duration="1" hotspotX="0.500353" hotspotY="0.5" original-source="C:\Users\Tiago\Documents\CCU\Human-Foraging\Assets\Shira\exported\Barrier\rock1-copy-5.png" />
+                                <frame duration="1" hotspotX="0.500353" hotspotY="0.5" original-source="C:\Users\Tiago\Documents\CCU\Human-Foraging\Assets\Shira\exported\Barrier\rock1-copy-6.png" />
+                                <frame duration="1" hotspotX="0.500353" hotspotY="0.5" original-source="C:\Users\Tiago\Documents\CCU\Human-Foraging\Assets\Shira\exported\Barrier\rock1-copy-7.png" />
+                                <frame duration="1" hotspotX="0.500353" hotspotY="0.5" original-source="C:\Users\Tiago\Documents\CCU\Human-Foraging\Assets\Shira\exported\Barrier\rock1-copy-8.png" />
+                                <frame duration="1" hotspotX="0.500353" hotspotY="0.5" original-source="C:\Users\Tiago\Documents\CCU\Human-Foraging\Assets\Shira\exported\Barrier\rock1-copy-9.png" />
+                                <frame duration="1" hotspotX="0.500353" hotspotY="0.5" original-source="C:\Users\Tiago\Documents\CCU\Human-Foraging\Assets\Shira\exported\Barrier\rock1-copy-10.png" />
                             </animation>
                             <animation framecount="1" loop="0" name="empty" pingpong="0" repeatcount="1" repeatto="0" sid="825063918979845" speed="5">
                                 <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
@@ -1869,6 +2060,23 @@
                                 <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Tiago\Google Drive\HUMAN_FORAGING\Task\Assets\barrier\Sparkles\White\0001.png0033.png" />
                                 <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Tiago\Google Drive\HUMAN_FORAGING\Task\Assets\barrier\Sparkles\White\0001.png0034.png" />
                                 <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Tiago\Google Drive\HUMAN_FORAGING\Task\Assets\barrier\Sparkles\White\0001.png0035.png" />
+                            </animation>
+                        </animation-folder>
+                    </object-type>
+                    <object-type name="SpriteRock" sid="243440381394016">
+                        <plugin id="Sprite" />
+                        <animation-folder>
+                            <animation framecount="1" loop="0" name="empty" pingpong="0" repeatcount="1" repeatto="0" sid="846623427660239" speed="5">
+                                <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                            </animation>
+                            <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="204665844417459" speed="5">
+                                <frame duration="1" hotspotX="0.5181" hotspotY="0.463768" original-source="C:\Users\Tiago\Documents\CCU\Human-Foraging\Assets\Shira\exported\lvls\rock2.png">
+                                    <collision-poly>
+                                        <point x="0.025" y="0.935018" />
+                                        <point x="0.767855" y="0.501805" />
+                                        <point x="0.185718" y="0.501805" />
+                                    </collision-poly>
+                                </frame>
                             </animation>
                         </animation-folder>
                     </object-type>
@@ -2058,27 +2266,31 @@
         <object-type global="1" name="ArrayTravelspeed" sid="107398927222623">
             <plugin id="Arr" />
         </object-type>
-        <object-type name="SpriteCastle" sid="877011624356589">
+        <object-type name="SliderMultiplier" sid="418000866243078">
+            <plugin id="sliderbar" />
+        </object-type>
+        <object-type name="SpriteGlow" sid="719520073376465">
             <plugin id="Sprite" />
             <animation-folder>
-                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="880856798117435" speed="5">
-                    <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Users\Tiago\Desktop\castle.png">
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="459655640947427" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.50211" original-source="C:\Users\Tiago\Documents\CCU\Human-Foraging\Assets\Shira\exported\glow.png">
                         <collision-poly>
-                            <point x="0.142165" y="0.352" />
-                            <point x="0.5" y="0.0260003" />
-                            <point x="0.857836" y="0.352" />
-                            <point x="0.993538" y="0.58" />
-                            <point x="0.91357" y="0.946001" />
-                            <point x="0.5" y="0.996" />
-                            <point x="0.0864297" y="0.946001" />
-                            <point x="0.00646209" y="0.58" />
+                            <point x="0.192982" y="0.371308" />
+                            <point x="0.5" y="0.164557" />
+                            <point x="0.809211" y="0.367089" />
+                            <point x="0.835526" y="0.49789" />
+                            <point x="0.809211" y="0.632911" />
+                            <point x="0.5" y="0.835443" />
+                            <point x="0.192982" y="0.628692" />
+                            <point x="0.166667" y="0.49789" />
                         </collision-poly>
                     </frame>
                 </animation>
             </animation-folder>
         </object-type>
-        <object-type name="SliderMultiplier" sid="418000866243078">
-            <plugin id="sliderbar" />
+        <object-type name="Particles" sid="441959315144544">
+            <plugin id="Particles" />
+            <texture original-source="C:\Users\Tiago\Documents\CCU\Human-Foraging\Assets\Shira\exported\lvls\shiny.png" />
         </object-type>
     </object-folder>
     <families />
