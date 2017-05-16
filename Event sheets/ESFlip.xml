@@ -27,7 +27,7 @@
                         <action id="-9" name="Destroy" sid="924625133884150" type="SpriteEnemy" />
                         <action id="-9" name="Set value" sid="373163318841695" type="System">
                             <param id="0" name="Variable">MaxScore</param>
-                            <param id="1" name="Value">140</param>
+                            <param id="1" name="Value">280</param>
                         </action>
                         <action id="-9" name="Set value" sid="156684017244175" type="System">
                             <param id="0" name="Variable">Multiplier</param>
@@ -39,15 +39,15 @@
                         </action>
                         <action id="-9" name="Set value" sid="360119689813590" type="System">
                             <param id="0" name="Variable">BarrierSize</param>
-                            <param id="1" name="Value">4</param>
+                            <param id="1" name="Value">3</param>
                         </action>
                         <action id="-9" name="Set value" sid="837076883078026" type="System">
                             <param id="0" name="Variable">BarrierT1</param>
-                            <param id="1" name="Value">BarrierSequence=1? 1 :75</param>
+                            <param id="1" name="Value">BarrierSequence=1? floor(MaxScore*0.07 ):  floor(MaxScore*0.5)</param>
                         </action>
                         <action id="-9" name="Set value" sid="669092225167694" type="System">
                             <param id="0" name="Variable">BarrierT2</param>
-                            <param id="1" name="Value">BarrierSequence=1? 75 : 125</param>
+                            <param id="1" name="Value">BarrierSequence=1? floor(MaxScore*0.5) : floor(MaxScore*0.93)</param>
                         </action>
                         <action id="-9" name="Set value" sid="847740894567448" type="System">
                             <param id="0" name="Variable">CurrentTrial</param>
@@ -119,7 +119,7 @@
                         </action>
                         <action id="-9" name="Set value" sid="874511358997380" type="System">
                             <param id="0" name="Variable">TimerMax</param>
-                            <param id="1" name="Value">900</param>
+                            <param id="1" name="Value">1200</param>
                         </action>
                         <action id="-9" name="Set value" sid="192776820751799" type="System">
                             <param id="0" name="Variable">TouchCounter</param>
@@ -182,6 +182,10 @@
                         <action id="-3" name="Set position" sid="876118527987662" type="SpriteBG3">
                             <param id="0" name="X">LayoutWidth/2</param>
                             <param id="1" name="Y">LayoutHeight+90</param>
+                        </action>
+                        <action id="-3" name="Set position" sid="620034168376328" type="SpriteBG1">
+                            <param id="0" name="X">LayoutWidth/2</param>
+                            <param id="1" name="Y">LayoutHeight/2</param>
                         </action>
                         <action id="-3" name="Create object" sid="955261690476013" type="System">
                             <param id="0" name="Object to create">SpriteTimer2</param>
@@ -351,10 +355,6 @@
                             <param id="2" name="Z">0</param>
                             <param id="3" name="Value">50</param>
                         </action>
-                        <action id="-3" name="Set position" sid="620034168376328" type="SpriteBG1">
-                            <param id="0" name="X">640</param>
-                            <param id="1" name="Y">360</param>
-                        </action>
                         <action id="-3" name="Set position" sid="623639592571312" type="SpriteBridge">
                             <param id="0" name="X">640</param>
                             <param id="1" name="Y">370</param>
@@ -377,11 +377,29 @@
                             <param id="2" name="X">ArrayCoordinates.At(0,0,0)</param>
                             <param id="3" name="Y">ArrayCoordinates.At(0,1,0)+50</param>
                         </action>
+                        <action behavior="Sine" id="3" name="Set movement" sid="509801909641819" type="SpriteGlow">
+                            <param id="0" name="Movement">1</param>
+                        </action>
+                        <action behavior="Sine" id="2" name="Set magnitude" sid="484589679554851" type="SpriteGlow">
+                            <param id="0" name="Magnitude">5</param>
+                        </action>
+                        <action behavior="Sine" id="1" name="Set period" sid="328658019443546" type="SpriteGlow">
+                            <param id="0" name="Period">24</param>
+                        </action>
                         <action id="-3" name="Create object" sid="578685804558902" type="System">
                             <param id="0" name="Object to create">SpriteGlow</param>
                             <param id="1" name="Layer">8</param>
                             <param id="2" name="X">ArrayCoordinates.At(1,0,0)</param>
                             <param id="3" name="Y">ArrayCoordinates.At(1,1,0)+50</param>
+                        </action>
+                        <action behavior="Sine" id="3" name="Set movement" sid="821262986897927" type="SpriteGlow">
+                            <param id="0" name="Movement">1</param>
+                        </action>
+                        <action behavior="Sine" id="2" name="Set magnitude" sid="215947329711994" type="SpriteGlow">
+                            <param id="0" name="Magnitude">5</param>
+                        </action>
+                        <action behavior="Sine" id="1" name="Set period" sid="691910153841932" type="SpriteGlow">
+                            <param id="0" name="Period">24</param>
                         </action>
                         <action id="-7" name="Set size" sid="347810904636595" type="SpriteDockTrainL">
                             <param id="0" name="Width">52</param>
@@ -412,7 +430,7 @@
                         <action id="-15" name="Set visible" sid="272473974780409" type="TextScore">
                             <param id="0" name="Visibility">0</param>
                         </action>
-                        <action behavior="Sine" id="5" name="Set cycle position" sid="707556903920233" type="SpriteBG2">
+                        <action behavior="Sine" id="5" name="Set cycle position" sid="707556903920233" type="SpriteBG5">
                             <param id="0" name="Cycle position">0.5</param>
                         </action>
                         <action behavior="Pin" id="0" name="Pin to object" sid="154758836866914" type="SpriteTimer1">
@@ -459,7 +477,7 @@
                                     </conditions>
                                     <actions>
                                         <action id="2" name="Call expression" sid="831835734478024" type="Function">
-                                            <param id="0" name="Expression">Function.Call(&quot;Draw&quot;, &quot;lvl1&quot;, &quot;yellow&quot;)</param>
+                                            <param id="0" name="Expression">Function.Call(&quot;Draw&quot;, &quot;2lvl1&quot;, &quot;yellow&quot;)</param>
                                         </action>
                                     </actions>
                                 </event-block>
@@ -518,7 +536,7 @@
                             <param id="0" name="Animation">Function.Param(0)</param>
                             <param id="1" name="From">1</param>
                         </action>
-                        <action id="4" name="Set animation" sid="724421298209305" type="SpriteBG2">
+                        <action id="4" name="Set animation" sid="724421298209305" type="SpriteBG5">
                             <param id="0" name="Animation">Function.Param(0)</param>
                             <param id="1" name="From">1</param>
                         </action>
@@ -546,31 +564,31 @@
                             <param id="0" name="X">0</param>
                             <param id="1" name="Y">0</param>
                             <param id="2" name="Z">0</param>
-                            <param id="3" name="Value">Function.Param(1) = &quot;blue&quot; ? &quot;none&quot; : &quot;ynone&quot;</param>
+                            <param id="3" name="Value">Function.Param(0)&amp;&quot;none&quot;</param>
                         </action>
-                        <action id="4" name="Set at XYZ" sid="296410135089810" type="ArrayAnimation">
+                        <action id="4" name="Set at XYZ" sid="655112016924215" type="ArrayAnimation">
                             <param id="0" name="X">0</param>
                             <param id="1" name="Y">1</param>
                             <param id="2" name="Z">0</param>
-                            <param id="3" name="Value">Function.Param(1) = &quot;blue&quot; ? &quot;right&quot; : &quot;yright&quot;</param>
+                            <param id="3" name="Value">Function.Param(0)</param>
                         </action>
-                        <action id="4" name="Set at XYZ" sid="265509852655361" type="ArrayAnimation">
+                        <action id="4" name="Set at XYZ" sid="939934421632437" type="ArrayAnimation">
                             <param id="0" name="X">0</param>
                             <param id="1" name="Y">2</param>
                             <param id="2" name="Z">0</param>
-                            <param id="3" name="Value">Function.Param(1) = &quot;blue&quot; ? &quot;left&quot; : &quot;yleft&quot;</param>
+                            <param id="3" name="Value">Function.Param(0)</param>
                         </action>
-                        <action id="4" name="Set at XYZ" sid="117015574511640" type="ArrayAnimation">
+                        <action id="4" name="Set at XYZ" sid="130353480278266" type="ArrayAnimation">
                             <param id="0" name="X">0</param>
                             <param id="1" name="Y">3</param>
                             <param id="2" name="Z">0</param>
-                            <param id="3" name="Value">Function.Param(1) = &quot;blue&quot; ? &quot;front&quot; : &quot;yfront&quot;</param>
+                            <param id="3" name="Value">Function.Param(0)</param>
                         </action>
-                        <action id="4" name="Set at XYZ" sid="243420468736989" type="ArrayAnimation">
+                        <action id="4" name="Set at XYZ" sid="206501121712523" type="ArrayAnimation">
                             <param id="0" name="X">0</param>
                             <param id="1" name="Y">4</param>
                             <param id="2" name="Z">0</param>
-                            <param id="3" name="Value">Function.Param(1) = &quot;blue&quot; ? &quot;front2&quot; : &quot;yfront2&quot;</param>
+                            <param id="3" name="Value">Function.Param(0)</param>
                         </action>
                     </actions>
                 </event-block>
@@ -784,7 +802,7 @@
                     </conditions>
                     <actions>
                         <action id="0" name="Play" sid="728843057934152" type="Audio">
-                            <param id="0" name="Audio file">shot2</param>
+                            <param id="0" name="Audio file">foom_0</param>
                             <param id="2" name="Loop">0</param>
                             <param id="3" name="Volume">0</param>
                             <param id="1" name="Tag (optional)">&quot;shot&quot;</param>
@@ -792,6 +810,9 @@
                         <action id="4" name="Set animation" sid="570067701655662" type="SpriteManDock">
                             <param id="0" name="Animation">Player.Location=1 ? &quot;R&quot; : &quot;L&quot;</param>
                             <param id="1" name="From">1</param>
+                        </action>
+                        <action disabled="1" id="6" name="Set speed" sid="855866730840226" type="SpriteManDock">
+                            <param id="0" name="Speed">AnimationTargetSpeed</param>
                         </action>
                     </actions>
                 </event-block>
@@ -852,11 +873,11 @@
                             <param id="3" name="Volume">0</param>
                             <param id="1" name="Tag (optional)">&quot;hit&quot;</param>
                         </action>
-                        <action disabled="1" id="4" name="Set animation" sid="251602718271668" type="SpriteEnemyHit">
+                        <action id="4" name="Set animation" sid="251602718271668" type="SpriteEnemyHit">
                             <param id="0" name="Animation">choose(ArrayAnimation.At(0,1,0) , ArrayAnimation.At(0,2,0) , ArrayAnimation.At(0,3,0) , ArrayAnimation.At(0,4,0))</param>
                             <param id="1" name="From">1</param>
                         </action>
-                        <action id="4" name="Set animation" sid="607712515824928" type="SpriteEnemyHit">
+                        <action disabled="1" id="4" name="Set animation" sid="607712515824928" type="SpriteEnemyHit">
                             <param id="0" name="Animation">&quot;front&quot;</param>
                             <param id="1" name="From">1</param>
                         </action>
@@ -868,7 +889,7 @@
                         </action>
                         <action id="-12" name="Subtract from" sid="239438903760058" type="SpriteTimer">
                             <param id="0" name="Instance variable">Size</param>
-                            <param id="1" name="Value">RewardSize*7</param>
+                            <param id="1" name="Value">RewardSize*(SpriteTimer.MaxSize/MaxScore)</param>
                         </action>
                         <action disabled="1" id="-15" name="Set visible" sid="462556013786634" type="SpriteScore">
                             <param id="0" name="Visibility">1</param>
@@ -882,11 +903,11 @@
                         </condition>
                     </conditions>
                     <actions>
-                        <action id="4" name="Set animation" sid="250293292908446" type="SpriteEnemyHit">
+                        <action disabled="1" id="4" name="Set animation" sid="250293292908446" type="SpriteEnemyHit">
                             <param id="0" name="Animation">&quot;none&quot;</param>
                             <param id="1" name="From">1</param>
                         </action>
-                        <action disabled="1" id="4" name="Set animation" sid="211999158829666" type="SpriteEnemyHit">
+                        <action id="4" name="Set animation" sid="211999158829666" type="SpriteEnemyHit">
                             <param id="0" name="Animation">ArrayAnimation.At(0,0,0)</param>
                             <param id="1" name="From">1</param>
                         </action>
@@ -1404,10 +1425,6 @@
                             <param id="0" name="Instance variable">CanMove</param>
                             <param id="1" name="Value">1</param>
                         </action>
-                        <action id="4" name="Set animation" sid="554063118020739" type="SpriteBoulder">
-                            <param id="0" name="Animation">&quot;empty&quot;</param>
-                            <param id="1" name="From">1</param>
-                        </action>
                         <action id="-9" name="Set value" sid="138740669221027" type="System">
                             <param id="0" name="Variable">Clean</param>
                             <param id="1" name="Value">0</param>
@@ -1570,12 +1587,12 @@
                         <condition id="-14" name="Compare variable" sid="199498941347207" type="System">
                             <param id="0" name="Variable">Timer</param>
                             <param id="1" name="Comparison">4</param>
-                            <param id="2" name="Value">1200</param>
+                            <param id="2" name="Value">TimerMax</param>
                         </condition>
                         <condition id="-8" name="Compare two values" sid="746927251673908" type="System">
                             <param id="0" name="First value">Score</param>
                             <param id="1" name="Comparison">5</param>
-                            <param id="2" name="Second value">140</param>
+                            <param id="2" name="Second value">MaxScore</param>
                         </condition>
                     </conditions>
                     <actions>
