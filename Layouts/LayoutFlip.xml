@@ -98,7 +98,7 @@
             <instances>
                 <instance type="SpriteBridge" uid="25">
                     <properties>
-                        <initial-visibility>Visible</initial-visibility>
+                        <initial-visibility>Invisible</initial-visibility>
                         <initial-animation>Default</initial-animation>
                         <initial-frame>0</initial-frame>
                         <collisions>Enabled</collisions>
@@ -106,8 +106,8 @@
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
                     <world>
-                        <x>-1966</x>
-                        <y>743</y>
+                        <x>-3826</x>
+                        <y>1273</y>
                         <z>0</z>
                         <width>500</width>
                         <height>300</height>

@@ -141,6 +141,10 @@
                             <param id="0" name="Variable">Countdown</param>
                             <param id="1" name="Value">TimerMax</param>
                         </action>
+                        <action id="-9" name="Set value" sid="991042438600234" type="System">
+                            <param id="0" name="Variable">Streak</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
                         <action id="-9" name="Set value" sid="401266700196041" type="System">
                             <param id="0" name="Variable">Zoom</param>
                             <param id="1" name="Value">1</param>
@@ -657,6 +661,10 @@
                             <param id="0" name="Instance variable">Docked</param>
                             <param id="1" name="Value">Player.X &lt;= ArrayCoordinates.At(0,0,0) | Player.X&gt;=ArrayCoordinates.At(1,0,0)</param>
                         </action>
+                        <action id="-9" name="Set value" sid="549064611364425" type="System">
+                            <param id="0" name="Variable">ActiveNow</param>
+                            <param id="1" name="Value">Player.Location=ActiveSide</param>
+                        </action>
                         <action id="4" name="Set at XYZ" sid="837919950146569" type="ArrayCoordinates">
                             <param id="0" name="X">0</param>
                             <param id="1" name="Y">0</param>
@@ -728,10 +736,6 @@
                         <action id="-10" name="Set value" sid="911282075834161" type="Player">
                             <param id="0" name="Instance variable">CanMove</param>
                             <param id="1" name="Value">0</param>
-                        </action>
-                        <action id="-9" name="Set value" sid="342633847504178" type="System">
-                            <param id="0" name="Variable">ActiveNow</param>
-                            <param id="1" name="Value">Player.Location=ActiveSide</param>
                         </action>
                         <action id="-9" name="Set value" sid="476195652919499" type="System">
                             <param id="0" name="Variable">RandomR</param>
@@ -1148,6 +1152,10 @@
                                                 <action id="2" name="Call expression" sid="627642900824532" type="Function">
                                                     <param id="0" name="Expression">Function.Call(&quot;PlayerDock&quot;, &quot;NoSpawn&quot;)</param>
                                                 </action>
+                                                <action id="-9" name="Set value" sid="465116620674182" type="System">
+                                                    <param id="0" name="Variable">ErrorCue</param>
+                                                    <param id="1" name="Value">1</param>
+                                                </action>
                                             </actions>
                                         </event-block>
                                         <event-block sid="684639663536235">
@@ -1236,6 +1244,10 @@
                         </condition>
                     </conditions>
                     <actions>
+                        <action id="0" name="Call function" sid="542480799304568" type="Function">
+                            <param id="0" name="Name">&quot;log&quot;</param>
+                            <param id="1" name="Parameter {n}"></param>
+                        </action>
                         <action id="-3" name="Set position" sid="732835109651094" type="SpriteEnemy">
                             <param id="0" name="X">Player.Location=1 ? 1085:200</param>
                             <param id="1" name="Y">495</param>
@@ -1266,6 +1278,14 @@
                         </condition>
                     </conditions>
                     <actions>
+                        <action disabled="1" id="-9" name="Set value" sid="118867778098240" type="System">
+                            <param id="0" name="Variable">Streak</param>
+                            <param id="1" name="Value">Player.Location=ArrayData.At(3,CurrentTrial-1,0) ? Streak : Streak+1</param>
+                        </action>
+                        <action disabled="1" id="-9" name="Set value" sid="939296763550674" type="System">
+                            <param id="0" name="Variable">StartHigh</param>
+                            <param id="1" name="Value">ActiveNow=1</param>
+                        </action>
                         <action id="4" name="Set animation" sid="499403858605365" type="SpriteMan">
                             <param id="0" name="Animation">&quot;none&quot;</param>
                             <param id="1" name="From">1</param>
@@ -1479,7 +1499,7 @@
                     </conditions>
                     <actions>
                         <action id="1" name="Set size" sid="316617651390451" type="ArrayData">
-                            <param id="0" name="Width">15</param>
+                            <param id="0" name="Width">16</param>
                             <param id="1" name="Height">1+CurrentTrial</param>
                             <param id="2" name="Depth">1</param>
                         </action>
@@ -1573,11 +1593,40 @@
                             <param id="2" name="Z">0</param>
                             <param id="3" name="Value">Barrier</param>
                         </action>
+                        <action id="4" name="Set at XYZ" sid="686306266537576" type="ArrayData">
+                            <param id="0" name="X">15</param>
+                            <param id="1" name="Y">CurrentTrial</param>
+                            <param id="2" name="Z">0</param>
+                            <param id="3" name="Value">ErrorCue</param>
+                        </action>
+                        <action disabled="1" id="4" name="Set at XYZ" sid="809302206616056" type="ArrayData">
+                            <param id="0" name="X">16</param>
+                            <param id="1" name="Y">CurrentTrial</param>
+                            <param id="2" name="Z">0</param>
+                            <param id="3" name="Value">Streak</param>
+                        </action>
                         <action id="-10" name="Add to" sid="666727536254904" type="System">
                             <param id="0" name="Variable">CurrentTrial</param>
                             <param id="1" name="Value">1</param>
                         </action>
                     </actions>
+                    <sub-events>
+                        <event-block sid="660800413316727">
+                            <conditions>
+                                <condition id="-8" name="Compare two values" sid="430860423314698" type="System">
+                                    <param id="0" name="First value">ErrorCue</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Second value">1</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" sid="170793505779399" type="System">
+                                    <param id="0" name="Variable">ErrorCue</param>
+                                    <param id="1" name="Value">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
                 </event-block>
                 <event-block any="1" sid="589873766488374">
                     <conditions>

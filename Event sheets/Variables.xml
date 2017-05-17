@@ -24,6 +24,7 @@
         <variable constant="0" name="DrawProtocol" sid="183316736350038" static="0" type="text"></variable>
         <variable constant="0" name="EnemyChange" sid="806816674041888" static="0" type="number">0</variable>
         <variable constant="0" name="EnemyNr" sid="724070457289991" static="0" type="number">0</variable>
+        <variable constant="0" name="ErrorCue" sid="348208192885280" static="0" type="number">0</variable>
         <variable constant="0" name="Flip" sid="959694862225341" static="0" type="number">0</variable>
         <variable constant="0" name="go" sid="414429851862525" static="0" type="number">0</variable>
         <variable constant="0" name="Input" sid="962947546287654" static="0" type="number">0</variable>
@@ -52,7 +53,9 @@
         <variable constant="0" name="Settings" sid="250043665553250" static="0" type="number">0</variable>
         <variable constant="0" name="Shoot" sid="268196656742707" static="0" type="number">0</variable>
         <variable constant="0" name="ShootAnimation" sid="783370069052784" static="0" type="text"></variable>
+        <variable constant="0" name="StartHigh" sid="946499405046967" static="0" type="number">0</variable>
         <variable constant="0" name="StartingSide" sid="110127185991234" static="0" type="number">0</variable>
+        <variable constant="0" name="Streak" sid="284880116073937" static="0" type="number">0</variable>
         <variable constant="0" name="Timer" sid="485632215821448" static="0" type="number">0</variable>
         <variable constant="0" name="TimerMax" sid="346207485991325" static="0" type="number">0</variable>
         <variable constant="0" name="TouchCounter" sid="395511294220124" static="0" type="number">0</variable>
