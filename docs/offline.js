@@ -1,5 +1,5 @@
 ﻿{
-	"version": 1495023867,
+	"version": 1495123279,
 	"fileList": [
 		"data.js",
 		"c2runtime.js",
@@ -82,6 +82,8 @@
 		"media/sounddestroy.ogg",
 		"media/foom_0.m4a",
 		"media/foom_0.ogg",
+		"media/344407__jawbutch__male-gasp-1.m4a",
+		"media/gasp.ogg",
 		"icon-16.png",
 		"icon-32.png",
 		"icon-114.png",
