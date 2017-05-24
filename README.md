@@ -6,6 +6,6 @@ The contents of this repository are a product of the collective efforts of Tiago
 
 The game is developed using Scirra's Construct2 engine, available to try at https://www.scirra.com/construct2. This software is required to run the code in this repository.
 
-Try the game out at http://www.github.io/quendera/human-foraging
+Try the game out at https://quendera.github.io/human-foraging/
 
 Send your comments and inquiries to tiago.quendera[at]research.fchampalimaud.org

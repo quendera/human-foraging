@@ -21,6 +21,7 @@
         <variable constant="0" name="Clean" sid="361413571111313" static="0" type="number">0</variable>
         <variable constant="0" name="CurrentTrial" sid="967567770451176" static="0" type="number">0</variable>
         <variable constant="0" name="Date" sid="909748833883779" static="0" type="number">0</variable>
+        <variable constant="0" name="DockReset" sid="207018088186701" static="0" type="number">0</variable>
         <variable constant="0" name="DrawProtocol" sid="183316736350038" static="0" type="text"></variable>
         <variable constant="0" name="EnemyChange" sid="806816674041888" static="0" type="number">0</variable>
         <variable constant="0" name="EnemyNr" sid="724070457289991" static="0" type="number">0</variable>
@@ -37,6 +38,7 @@
         <variable constant="0" name="PlayerLocation" sid="515374917925318" static="0" type="number">0</variable>
         <variable constant="0" name="playerX" sid="753277793937877" static="0" type="number">0</variable>
         <variable constant="0" name="playerY" sid="857870396007858" static="0" type="number">0</variable>
+        <variable constant="0" name="PrevLocation" sid="413990140951241" static="0" type="number">0</variable>
         <variable constant="0" name="Protocol" sid="775547712932606" static="0" type="number">0</variable>
         <variable constant="0" name="ProtocolLevel" sid="145709453231962" static="0" type="number">0</variable>
         <variable constant="0" name="ProbabilityBarrier" sid="731346833531243" static="0" type="number">0</variable>
