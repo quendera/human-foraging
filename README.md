@@ -9,3 +9,4 @@ The game is developed using Scirra's Construct2 engine, available to try at http
 Try the game out at https://quendera.github.io/human-foraging/
 
 Send your comments and inquiries to tiago.quendera[at]research.fchampalimaud.org
+
