@@ -42,9 +42,11 @@
         <variable constant="0" name="Protocol" sid="775547712932606" static="0" type="number">0</variable>
         <variable constant="0" name="ProtocolLevel" sid="145709453231962" static="0" type="number">0</variable>
         <variable constant="0" name="ProbabilityBarrier" sid="731346833531243" static="0" type="number">0</variable>
+        <variable constant="0" name="ProbabilityFlexi" sid="918949134202221" static="0" type="number">0</variable>
         <variable constant="0" name="ProbabilityFlip" sid="266461466369677" static="0" type="number">0</variable>
         <variable constant="0" name="ProbabilityReward" sid="731682283620142" static="0" type="number">0</variable>
         <variable constant="0" name="RandomF" sid="551120366874016" static="0" type="number">0</variable>
+        <variable constant="0" name="RandomFlexi" sid="545915121861849" static="0" type="number">0</variable>
         <variable constant="0" name="RandomR" sid="107192454304983" static="0" type="number">0</variable>
         <variable constant="0" name="RewardedTrial" sid="211249720768764" static="0" type="number">0</variable>
         <variable constant="0" name="RewardSize" sid="901600297368873" static="0" type="number">0</variable>

@@ -190,10 +190,6 @@
                     <param id="0" name="Variable">ProbabilityReward</param>
                     <param id="1" name="Value">30</param>
                 </action>
-                <action id="-9" name="Set value" sid="200942445526719" type="System">
-                    <param id="0" name="Variable">Protocol</param>
-                    <param id="1" name="Value">1</param>
-                </action>
                 <action id="-9" name="Set value" sid="875338265009583" type="System">
                     <param id="0" name="Variable">ProtocolLevel</param>
                     <param id="1" name="Value">1</param>
@@ -214,11 +210,7 @@
                 </action>
                 <action id="-9" name="Set value" sid="951669115907752" type="System">
                     <param id="0" name="Variable">ProbabilityFlip</param>
-                    <param id="1" name="Value">30</param>
-                </action>
-                <action id="-9" name="Set value" sid="685093422491477" type="System">
-                    <param id="0" name="Variable">Protocol</param>
-                    <param id="1" name="Value">2</param>
+                    <param id="1" name="Value">90</param>
                 </action>
                 <action id="-9" name="Set value" sid="652484019864369" type="System">
                     <param id="0" name="Variable">ProtocolLevel</param>
@@ -242,10 +234,6 @@
                     <param id="0" name="Variable">ProbabilityReward</param>
                     <param id="1" name="Value">90</param>
                 </action>
-                <action id="-9" name="Set value" sid="573026183956829" type="System">
-                    <param id="0" name="Variable">Protocol</param>
-                    <param id="1" name="Value">3</param>
-                </action>
                 <action id="-9" name="Set value" sid="353108227428205" type="System">
                     <param id="0" name="Variable">ProtocolLevel</param>
                     <param id="1" name="Value">3</param>
@@ -262,15 +250,11 @@
             <actions>
                 <action id="-9" name="Set value" sid="372515548869448" type="System">
                     <param id="0" name="Variable">ProbabilityReward</param>
-                    <param id="1" name="Value">90</param>
+                    <param id="1" name="Value">30</param>
                 </action>
                 <action id="-9" name="Set value" sid="988084183792421" type="System">
                     <param id="0" name="Variable">ProbabilityFlip</param>
                     <param id="1" name="Value">30</param>
-                </action>
-                <action id="-9" name="Set value" sid="308913453603615" type="System">
-                    <param id="0" name="Variable">Protocol</param>
-                    <param id="1" name="Value">2</param>
                 </action>
                 <action id="-9" name="Set value" sid="345868338400296" type="System">
                     <param id="0" name="Variable">ProtocolLevel</param>
@@ -288,7 +272,7 @@
             <actions>
                 <action id="-9" name="Set value" sid="478822129518377" type="System">
                     <param id="0" name="Variable">BarrierSequence</param>
-                    <param id="1" name="Value">1</param>
+                    <param id="1" name="Value">0</param>
                 </action>
             </actions>
         </event-block>
@@ -302,7 +286,7 @@
             <actions>
                 <action id="-9" name="Set value" sid="472444509114429" type="System">
                     <param id="0" name="Variable">BarrierSequence</param>
-                    <param id="1" name="Value">2</param>
+                    <param id="1" name="Value">0</param>
                 </action>
             </actions>
         </event-block>
