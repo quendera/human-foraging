@@ -27,7 +27,7 @@
                         <action id="-9" name="Destroy" sid="924625133884150" type="SpriteEnemy" />
                         <action id="-9" name="Set value" sid="363070473690077" type="System">
                             <param id="0" name="Variable">ProbabilityFlexi</param>
-                            <param id="1" name="Value">50</param>
+                            <param id="1" name="Value">5</param>
                         </action>
                         <action id="-9" name="Set value" sid="373163318841695" type="System">
                             <param id="0" name="Variable">MaxScore</param>
@@ -1703,7 +1703,7 @@
                 <event-block any="1" sid="589873766488374">
                     <conditions>
                         <condition id="0" name="On key pressed" sid="313839719813361" type="Keyboard">
-                            <param id="0" name="Key">69 (E)</param>
+                            <param id="0" name="Key">69</param>
                         </condition>
                         <condition id="-14" name="Compare variable" sid="199498941347207" type="System">
                             <param id="0" name="Variable">Timer</param>

@@ -196,7 +196,7 @@
                 </action>
             </actions>
         </event-block>
-        <event-block sid="669247423436815">
+        <event-block disabled="1" sid="669247423436815">
             <conditions>
                 <condition id="4" name="Compare selected item text" sid="250122773717782" type="ListProtocol">
                     <param id="0" name="Text to compare">&quot;2&quot;</param>
@@ -218,7 +218,7 @@
                 </action>
             </actions>
         </event-block>
-        <event-block sid="612255337879436">
+        <event-block disabled="1" sid="612255337879436">
             <conditions>
                 <condition id="4" name="Compare selected item text" sid="804243927126693" type="ListProtocol">
                     <param id="0" name="Text to compare">&quot;3&quot;</param>
@@ -240,7 +240,7 @@
                 </action>
             </actions>
         </event-block>
-        <event-block sid="744708749873035">
+        <event-block disabled="1" sid="744708749873035">
             <conditions>
                 <condition id="4" name="Compare selected item text" sid="682636624349873" type="ListProtocol">
                     <param id="0" name="Text to compare">&quot;4&quot;</param>
@@ -262,7 +262,7 @@
                 </action>
             </actions>
         </event-block>
-        <event-block sid="372659173661309">
+        <event-block disabled="1" sid="372659173661309">
             <conditions>
                 <condition id="4" name="Compare selected item text" sid="189892273727052" type="ListBarrier">
                     <param id="0" name="Text to compare">&quot;1&quot;</param>
@@ -276,7 +276,7 @@
                 </action>
             </actions>
         </event-block>
-        <event-block sid="984171714189397">
+        <event-block disabled="1" sid="984171714189397">
             <conditions>
                 <condition id="4" name="Compare selected item text" sid="945432221786361" type="ListBarrier">
                     <param id="0" name="Text to compare">&quot;2&quot;</param>
