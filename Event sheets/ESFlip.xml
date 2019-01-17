@@ -25,14 +25,6 @@
                         <action id="-9" name="Destroy" sid="866408733577463" type="SpriteTimer2" />
                         <action id="-9" name="Destroy" sid="826371856003969" type="SpriteManDock" />
                         <action id="-9" name="Destroy" sid="924625133884150" type="SpriteEnemy" />
-                        <action id="-9" name="Set value" sid="363070473690077" type="System">
-                            <param id="0" name="Variable">ProbabilityFlexi</param>
-                            <param id="1" name="Value">5</param>
-                        </action>
-                        <action id="-9" name="Set value" sid="373163318841695" type="System">
-                            <param id="0" name="Variable">MaxScore</param>
-                            <param id="1" name="Value">280</param>
-                        </action>
                         <action id="-9" name="Set value" sid="156684017244175" type="System">
                             <param id="0" name="Variable">Multiplier</param>
                             <param id="1" name="Value">4</param>
@@ -121,10 +113,6 @@
                             <param id="0" name="Variable">Timer</param>
                             <param id="1" name="Value">0</param>
                         </action>
-                        <action id="-9" name="Set value" sid="874511358997380" type="System">
-                            <param id="0" name="Variable">TimerMax</param>
-                            <param id="1" name="Value">1500</param>
-                        </action>
                         <action id="-9" name="Set value" sid="192776820751799" type="System">
                             <param id="0" name="Variable">TouchCounter</param>
                             <param id="1" name="Value">0</param>
@@ -156,22 +144,6 @@
                         <action id="-9" name="Set value" sid="753241683378714" type="System">
                             <param id="0" name="Variable">RandStart</param>
                             <param id="1" name="Value">int(random(0,1))</param>
-                        </action>
-                        <action id="-9" name="Set value" sid="933299212074446" type="System">
-                            <param id="0" name="Variable">ProbLeftFlip</param>
-                            <param id="1" name="Value">RandStart=1 ? 30:15</param>
-                        </action>
-                        <action id="-9" name="Set value" sid="605840647569900" type="System">
-                            <param id="0" name="Variable">ProbRightFlip</param>
-                            <param id="1" name="Value">RandStart=1 ? 15:30</param>
-                        </action>
-                        <action id="-9" name="Set value" sid="965505236580926" type="System">
-                            <param id="0" name="Variable">ProbLeftRew</param>
-                            <param id="1" name="Value">RandStart=1 ? 90:45</param>
-                        </action>
-                        <action id="-9" name="Set value" sid="442538596164117" type="System">
-                            <param id="0" name="Variable">ProbRightRew</param>
-                            <param id="1" name="Value">RandStart=1 ? 45:90</param>
                         </action>
                         <action id="-3" name="Create object" sid="801252278214288" type="System">
                             <param id="0" name="Object to create">CoreBarrier</param>
@@ -515,6 +487,30 @@
                                         <action id="2" name="Call expression" sid="831835734478024" type="Function">
                                             <param id="0" name="Expression">Function.Call(&quot;Draw&quot;, &quot;2lvl1&quot;, &quot;yellow&quot;)</param>
                                         </action>
+                                        <action id="-9" name="Set value" sid="408006890070828" type="System">
+                                            <param id="0" name="Variable">ProbLeftFlip</param>
+                                            <param id="1" name="Value">30</param>
+                                        </action>
+                                        <action id="-9" name="Set value" sid="601816749944145" type="System">
+                                            <param id="0" name="Variable">ProbRightFlip</param>
+                                            <param id="1" name="Value">30</param>
+                                        </action>
+                                        <action id="-9" name="Set value" sid="276881122901264" type="System">
+                                            <param id="0" name="Variable">ProbLeftRew</param>
+                                            <param id="1" name="Value">90</param>
+                                        </action>
+                                        <action id="-9" name="Set value" sid="268366013839961" type="System">
+                                            <param id="0" name="Variable">ProbRightRew</param>
+                                            <param id="1" name="Value">90</param>
+                                        </action>
+                                        <action id="-9" name="Set value" sid="698243380645633" type="System">
+                                            <param id="0" name="Variable">MaxScore</param>
+                                            <param id="1" name="Value">180</param>
+                                        </action>
+                                        <action id="-9" name="Set value" sid="376956647811882" type="System">
+                                            <param id="0" name="Variable">TimerMax</param>
+                                            <param id="1" name="Value">720</param>
+                                        </action>
                                     </actions>
                                 </event-block>
                                 <event-block sid="914291935648773">
@@ -526,6 +522,30 @@
                                     <actions>
                                         <action id="2" name="Call expression" sid="683429927398482" type="Function">
                                             <param id="0" name="Expression">Function.Call(&quot;Draw&quot;, &quot;lvl2&quot;, &quot;blue&quot;)</param>
+                                        </action>
+                                        <action id="-9" name="Set value" sid="846747422783314" type="System">
+                                            <param id="0" name="Variable">ProbLeftFlip</param>
+                                            <param id="1" name="Value">15</param>
+                                        </action>
+                                        <action id="-9" name="Set value" sid="365722303729183" type="System">
+                                            <param id="0" name="Variable">ProbRightFlip</param>
+                                            <param id="1" name="Value">15</param>
+                                        </action>
+                                        <action id="-9" name="Set value" sid="735046407656662" type="System">
+                                            <param id="0" name="Variable">ProbLeftRew</param>
+                                            <param id="1" name="Value">45</param>
+                                        </action>
+                                        <action id="-9" name="Set value" sid="603272827541531" type="System">
+                                            <param id="0" name="Variable">ProbRightRew</param>
+                                            <param id="1" name="Value">45</param>
+                                        </action>
+                                        <action id="-9" name="Set value" sid="877794554031215" type="System">
+                                            <param id="0" name="Variable">MaxScore</param>
+                                            <param id="1" name="Value">180</param>
+                                        </action>
+                                        <action id="-9" name="Set value" sid="569855223374161" type="System">
+                                            <param id="0" name="Variable">TimerMax</param>
+                                            <param id="1" name="Value">720</param>
                                         </action>
                                     </actions>
                                 </event-block>
@@ -539,6 +559,30 @@
                                         <action id="2" name="Call expression" sid="272692046472822" type="Function">
                                             <param id="0" name="Expression">Function.Call(&quot;Draw&quot;, &quot;lvl3&quot;, &quot;blue&quot;)</param>
                                         </action>
+                                        <action id="-9" name="Set value" sid="933299212074446" type="System">
+                                            <param id="0" name="Variable">ProbLeftFlip</param>
+                                            <param id="1" name="Value">RandStart=1 ? 30:15</param>
+                                        </action>
+                                        <action id="-9" name="Set value" sid="605840647569900" type="System">
+                                            <param id="0" name="Variable">ProbRightFlip</param>
+                                            <param id="1" name="Value">RandStart=1 ? 15:30</param>
+                                        </action>
+                                        <action id="-9" name="Set value" sid="965505236580926" type="System">
+                                            <param id="0" name="Variable">ProbLeftRew</param>
+                                            <param id="1" name="Value">RandStart=1 ? 90:45</param>
+                                        </action>
+                                        <action id="-9" name="Set value" sid="442538596164117" type="System">
+                                            <param id="0" name="Variable">ProbRightRew</param>
+                                            <param id="1" name="Value">RandStart=1 ? 45:90</param>
+                                        </action>
+                                        <action id="-9" name="Set value" sid="760176310516638" type="System">
+                                            <param id="0" name="Variable">MaxScore</param>
+                                            <param id="1" name="Value">380</param>
+                                        </action>
+                                        <action id="-9" name="Set value" sid="747393129085572" type="System">
+                                            <param id="0" name="Variable">TimerMax</param>
+                                            <param id="1" name="Value">1320</param>
+                                        </action>
                                     </actions>
                                 </event-block>
                                 <event-block sid="422055157871147">
@@ -550,6 +594,30 @@
                                     <actions>
                                         <action id="2" name="Call expression" sid="457011489193012" type="Function">
                                             <param id="0" name="Expression">Function.Call(&quot;Draw&quot;, &quot;lvl4&quot;, &quot;yellow&quot;)</param>
+                                        </action>
+                                        <action id="-9" name="Set value" sid="493213748235559" type="System">
+                                            <param id="0" name="Variable">ProbLeftFlip</param>
+                                            <param id="1" name="Value">RandStart=1 ? 30:15</param>
+                                        </action>
+                                        <action id="-9" name="Set value" sid="718388645858508" type="System">
+                                            <param id="0" name="Variable">ProbRightFlip</param>
+                                            <param id="1" name="Value">RandStart=1 ? 15:30</param>
+                                        </action>
+                                        <action id="-9" name="Set value" sid="546695137065179" type="System">
+                                            <param id="0" name="Variable">ProbLeftRew</param>
+                                            <param id="1" name="Value">RandStart=1 ? 90:45</param>
+                                        </action>
+                                        <action id="-9" name="Set value" sid="962042971235532" type="System">
+                                            <param id="0" name="Variable">ProbRightRew</param>
+                                            <param id="1" name="Value">RandStart=1 ? 45:90</param>
+                                        </action>
+                                        <action id="-9" name="Set value" sid="940242729289539" type="System">
+                                            <param id="0" name="Variable">MaxScore</param>
+                                            <param id="1" name="Value">380</param>
+                                        </action>
+                                        <action id="-9" name="Set value" sid="913959881373901" type="System">
+                                            <param id="0" name="Variable">TimerMax</param>
+                                            <param id="1" name="Value">1320</param>
                                         </action>
                                     </actions>
                                 </event-block>
@@ -1646,7 +1714,7 @@
                     </conditions>
                     <actions>
                         <action id="1" name="Set size" sid="316617651390451" type="ArrayData">
-                            <param id="0" name="Width">20</param>
+                            <param id="0" name="Width">21</param>
                             <param id="1" name="Height">1+CurrentTrial</param>
                             <param id="2" name="Depth">1</param>
                         </action>
@@ -1728,17 +1796,17 @@
                             <param id="2" name="Z">0</param>
                             <param id="3" name="Value">Date</param>
                         </action>
-                        <action id="4" name="Set at XYZ" sid="471444676131072" type="ArrayData">
+                        <action id="4" name="Set at XYZ" sid="772715854608960" type="ArrayData">
                             <param id="0" name="X">13</param>
                             <param id="1" name="Y">CurrentTrial</param>
                             <param id="2" name="Z">0</param>
-                            <param id="3" name="Value">ProbabilityFlexi</param>
+                            <param id="3" name="Value">BarrierSize</param>
                         </action>
-                        <action id="4" name="Set at XYZ" sid="680897536587973" type="ArrayData">
+                        <action id="4" name="Set at XYZ" sid="747791618002913" type="ArrayData">
                             <param id="0" name="X">14</param>
                             <param id="1" name="Y">CurrentTrial</param>
                             <param id="2" name="Z">0</param>
-                            <param id="3" name="Value">RandomFlexi</param>
+                            <param id="3" name="Value">Barrier</param>
                         </action>
                         <action id="4" name="Set at XYZ" sid="686306266537576" type="ArrayData">
                             <param id="0" name="X">15</param>
@@ -1746,26 +1814,38 @@
                             <param id="2" name="Z">0</param>
                             <param id="3" name="Value">ErrorCue</param>
                         </action>
-                        <action id="4" name="Set at XYZ" sid="452104284820683" type="ArrayData">
+                        <action id="4" name="Set at XYZ" sid="471444676131072" type="ArrayData">
                             <param id="0" name="X">16</param>
+                            <param id="1" name="Y">CurrentTrial</param>
+                            <param id="2" name="Z">0</param>
+                            <param id="3" name="Value">ProbabilityFlexi</param>
+                        </action>
+                        <action id="4" name="Set at XYZ" sid="680897536587973" type="ArrayData">
+                            <param id="0" name="X">17</param>
+                            <param id="1" name="Y">CurrentTrial</param>
+                            <param id="2" name="Z">0</param>
+                            <param id="3" name="Value">RandomFlexi</param>
+                        </action>
+                        <action id="4" name="Set at XYZ" sid="452104284820683" type="ArrayData">
+                            <param id="0" name="X">18</param>
                             <param id="1" name="Y">CurrentTrial</param>
                             <param id="2" name="Z">0</param>
                             <param id="3" name="Value">ProbLeftFlip</param>
                         </action>
                         <action id="4" name="Set at XYZ" sid="981948515877990" type="ArrayData">
-                            <param id="0" name="X">17</param>
+                            <param id="0" name="X">19</param>
                             <param id="1" name="Y">CurrentTrial</param>
                             <param id="2" name="Z">0</param>
                             <param id="3" name="Value">ProbRightFlip</param>
                         </action>
                         <action id="4" name="Set at XYZ" sid="245096332409840" type="ArrayData">
-                            <param id="0" name="X">18</param>
+                            <param id="0" name="X">20</param>
                             <param id="1" name="Y">CurrentTrial</param>
                             <param id="2" name="Z">0</param>
                             <param id="3" name="Value">ProbLeftRew</param>
                         </action>
                         <action id="4" name="Set at XYZ" sid="713295377338576" type="ArrayData">
-                            <param id="0" name="X">19</param>
+                            <param id="0" name="X">21</param>
                             <param id="1" name="Y">CurrentTrial</param>
                             <param id="2" name="Z">0</param>
                             <param id="3" name="Value">ProbRightRew</param>

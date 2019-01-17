@@ -112,7 +112,7 @@
                         <action id="2" name="Set visible" sid="117444976675873" type="ListProtocol">
                             <param id="0" name="Visibility">0</param>
                         </action>
-                        <action id="2" name="Set visible" sid="942398840112093" type="ListBarrier">
+                        <action disabled="1" id="2" name="Set visible" sid="942398840112093" type="ListBarrier">
                             <param id="0" name="Visibility">0</param>
                         </action>
                         <action id="-16" name="Wait" sid="833240377642473" type="System">
@@ -154,7 +154,7 @@
                         <action id="2" name="Set visible" sid="586259304347610" type="ListProtocol">
                             <param id="0" name="Visibility">1</param>
                         </action>
-                        <action id="2" name="Set visible" sid="719345666899633" type="ListBarrier">
+                        <action disabled="1" id="2" name="Set visible" sid="719345666899633" type="ListBarrier">
                             <param id="0" name="Visibility">1</param>
                         </action>
                         <action id="-16" name="Wait" sid="328099483625421" type="System">
@@ -178,11 +178,15 @@
             <actions>
                 <action id="-9" name="Set value" sid="875338265009583" type="System">
                     <param id="0" name="Variable">ProtocolLevel</param>
-                    <param id="1" name="Value">4</param>
+                    <param id="1" name="Value">1</param>
+                </action>
+                <action id="-9" name="Set value" sid="690078388339657" type="System">
+                    <param id="0" name="Variable">ProbabilityFlexi</param>
+                    <param id="1" name="Value">0</param>
                 </action>
             </actions>
         </event-block>
-        <event-block disabled="1" sid="669247423436815">
+        <event-block sid="669247423436815">
             <conditions>
                 <condition id="4" name="Compare selected item text" sid="250122773717782" type="ListProtocol">
                     <param id="0" name="Text to compare">&quot;2&quot;</param>
@@ -194,9 +198,13 @@
                     <param id="0" name="Variable">ProtocolLevel</param>
                     <param id="1" name="Value">2</param>
                 </action>
+                <action id="-9" name="Set value" sid="644536440340917" type="System">
+                    <param id="0" name="Variable">ProbabilityFlexi</param>
+                    <param id="1" name="Value">0</param>
+                </action>
             </actions>
         </event-block>
-        <event-block disabled="1" sid="612255337879436">
+        <event-block sid="612255337879436">
             <conditions>
                 <condition id="4" name="Compare selected item text" sid="804243927126693" type="ListProtocol">
                     <param id="0" name="Text to compare">&quot;3&quot;</param>
@@ -208,9 +216,13 @@
                     <param id="0" name="Variable">ProtocolLevel</param>
                     <param id="1" name="Value">3</param>
                 </action>
+                <action id="-9" name="Set value" sid="162643533958614" type="System">
+                    <param id="0" name="Variable">ProbabilityFlexi</param>
+                    <param id="1" name="Value">5</param>
+                </action>
             </actions>
         </event-block>
-        <event-block disabled="1" sid="744708749873035">
+        <event-block sid="744708749873035">
             <conditions>
                 <condition id="4" name="Compare selected item text" sid="682636624349873" type="ListProtocol">
                     <param id="0" name="Text to compare">&quot;4&quot;</param>
@@ -221,6 +233,10 @@
                 <action id="-9" name="Set value" sid="345868338400296" type="System">
                     <param id="0" name="Variable">ProtocolLevel</param>
                     <param id="1" name="Value">4</param>
+                </action>
+                <action id="-9" name="Set value" sid="904658447713790" type="System">
+                    <param id="0" name="Variable">ProbabilityFlexi</param>
+                    <param id="1" name="Value">50</param>
                 </action>
             </actions>
         </event-block>
