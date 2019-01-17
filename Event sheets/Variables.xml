@@ -43,8 +43,6 @@
         <variable constant="0" name="ProtocolLevel" sid="145709453231962" static="0" type="number">0</variable>
         <variable constant="0" name="ProbabilityBarrier" sid="731346833531243" static="0" type="number">0</variable>
         <variable constant="0" name="ProbabilityFlexi" sid="918949134202221" static="0" type="number">0</variable>
-        <variable constant="0" name="ProbabilityFlip" sid="266461466369677" static="0" type="number">0</variable>
-        <variable constant="0" name="ProbabilityReward" sid="731682283620142" static="0" type="number">0</variable>
         <variable constant="0" name="RandomF" sid="551120366874016" static="0" type="number">0</variable>
         <variable constant="0" name="RandomFlexi" sid="545915121861849" static="0" type="number">0</variable>
         <variable constant="0" name="RandomR" sid="107192454304983" static="0" type="number">0</variable>
@@ -57,6 +55,11 @@
         <variable constant="0" name="Settings" sid="250043665553250" static="0" type="number">0</variable>
         <variable constant="0" name="Shoot" sid="268196656742707" static="0" type="number">0</variable>
         <variable constant="0" name="ShootAnimation" sid="783370069052784" static="0" type="text"></variable>
+        <variable constant="0" name="RandStart" sid="276239855795028" static="0" type="number">0</variable>
+        <variable constant="0" name="ProbRightFlip" sid="347865289114204" static="0" type="number">0</variable>
+        <variable constant="0" name="ProbLeftFlip" sid="431864091646413" static="0" type="number">0</variable>
+        <variable constant="0" name="ProbRightRew" sid="942007535529258" static="0" type="number">0</variable>
+        <variable constant="0" name="ProbLeftRew" sid="858948292285819" static="0" type="number">0</variable>
         <variable constant="0" name="StartHigh" sid="946499405046967" static="0" type="number">0</variable>
         <variable constant="0" name="StartingSide" sid="110127185991234" static="0" type="number">0</variable>
         <variable constant="0" name="Streak" sid="284880116073937" static="0" type="number">0</variable>

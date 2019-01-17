@@ -37,12 +37,6 @@
                 <condition id="-2" name="On start of layout" sid="485574217800841" type="System" />
             </conditions>
             <actions>
-                <action id="0" name="Set text" sid="836328358508263" type="TextPF">
-                    <param id="0" name="Text">&quot;Probability of Flip: &quot; &amp;  ProbabilityFlip &amp; &quot;%&quot;</param>
-                </action>
-                <action id="0" name="Set text" sid="773938854720579" type="TextPR">
-                    <param id="0" name="Text">&quot;Probability of Reward: &quot; &amp;  ProbabilityReward  &amp; &quot;%&quot;</param>
-                </action>
                 <action id="0" name="Set text" sid="252379565712175" type="TextPB">
                     <param id="0" name="Text">&quot;Probability of Barrier: &quot; &amp;  ProbabilityBarrier  &amp; &quot;%&quot;</param>
                 </action>
@@ -182,17 +176,9 @@
                 </condition>
             </conditions>
             <actions>
-                <action id="-9" name="Set value" sid="318623165909014" type="System">
-                    <param id="0" name="Variable">ProbabilityFlip</param>
-                    <param id="1" name="Value">30</param>
-                </action>
-                <action id="-9" name="Set value" sid="274192407050200" type="System">
-                    <param id="0" name="Variable">ProbabilityReward</param>
-                    <param id="1" name="Value">30</param>
-                </action>
                 <action id="-9" name="Set value" sid="875338265009583" type="System">
                     <param id="0" name="Variable">ProtocolLevel</param>
-                    <param id="1" name="Value">1</param>
+                    <param id="1" name="Value">4</param>
                 </action>
             </actions>
         </event-block>
@@ -204,14 +190,6 @@
                 </condition>
             </conditions>
             <actions>
-                <action id="-9" name="Set value" sid="435146034154770" type="System">
-                    <param id="0" name="Variable">ProbabilityReward</param>
-                    <param id="1" name="Value">90</param>
-                </action>
-                <action id="-9" name="Set value" sid="951669115907752" type="System">
-                    <param id="0" name="Variable">ProbabilityFlip</param>
-                    <param id="1" name="Value">90</param>
-                </action>
                 <action id="-9" name="Set value" sid="652484019864369" type="System">
                     <param id="0" name="Variable">ProtocolLevel</param>
                     <param id="1" name="Value">2</param>
@@ -226,14 +204,6 @@
                 </condition>
             </conditions>
             <actions>
-                <action id="-9" name="Set value" sid="219117107361820" type="System">
-                    <param id="0" name="Variable">ProbabilityFlip</param>
-                    <param id="1" name="Value">90</param>
-                </action>
-                <action id="-9" name="Set value" sid="232155713020006" type="System">
-                    <param id="0" name="Variable">ProbabilityReward</param>
-                    <param id="1" name="Value">90</param>
-                </action>
                 <action id="-9" name="Set value" sid="353108227428205" type="System">
                     <param id="0" name="Variable">ProtocolLevel</param>
                     <param id="1" name="Value">3</param>
@@ -248,14 +218,6 @@
                 </condition>
             </conditions>
             <actions>
-                <action id="-9" name="Set value" sid="372515548869448" type="System">
-                    <param id="0" name="Variable">ProbabilityReward</param>
-                    <param id="1" name="Value">30</param>
-                </action>
-                <action id="-9" name="Set value" sid="988084183792421" type="System">
-                    <param id="0" name="Variable">ProbabilityFlip</param>
-                    <param id="1" name="Value">30</param>
-                </action>
                 <action id="-9" name="Set value" sid="345868338400296" type="System">
                     <param id="0" name="Variable">ProtocolLevel</param>
                     <param id="1" name="Value">4</param>
@@ -295,14 +257,6 @@
                 <condition id="-3" name="On end of layout" sid="337386131354851" type="System" />
             </conditions>
             <actions>
-                <action disabled="1" id="-9" name="Set value" sid="457761807478126" type="System">
-                    <param id="0" name="Variable">ProbabilityFlip</param>
-                    <param id="1" name="Value">SliderFlipProbability.Value</param>
-                </action>
-                <action disabled="1" id="-9" name="Set value" sid="940067039247223" type="System">
-                    <param id="0" name="Variable">ProbabilityReward</param>
-                    <param id="1" name="Value">SliderRewardProbability.Value</param>
-                </action>
                 <action id="-9" name="Set value" sid="580040522108462" type="System">
                     <param id="0" name="Variable">ProbabilityBarrier</param>
                     <param id="1" name="Value">SliderBarrierProbability.Value</param>

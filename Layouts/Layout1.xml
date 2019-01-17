@@ -251,7 +251,7 @@
                 </instance>
                 <instance type="SliderBarrierProbability" uid="74">
                     <properties>
-                        <value>5</value>
+                        <value>0</value>
                         <minimum>0</minimum>
                         <maximum>100</maximum>
                         <step>1</step>
