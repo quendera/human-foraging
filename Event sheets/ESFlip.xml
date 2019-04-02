@@ -21,8 +21,8 @@
                         <action id="-9" name="Destroy" sid="912381892877861" type="SpriteDockTrainR" />
                         <action id="-9" name="Destroy" sid="737795175567737" type="SpriteDockTrainL" />
                         <action id="-9" name="Destroy" sid="758540734547601" type="SpriteTimer" />
-                        <action id="-9" name="Destroy" sid="586633822982626" type="SpriteTimer1" />
                         <action id="-9" name="Destroy" sid="866408733577463" type="SpriteTimer2" />
+                        <action id="-9" name="Destroy" sid="586633822982626" type="SpriteTimer1" />
                         <action id="-9" name="Destroy" sid="826371856003969" type="SpriteManDock" />
                         <action id="-9" name="Destroy" sid="924625133884150" type="SpriteEnemy" />
                         <action id="-9" name="Set value" sid="373163318841695" type="System">
@@ -123,7 +123,7 @@
                         </action>
                         <action id="-9" name="Set value" sid="874511358997380" type="System">
                             <param id="0" name="Variable">TimerMax</param>
-                            <param id="1" name="Value">1200</param>
+                            <param id="1" name="Value">850</param>
                         </action>
                         <action id="-9" name="Set value" sid="192776820751799" type="System">
                             <param id="0" name="Variable">TouchCounter</param>
@@ -1216,7 +1216,7 @@
                     </conditions>
                     <actions />
                     <sub-events>
-                        <event-block sid="902785613196113">
+                        <event-block disabled="1" sid="902785613196113">
                             <conditions>
                                 <condition id="-8" name="Compare two values" sid="687376219007949" type="System">
                                     <param id="0" name="First value">((Score&gt;BarrierT1) | (Score&gt;BarrierT2) ) &amp; Player.Location=ActiveSide</param>
@@ -1396,7 +1396,7 @@
         </event-group>
         <event-group description="" sid="891137391223211" title="Barrier">
             <sub-events>
-                <event-block sid="323634528353824">
+                <event-block disabled="1" sid="323634528353824">
                     <conditions>
                         <condition id="0" name="On function" sid="890721408493840" type="Function">
                             <param id="0" name="Name">&quot;Barrier&quot;</param>
@@ -1460,7 +1460,7 @@
                         </action>
                     </actions>
                 </event-block>
-                <event-block sid="773217392667024">
+                <event-block disabled="1" sid="773217392667024">
                     <conditions>
                         <condition id="-8" name="Compare two values" sid="457155100357487" type="System">
                             <param id="0" name="First value">Clean</param>
@@ -1671,7 +1671,7 @@
                 <event-block any="1" sid="589873766488374">
                     <conditions>
                         <condition id="0" name="On key pressed" sid="313839719813361" type="Keyboard">
-                            <param id="0" name="Key">69 (E)</param>
+                            <param id="0" name="Key">69</param>
                         </condition>
                         <condition id="-14" name="Compare variable" sid="199498941347207" type="System">
                             <param id="0" name="Variable">Timer</param>

@@ -118,7 +118,7 @@
                         <action id="2" name="Set visible" sid="117444976675873" type="ListProtocol">
                             <param id="0" name="Visibility">0</param>
                         </action>
-                        <action id="2" name="Set visible" sid="942398840112093" type="ListBarrier">
+                        <action disabled="1" id="2" name="Set visible" sid="942398840112093" type="ListBarrier">
                             <param id="0" name="Visibility">0</param>
                         </action>
                         <action id="-16" name="Wait" sid="833240377642473" type="System">
@@ -160,7 +160,7 @@
                         <action id="2" name="Set visible" sid="586259304347610" type="ListProtocol">
                             <param id="0" name="Visibility">1</param>
                         </action>
-                        <action id="2" name="Set visible" sid="719345666899633" type="ListBarrier">
+                        <action disabled="1" id="2" name="Set visible" sid="719345666899633" type="ListBarrier">
                             <param id="0" name="Visibility">1</param>
                         </action>
                         <action id="-16" name="Wait" sid="328099483625421" type="System">
