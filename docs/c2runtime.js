@@ -2047,19 +2047,19 @@ quat4.str=function(a){return"["+a[0]+", "+a[1]+", "+a[2]+", "+a[3]+"]"};
 		gl.compileShader(fragmentShader);
 		if (!gl.getShaderParameter(fragmentShader, gl.COMPILE_STATUS))
 		{
-;
+			var compilationlog = gl.getShaderInfoLog(fragmentShader);
 			gl.deleteShader(fragmentShader);
-			return null;
+			throw new Error("error compiling fragment shader: " + compilationlog);
 		}
 		var vertexShader = gl.createShader(gl.VERTEX_SHADER);
 		gl.shaderSource(vertexShader, vsSource);
 		gl.compileShader(vertexShader);
 		if (!gl.getShaderParameter(vertexShader, gl.COMPILE_STATUS))
 		{
-;
+			var compilationlog = gl.getShaderInfoLog(vertexShader);
 			gl.deleteShader(fragmentShader);
 			gl.deleteShader(vertexShader);
-			return null;
+			throw new Error("error compiling vertex shader: " + compilationlog);
 		}
 		var shaderProgram = gl.createProgram();
 		gl.attachShader(shaderProgram, fragmentShader);
@@ -2067,11 +2067,11 @@ quat4.str=function(a){return"["+a[0]+", "+a[1]+", "+a[2]+", "+a[3]+"]"};
 		gl.linkProgram(shaderProgram);
 		if (!gl.getProgramParameter(shaderProgram, gl.LINK_STATUS))
 		{
-;
+			var compilationlog = gl.getProgramInfoLog(shaderProgram);
 			gl.deleteShader(fragmentShader);
 			gl.deleteShader(vertexShader);
 			gl.deleteProgram(shaderProgram);
-			return null;
+			throw new Error("error linking shader program: " + compilationlog);
 		}
 		gl.useProgram(shaderProgram);
 		gl.deleteShader(fragmentShader);
@@ -3459,12 +3459,6 @@ quat4.str=function(a){return"["+a[0]+", "+a[1]+", "+a[2]+", "+a[3]+"]"};
 			this.isMobile = /(blackberry|bb10|playbook|palm|symbian|nokia|windows\s+ce|phone|mobile|tablet|kindle|silk)/i.test(navigator.userAgent);
 		}
 		this.isWKWebView = !!(this.isiOS && this.isCordova && window["webkit"]);
-		this.httpServer = null;
-		this.httpServerUrl = "";
-		if (this.isWKWebView)
-		{
-			this.httpServer = (cordova && cordova["plugins"] && cordova["plugins"]["CorHttpd"]) ? cordova["plugins"]["CorHttpd"] : null;
-		}
 		if (typeof cr_is_preview !== "undefined" && !this.isNWjs && (window.location.search === "?nw" || /nodewebkit/i.test(navigator.userAgent) || /nwjs/i.test(navigator.userAgent)))
 		{
 			this.isNWjs = true;
@@ -3478,12 +3472,12 @@ quat4.str=function(a){return"["+a[0]+", "+a[1]+", "+a[2]+", "+a[3]+"]"};
 		this.enableFrontToBack = false;
 		this.earlyz_index = 0;
 		this.ctx = null;
-		this.fullscreenOldMarginCss = "";
 		this.firstInFullscreen = false;
 		this.oldWidth = 0;		// for restoring non-fullscreen canvas after fullscreen
 		this.oldHeight = 0;
 		this.canvas.oncontextmenu = function (e) { if (e.preventDefault) e.preventDefault(); return false; };
 		this.canvas.onselectstart = function (e) { if (e.preventDefault) e.preventDefault(); return false; };
+		this.canvas.ontouchstart = function (e) { if(e.preventDefault) e.preventDefault(); return false; };
 		if (this.isDirectCanvas)
 			window["c2runtime"] = this;
 		if (this.isNWjs)
@@ -3555,6 +3549,7 @@ quat4.str=function(a){return"["+a[0]+", "+a[1]+", "+a[2]+", "+a[3]+"]"};
 		this.fps = 0;
 		this.last_fps_time = 0;
 		this.tickcount = 0;
+		this.tickcount_nosave = 0;	// same as tickcount but never saved/loaded
 		this.execcount = 0;
 		this.framecount = 0;        // for fps
 		this.objectcount = 0;
@@ -3618,36 +3613,13 @@ quat4.str=function(a){return"["+a[0]+", "+a[1]+", "+a[2]+", "+a[3]+"]"};
 		var self = this;
 		if (this.isWKWebView)
 		{
-			var loadDataJsFn = function ()
+			this.fetchLocalFileViaCordovaAsText("data.js", function (str)
 			{
-				self.fetchLocalFileViaCordovaAsText("data.js", function (str)
-				{
-					self.loadProject(JSON.parse(str));
-				}, function (err)
-				{
-					alert("Error fetching data.js");
-				});
-			};
-			if (this.httpServer)
+				self.loadProject(JSON.parse(str));
+			}, function (err)
 			{
-				this.httpServer["startServer"]({
-					"port": 0,
-					"localhost_only": true
-				}, function (url)
-				{
-					self.httpServerUrl = url;
-					loadDataJsFn();
-				}, function (err)
-				{
-					console.log("Error starting local server: " + err + ". Video playback will not work.");
-					loadDataJsFn();
-				});
-			}
-			else
-			{
-				console.log("Local server unavailable. Video playback will not work.");
-				loadDataJsFn();
-			}
+				alert("Error fetching data.js");
+			});
 			return;
 		}
 		var xhr;
@@ -3763,9 +3735,13 @@ quat4.str=function(a){return"["+a[0]+", "+a[1]+", "+a[2]+", "+a[3]+"]"};
 					"powerPreference": "high-performance",
 					"failIfMajorPerformanceCaveat": true
 				};
-				this.gl = (this.canvas.getContext("webgl2", attribs) ||
-						   this.canvas.getContext("webgl", attribs) ||
-						   this.canvas.getContext("experimental-webgl", attribs));
+				if (!this.isAndroid)
+					this.gl = this.canvas.getContext("webgl2", attribs);
+				if (!this.gl)
+				{
+					this.gl = (this.canvas.getContext("webgl", attribs) ||
+							   this.canvas.getContext("experimental-webgl", attribs));
+				}
 			}
 		}
 		catch (e) {
@@ -3965,7 +3941,7 @@ quat4.str=function(a){return"["+a[0]+", "+a[1]+", "+a[2]+", "+a[3]+"]"};
 		var isfullscreen = (document["mozFullScreen"] || document["webkitIsFullScreen"] || !!document["msFullscreenElement"] || document["fullScreen"] || this.isNodeFullscreen) && !this.isCordova;
 		if (!isfullscreen && this.fullscreen_mode === 0 && !force)
 			return;			// ignore size events when not fullscreen and not using a fullscreen-in-browser mode
-		if (isfullscreen && this.fullscreen_scaling > 0)
+		if (isfullscreen)
 			mode = this.fullscreen_scaling;
 		var dpr = this.devicePixelRatio;
 		if (mode >= 4)
@@ -4018,13 +3994,8 @@ quat4.str=function(a){return"["+a[0]+", "+a[1]+", "+a[2]+", "+a[3]+"]"};
 					h = newh;
 				}
 			}
-			if (isfullscreen && !this.isNWjs)
-			{
-				offx = 0;
-				offy = 0;
-			}
 		}
-		else if (this.isNWjs && this.isNodeFullscreen && this.fullscreen_mode_set === 0)
+		else if (isfullscreen && mode === 0)
 		{
 			offx = Math.floor((w - this.original_width) / 2);
 			offy = Math.floor((h - this.original_height) / 2);
@@ -4587,6 +4558,32 @@ quat4.str=function(a){return"["+a[0]+", "+a[1]+", "+a[2]+", "+a[3]+"]"};
 		this.initRendererAndLoader();
 	};
 	var anyImageHadError = false;
+	var MAX_PARALLEL_IMAGE_LOADS = 100;
+	var currentlyActiveImageLoads = 0;
+	var imageLoadQueue = [];		// array of [img, srcToSet]
+	Runtime.prototype.queueImageLoad = function (img_, src_)
+	{
+		var self = this;
+		var doneFunc = function ()
+		{
+			currentlyActiveImageLoads--;
+			self.maybeLoadNextImages();
+		};
+		img_.addEventListener("load", doneFunc);
+		img_.addEventListener("error", doneFunc);
+		imageLoadQueue.push([img_, src_]);
+		this.maybeLoadNextImages();
+	};
+	Runtime.prototype.maybeLoadNextImages = function ()
+	{
+		var next;
+		while (imageLoadQueue.length && currentlyActiveImageLoads < MAX_PARALLEL_IMAGE_LOADS)
+		{
+			currentlyActiveImageLoads++;
+			next = imageLoadQueue.shift();
+			this.setImageSrc(next[0], next[1]);
+		}
+	};
 	Runtime.prototype.waitForImageLoad = function (img_, src_)
 	{
 		img_["cocoonLazyLoad"] = true;
@@ -4619,7 +4616,7 @@ quat4.str=function(a){return"["+a[0]+", "+a[1]+", "+a[2]+", "+a[3]+"]"};
 			else
 			{
 				img_.crossOrigin = "anonymous";			// required for Arcade sandbox compatibility
-				this.setImageSrc(img_, src_);			// work around WKWebView problems
+				this.queueImageLoad(img_, src_);		// use a queue to avoid requesting all images simultaneously
 			}
 		}
 		this.wait_for_textures.push(img_);
@@ -5008,27 +5005,12 @@ quat4.str=function(a){return"["+a[0]+", "+a[1]+", "+a[2]+", "+a[3]+"]"};
 			if (isfullscreen)
 			{
 				if (!this.firstInFullscreen)
-				{
-					this.fullscreenOldMarginCss = jQuery(this.canvas).css("margin") || "0";
 					this.firstInFullscreen = true;
-				}
-				if (!this.isChrome && !this.isNWjs)
-				{
-					jQuery(this.canvas).css({
-						"margin-left": "" + Math.floor((screen.width - (this.width / this.devicePixelRatio)) / 2) + "px",
-						"margin-top": "" + Math.floor((screen.height - (this.height / this.devicePixelRatio)) / 2) + "px"
-					});
-				}
 			}
 			else
 			{
 				if (this.firstInFullscreen)
 				{
-					if (!this.isChrome && !this.isNWjs)
-					{
-						jQuery(this.canvas).css("margin", this.fullscreenOldMarginCss);
-					}
-					this.fullscreenOldMarginCss = "";
 					this.firstInFullscreen = false;
 					if (this.fullscreen_mode === 0)
 					{
@@ -5078,6 +5060,7 @@ quat4.str=function(a){return"["+a[0]+", "+a[1]+", "+a[2]+", "+a[3]+"]"};
 		if (!this.hit_breakpoint)
 		{
 			this.tickcount++;
+			this.tickcount_nosave++;
 			this.execcount++;
 			this.framecount++;
 		}
@@ -6441,6 +6424,43 @@ quat4.str=function(a){return"["+a[0]+", "+a[1]+", "+a[2]+", "+a[3]+"]"};
 		inst.set_bbox_changed();
 		return false;
 	};
+	Runtime.prototype.pushOutSolidAxis = function(inst, xdir, ydir, dist)
+	{
+		dist = dist || 50;
+		var oldX = inst.x;
+		var oldY = inst.y;
+		var lastOverlapped = null;
+		var secondLastOverlapped = null;
+		var i, which, sign;
+		for (i = 0; i < dist; ++i)
+		{
+			for (which = 0; which < 2; ++which)
+			{
+				sign = which * 2 - 1;		// -1 or 1
+				inst.x = oldX + (xdir * i * sign);
+				inst.y = oldY + (ydir * i * sign);
+				inst.set_bbox_changed();
+				if (!this.testOverlap(inst, lastOverlapped))
+				{
+					lastOverlapped = this.testOverlapSolid(inst);
+					if (lastOverlapped)
+					{
+						secondLastOverlapped = lastOverlapped;
+					}
+					else
+					{
+						if (secondLastOverlapped)
+							this.pushInFractional(inst, xdir * sign, ydir * sign, secondLastOverlapped, 16);
+						return true;
+					}
+				}
+			}
+		}
+		inst.x = oldX;
+		inst.y = oldY;
+		inst.set_bbox_changed();
+		return false;
+	};
 	Runtime.prototype.pushOut = function (inst, xdir, ydir, dist, otherinst)
 	{
 		var push_dist = dist || 50;
@@ -6540,13 +6560,39 @@ quat4.str=function(a){return"["+a[0]+", "+a[1]+", "+a[2]+", "+a[3]+"]"};
 			return;
 		this.registered_collisions.push([a, b]);
 	};
+	Runtime.prototype.addRegisteredCollisionCandidates = function (inst, otherType, arr)
+	{
+		var i, len, r, otherInst;
+		for (i = 0, len = this.registered_collisions.length; i < len; ++i)
+		{
+			r = this.registered_collisions[i];
+			if (r[0] === inst)
+				otherInst = r[1];
+			else if (r[1] === inst)
+				otherInst = r[0];
+			else
+				continue;
+			if (otherType.is_family)
+			{
+				if (otherType.members.indexOf(otherType) === -1)
+					continue;
+			}
+			else
+			{
+				if (otherInst.type !== otherType)
+					continue;
+			}
+			if (arr.indexOf(otherInst) === -1)
+				arr.push(otherInst);
+		}
+	};
 	Runtime.prototype.checkRegisteredCollision = function (a, b)
 	{
 		var i, len, x;
 		for (i = 0, len = this.registered_collisions.length; i < len; i++)
 		{
 			x = this.registered_collisions[i];
-			if ((x[0] == a && x[1] == b) || (x[0] == b && x[1] == a))
+			if ((x[0] === a && x[1] === b) || (x[0] === b && x[1] === a))
 				return true;
 		}
 		return false;
@@ -7518,7 +7564,7 @@ quat4.str=function(a){return"["+a[0]+", "+a[1]+", "+a[2]+", "+a[3]+"]"};
 	};
 	Runtime.prototype.loadInstanceFromJSON = function(inst, o, state_only)
 	{
-		var p, i, len, iv, oivs, world, fxindex, obehs, behindex;
+		var p, i, len, iv, oivs, world, fxindex, obehs, behindex, value;
 		var oldlayer;
 		var type = inst.type;
 		var plugin = type.plugin;
@@ -7543,7 +7589,10 @@ quat4.str=function(a){return"["+a[0]+", "+a[1]+", "+a[2]+", "+a[3]+"]"};
 					iv = this.getInstanceVarIndexBySid(type, parseInt(p, 10));
 					if (iv < 0 || iv >= inst.instance_vars.length)
 						continue;		// must've gone missing
-					inst.instance_vars[iv] = oivs[p];
+					value = oivs[p];
+					if (value === null)
+						value = NaN;
+					inst.instance_vars[iv] = value;
 				}
 			}
 		}
@@ -7683,9 +7732,21 @@ quat4.str=function(a){return"["+a[0]+", "+a[1]+", "+a[2]+", "+a[3]+"]"};
 	};
 	Runtime.prototype.fetchLocalFileViaCordovaAsURL = function (filename, successCallback, errorCallback)
 	{
+		var blobType = "";
+		var lowername = filename.toLowerCase();
+		var ext3 = lowername.substr(lowername.length - 4);
+		var ext4 = lowername.substr(lowername.length - 5);
+		if (ext3 === ".mp4")
+			blobType = "video/mp4";
+		else if (ext4 === ".webm")
+			blobType = "video/webm";		// use video type but hopefully works with audio too
+		else if (ext3 === ".m4a")
+			blobType = "audio/mp4";
+		else if (ext3 === ".mp3")
+			blobType = "audio/mpeg";
 		this.fetchLocalFileViaCordovaAsArrayBuffer(filename, function (arrayBuffer)
 		{
-			var blob = new Blob([arrayBuffer]);
+			var blob = new Blob([arrayBuffer], { type: blobType });
 			var url = URL.createObjectURL(blob);
 			successCallback(url);
 		}, errorCallback);
@@ -7912,7 +7973,7 @@ window["cr_setSuspended"] = function(s)
 		this.height = this.originalHeight;
 		this.scrollX = (this.runtime.original_width / 2);
 		this.scrollY = (this.runtime.original_height / 2);
-		var i, k, len, lenk, type, type_instances, inst, iid, t, s, p, q, type_data, layer;
+		var i, k, len, lenk, type, type_instances, initial_inst, inst, iid, t, s, p, q, type_data, layer;
 		for (i = 0, len = this.runtime.types_by_index.length; i < len; i++)
 		{
 			type = this.runtime.types_by_index[i];
@@ -8020,7 +8081,12 @@ window["cr_setSuspended"] = function(s)
 		}
 		for (i = 0, len = this.initial_nonworld.length; i < len; i++)
 		{
-			inst = this.runtime.createInstanceFromInit(this.initial_nonworld[i], null, true);
+			initial_inst = this.initial_nonworld[i];
+			type = this.runtime.types_by_index[initial_inst[1]];
+			if (!type.is_contained)
+			{
+				inst = this.runtime.createInstanceFromInit(this.initial_nonworld[i], null, true);
+			}
 ;
 		}
 		this.runtime.changelayout = null;
@@ -13998,14 +14064,14 @@ cr.system_object.prototype.loadFromJSON = function (o)
 	SysExps.prototype.regexmatchcount = function (ret, str_, regex_, flags_)
 	{
 		var regex = getRegex(regex_, flags_);
-		updateRegexMatches(str_, regex_, flags_);
+		updateRegexMatches(str_.toString(), regex_, flags_);
 		ret.set_int(regexMatches ? regexMatches.length : 0);
 	};
 	SysExps.prototype.regexmatchat = function (ret, str_, regex_, flags_, index_)
 	{
 		index_ = Math.floor(index_);
 		var regex = getRegex(regex_, flags_);
-		updateRegexMatches(str_, regex_, flags_);
+		updateRegexMatches(str_.toString(), regex_, flags_);
 		if (!regexMatches || index_ < 0 || index_ >= regexMatches.length)
 			ret.set_string("");
 		else
@@ -14891,6 +14957,8 @@ cr.system_object.prototype.loadFromJSON = function (o)
 			return false;
 		if (!this.bquad.contains_pt(x, y))
 			return false;
+		if (this.tilemap_exists)
+			return this.testPointOverlapTile(x, y);
 		if (this.collision_poly && !this.collision_poly.is_empty())
 		{
 			this.collision_poly.cache_poly(this.width, this.height, this.angle);
@@ -15019,14 +15087,13 @@ cr.system_object.prototype.loadFromJSON = function (o)
 		if (prevsol.select_all)
 		{
 			clonesol.select_all = true;
-			cr.clearArray(clonesol.else_instances);
 		}
 		else
 		{
 			clonesol.select_all = false;
 			cr.shallowAssignArray(clonesol.instances, prevsol.instances);
-			cr.shallowAssignArray(clonesol.else_instances, prevsol.else_instances);
 		}
+		cr.clearArray(clonesol.else_instances);
 	};
 	cr.type_popSol = function ()
 	{
@@ -15598,7 +15665,6 @@ cr.plugins_.Arr = function(runtime)
 			for ( ; x < this.cx; x++)
 				for (y = 0; y < this.cy; y++)
 					a[x][y].reverse();
-			this.cz--;
 			break;
 		}
 	};
@@ -15895,9 +15961,86 @@ cr.plugins_.Audio = function(runtime)
 	var rolloffFactor = 1;
 	var micSource = null;
 	var micTag = "";
-	var isMusicWorkaround = false;
-	var musicPlayNextTouch = [];
+	var useNextTouchWorkaround = false;			// heuristic in case play() does not return a promise and we have to guess if the play was blocked
+	var playOnNextInput = [];					// C2AudioInstances with HTMLAudioElements to play on next input event
 	var playMusicAsSoundWorkaround = false;		// play music tracks with Web Audio API
+	var hasPlayedDummyBuffer = false;			// dummy buffer played to unblock AudioContext on some platforms
+	function addAudioToPlayOnNextInput(a)
+	{
+		var i = playOnNextInput.indexOf(a);
+		if (i === -1)
+			playOnNextInput.push(a);
+	};
+	function tryPlayAudioElement(a)
+	{
+		var audioElem = a.instanceObject;
+		var playRet;
+		try {
+			playRet = audioElem.play();
+		}
+		catch (err) {
+			addAudioToPlayOnNextInput(a);
+			return;
+		}
+		if (playRet)		// promise was returned
+		{
+			playRet.catch(function (err)
+			{
+				addAudioToPlayOnNextInput(a);
+			});
+		}
+		else if (useNextTouchWorkaround && !audRuntime.isInUserInputEvent)
+		{
+			addAudioToPlayOnNextInput(a);
+		}
+	};
+	function playQueuedAudio()
+	{
+		var i, len, m, playRet;
+		if (!hasPlayedDummyBuffer && !isContextSuspended && context)
+		{
+			playDummyBuffer();
+			if (context["state"] === "running")
+				hasPlayedDummyBuffer = true;
+		}
+		var tryPlay = playOnNextInput.slice(0);
+		cr.clearArray(playOnNextInput);
+		if (!silent)
+		{
+			for (i = 0, len = tryPlay.length; i < len; ++i)
+			{
+				m = tryPlay[i];
+				if (!m.stopped && !m.is_paused)
+				{
+					playRet = m.instanceObject.play();
+					if (playRet)
+					{
+						playRet.catch(function (err)
+						{
+							addAudioToPlayOnNextInput(m);
+						});
+					}
+				}
+			}
+		}
+	};
+	function playDummyBuffer()
+	{
+		if (context["state"] === "suspended" && context["resume"])
+			context["resume"]();
+		if (!context["createBuffer"])
+			return;
+		var buffer = context["createBuffer"](1, 220, 22050);
+		var source = context["createBufferSource"]();
+		source["buffer"] = buffer;
+		source["connect"](context["destination"]);
+		startSource(source);
+	};
+	document.addEventListener("pointerup", playQueuedAudio, true);
+	document.addEventListener("touchend", playQueuedAudio, true);
+	document.addEventListener("click", playQueuedAudio, true);
+	document.addEventListener("keydown", playQueuedAudio, true);
+	document.addEventListener("gamepadconnected", playQueuedAudio, true);
 	function dbToLinear(x)
 	{
 		var v = dbToLinear_nocap(x);
@@ -16652,8 +16795,6 @@ cr.plugins_.Audio = function(runtime)
 	ObjectTracker.prototype.tick = function (dt)
 	{
 	};
-	var iOShadtouchstart = false;	// has had touch start input on iOS <=8 to work around web audio API muting
-	var iOShadtouchend = false;		// has had touch end input on iOS 9+ to work around web audio API muting
 	function C2AudioBuffer(src_, is_music)
 	{
 		this.src = src_;
@@ -16689,7 +16830,7 @@ cr.plugins_.Audio = function(runtime)
 				this.supportWebAudioAPI = true;		// can be routed through web audio api
 				this.bufferObject.addEventListener("canplay", function ()
 				{
-					if (!self.mediaSourceNode)		// protect against this event firing twice
+					if (!self.mediaSourceNode && self.bufferObject)
 					{
 						self.mediaSourceNode = context["createMediaElementSource"](self.bufferObject);
 						self.mediaSourceNode["connect"](self.outNode);
@@ -16748,6 +16889,16 @@ cr.plugins_.Audio = function(runtime)
 				++j;		// keep
 		}
 		audioInstances.length = j;
+		if (this.mediaSourceNode)
+		{
+			this.mediaSourceNode["disconnect"]();
+			this.mediaSourceNode = null;
+		}
+		if (this.outNode)
+		{
+			this.outNode["disconnect"]();
+			this.outNode = null;
+		}
 		this.bufferObject = null;
 		this.audioData = null;
 	};
@@ -17131,18 +17282,7 @@ cr.plugins_.Audio = function(runtime)
 ;
 				}
 			}
-			if (this.is_music && isMusicWorkaround && !audRuntime.isInUserInputEvent)
-				musicPlayNextTouch.push(this);
-			else
-			{
-				try {
-					this.instanceObject.play();
-				}
-				catch (e) {		// sometimes throws on WP8.1... try not to kill the app
-					if (console && console.log)
-						console.log("[C2] WARNING: exception trying to play audio '" + this.buffer.src + "': ", e);
-				}
-			}
+			tryPlayAudioElement(this);
 			break;
 		case API_WEBAUDIO:
 			this.muted = false;
@@ -17182,10 +17322,7 @@ cr.plugins_.Audio = function(runtime)
 ;
 					}
 				}
-				if (this.is_music && isMusicWorkaround && !audRuntime.isInUserInputEvent)
-					musicPlayNextTouch.push(this);
-				else
-					instobj.play();
+				tryPlayAudioElement(this);
 			}
 			break;
 		case API_CORDOVA:
@@ -17274,7 +17411,7 @@ cr.plugins_.Audio = function(runtime)
 			return;
 		switch (this.myapi) {
 		case API_HTML5:
-			this.instanceObject.play();
+			tryPlayAudioElement(this);
 			break;
 		case API_WEBAUDIO:
 			if (this.buffer.myapi === API_WEBAUDIO)
@@ -17292,7 +17429,7 @@ cr.plugins_.Audio = function(runtime)
 			}
 			else
 			{
-				this.instanceObject.play();
+				tryPlayAudioElement(this);
 			}
 			break;
 		case API_CORDOVA:
@@ -17650,7 +17787,7 @@ cr.plugins_.Audio = function(runtime)
 			playMusicAsSoundWorkaround = true;
 		if ((this.runtime.isiOS || (this.runtime.isAndroid && (this.runtime.isChrome || this.runtime.isAndroidStockBrowser))) && !this.runtime.isCrosswalk && !this.runtime.isDomFree && !this.runtime.isAmazonWebApp && !playMusicAsSoundWorkaround)
 		{
-			isMusicWorkaround = true;
+			useNextTouchWorkaround = true;
 		}
 		context = null;
 		if (typeof AudioContext !== "undefined")
@@ -17671,57 +17808,6 @@ cr.plugins_.Audio = function(runtime)
 				context = new AudioContext();
 			else if (typeof webkitAudioContext !== "undefined")
 				context = new webkitAudioContext();
-		}
-		var isAndroid = this.runtime.isAndroid;
-		var playDummyBuffer = function ()
-		{
-			if (isContextSuspended || !context["createBuffer"])
-				return;
-			var buffer = context["createBuffer"](1, 220, 22050);
-			var source = context["createBufferSource"]();
-			source["buffer"] = buffer;
-			source["connect"](context["destination"]);
-			startSource(source);
-		};
-		if (isMusicWorkaround)
-		{
-			var playQueuedMusic = function ()
-			{
-				var i, len, m;
-				if (isMusicWorkaround)
-				{
-					if (!silent)
-					{
-						for (i = 0, len = musicPlayNextTouch.length; i < len; ++i)
-						{
-							m = musicPlayNextTouch[i];
-							if (!m.stopped && !m.is_paused)
-								m.instanceObject.play();
-						}
-					}
-					cr.clearArray(musicPlayNextTouch);
-				}
-			};
-			document.addEventListener("touchend", function ()
-			{
-				if (!iOShadtouchend && context)
-				{
-					playDummyBuffer();
-					iOShadtouchend = true;
-				}
-				playQueuedMusic();
-			}, true);
-		}
-		else if (playMusicAsSoundWorkaround)
-		{
-			document.addEventListener("touchend", function ()
-			{
-				if (!iOShadtouchend && context)
-				{
-					playDummyBuffer();
-					iOShadtouchend = true;
-				}
-			}, true);
 		}
 		if (api !== API_WEBAUDIO)
 		{
@@ -17750,7 +17836,8 @@ cr.plugins_.Audio = function(runtime)
 			else
 			{
 				try {
-					useOgg = !!(new Audio().canPlayType('audio/ogg; codecs="vorbis"'));
+					useOgg = !!(new Audio().canPlayType('audio/ogg; codecs="vorbis"')) &&
+								!this.runtime.isWindows10;
 				}
 				catch (e)
 				{
@@ -17773,7 +17860,7 @@ cr.plugins_.Audio = function(runtime)
 			default:
 ;
 			}
-			this.runtime.tickMe(this);
+		this.runtime.tickMe(this);
 		}
 	};
 	var instanceProto = pluginProto.Instance.prototype;
@@ -20309,6 +20396,7 @@ cr.plugins_.NodeWebkit = function(runtime)
 	var process = null;
 	var nw_appfolder = "";
 	var nw_userfolder = "";
+	var nw_projectfilesfolder = "";
 	var slash = "\\";
 	var filelist = [];
 	var droppedfile = "";
@@ -20345,6 +20433,10 @@ cr.plugins_.NodeWebkit = function(runtime)
 			nw_appfolder = path["dirname"](process["execPath"]) + slash;
 			nw_userfolder = os["homedir"]() + slash;
 			gui = window["nwgui"];
+			nw_projectfilesfolder = process["mainModule"]["filename"];
+			var lastSlash = Math.max(nw_projectfilesfolder.lastIndexOf("/"), nw_projectfilesfolder.lastIndexOf("\\"));
+			if (lastSlash !== -1)
+				nw_projectfilesfolder = nw_projectfilesfolder.substr(0, lastSlash + 1);
 			window["ondrop"] = function (e)
 			{
 				e.preventDefault();
@@ -20356,7 +20448,7 @@ cr.plugins_.NodeWebkit = function(runtime)
 				return false;
 			};
 			var openFileDialogElem = document.getElementById("c2nwOpenFileDialog");
-			openFileDialogElem.onchange = function (e) {
+			openFileDialogElem["onchange"] = function (e) {
 				chosenpath = openFileDialogElem.value;
 				self.runtime.trigger(cr.plugins_.NodeWebkit.prototype.cnds.OnOpenDlg, self);
 				try {
@@ -20364,11 +20456,11 @@ cr.plugins_.NodeWebkit = function(runtime)
 				}
 				catch (e) {}
 			};
-			openFileDialogElem.oncancel = function () {
+			openFileDialogElem["oncancel"] = function () {
 				self.runtime.trigger(cr.plugins_.NodeWebkit.prototype.cnds.OnOpenDlgCancel, self);
 			};
 			var chooseFolderDialogElem = document.getElementById("c2nwChooseFolderDialog");
-			chooseFolderDialogElem.onchange = function (e) {
+			chooseFolderDialogElem["onchange"] = function (e) {
 				chosenpath = chooseFolderDialogElem.value;
 				self.runtime.trigger(cr.plugins_.NodeWebkit.prototype.cnds.OnFolderDlg, self);
 				try {
@@ -20376,11 +20468,11 @@ cr.plugins_.NodeWebkit = function(runtime)
 				}
 				catch (e) {}
 			};
-			chooseFolderDialogElem.oncancel = function () {
+			chooseFolderDialogElem["oncancel"] = function () {
 				self.runtime.trigger(cr.plugins_.NodeWebkit.prototype.cnds.OnFolderDlgCancel, self);
 			};
 			var saveDialogElem = document.getElementById("c2nwSaveDialog");
-			saveDialogElem.onchange = function (e) {
+			saveDialogElem["onchange"] = function (e) {
 				chosenpath = saveDialogElem.value;
 				self.runtime.trigger(cr.plugins_.NodeWebkit.prototype.cnds.OnSaveDlg, self);
 				try {
@@ -20388,7 +20480,7 @@ cr.plugins_.NodeWebkit = function(runtime)
 				}
 				catch (e) {}
 			};
-			saveDialogElem.oncancel = function () {
+			saveDialogElem["oncancel"] = function () {
 				self.runtime.trigger(cr.plugins_.NodeWebkit.prototype.cnds.OnSaveDlgCancel, self);
 			};
 		}
@@ -20502,6 +20594,12 @@ cr.plugins_.NodeWebkit = function(runtime)
 			return;
 		child_process["exec"](path_, function() {});
 	};
+	Acts.prototype.ShellOpen = function (path_)
+	{
+		if (!isNWjs)
+			return;
+		nw["Shell"]["openItem"](path_);
+	};
 	Acts.prototype.OpenBrowser = function (url_)
 	{
 		if (!isNWjs)
@@ -20547,8 +20645,11 @@ cr.plugins_.NodeWebkit = function(runtime)
 		try {
 			filelist = fs["readdirSync"](path_);
 		}
-		catch (e)
-		{}
+		catch (err)
+		{
+			filelist = [];
+			console.warn("Error listing files at '" + path_ + "': ", err);
+		}
 		if (!filelist)
 			filelist = [];
 	};
@@ -20603,6 +20704,7 @@ cr.plugins_.NodeWebkit = function(runtime)
 		if (!isNWjs || !gui)
 			return;
 		gui["Window"]["get"]()["title"] = str;
+		document.title = str;
 	};
 	Acts.prototype.WindowMinimize = function ()
 	{
@@ -20697,6 +20799,14 @@ cr.plugins_.NodeWebkit = function(runtime)
 	Exps.prototype.AppFolderURL = function (ret)
 	{
 		ret.set_string("file://" + nw_appfolder);
+	};
+	Exps.prototype.ProjectFilesFolder = function (ret)
+	{
+		ret.set_string(nw_projectfilesfolder);
+	};
+	Exps.prototype.ProjectFilesFolderURL = function (ret)
+	{
+		ret.set_string("file://" + nw_projectfilesfolder);
 	};
 	Exps.prototype.UserFolder = function (ret)
 	{
@@ -21385,16 +21495,65 @@ cr.plugins_.Rex_Date = function(runtime)
 	var instanceProto = pluginProto.Instance.prototype;
 	instanceProto.onCreate = function()
 	{
-	    this._timers = {};
+	    this.timers = {};
+        /*
+        {
+            "state":1=run, 0=paused
+            "start": timstamp, updated when resumed
+            "acc": delta-time, updated when paused
+        }
+        */
+	};
+    var startTimer = function(timer, curTimestamp)
+    {
+        if (!timer)
+            timer = {};
+        if (!curTimestamp)
+            curTimestamp = (new Date()).getTime();
+        timer["state"] = 1;
+        timer["start"] = curTimestamp;
+        timer["acc"] = 0;
+        return timer;
+    };
+    var getElapsedTime = function(timer)
+    {
+        if (!timer)
+            return 0;
+        var deltaTime = timer["acc"];
+        if (timer["state"] === 1)
+        {
+            var curTime = (new Date()).getTime();
+            deltaTime += (curTime - timer["start"]);
+        }
+        return deltaTime;
+    };
+    var pauseTimer = function(timer)
+    {
+        if ((!timer) || (timer["state"] === 0))
+            return;
+        timer["state"] = 0;
+        var curTime = (new Date()).getTime();
+        timer["acc"] += (curTime - timer["start"]);
+    };
+    var resumeTimer = function(timer)
+    {
+        if ((!timer) || (timer["state"] === 1))
+            return;
+        timer["state"] = 1;
+        timer["start"] = (new Date()).getTime();
+    };
+	var getDate = function (timestamp)
+	{
+		return (timestamp != null)? new Date(timestamp): new Date();
 	};
     instanceProto.saveToJSON = function ()
 	{
-		return { "tims": this._timers,
+		return { "tims": this.timers,
                 };
 	};
 	instanceProto.loadFromJSON = function (o)
 	{
-		this._timers = o["tims"];
+		this.timers = o["tims"];
 	};
 	function Cnds() {};
 	pluginProto.cnds = new Cnds();
@@ -21402,70 +21561,77 @@ cr.plugins_.Rex_Date = function(runtime)
 	pluginProto.acts = new Acts();
 	Acts.prototype.StartTimer = function (name)
 	{
-	    var timer = new Date();
-		this._timers[name] = timer.getTime();
+        this.timers[name] = startTimer(this.timers[name]);
+	};
+	Acts.prototype.PauseTimer = function (name)
+	{
+        pauseTimer(this.timers[name]);
+	};
+	Acts.prototype.ResumeTimer = function (name)
+	{
+        resumeTimer(this.timers[name]);
 	};
 	function Exps() {};
 	pluginProto.exps = new Exps();
 	Exps.prototype.Year = function (ret, timestamp)
 	{
-	    var today = (timestamp != null)? new Date(timestamp): new Date();
-		ret.set_int(today.getFullYear());
+		ret.set_int(getDate(timestamp).getFullYear());
 	};
 	Exps.prototype.Month = function (ret, timestamp)
 	{
-	    var today = (timestamp != null)? new Date(timestamp): new Date();
-		ret.set_int(today.getMonth()+1);
+	    ret.set_int(getDate(timestamp).getMonth()+1);
 	};
 	Exps.prototype.Date = function (ret, timestamp)
 	{
-	    var today = (timestamp != null)? new Date(timestamp): new Date();
-		ret.set_int(today.getDate());
+	    ret.set_int(getDate(timestamp).getDate());
 	};
 	Exps.prototype.Day = function (ret, timestamp)
 	{
-	    var today = (timestamp != null)? new Date(timestamp): new Date();
-		ret.set_int(today.getDay());
+	    ret.set_int(getDate(timestamp).getDay());
 	};
 	Exps.prototype.Hours = function (ret, timestamp)
 	{
-	    var today = (timestamp != null)? new Date(timestamp): new Date();
-		ret.set_int(today.getHours());
+	    ret.set_int(getDate(timestamp).getHours());
 	};
 	Exps.prototype.Minutes = function (ret, timestamp)
 	{
-	    var today = (timestamp != null)? new Date(timestamp): new Date();
-		ret.set_int(today.getMinutes());
+	    ret.set_int(getDate(timestamp).getMinutes());
 	};
 	Exps.prototype.Seconds = function (ret, timestamp)
 	{
-	    var today = (timestamp != null)? new Date(timestamp): new Date();
-		ret.set_int(today.getSeconds());
+	    ret.set_int(getDate(timestamp).getSeconds());
 	};
 	Exps.prototype.Milliseconds = function (ret, timestamp)
 	{
-	    var today = (timestamp != null)? new Date(timestamp): new Date();
-		ret.set_int(today.getMilliseconds());
+	    ret.set_int(getDate(timestamp).getMilliseconds());
 	};
 	Exps.prototype.Timer = function (ret, name)
 	{
-	    var delta = 0;
-		var start_tick = this._timers[name];
-		if (start_tick != null) {
-		    var timer = new Date();
-		    delta = timer.getTime() - start_tick;
-		}
-		ret.set_float(delta/1000);
+		ret.set_float(getElapsedTime(this.timers[name])/1000);
 	};
 	Exps.prototype.CurTicks = function (ret)
 	{
 	    var today = new Date();
         ret.set_int(today.getTime());
 	};
-	Exps.prototype.UnixTimestamp = function (ret)
+	Exps.prototype.UnixTimestamp = function (ret, year, month, day, hours, minutes, seconds, milliseconds)
 	{
-	    var today = new Date();
-        ret.set_float(today.getTime());
+        var d;
+        if (year == null)
+        {
+            d = new Date();
+        }
+        else
+        {
+            month = month || 1;
+            day = day || 1;
+            hours = hours || 0;
+            minutes = minutes || 0;
+            seconds = seconds || 0;
+            milliseconds = milliseconds || 0;
+            d = new Date(year, month-1, day, hours, minutes, seconds, milliseconds);
+        }
+        ret.set_float(d.getTime());
 	};
 	Exps.prototype.Date2UnixTimestamp = function (ret, year, month, day, hours, minutes, seconds, milliseconds)
 	{
@@ -21481,8 +21647,7 @@ cr.plugins_.Rex_Date = function(runtime)
 	};
     Exps.prototype.LocalExpression = function (ret, timestamp, locales)
 	{
-	    var today = (timestamp != null)? new Date(timestamp): new Date();
-	    ret.set_string( today.toLocaleString(locales) );
+	    ret.set_string( getDate(timestamp).toLocaleString(locales) );
 	};
 }());
 ;
@@ -22234,6 +22399,7 @@ cr.plugins_.Sprite = function(runtime)
 		var rsol = rtype.getCurrentSol();
 		var linstances = lsol.getObjects();
 		var rinstances;
+		var registeredInstances;
 		var l, linst, r, rinst;
 		var curlsol, currsol;
 		var tickcount = this.runtime.tickcount;
@@ -22249,9 +22415,12 @@ cr.plugins_.Sprite = function(runtime)
 				linst.update_bbox();
 				this.runtime.getCollisionCandidates(linst.layer, rtype, linst.bbox, candidates1);
 				rinstances = candidates1;
+				this.runtime.addRegisteredCollisionCandidates(linst, rtype, rinstances);
 			}
 			else
+			{
 				rinstances = rsol.getObjects();
+			}
 			for (r = 0; r < rinstances.length; r++)
 			{
 				rinst = rinstances[r];
@@ -24433,8 +24602,15 @@ cr.plugins_.Touch = function(runtime)
 			return this.orient_gamma;
 	};
 	var noop_func = function(){};
+	function isCompatibilityMouseEvent(e)
+	{
+		return (e["sourceCapabilities"] && e["sourceCapabilities"]["firesTouchEvents"]) ||
+				(e.originalEvent && e.originalEvent["sourceCapabilities"] && e.originalEvent["sourceCapabilities"]["firesTouchEvents"]);
+	};
 	instanceProto.onMouseDown = function(info)
 	{
+		if (isCompatibilityMouseEvent(info))
+			return;
 		var t = { pageX: info.pageX, pageY: info.pageY, "identifier": 0 };
 		var fakeinfo = { changedTouches: [t] };
 		this.onTouchStart(fakeinfo);
@@ -24443,6 +24619,8 @@ cr.plugins_.Touch = function(runtime)
 	instanceProto.onMouseMove = function(info)
 	{
 		if (!this.mouseDown)
+			return;
+		if (isCompatibilityMouseEvent(info))
 			return;
 		var t = { pageX: info.pageX, pageY: info.pageY, "identifier": 0 };
 		var fakeinfo = { changedTouches: [t] };
@@ -24453,6 +24631,8 @@ cr.plugins_.Touch = function(runtime)
 		if (info.preventDefault && this.runtime.had_a_click && !this.runtime.isMobile)
 			info.preventDefault();
 		this.runtime.had_a_click = true;
+		if (isCompatibilityMouseEvent(info))
+			return;
 		var t = { pageX: info.pageX, pageY: info.pageY, "identifier": 0 };
 		var fakeinfo = { changedTouches: [t] };
 		this.onTouchEnd(fakeinfo);
@@ -24922,7 +25102,7 @@ cr.plugins_.Touch = function(runtime)
 		var t = this.touches[index];
 		var dist = cr.distanceTo(t.x, t.y, t.lastx, t.lasty);
 		var timediff = (t.time - t.lasttime) / 1000;
-		if (timediff === 0)
+		if (timediff <= 0)
 			ret.set_float(0);
 		else
 			ret.set_float(dist / timediff);
@@ -24938,7 +25118,7 @@ cr.plugins_.Touch = function(runtime)
 		var touch = this.touches[index];
 		var dist = cr.distanceTo(touch.x, touch.y, touch.lastx, touch.lasty);
 		var timediff = (touch.time - touch.lasttime) / 1000;
-		if (timediff === 0)
+		if (timediff <= 0)
 			ret.set_float(0);
 		else
 			ret.set_float(dist / timediff);
@@ -25839,14 +26019,17 @@ cr.behaviors.Bullet = function(runtime)
 			this.lastKnownAngle = bounceAngle;
 			this.inst.set_bbox_changed();
 		}
-		if (this.bounceOffSolid)
+		if (s !== 0)		// prevent divide-by-zero
 		{
-			if (!this.runtime.pushOutSolid(this.inst, this.dx / s, this.dy / s, Math.max(s * 2.5 * dt, 30)))
-				this.runtime.pushOutSolidNearest(this.inst, 100);
-		}
-		else if (s !== 0)
-		{
-			this.runtime.pushOut(this.inst, this.dx / s, this.dy / s, Math.max(s * 2.5 * dt, 30), otherinst)
+			if (this.bounceOffSolid)
+			{
+				if (!this.runtime.pushOutSolid(this.inst, this.dx / s, this.dy / s, Math.max(s * 2.5 * dt, 30)))
+					this.runtime.pushOutSolidNearest(this.inst, 100);
+			}
+			else
+			{
+				this.runtime.pushOut(this.inst, this.dx / s, this.dy / s, Math.max(s * 2.5 * dt, 30), otherinst)
+			}
 		}
 	};
 	Acts.prototype.SetDistanceTravelled = function (d)
@@ -26177,6 +26360,8 @@ cr.behaviors.Sin = function(runtime)
 		this.initialValue = 0;
 		this.initialValue2 = 0;
 		this.ratio = 0;
+		if (this.movement === 5)			// angle
+			this.mag = cr.to_radians(this.mag);
 		this.init();
 	};
 	behinstProto.saveToJSON = function ()
@@ -26230,7 +26415,6 @@ cr.behaviors.Sin = function(runtime)
 			break;
 		case 5:		// angle
 			this.initialValue = this.inst.angle;
-			this.mag = cr.to_radians(this.mag);		// convert magnitude from degrees to radians
 			break;
 		case 6:		// opacity
 			this.initialValue = this.inst.opacity;
@@ -26392,7 +26576,7 @@ cr.behaviors.Sin = function(runtime)
 	};
 	Acts.prototype.SetMovement = function (m)
 	{
-		if (this.movement === 5)
+		if (this.movement === 5 && m !== 5)
 			this.mag = cr.to_degrees(this.mag);
 		this.movement = m;
 		this.init();
@@ -26510,20 +26694,20 @@ cr.getObjectRefTable = function () { return [
 	cr.plugins_.Arr,
 	cr.plugins_.Audio,
 	cr.plugins_.Dictionary,
-	cr.plugins_.Mouse,
-	cr.plugins_.NodeWebkit,
-	cr.plugins_.List,
 	cr.plugins_.Function,
-	cr.plugins_.Keyboard,
-	cr.plugins_.Sprite,
-	cr.plugins_.TiledBg,
-	cr.plugins_.sliderbar,
-	cr.plugins_.Rex_Date,
-	cr.plugins_.wastrel_switchcase,
+	cr.plugins_.NodeWebkit,
 	cr.plugins_.Particles,
+	cr.plugins_.List,
+	cr.plugins_.Mouse,
+	cr.plugins_.Keyboard,
 	cr.plugins_.Touch,
+	cr.plugins_.wastrel_switchcase,
+	cr.plugins_.Sprite,
 	cr.plugins_.TextBox,
+	cr.plugins_.sliderbar,
 	cr.plugins_.Text,
+	cr.plugins_.TiledBg,
+	cr.plugins_.Rex_Date,
 	cr.behaviors.Pin,
 	cr.behaviors.Rotate,
 	cr.behaviors.Sin,
